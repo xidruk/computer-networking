@@ -9,3 +9,11 @@ This repository covers the basics of computer networking. It is designed to intr
 1. [Definition of Computer Network](#definition-of-computer-network)
 2. [Types of Computer Networks](#types-of-computer-networks)
 3. [Network Devices](#network-devices)
+
+---
+
+## Definition of Computer Network
+
+A computer network is a collection of interconnected computers and devices that communicate with each other to share resources, exchange data, and enable collaboration. These connections can be established using wired or wireless technologies, allowing users to access information and services efficiently.
+
+![Computers Connected Together](https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif)
