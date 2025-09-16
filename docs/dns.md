@@ -24,9 +24,9 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
    - [Recursive Query](#recursive-query)  
    - [Iterative Query](#iterative-query)  
    - [Non-Recursive Query](#non-recursive-query)  
-6. DNS records
-	- Common DNS record types
-	- Example of a DNS config
+6. [DNS Records](#6-dns-records)  
+   - [Common DNS record types](#common-dns-record-types)  
+   - [Example of a DNS config](#example-of-a-dns-config)  
 7. DNS caching
 	- Browser DNS caching
 	- OS-level DNS caching
@@ -200,4 +200,35 @@ A **non-recursive query** is when the DNS client asks a server for information t
 - **Example**: A DNS resolver has the answer cached and returns it instantly.  
 
 ---
+
+# 6. DNS Records
+
+DNS records are entries stored in authoritative DNS servers that provide important information about a domain, such as its IP address, mail server, and other configuration details. They form the backbone of how domains work on the Internet. Each record includes different fields, such as the **host name**, **TTL (Time to Live)**, **type**, and **value**.  
+
+- **Host Name**: The domain or subdomain the record applies to (e.g., `example.com` or `www`).  
+- **TTL (Time to Live)**: Defines how long a DNS record is cached by resolvers before requesting it again.  
+- **Type**: The type of DNS record (e.g., `A`, `MX`, `CNAME`).  
+- **Value**: The data associated with the record (e.g., an IP address for `A`, a mail server for `MX`).  
+- **Delete**: Option in management tools to remove the record.  
+
+
+## Common DNS Record Types
+
+| Host Name     | TTL   | Type  | Value / Example             | Used For                                                                 |
+|---------------|-------|-------|-----------------------------|--------------------------------------------------------------------------|
+| `example.com` | 3600  | A     | `93.184.216.34`             | Maps a domain to an **IPv4 address**.                                    |
+| `example.com` | 3600  | AAAA  | `2606:2800:220:1:248:1893::`| Maps a domain to an **IPv6 address**.                                    |
+| `mail`        | 3600  | MX    | `10 mail.example.com`       | Defines the **mail server** responsible for accepting email.             |
+| `www`         | 3600  | CNAME | `example.com`               | Creates an **alias** to another domain name.                             |
+| `_sip._tcp`   | 3600  | SRV   | `10 60 5060 sip.example.com`| Specifies **services** (e.g., VoIP or instant messaging).                 |
+| `example.com` | 3600  | TXT   | `"v=spf1 include:_spf.google.com ~all"` | Stores arbitrary text, commonly used for **email verification (SPF/DKIM)**. |
+| `_dmarc`      | 3600  | TXT   | `"v=DMARC1; p=none"`        | Defines **email authentication policies**.                               |
+| `example.com` | 86400 | NS    | `ns1.example.com`           | Points to the **authoritative nameserver** for the domain.               |
+| `example.com` | 3600  | PTR   | `34.216.184.93.in-addr.arpa`| Reverse lookup: maps **IP address → domain name**.                       |
+
+---
+
+## Example of a DNS Config
+
+Here’s what a real-world DNS zone file might look like for `example.com`:
 
