@@ -12,11 +12,11 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
    - [The role of DNS in the Internet](#the-role-of-dns-in-the-internet)
    - [Why DNS is needed](#why-dns-is-needed)
 2. [History of DNS](#2-history-of-dns)
-3. How does DNS work?
-	- DNS resolution process
-	- Example: Getting on the web
-	- Hardware components in DNS queries
-	- Steps in a DNS lookup
+3. [How does DNS work?](#3-how-does-dns-work)  
+   - [DNS resolution process](#dns-resolution-process)  
+   - [Example: Getting on the Web](#example-getting-on-the-web)  
+   - [Hardware components in DNS queries](#hardware-components-in-dns-queries)  
+   - [Steps in a DNS lookup](#steps-in-a-dns-lookup)  
 4. Types of DNS servers
 	- DNS recursor (recursive resolver)
 	- Root nameserver
@@ -115,9 +115,7 @@ When you type a website address into your browser:
 6. **Response Returned**: The resolver sends the IP address back to the client device.
 7. **Connection Established**: The client uses the IP address to connect to the website.
 
----
-
-### 📚 Further Reading & Resources
+### Further Reading & Resources
 
 | Resource | Description |
 |---|---|
@@ -129,4 +127,5 @@ When you type a website address into your browser:
 | [GeeksforGeeks: DNS Look Up](https://www.geeksforgeeks.org/computer-networks/dns-look-up/) | DNS lookup details and examples |
 
 ---
+
 
