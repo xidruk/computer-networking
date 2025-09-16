@@ -172,7 +172,6 @@ The authoritative nameserver is the final source of truth for a domain’s DNS r
 
 DNS queries are the requests made by clients (like your computer or browser) to DNS servers in order to resolve domain names into IP addresses. Depending on how much work the server performs and how the client interacts, there are different types of DNS queries.  
 
----
 
 ## Recursive Query
 
@@ -182,7 +181,6 @@ A **recursive query** is when a DNS client asks a DNS server to resolve a domain
 - The server may query multiple other servers.  
 - **Example**: Your computer asks its DNS resolver for `www.example.com`; the resolver finds the answer for you.  
 
----
 
 ## Iterative Query
 
@@ -192,7 +190,6 @@ In an **iterative query**, the DNS client allows the server to reply with the be
 - The server does not resolve the query fully.  
 - **Example**: A DNS server receives a query and responds with a referral to a root or TLD server.  
 
----
 
 ## Non-Recursive Query
 
@@ -201,3 +198,6 @@ A **non-recursive query** is when the DNS client asks a server for information t
 - The server answers from its own data or cache.  
 - No further queries are made.  
 - **Example**: A DNS resolver has the answer cached and returns it instantly.  
+
+---
+
