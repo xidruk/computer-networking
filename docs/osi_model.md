@@ -278,11 +278,49 @@ This version **uses your image** for clear visualization while keeping all expla
 
 ## Comparison with TCP/IP Model
 
+The OSI Model and the TCP/IP Model are both frameworks used to understand networking, but they have **different origins, structures, and purposes**. Comparing them helps clarify how modern networks actually work and how these models relate to each other.
+
+
 ### Differences and Similarities
-<!-- Content goes here -->
+
+| Aspect                | OSI Model                        | TCP/IP Model                     |
+|-----------------------|---------------------------------|---------------------------------|
+| **Layers**            | 7 layers (Physical → Application) | 4 layers (Link → Application)   |
+| **Type**              | Conceptual framework             | Practical model for Internet    |
+| **Standardization**   | Created by ISO                   | Developed by DoD/ARPANET        |
+| **Flexibility**       | Layer functions strictly defined | Layers are more flexible        |
+| **Usage**             | Teaching and protocol design     | Actual Internet protocol suite  |
+| **Mapping**           | Abstract, idealized              | Based on real-world implementation |
+
+**Similarities:**
+
+- Both models are **layered architectures** that divide networking into smaller, manageable parts.  
+- Both aim to **simplify troubleshooting and design** by separating responsibilities.  
+- Protocols in TCP/IP can be mapped to OSI layers for understanding, even though TCP/IP has fewer layers.
+
 
 ### How OSI Maps to TCP/IP
-<!-- Content goes here -->
+
+While the TCP/IP Model has **4 layers**, its layers correspond roughly to OSI layers as follows:
+
+| TCP/IP Layer         | Corresponding OSI Layers                    | Description |
+|---------------------|--------------------------------------------|------------|
+| **Application**      | OSI Layers 7 (Application), 6 (Presentation), 5 (Session) | Handles user services, data formatting, and session management |
+| **Transport**        | OSI Layer 4 (Transport)                     | Provides reliable or connectionless data transfer (TCP/UDP) |
+| **Internet**         | OSI Layer 3 (Network)                       | Provides logical addressing and routing (IP) |
+| **Network Access**   | OSI Layers 2 (Data Link) + 1 (Physical)    | Handles frame delivery and physical transmission |
+
+**Key points to understand:**
+
+1. TCP/IP is more **practical and widely used** than the OSI Model, especially for Internet communications.  
+2. OSI is **conceptual and detailed**, making it ideal for understanding and teaching networking principles.  
+3. Mapping OSI to TCP/IP helps in **troubleshooting**, designing networks, and understanding how protocols interact.  
+
+
+In summary, the OSI Model provides a **theoretical blueprint**, while TCP/IP is the **real-world implementation**. Understanding both gives a complete picture of how data travels across networks.
+
+
+---
 
 ## Practical Applications of OSI Model
 
@@ -295,6 +333,8 @@ This version **uses your image** for clear visualization while keeping all expla
 ### Networking Certifications
 <!-- Content goes here -->
 
+---
+
 ## Common Misconceptions About OSI
 
 ### OSI vs Reality
@@ -302,6 +342,8 @@ This version **uses your image** for clear visualization while keeping all expla
 
 ### Layer Responsibilities Confusion
 <!-- Content goes here -->
+
+---
 
 ## Conclusion
 
