@@ -1,10 +1,8 @@
 # TCP/IP Model
 
-![OSI Model](../static/tcpip.jpg)
-
 ---
 
-# Table of Contents – TCP/IP Model
+## Table of Contents – TCP/IP Model
 
 1. [Introduction](#introduction)  
    - [What is the TCP/IP Model?](#what-is-the-tcpip-model)  
