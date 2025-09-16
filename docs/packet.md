@@ -24,5 +24,5 @@ Think of it like sending a book through the mail:
 - Each packet travels independently through the network.
 - They contain control information to help them reach the correct destination and order.
 
+---
 
---- 
