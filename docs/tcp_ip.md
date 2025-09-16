@@ -109,3 +109,47 @@ Key milestones:
 👉 **Key takeaway:** TCP/IP wasn’t designed in theory like OSI it was **born out of necessity**, tested in the real world, and proven reliable. That’s why it became the **de facto standard** for the Internet.
 
 ---
+
+## Overview of TCP/IP Layers
+
+The **TCP/IP Model** is a simplified, practical framework for how data moves across a network.  
+It consists of **four layers**, each handling a specific part of communication, from applications down to the physical network.
+
+
+### The Four Layers
+
+1. **Application Layer**  
+   - Provides services and interfaces for end-users and applications.  
+   - Examples: HTTP, FTP, SMTP, DNS.  
+
+2. **Transport Layer**  
+   - Ensures reliable or fast delivery of data between applications.  
+   - Protocols: **TCP** (connection-oriented, reliable) and **UDP** (connectionless, fast).  
+
+3. **Internet Layer**  
+   - Handles logical addressing and routing of data across networks.  
+   - Protocols: **IP (IPv4/IPv6)**, ICMP, ARP.  
+
+4. **Network Access Layer** (also called Link Layer)  
+   - Defines how data is physically transmitted over the medium (Ethernet, Wi-Fi, etc.).  
+   - Includes hardware addressing (MAC addresses).  
+
+👉 These layers work together to ensure that data created by an application reaches its destination reliably and efficiently.
+
+
+### Comparison with OSI
+
+Although TCP/IP has only **4 layers**, it maps closely to the **7-layer OSI model**:  
+
+| **OSI Model**              | **TCP/IP Model**     |
+|-----------------------------|----------------------|
+| Application, Presentation, Session | Application Layer |
+| Transport                   | Transport Layer      |
+| Network                     | Internet Layer       |
+| Data Link, Physical         | Network Access Layer |
+
+✅ **Key Difference:** The OSI model separates functions more finely (7 layers), while TCP/IP groups them into **4 broader layers** for simplicity and real-world implementation.
+
+
+---
+
