@@ -75,3 +75,4 @@ Some of its major contributions include:
 👉 In essence, TCP/IP is not just a model it is the **working standard of communication**, the reason your email gets delivered, your web pages load, and your devices can connect to each other across the globe.
 
 ---
+
