@@ -11,7 +11,7 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
 1. [What is DNS?](#what-is-dns)
    - [The role of DNS in the Internet](#the-role-of-dns-in-the-internet)
    - [Why DNS is needed](#why-dns-is-needed)
-2. History of DNS
+2. [History of DNS](#history-of-dns)
 3. How does DNS work?
 	- DNS resolution process
 	- Example: Getting on the web
@@ -37,7 +37,6 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
 	- Scalability and reliability
 	- Security aspects
 
----
 
 # 1. What is DNS?
 
@@ -60,3 +59,19 @@ DNS also enables the growth and scalability of the Internet. By allowing domain 
 - **Reliability**: DNS is distributed globally, so even if part of the system fails, the rest can continue to operate, keeping the Internet running smoothly.  
 
 ---
+
+# 2. History of DNS
+
+The Domain Name System (DNS) was created in 1983 by Paul Mockapetris to address the growing need for a scalable and user-friendly way to map domain names to IP addresses. Before DNS, the Internet relied on a single, centralized hosts file maintained by the Stanford Research Institute, which quickly became impractical as the network expanded.
+
+DNS introduced a distributed, hierarchical approach, allowing domain names to be managed independently and resolved efficiently. This innovation enabled the explosive growth of the Internet, making it possible for millions of websites and devices to coexist and communicate.
+
+Key milestones in DNS history:
+
+- **1983**: DNS is proposed and implemented, replacing the hosts.txt file system.
+- **1984**: The first root servers are established, forming the backbone of the DNS infrastructure.
+- **1990s**: The rise of the World Wide Web leads to rapid expansion of domain registrations and DNS usage.
+- **2000s**: Security enhancements like DNSSEC are introduced to protect against spoofing and cache poisoning.
+- **Today**: DNS remains a critical part of the Internet, supporting billions of users and devices worldwide.
+
+DNS continues to evolve, with ongoing improvements in speed, reliability, and security to meet the demands of a global, always-connected society.
