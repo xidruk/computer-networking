@@ -75,7 +75,7 @@ Packets make modern networks reliable, fast, and capable of handling complex com
 
 ## How Packets Travel
 
-Packets don’t just magically appear at their destination—they follow a journey across the network. Understanding how they travel helps us see why networks are fast and reliable.
+Packets don’t just magically appear at their destination they follow a journey across the network. Understanding how they travel helps us see why networks are fast and reliable.
 
 ### 1. Leaving the Source
 When you send data (like an email or a video), the device breaks it into small packets.  
