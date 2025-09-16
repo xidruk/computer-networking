@@ -153,3 +153,100 @@ Although TCP/IP has only **4 layers**, it maps closely to the **7-layer OSI mode
 
 ---
 
+## Detailed Explanation of Each Layer
+
+The **TCP/IP Model** is divided into **four layers**, each responsible for a specific part of the communication process.  
+Together, they ensure that data can move from one computer to another across networks like the Internet.
+
+
+### Application Layer
+
+- **What it does:**  
+  The Application Layer provides **interfaces and services** for end users and applications to communicate over the network.  
+  It is where network interactions become visible to humans (e.g., browsing a website, sending an email).  
+
+- **Key Functions:**  
+  - Defines protocols for specific applications (web, email, file transfer).  
+  - Converts user input into data that can be transported across the network.  
+  - Ensures proper formatting and interpretation of messages.  
+
+- **Common Protocols:**  
+  - **HTTP/HTTPS** – for web browsing.  
+  - **SMTP, IMAP, POP3** – for email communication.  
+  - **FTP, SFTP** – for file transfers.  
+  - **DNS** – for resolving domain names into IP addresses.  
+
+✅ **Analogy:** Think of this as the “apps” on your phone that use the Internet.  
+
+
+### Transport Layer
+
+- **What it does:**  
+  The Transport Layer ensures that data is delivered **end-to-end** between applications running on different devices.  
+  It controls **reliability, error detection, and flow of data**.  
+
+- **Key Functions:**  
+  - **Segmentation:** Breaks large data into smaller packets.  
+  - **Error Checking:** Ensures all packets arrive correctly.  
+  - **Flow Control:** Prevents overwhelming the receiver.  
+  - **Multiplexing:** Supports multiple applications using the network simultaneously.  
+
+- **Common Protocols:**  
+  - **TCP (Transmission Control Protocol):** Reliable, ordered delivery (used for web pages, emails).  
+  - **UDP (User Datagram Protocol):** Faster but no reliability (used for streaming, gaming, DNS).  
+
+✅ **Analogy:** Like a delivery service — TCP is the careful courier who confirms delivery, while UDP is the speedy biker who just drops the package.  
+
+
+### Internet Layer
+
+- **What it does:**  
+  The Internet Layer is responsible for **logical addressing and routing**.  
+  It decides **where the data should go** and ensures it can travel across multiple networks.  
+
+- **Key Functions:**  
+  - Assigns IP addresses to devices.  
+  - Routes packets across different networks.  
+  - Provides fragmentation and reassembly of packets if needed.  
+
+- **Common Protocols:**  
+  - **IP (Internet Protocol):** The fundamental protocol for addressing and routing.  
+  - **ICMP (Internet Control Message Protocol):** Used for error reporting and tools like `ping`.  
+  - **ARP (Address Resolution Protocol):** Maps IP addresses to MAC (hardware) addresses.  
+
+✅ **Analogy:** Like a GPS system that finds the best route to deliver your message to the right house.  
+
+
+### Network Access Layer (Link Layer)
+
+- **What it does:**  
+  The Network Access Layer defines how data is **physically transmitted** over the medium (cables, Wi-Fi, etc.).  
+  It is the bridge between the **hardware (devices, routers, switches)** and the rest of the TCP/IP stack.  
+
+- **Key Functions:**  
+  - Defines frame structure for transmission.  
+  - Handles physical addressing (using **MAC addresses**).  
+  - Deals with the physical medium (Ethernet cables, wireless signals, fiber optics).  
+
+- **Common Technologies:**  
+  - **Ethernet (wired networks).**  
+  - **Wi-Fi (wireless networks).**  
+  - **PPP, DSL, Fiber, 4G/5G mobile networks.**  
+
+✅ **Analogy:** This is like the road system — the physical path cars (data packets) travel on to reach their destination.  
+
+
+### Summary
+
+Each layer of the TCP/IP model plays a unique role:  
+
+| **Layer**            | **Role** | **Examples** |
+|-----------------------|----------|--------------|
+| Application Layer     | User-facing services and apps | HTTP, FTP, DNS, SMTP |
+| Transport Layer       | Reliable or fast delivery between applications | TCP, UDP |
+| Internet Layer        | Logical addressing and routing | IP, ICMP, ARP |
+| Network Access Layer  | Physical transmission of data | Ethernet, Wi-Fi |
+
+👉 Together, these layers **simplify networking** by splitting complex communication into manageable parts.
+
+---
