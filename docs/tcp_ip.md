@@ -106,6 +106,6 @@ Key milestones:
 - **1980s–1990s:** Universities, research labs, and eventually commercial networks adopted TCP/IP, enabling the growth of the global Internet.  
 - **Today:** TCP/IP is the **universal language of networking**, powering everything from websites and email to streaming, gaming, and cloud computing.  
 
-👉 **Key takeaway:** TCP/IP wasn’t designed in theory like OSI—it was **born out of necessity**, tested in the real world, and proven reliable. That’s why it became the **de facto standard** for the Internet.
+👉 **Key takeaway:** TCP/IP wasn’t designed in theory like OSI it was **born out of necessity**, tested in the real world, and proven reliable. That’s why it became the **de facto standard** for the Internet.
 
 ---
