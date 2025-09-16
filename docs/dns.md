@@ -1,5 +1,3 @@
-
-
 # 🗂️ DNS (Domain Name System)
 
 DNS (Domain Name System) is a global, distributed system that translates human-friendly domain names (like www.example.com) into machine-readable IP addresses. It acts as the Internet’s directory, enabling seamless access to websites and online services without needing to remember complex numbers. DNS is essential for usability, scalability, and security on the Internet.
@@ -17,11 +15,11 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
    - [Example: Getting on the Web](#example-getting-on-the-web)  
    - [Hardware components in DNS queries](#hardware-components-in-dns-queries)  
    - [Steps in a DNS lookup](#steps-in-a-dns-lookup)  
-4. Types of DNS servers
-	- DNS recursor (recursive resolver)
-	- Root nameserver
-	- TLD nameserver
-	- Authoritative nameserver
+4. [Types of DNS Servers](#4-types-of-dns-servers)  
+   - [DNS recursor (Recursive Resolver)](#dns-recursor-recursive-resolver)  
+   - [Root Nameserver](#root-nameserver)  
+   - [TLD Nameserver](#tld-nameserver)  
+   - [Authoritative Nameserver](#authoritative-nameserver)
 5. Types of DNS queries
 	- Recursive query
 	- Iterative query
@@ -128,4 +126,44 @@ When you type a website address into your browser:
 
 ---
 
+# 4. Types of DNS Servers
 
+DNS relies on several specialized server types, each playing a unique role in resolving domain names to IP addresses. Here’s a breakdown of the main types:
+
+## DNS Recursor (Recursive Resolver)
+
+The DNS recursor, or recursive resolver, is the server that receives DNS queries from client devices (like your computer or phone). Its job is to act on behalf of the client, searching for the requested IP address by querying other DNS servers if necessary. It handles the entire lookup process, caching results to speed up future queries and reduce network traffic.
+
+**Key points:**
+- Acts as the middleman between client devices and the DNS hierarchy
+- Caches responses for efficiency
+- Usually operated by ISPs or public DNS providers (e.g., Google DNS, Cloudflare DNS)
+
+## Root Nameserver
+
+Root nameservers are the highest level in the DNS hierarchy. There are a limited number of root servers worldwide, and their main job is to direct queries to the correct Top-Level Domain (TLD) nameserver (such as .com, .org, .net).
+
+**Key points:**
+- First stop for DNS resolvers when searching for a domain’s IP address
+- Maintains information about TLD nameservers
+- There are 13 sets of root server addresses, operated by various organizations globally
+
+## TLD Nameserver
+
+TLD nameservers manage domains under a specific top-level domain (TLD), such as .com, .org, or .net. When a root server receives a query, it directs the resolver to the appropriate TLD server, which then knows where to find domains within its zone.
+
+**Key points:**
+- Handles queries for domains within a specific TLD
+- Maintains records for all domains registered under its TLD
+- Examples: .com TLD server, .org TLD server
+
+## Authoritative Nameserver
+
+The authoritative nameserver is the final source of truth for a domain’s DNS records. It holds the actual mapping of domain names to IP addresses and responds with the definitive answer to DNS queries.
+
+**Key points:**
+- Stores and serves DNS records for specific domains
+- Provides the final answer in the DNS lookup process
+- Managed by domain owners or hosting providers
+
+---
