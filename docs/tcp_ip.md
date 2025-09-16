@@ -76,3 +76,38 @@ Some of its major contributions include:
 
 ---
 
+## History of TCP/IP
+
+The **TCP/IP Model** has its roots in the early days of the Internet. Unlike the OSI Model, which was created as a global standard by ISO, TCP/IP evolved through **practical experimentation and real-world use**, making it the backbone of today’s networks.
+
+
+### Origins in ARPANET
+
+In the late 1960s and early 1970s, the **U.S. Department of Defense (DoD)** funded a research project called **ARPANET** (Advanced Research Projects Agency Network).  
+
+The main challenge:  
+How could computers from different manufacturers, running different operating systems, communicate reliably over long distances?  
+
+To solve this, researchers **Vinton Cerf and Robert Kahn** proposed the concept of a **protocol suite** that would:  
+
+- Divide communication into layers.  
+- Use a **robust addressing system** (IP) for global reach.  
+- Ensure **reliable data delivery** (TCP) even if parts of the network failed.  
+
+In 1974, Cerf and Kahn published their groundbreaking paper on TCP/IP, marking the **birth of modern networking protocols**.
+
+
+### Adoption as the Internet Standard
+
+By the late 1970s, TCP/IP protocols had been tested successfully across multiple networks.  
+
+Key milestones:  
+
+- **1978:** TCP was split into **TCP (Transmission Control Protocol)** and **IP (Internet Protocol)** to separate reliability from addressing.  
+- **1983:** The U.S. DoD made TCP/IP the **mandatory standard** for ARPANET, replacing older protocols like NCP (Network Control Protocol).  
+- **1980s–1990s:** Universities, research labs, and eventually commercial networks adopted TCP/IP, enabling the growth of the global Internet.  
+- **Today:** TCP/IP is the **universal language of networking**, powering everything from websites and email to streaming, gaming, and cloud computing.  
+
+👉 **Key takeaway:** TCP/IP wasn’t designed in theory like OSI—it was **born out of necessity**, tested in the real world, and proven reliable. That’s why it became the **de facto standard** for the Internet.
+
+---
