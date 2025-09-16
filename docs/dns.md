@@ -20,10 +20,10 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
    - [Root Nameserver](#root-nameserver)  
    - [TLD Nameserver](#tld-nameserver)  
    - [Authoritative Nameserver](#authoritative-nameserver)
-5. Types of DNS queries
-	- Recursive query
-	- Iterative query
-	- Non-recursive query
+5. [Types of DNS Queries](#5-types-of-dns-queries)  
+   - [Recursive Query](#recursive-query)  
+   - [Iterative Query](#iterative-query)  
+   - [Non-Recursive Query](#non-recursive-query)  
 6. DNS records
 	- Common DNS record types
 	- Example of a DNS config
@@ -167,3 +167,37 @@ The authoritative nameserver is the final source of truth for a domain’s DNS r
 - Managed by domain owners or hosting providers
 
 ---
+
+# 5. Types of DNS Queries
+
+DNS queries are the requests made by clients (like your computer or browser) to DNS servers in order to resolve domain names into IP addresses. Depending on how much work the server performs and how the client interacts, there are different types of DNS queries.  
+
+---
+
+## Recursive Query
+
+A **recursive query** is when a DNS client asks a DNS server to resolve a domain name completely. The server takes full responsibility for finding the answer, querying other DNS servers as needed, and returns either the requested IP address or an error. This is the most common type for end-user devices.
+
+- The client expects a complete answer.  
+- The server may query multiple other servers.  
+- **Example**: Your computer asks its DNS resolver for `www.example.com`; the resolver finds the answer for you.  
+
+---
+
+## Iterative Query
+
+In an **iterative query**, the DNS client allows the server to reply with the best answer it can provide from its own data or cache. If the server doesn’t know the answer, it returns a referral to another DNS server. The client then queries the referred server, repeating the process until it gets the answer or fails.
+
+- The client follows referrals from server to server.  
+- The server does not resolve the query fully.  
+- **Example**: A DNS server receives a query and responds with a referral to a root or TLD server.  
+
+---
+
+## Non-Recursive Query
+
+A **non-recursive query** is when the DNS client asks a server for information that the server is expected to know (from its own records or cache). The server responds immediately without querying other servers.
+
+- The server answers from its own data or cache.  
+- No further queries are made.  
+- **Example**: A DNS resolver has the answer cached and returns it instantly.  
