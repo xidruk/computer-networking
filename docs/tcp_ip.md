@@ -250,3 +250,55 @@ Each layer of the TCP/IP model plays a unique role:
 👉 Together, these layers **simplify networking** by splitting complex communication into manageable parts.
 
 ---
+
+## How Data Moves Through TCP/IP
+
+Data transmission in the TCP/IP model happens through a process called **encapsulation** and its reverse, **decapsulation**.  
+Each layer of the model adds or removes information to ensure the data successfully travels from the sender to the receiver.
+
+
+### Encapsulation in TCP/IP
+
+When data moves **down the layers** (from Application → Network Access), each layer **wraps the data with its own header** (and sometimes trailer).  
+This header contains the information necessary for that specific layer’s job.
+
+- **Application Layer:** Creates the actual data (e.g., an email message).  
+- **Transport Layer:** Adds port numbers and reliability info (TCP or UDP header).  
+- **Internet Layer:** Adds IP addresses to specify the source and destination.  
+- **Network Access Layer:** Adds MAC addresses and physical transmission details (frame).  
+
+On the receiving side, **decapsulation** happens in the opposite order — each layer strips off its header and interprets it.
+
+
+### Example: Sending an Email
+
+Let’s walk through how an email is sent using TCP/IP:
+
+1. **Application Layer (SMTP protocol):**  
+   - The email client (e.g., Outlook or Gmail) generates the email message.  
+   - It uses **SMTP (Simple Mail Transfer Protocol)** to prepare the message for sending.  
+
+2. **Transport Layer (TCP):**  
+   - TCP divides the email into smaller segments.  
+   - Adds **source and destination port numbers** (e.g., port 25 for SMTP).  
+   - Ensures reliability by numbering the segments and adding error-checking info.  
+
+3. **Internet Layer (IP):**  
+   - Each segment is wrapped inside an **IP packet**.  
+   - The packet gets a **source IP address** (your computer) and a **destination IP address** (mail server).  
+
+4. **Network Access Layer (Ethernet/Wi-Fi):**  
+   - The packet is turned into **frames** with source and destination **MAC addresses**.  
+   - The data is transmitted over the medium (Ethernet cable, Wi-Fi signal, etc.).  
+
+5. **At the Receiver (Mail Server):**  
+   - The process is reversed (decapsulation).  
+   - The mail server strips off each header until the **original email** reaches its **SMTP service**, ready to be processed and stored in the recipient’s inbox.  
+
+
+### Key Takeaway
+
+Encapsulation and decapsulation allow data to move smoothly across networks, with each layer doing only its specific job.  
+This division of responsibilities makes TCP/IP **flexible, scalable, and reliable**, powering almost all communication on the Internet today.
+
+---
