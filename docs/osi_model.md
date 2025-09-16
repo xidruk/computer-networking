@@ -233,16 +233,48 @@ Example: Sending an email with SMTP or browsing a website using HTTP/HTTPS happe
 
 This chapter provides a **comprehensive, layer-by-layer understanding** of the OSI Model, showing how each layer contributes to reliable, organized, and efficient network communication.
 
-
 ---
 
 ## How Data Travels Through the OSI Layers
 
+Data does not just magically travel from one computer to another. It passes **through all seven OSI layers**, being **packaged, addressed, transmitted, and unpackaged** along the way. This process is called **encapsulation** on the sending side and **decapsulation** on the receiving side.
+
 ### Encapsulation and Decapsulation
-<!-- Content goes here -->
+
+**Encapsulation** is the process of **wrapping data with the necessary protocol information** as it moves down the OSI layers. Each layer adds its own header (and sometimes a trailer) to ensure the data is handled correctly.  
+
+**Decapsulation** is the reverse: as data moves up the OSI layers on the receiving side, each layer **removes its corresponding header/trailer** and processes the data.
+
+Here’s a visual representation of the process:
+
+![Encapsulation and Decapsulation](../static/encdenc.png)
+
+**Key points to understand:**
+
+1. **Each layer has its own header/trailer** with information specific to that layer (e.g., IP addresses at Network Layer, port numbers at Transport Layer).  
+2. **The Physical Layer only sees bits**, not headers or payloads.  
+3. **Encapsulation ensures reliability and organization**, while decapsulation ensures the receiver interprets the data correctly.
+
 
 ### Step-by-Step Example of a Web Request
-<!-- Content goes here -->
+
+Let’s say you open a website in your browser (HTTP request):
+
+1. **Application Layer:** You type `www.example.com`. The browser creates the HTTP request.  
+2. **Presentation Layer:** Data is encrypted using TLS/SSL if it’s HTTPS.  
+3. **Session Layer:** A session is established to manage this communication.  
+4. **Transport Layer:** TCP splits the request into segments and adds port numbers.  
+5. **Network Layer:** IP addresses are added so routers know where to send the data.  
+6. **Data Link Layer:** Ethernet frames are created with MAC addresses for delivery on the local network.  
+7. **Physical Layer:** Bits are transmitted over the cable or Wi-Fi.
+
+**At the receiving server:**  
+The server **decapsulates** the data, removing headers layer by layer until the HTTP request reaches the Application Layer, where the web server processes it.
+
+This version **uses your image** for clear visualization while keeping all explanations intact.
+
+
+---
 
 ## Comparison with TCP/IP Model
 
