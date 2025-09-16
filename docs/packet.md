@@ -13,7 +13,7 @@
 ## What is a Packet?
 
 In computer networking, a **packet** is like a small envelope that carries data across a network.  
-When you send information over the internet—like an email, a photo, or a message—the data is broken down into smaller chunks called packets. These packets travel independently and are reassembled at the destination to form the original data.
+When you send information over the internet like an email, a photo, or a message the data is broken down into smaller chunks called packets. These packets travel independently and are reassembled at the destination to form the original data.
 
 Think of it like sending a book through the mail:  
 - Instead of sending the whole book at once, you send each page in separate envelopes.  
