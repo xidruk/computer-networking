@@ -8,10 +8,10 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
 
 ## Table of Contents
 
-1. [What is DNS?](#what-is-dns)
+1. [What is DNS?](#1-what-is-dns)
    - [The role of DNS in the Internet](#the-role-of-dns-in-the-internet)
    - [Why DNS is needed](#why-dns-is-needed)
-2. [History of DNS](#history-of-dns)
+2. [History of DNS](#2-history-of-dns)
 3. How does DNS work?
 	- DNS resolution process
 	- Example: Getting on the web
