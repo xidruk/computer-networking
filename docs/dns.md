@@ -226,7 +226,6 @@ DNS records are entries stored in authoritative DNS servers that provide importa
 | `example.com` | 86400 | NS    | `ns1.example.com`           | Points to the **authoritative nameserver** for the domain.               |
 | `example.com` | 3600  | PTR   | `34.216.184.93.in-addr.arpa`| Reverse lookup: maps **IP address → domain name**.                       |
 
----
 
 ## Example of a DNS Config
 
@@ -241,3 +240,5 @@ www     IN  CNAME   example.com.
 @       IN  TXT     "v=spf1 include:_spf.google.com ~all"
 _dmarc  IN  TXT     "v=DMARC1; p=none"
 ```
+
+---
