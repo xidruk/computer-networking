@@ -27,10 +27,10 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
 6. [DNS Records](#6-dns-records)  
    - [Common DNS record types](#common-dns-record-types)  
    - [Example of a DNS config](#example-of-a-dns-config)  
-7. DNS caching
-	- Browser DNS caching
-	- OS-level DNS caching
-	- ISP/recursive resolver caching
+7. [DNS Caching](#7-dns-caching)  
+   - [Browser DNS Caching](#browser-dns-caching)  
+   - [OS-level DNS Caching](#os-level-dns-caching)  
+   - [ISP/Recursive Resolver Caching](#isprecursive-resolver-caching)  
 8. The power of DNS
 	- Scalability and reliability
 	- Security aspects
@@ -242,3 +242,35 @@ _dmarc  IN  TXT     "v=DMARC1; p=none"
 ```
 
 ---
+
+# 7. DNS Caching
+
+DNS caching is the process of storing DNS query results temporarily to speed up future lookups and reduce network traffic. When a DNS record is cached, subsequent requests for the same domain can be answered more quickly, without repeating the entire DNS resolution process.
+
+---
+
+## Browser DNS Caching
+
+Web browsers (like Chrome, Firefox, Edge) maintain their own DNS cache. When you visit a website, the browser stores the resolved IP address for a short period. If you revisit the site, the browser can use its cache instead of querying the operating system or DNS server again.
+
+- **Benefit**: Faster page loads for recently visited sites.  
+- **Limitation**: Cache is cleared when the browser is closed or after a set time (TTL).  
+
+
+## OS-Level DNS Caching
+
+Operating systems (Windows, macOS, Linux) have a DNS cache that stores results from previous queries made by any application on the device. The OS checks its cache before sending a query to the network.
+
+- **Benefit**: All applications benefit from cached results, reducing network traffic.  
+- **Limitation**: Cache can become outdated if DNS records change; it can be flushed manually.  
+
+
+## ISP/Recursive Resolver Caching
+
+Internet Service Providers (ISPs) and recursive DNS resolvers maintain large caches for all their users. When a user requests a domain, the resolver checks its cache first. If the record is present and valid, it returns the result immediately; otherwise, it performs a full DNS lookup.
+
+- **Benefit**: Reduces DNS traffic across the Internet, improves speed for many users.  
+- **Limitation**: Cached records are only valid for their TTL; changes to DNS may not be reflected immediately.  
+
+---
+
