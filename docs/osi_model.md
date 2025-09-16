@@ -152,6 +152,8 @@ In essence, the OSI Model’s layered architecture acts like a **blueprint for n
 ### Layer 6: Presentation Layer
 <!-- Content goes here -->
 
+----
+
 ### Layer 7: Application Layer
 <!-- Content goes here -->
 
