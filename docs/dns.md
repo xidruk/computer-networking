@@ -49,7 +49,7 @@ Imagine the Internet as a vast city, and every website is a house with a unique 
 
 Without DNS, you would need to remember and enter long strings of numbers for every site you visit, which would be nearly impossible for most people.
 
-DNS also enables the growth and scalability of the Internet. By allowing domain names to be mapped to different IP addresses, websites can move servers, change hosting providers, or use multiple servers for reliability and speed—all without users needing to know anything has changed.
+DNS also enables the growth and scalability of the Internet. By allowing domain names to be mapped to different IP addresses, websites can move servers, change hosting providers, or use multiple servers for reliability and speed all without users needing to know anything has changed.
 
 ## Why DNS is needed
 
