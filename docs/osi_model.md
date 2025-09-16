@@ -2,59 +2,139 @@
 
 ![OSI Model](../static/osi.avif)
 
+---
+
+## Table of Contents
+1. [Introduction](#introduction)
+   - [What is the OSI Model?](#what-is-the-osi-model)
+   - [Importance of OSI in Networking](#importance-of-osi-in-networking)
+2. [History of the OSI Model](#history-of-the-osi-model)
+   - [Origin and Development by ISO](#origin-and-development-by-iso)
+   - [Evolution of Networking Standards](#evolution-of-networking-standards)
+   - [Why OSI was Needed](#why-osi-was-needed)
+3. [Overview of OSI Model Layers](#overview-of-osi-model-layers)
+   - [Layered Architecture Concept](#layered-architecture-concept)
+   - [Benefits of Layered Approach](#benefits-of-layered-approach)
+4. [Detailed Explanation of Each Layer](#detailed-explanation-of-each-layer)
+   - [Layer 1: Physical Layer](#layer-1-physical-layer)
+   - [Layer 2: Data Link Layer](#layer-2-data-link-layer)
+   - [Layer 3: Network Layer](#layer-3-network-layer)
+   - [Layer 4: Transport Layer](#layer-4-transport-layer)
+   - [Layer 5: Session Layer](#layer-5-session-layer)
+   - [Layer 6: Presentation Layer](#layer-6-presentation-layer)
+   - [Layer 7: Application Layer](#layer-7-application-layer)
+5. [How Data Travels Through the OSI Layers](#how-data-travels-through-the-osi-layers)
+   - [Encapsulation and Decapsulation](#encapsulation-and-decapsulation)
+   - [Step-by-Step Example of a Web Request](#step-by-step-example-of-a-web-request)
+6. [Comparison with TCP/IP Model](#comparison-with-tcpip-model)
+   - [Differences and Similarities](#differences-and-similarities)
+   - [How OSI Maps to TCP/IP](#how-osi-maps-to-tcpip)
+7. [Practical Applications of OSI Model](#practical-applications-of-osi-model)
+   - [Troubleshooting Network Issues](#troubleshooting-network-issues)
+   - [Protocol Design and Implementation](#protocol-design-and-implementation)
+   - [Networking Certifications](#networking-certifications)
+8. [Common Misconceptions About OSI](#common-misconceptions-about-osi)
+   - [OSI vs Reality](#osi-vs-reality)
+   - [Layer Responsibilities Confusion](#layer-responsibilities-confusion)
+9. [Conclusion](#conclusion)
+   - [Recap of Key Points](#recap-of-key-points)
+   - [Why OSI Still Matters Today](#why-osi-still-matters-today)
+10. [References & Further Reading](#references--further-reading)
+
+---
+
+## Introduction
+
+### What is the OSI Model?
+<!-- Content goes here -->
+
+### Importance of OSI in Networking
+<!-- Content goes here -->
+
 ## History of the OSI Model
-The OSI (Open Systems Interconnection) model was developed by the International Organization for Standardization (ISO) in the late 1970s and published in 1984. Before the OSI model, networking protocols were proprietary and incompatible, making it difficult for devices from different vendors to communicate. The OSI model was created to standardize networking and promote interoperability between systems.
 
-## Why Do We Need the OSI Model?
-- Provides a universal set of standards for networking
-- Enables interoperability between different hardware and software
-- Simplifies network design, troubleshooting, and development
-- Helps understand and isolate network issues by dividing functions into layers
+### Origin and Development by ISO
+<!-- Content goes here -->
 
-## The Seven Layers of the OSI Model
-The OSI model consists of seven layers, each with specific functions:
+### Evolution of Networking Standards
+<!-- Content goes here -->
 
-| Layer | Number | Function |
-|-------|--------|----------|
-| Physical | 1 | Transmits raw bit streams over physical medium (cables, radio, etc.) |
-| Data Link | 2 | Handles error detection/correction, framing, and MAC addressing |
-| Network | 3 | Manages logical addressing and routing (IP, routers) |
-| Transport | 4 | Provides reliable data transfer, flow control, and error recovery (TCP, UDP) |
-| Session | 5 | Manages sessions and controls dialog between applications |
-| Presentation | 6 | Translates, encrypts, and compresses data |
-| Application | 7 | Provides network services to end-user applications (HTTP, FTP, SMTP) |
+### Why OSI was Needed
+<!-- Content goes here -->
 
-### Layer Details
-**1. Physical Layer:**
-	- Deals with hardware transmission of raw data bits
-	- Examples: Ethernet cables, fiber optics, Wi-Fi signals
+## Overview of OSI Model Layers
 
-**2. Data Link Layer:**
-	- Responsible for node-to-node data transfer
-	- Handles MAC addresses, error detection, and correction
-	- Examples: Switches, network cards
+### Layered Architecture Concept
+<!-- Content goes here -->
 
-**3. Network Layer:**
-	- Handles routing and forwarding of data packets
-	- Manages logical addressing (IP addresses)
-	- Examples: Routers, Layer 3 switches
+### Benefits of Layered Approach
+<!-- Content goes here -->
 
-**4. Transport Layer:**
-	- Ensures reliable data transfer between hosts
-	- Provides flow control, segmentation, and error recovery
-	- Examples: TCP, UDP
+## Detailed Explanation of Each Layer
 
-**5. Session Layer:**
-	- Manages sessions and controls dialog between applications
-	- Responsible for establishing, maintaining, and terminating connections
+### Layer 1: Physical Layer
+<!-- Content goes here -->
 
-**6. Presentation Layer:**
-	- Translates data formats, encrypts, and compresses data
-	- Examples: SSL/TLS, JPEG, MPEG
+### Layer 2: Data Link Layer
+<!-- Content goes here -->
 
-**7. Application Layer:**
-	- Provides network services directly to user applications
-	- Examples: HTTP, FTP, SMTP, DNS
+### Layer 3: Network Layer
+<!-- Content goes here -->
 
-## Summary
-The OSI model is essential for understanding how networks operate, troubleshooting issues, and designing interoperable systems. Each layer has a distinct role, and together they enable seamless communication across diverse devices and platforms.
+### Layer 4: Transport Layer
+<!-- Content goes here -->
+
+### Layer 5: Session Layer
+<!-- Content goes here -->
+
+### Layer 6: Presentation Layer
+<!-- Content goes here -->
+
+### Layer 7: Application Layer
+<!-- Content goes here -->
+
+## How Data Travels Through the OSI Layers
+
+### Encapsulation and Decapsulation
+<!-- Content goes here -->
+
+### Step-by-Step Example of a Web Request
+<!-- Content goes here -->
+
+## Comparison with TCP/IP Model
+
+### Differences and Similarities
+<!-- Content goes here -->
+
+### How OSI Maps to TCP/IP
+<!-- Content goes here -->
+
+## Practical Applications of OSI Model
+
+### Troubleshooting Network Issues
+<!-- Content goes here -->
+
+### Protocol Design and Implementation
+<!-- Content goes here -->
+
+### Networking Certifications
+<!-- Content goes here -->
+
+## Common Misconceptions About OSI
+
+### OSI vs Reality
+<!-- Content goes here -->
+
+### Layer Responsibilities Confusion
+<!-- Content goes here -->
+
+## Conclusion
+
+### Recap of Key Points
+<!-- Content goes here -->
+
+### Why OSI Still Matters Today
+<!-- Content goes here -->
+
+## References & Further Reading
+<!-- Content goes here -->
