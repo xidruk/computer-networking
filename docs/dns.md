@@ -75,3 +75,58 @@ Key milestones in DNS history:
 - **Today**: DNS remains a critical part of the Internet, supporting billions of users and devices worldwide.
 
 DNS continues to evolve, with ongoing improvements in speed, reliability, and security to meet the demands of a global, always-connected society.
+
+---
+
+# 3. How does DNS work?
+
+Understanding how DNS works is essential to grasping how the Internet connects users to websites. This section breaks down the DNS resolution process, provides a real-world example, explains the hardware involved, and outlines the steps in a DNS lookup.
+
+## DNS Resolution Process
+
+DNS resolution is the process of converting a domain name (like `www.example.com`) into its corresponding IP address. This involves several steps and multiple DNS servers working together to deliver the correct result to your device.
+
+## Example: Getting on the Web
+
+When you type a website address into your browser:
+
+1. Your browser checks its local DNS cache to see if it already knows the IP address.
+2. If not found, the request goes to your operating system’s DNS cache.
+3. If still not found, the query is sent to your configured DNS resolver (usually provided by your ISP or a public DNS service).
+4. The resolver may query other DNS servers (root, TLD, authoritative) to find the answer.
+5. Once the IP address is found, it’s returned to your browser, which then connects to the website’s server.
+
+## Hardware Components in DNS Queries
+
+- **Client Device**: Your computer, phone, or tablet that initiates the DNS query.
+- **Router**: Forwards DNS requests from your local network to your ISP or chosen DNS resolver.
+- **DNS Resolver**: The server that receives your DNS query and works to resolve it.
+- **Root Nameserver**: The first step in the DNS hierarchy, directing queries to the correct TLD server.
+- **TLD Nameserver**: Handles queries for domains under a specific top-level domain (like .com, .org).
+- **Authoritative Nameserver**: Holds the actual DNS records for the domain and provides the final answer.
+
+## Steps in a DNS Lookup
+
+1. **DNS Query Initiation**: The client device requests the IP address for a domain name.
+2. **Recursive Resolver Contacted**: The query is sent to a DNS resolver, which acts on behalf of the client.
+3. **Root Server Query**: If the resolver doesn’t know the answer, it asks a root server.
+4. **TLD Server Query**: The root server directs the resolver to the appropriate TLD server.
+5. **Authoritative Server Query**: The TLD server points to the authoritative server, which provides the IP address.
+6. **Response Returned**: The resolver sends the IP address back to the client device.
+7. **Connection Established**: The client uses the IP address to connect to the website.
+
+---
+
+### 📚 Further Reading & Resources
+
+| Resource | Description |
+|---|---|
+| [Cloudflare: What is DNS?](https://www.cloudflare.com/learning/dns/what-is-dns/?utm_source=chatgpt.com) | Comprehensive overview of DNS concepts and functions |
+| [GeeksforGeeks: Working of DNS Server](https://www.geeksforgeeks.org/computer-networks/working-of-domain-name-system-dns-server/) | Step-by-step explanation of DNS workings |
+| [Digicert: How Does DNS Lookup Work?](https://www.digicert.com/faq/dns/how-does-dns-lookup-work?utm_source=chatgpt.com) | DNS lookup process explained |
+| [Cycle.io: DNS Resolution Process](https://cycle.io/learn/dns-resolution-process?utm_source=chatgpt.com) | In-depth guide to DNS resolution |
+| [LiquidWeb: Demystify the DNS Process](https://www.liquidweb.com/blog/how-to-demystify-the-dns-process/?utm_source=chatgpt.com) | DNS process breakdown for beginners |
+| [GeeksforGeeks: DNS Look Up](https://www.geeksforgeeks.org/computer-networks/dns-look-up/) | DNS lookup details and examples |
+
+---
+
