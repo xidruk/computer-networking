@@ -240,12 +240,4 @@ $TTL 3600
 www     IN  CNAME   example.com.
 @       IN  TXT     "v=spf1 include:_spf.google.com ~all"
 _dmarc  IN  TXT     "v=DMARC1; p=none"
-
-
-- The **`A` record** points the domain to its IPv4 address.  
-- The **`AAAA` record** points it to its IPv6 address.  
-- The **`MX` record** configures email delivery.  
-- The **`CNAME` record** makes `www.example.com` an alias of `example.com`.  
-- The **`TXT` and `_dmarc` records** are used for email security.  
-
-This configuration ensures that the website, email, and security features work correctly.  
+```
