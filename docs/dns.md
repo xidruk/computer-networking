@@ -4,6 +4,8 @@
 
 DNS (Domain Name System) is a global, distributed system that translates human-friendly domain names (like www.example.com) into machine-readable IP addresses. It acts as the Internet’s directory, enabling seamless access to websites and online services without needing to remember complex numbers. DNS is essential for usability, scalability, and security on the Internet.
 
+---
+
 ## Table of Contents
 
 1. What is DNS?
@@ -35,4 +37,4 @@ DNS (Domain Name System) is a global, distributed system that translates human-f
 	- Scalability and reliability
 	- Security aspects
 
-
+---
