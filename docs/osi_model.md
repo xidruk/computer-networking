@@ -324,7 +324,7 @@ In summary, the OSI Model provides a **theoretical blueprint**, while TCP/IP is 
 
 ## Practical Applications of OSI Model
 
-The OSI Model is not just a theoretical concept—it has **many practical applications** in modern networking. Understanding how it works helps IT professionals, network engineers, and students troubleshoot, design, and secure networks effectively.
+The OSI Model is not just a theoretical concept it has **many practical applications** in modern networking. Understanding how it works helps IT professionals, network engineers, and students troubleshoot, design, and secure networks effectively.
 
 
 ### Troubleshooting Network Issues
