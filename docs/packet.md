@@ -7,8 +7,7 @@
 4. [Types of Packets](#types-of-packets)
 5. [Why Packets Are Important](#why-packets-are-important)
 6. [How Packets Travel](#how-packets-travel)
-7. [Packet Example](#packet-example)
-8. [Key Takeaways](#key-takeaways)
+7. [Congrats](#congrats)
 
 ---
 
@@ -182,3 +181,6 @@ So, when your 2 GB video finally arrives at the cloud server, it’s the result 
 
 ---
 
+## Congrats, now you understand what a packet is! 🎉
+
+![Congrats GIF](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWVjN3NqcHdoMzhhZHNtOWsxbmR5ajZqY2JsZWRtc2RtdmgyNjVpcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sBLcw5Ic4QUTK/giphy.gif)
