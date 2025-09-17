@@ -1,15 +1,16 @@
-# Segment
+## Network Segment 
 
-This document explains the concept of a segment in computer networking.
+---
 
-## What is a Segment?
-A segment is a unit of data transmission used at the Transport Layer (Layer 4) of the OSI Model. Segments are created by breaking down large messages into smaller, manageable pieces for efficient transport.
+### Table of Contents
 
-## Key Points
-- Used in Layer 4 (Transport Layer) of the OSI Model
-- Enables reliable data transfer and flow control
-- Segments are reassembled at the destination
+1. [What is a Network Segment?](#what-is-a-network-segment)
+2. [Why Network Segments Are Used](#why-network-segments-are-used)
+3. [Types of Network Segments](#types-of-network-segments)
+4. [How Network Segments Work](#how-network-segments-work)
+5. [Benefits of Network Segmentation](#benefits-of-network-segmentation)
+6. [Common Examples](#common-examples)
+7. [Conclusion](#conclusion)
 
-## Examples
-- TCP segments
-- Data sent using transport protocols
+---
+
