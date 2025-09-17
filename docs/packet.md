@@ -50,3 +50,33 @@ This is the core of the packet the actual content being sent. Depending on the a
 ### 3. Footer (or Trailer)  
 At the end of the packet, there’s often a footer. Its main job is to provide error detection. If something went wrong while the packet was traveling (like corruption of bits), the footer helps identify and fix those issues.
 
+---
+
+## How Packets Are Formed (Encapsulation)
+
+Packets are not created all at once they are built step by step in a process called **encapsulation**.  
+Encapsulation means that data is wrapped with additional information as it moves down through the layers of a network. Each layer adds its own instructions, a bit like putting a letter into an envelope, then into a box, then onto a truck for delivery.
+
+For simplicity, we’ll use the **5-layer model** here (Application, Transport, Network, Data Link, Physical).  
+This is a practical version of the more detailed **7-layer OSI model**. The idea is the same: each layer adds its own header information to prepare the data for transmission.
+
+Here’s how it works step by step:
+
+1. **Application Layer** – Where the data starts (for example, writing an email or requesting a web page).  
+2. **Transport Layer** – The data is broken into smaller chunks and labeled for order and reliability (TCP or UDP headers).  
+3. **Network Layer** – Each chunk is assigned addressing information, like the sender and receiver’s IP addresses.  
+4. **Data Link Layer** – The packet is framed for delivery on the local network, including physical addresses (MAC addresses).  
+5. **Physical Layer** – Finally, the packet is turned into electrical signals, radio waves, or light pulses that travel across the medium.
+
+### Encapsulation Example
+
+| Layer             | What It Adds                  | Example Information         |
+|-------------------|-------------------------------|-----------------------------|
+| Application Layer | The actual data to send       | "Hello" in a chat message   |
+| Transport Layer   | Port numbers, sequencing      | TCP header with port 80     |
+| Network Layer     | Logical addresses             | Source IP, Destination IP   |
+| Data Link Layer   | Physical addresses, frame info| Source MAC, Destination MAC |
+| Physical Layer    | Signals on the medium         | 1s and 0s as electrical pulses |
+
+When you send a message, it’s not just your words being transmitted. Each layer contributes something to make sure the data knows *where it’s going, how to get there, and how to be reassembled correctly*. By the time it leaves your device, your original message is fully wrapped in multiple layers of information, ready for the journey across the network.
+
