@@ -181,6 +181,8 @@ So, when your 2 GB video finally arrives at the cloud server, it’s the result 
 
 ---
 
-## Congrats, now you understand what a packet is! 🎉
+## Congrats
+
+now you understand what a packet is! 🎉 
 
 ![Congrats GIF](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWVjN3NqcHdoMzhhZHNtOWsxbmR5ajZqY2JsZWRtc2RtdmgyNjVpcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sBLcw5Ic4QUTK/giphy.gif)
