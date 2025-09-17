@@ -118,7 +118,7 @@ This process shows how **segments and packets work together** to make large, rel
 
 ## Error Handling and Reliability
 
-Networks are not perfect—packets can get lost, delayed, or corrupted. Segmentation helps handle errors efficiently:
+Networks are not perfect packets can get lost, delayed, or corrupted. Segmentation helps handle errors efficiently:
 
 - **Lost Packets:** The receiving device detects missing packets and requests them again. Only the missing pieces are resent.  
 - **Corrupted Packets:** If a packet’s checksum doesn’t match, it is discarded and retransmitted.  
@@ -136,7 +136,7 @@ Network segments are essential building blocks of modern networking. They:
 - Work hand-in-hand with packets to transmit data reliably  
 - Improve performance, security, and manageability  
 
-By understanding **segments, packets, and their journey**, you now have a clear picture of how data moves across networks—whether it’s a small message or a huge 2 GB file.  
+By understanding **segments, packets, and their journey**, you now have a clear picture of how data moves across networks whether it’s a small message or a huge 2 GB file.  
 
 ---
 
