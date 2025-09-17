@@ -29,3 +29,24 @@ This method makes communication on the internet more efficient. Even if some pac
 
 ---
 
+## Structure of a Packet
+
+A packet is more than just raw data. To travel across a network, each packet is carefully organized into different sections. These sections contain both the actual information being sent and the instructions needed to deliver it.
+
+The common structure looks like this:
+
+| Part        | Description                                                                 | Example Information                   |
+|-------------|-----------------------------------------------------------------------------|---------------------------------------|
+| **Header**  | Contains control information that tells the network how to handle the packet | Source IP, Destination IP, Protocol   |
+| **Payload** | The actual data being carried in the packet                                  | A piece of an email, video frame, etc.|
+| **Footer**  | Extra details to ensure the packet arrived correctly                         | Error-checking code (Checksum)        |
+
+### 1. Header  
+The header is like the envelope of a letter. It holds important details about where the packet is coming from, where it’s going, and how it should be handled. Without the header, routers and switches wouldn’t know what to do with the packet.
+
+### 2. Payload  
+This is the core of the packet the actual content being sent. Depending on the application, it could be text, part of a file, an image fragment, or a chunk of a video stream.
+
+### 3. Footer (or Trailer)  
+At the end of the packet, there’s often a footer. Its main job is to provide error detection. If something went wrong while the packet was traveling (like corruption of bits), the footer helps identify and fix those issues.
+
