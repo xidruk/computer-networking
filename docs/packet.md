@@ -15,7 +15,7 @@
 ## What is a Packet?
 
 A **packet** is a small unit of data that travels across a network.  
-When you send something online—whether it’s a message, an email, a video, or a file—it doesn’t move as one big chunk. Instead, the information is divided into smaller, manageable pieces. These pieces are called packets.
+When you send something online whether it’s a message, an email, a video, or a file it doesn’t move as one big chunk. Instead, the information is divided into smaller, manageable pieces. These pieces are called packets.
 
 Imagine you want to send a large book through the mail. You wouldn’t put the entire book into a single oversized package. Instead, you would split it into several smaller parcels. Each parcel would have:
 - The address of the sender
