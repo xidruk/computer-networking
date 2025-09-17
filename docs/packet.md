@@ -135,7 +135,6 @@ In short, packets are what make modern communication **fast, reliable, and scala
 When you send something over the internet, it’s not sent as one giant block of data.  
 Instead, the data is divided into **many packets**, and each packet may take its own path through the network before they all meet up again at the destination.
 
----
 
 ### Example: Sending a 2 GB File
 
@@ -158,7 +157,6 @@ Here’s what happens:
    Once the packets reach the destination, they’re reassembled in the correct order to recreate the full 2 GB file.  
    Even if they arrived out of sequence, the headers tell the system how to put them back together.
 
----
 
 ### Handling Errors Along the Way
 
@@ -172,7 +170,6 @@ What if something goes wrong?
 
 Because of this system, large files can be transferred reliably, even across complex global networks where errors are inevitable.
 
----
 
 ### Why This Matters
 
@@ -182,3 +179,6 @@ By splitting data into packets:
 - **Scalability** is possible, letting billions of devices share the same internet.  
 
 So, when your 2 GB video finally arrives at the cloud server, it’s the result of countless packets traveling independently across the internet some fast, some slow, some resent yet all working together to recreate the original file perfectly.
+
+---
+
