@@ -80,3 +80,32 @@ Here’s how it works step by step:
 
 When you send a message, it’s not just your words being transmitted. Each layer contributes something to make sure the data knows *where it’s going, how to get there, and how to be reassembled correctly*. By the time it leaves your device, your original message is fully wrapped in multiple layers of information, ready for the journey across the network.
 
+---
+
+## Types of Packets
+
+Not all packets are the same. Depending on what kind of communication is happening, packets can carry different types of information.  
+Here are the most common ones you’ll come across:
+
+| Type of Packet | Purpose                                                                 | Example Use Case                     |
+|----------------|-------------------------------------------------------------------------|--------------------------------------|
+| **Data Packets** | Carry actual user data (the main content being transmitted)            | Sending an email, streaming a video  |
+| **Control Packets** | Carry instructions that help manage the flow of data                 | Telling devices to start/stop sending |
+| **Error Packets**   | Report problems, errors, or network conditions                       | ICMP messages like "Destination Unreachable" |
+
+### 1. Data Packets  
+These are the most familiar packets they contain the actual content being sent, such as parts of a webpage, a file, or a voice call. Without data packets, nothing useful would move across the network.
+
+### 2. Control Packets  
+These packets don’t carry user content. Instead, they carry **instructions** that keep communication smooth. For example, they might tell a device to slow down its transmission if the receiver is overloaded.
+
+### 3. Error Packets  
+Sometimes things go wrong: a router is unreachable, a host is down, or a packet gets lost. Error packets (often handled by protocols like ICMP) notify devices about these problems, so the network can react appropriately.
+
+
+In practice, when you’re browsing the web or using an app, your device is constantly exchanging a mix of these packet types:  
+- **Data packets** carry your content.  
+- **Control packets** manage the flow.  
+- **Error packets** step in when something isn’t working as expected.
+
+--- 
