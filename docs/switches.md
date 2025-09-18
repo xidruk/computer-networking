@@ -61,7 +61,7 @@ If a device sends traffic **directly to the switch's IP** (like pinging it):
 
 - Only **managed switches** will respond (unmanaged switches ignore this).  
 - This is used for network monitoring, configuration, or troubleshooting.  
-- Traffic sent to the switch itself doesn’t go through the MAC forwarding table—it’s handled by the switch’s management interface.
+- Traffic sent to the switch itself doesn’t go through the MAC forwarding table it’s handled by the switch’s management interface.
 
 ---
 
