@@ -2,7 +2,7 @@
 
 ## 1. What is a MAC Address?
 A **MAC address** (Media Access Control address) is like the serial number of your network card.  
-Every device that connects to a network — your phone, laptop, printer, or router — has one.  
+Every device that connects to a network  your phone, laptop, printer, or router  has one.  
 
 It lives at the **data link layer (Layer 2)** of the OSI model and is used to identify devices **inside a local network (LAN)**.  
 Think of it as the "name tag" your device wears when talking to other devices on the same network.
@@ -28,7 +28,7 @@ A MAC address is **48 bits long** (6 bytes) and is usually written as six pairs 
 ---
 
 ## 3. Special Types of MAC Addresses
-Not all MAC addresses are unique device IDs — some are special-purpose:
+Not all MAC addresses are unique device IDs  some are special-purpose:
 
 | Type | Address | Meaning |
 |------|----------|---------|
@@ -39,7 +39,7 @@ Not all MAC addresses are unique device IDs — some are special-purpose:
 ---
 
 ## 4. Why Do We Need MAC Addresses?
-- **Local Communication**: Within a LAN, devices don’t talk directly using IP addresses — they use MAC addresses.  
+- **Local Communication**: Within a LAN, devices don’t talk directly using IP addresses  they use MAC addresses.  
 - **ARP Resolution**: When you type `ping 192.168.1.5`, your computer asks, *“Which MAC address belongs to this IP?”* via ARP.  
 - **Network Security**: Some Wi-Fi networks use MAC filtering to allow/deny specific devices.  
 - **Switching**: Ethernet switches learn which MAC addresses live on which ports to forward traffic efficiently.  
