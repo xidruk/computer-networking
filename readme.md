@@ -9,7 +9,7 @@ This repository covers the basics of computer networking. It is designed to intr
 1. [Definition of Computer Network](#definition-of-computer-network)
 2. [Types of Computer Networks](#types-of-computer-networks)
 3. [Network Devices](#network-devices)
-4. [Network Communication Types] (#network-communication-types)
+4. [Network Communication Types](#network-communication-types)
 
 ---
 
