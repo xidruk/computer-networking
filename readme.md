@@ -9,6 +9,7 @@ This repository covers the basics of computer networking. It is designed to intr
 1. [Definition of Computer Network](#definition-of-computer-network)
 2. [Types of Computer Networks](#types-of-computer-networks)
 3. [Network Devices](#network-devices)
+4. [Network Communication Types] (#network-communication-types)
 
 ---
 
@@ -56,3 +57,8 @@ Network devices are essential components that enable communication, data transfe
 | Virtual Router | ![Virtual Router](static/vpc-router.png) | Software-based router for virtual networks. | Routes traffic between virtual networks and devices. | Uses software to perform routing functions in cloud or virtual environments. | [Virtual Router - GeeksforGeeks](https://www.geeksforgeeks.org/virtual-router-in-computer-network/) |
 
 > **Note:** This table highlights some of the most widely used network devices around the world. There are many other specialized devices not listed here, each serving unique roles in different networking environments.
+
+---
+
+## Network Communication Types
+
