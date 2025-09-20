@@ -24,7 +24,7 @@ The Internet Protocol (IP) is the foundation of the Internet, responsible for ad
 
 ## Why IPv6 Was Created
 IPv4 uses 32-bit addresses, which provide around **4.3 billion unique addresses**. At first, this seemed more than enough, but with the rise of smartphones, IoT devices, and the global spread of the Internet, those addresses became insufficient.  
-IPv6 solves this problem by using **128-bit addresses**, offering a virtually limitless pool of addresses — **340 undecillion** (that’s 340 followed by 36 zeros).
+IPv6 solves this problem by using **128-bit addresses**, offering a virtually limitless pool of addresses  **340 undecillion** (that’s 340 followed by 36 zeros).
 
 ---
 
