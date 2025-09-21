@@ -62,3 +62,17 @@ Network devices are essential components that enable communication, data transfe
 
 ## Network Communication Types
 
+
+In computer networks, data can be transmitted in different ways depending on the number of senders and receivers. Understanding these communication types is crucial for grasping how networks operate efficiently.
+
+| Type       | Description | Example | When to Use |
+|------------|-------------|---------|-------------|
+| **Unicast** | One-to-one communication where a single sender transmits data to a single receiver. | Sending an email from your computer to a friend. | Use for private, direct communication between devices. |
+| **Broadcast** | One-to-all communication where a sender sends data to **all devices** in a network segment. | ARP requests in a local network. | Use for announcements or discovering devices in a LAN. |
+| **Multicast** | One-to-many communication where data is sent to a **specific group** of devices. | Streaming a video to a group of subscribers. | Use for group communication where only a subset of devices need the data. |
+| **Anycast** | One-to-nearest communication where data is delivered to the **closest node** among a group of potential receivers. | Accessing the nearest DNS server. | Use to reduce latency and improve efficiency in distributed networks. |
+
+> **Tip:** For a deeper, step-by-step explanation of how each type works, along with diagrams and examples, check out the dedicated guide: [Network Communication Types](docs/netcom.md).
+
+---
+
