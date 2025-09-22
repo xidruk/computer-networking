@@ -13,9 +13,9 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Why Networks are Important](#why-networks-are-important)
    - [Basic Networking Terms](#basic-networking-terms)
 2. [Types of Computer Networks](#2-types-of-computer-networks)
-3. [Network Devices](#network-devices)
-4. [Network Communication Types](#network-communication-types)
-5. [Core Networking Concepts](#core-networking-concepts)
+3. [Network Devices](#3-network-devices)
+4. [Network Communication Types](#4-network-communication-types)
+5. [Core Networking Concepts](#5-core-networking-concepts)
    - [Network Interface Card (NIC)](#network-interface-card-nic)
    - [MAC Address](#mac-address)
    - [IP Address Basics](#ip-address-basics)
@@ -114,7 +114,7 @@ Each network type is designed to **solve specific challenges** such as local con
 
 ---
 
-## Network Devices
+## 3. Network Devices
 
 Network devices are the **building blocks of any computer network**. They manage, direct, and control the flow of data between devices, ensuring communication is fast, secure, and efficient. Without these devices, networks would not function properly  data could get lost, collisions could occur, or communication might not even be possible.  
 
@@ -142,7 +142,7 @@ Understanding these devices is fundamental for anyone learning networking becaus
 
 ---
 
-## Network Communication Types
+## 4. Network Communication Types
 
 
 In computer networks, data can be transmitted in different ways depending on the number of senders and receivers. Understanding these communication types is crucial for grasping how networks operate efficiently.
@@ -158,7 +158,7 @@ In computer networks, data can be transmitted in different ways depending on the
 
 ---
 
-## Core Networking Concepts
+## 5. Core Networking Concepts
 
 Before diving into IP addressing and subnetting, it’s important to understand some fundamental networking concepts. These concepts will give you the necessary background to grasp how devices communicate in a network, how they are identified, and how addresses are assigned.
 
