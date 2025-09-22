@@ -1,144 +1,154 @@
-# Subnetting and Subnet Masks
+# Subnetting
+
+**Subnetting** is the process of dividing a large network into smaller, more manageable networks called **subnets**.  
+It is done by manipulating the **subnet mask** to allocate more bits to the network portion of an IP address and fewer bits to the host portion.  
+
+---
+
+## Table of Contents
+1. [What is Subnetting?](#what-is-subnetting)
+2. [Why Do We Need Subnetting?](#why-do-we-need-subnetting)
+3. [How Subnetting Works](#how-subnetting-works)
+   - [Step 1: Determine the Network Address](#step-1-determine-the-network-address)
+   - [Step 2: Choose a Subnet Mask](#step-2-choose-a-subnet-mask)
+   - [Step 3: Calculate Number of Subnets and Hosts](#step-3-calculate-number-of-subnets-and-hosts)
+   - [Step 4: Find Subnet Ranges](#step-4-find-subnet-ranges)
+4. [Subnetting Example](#subnetting-example)
+5. [Subnetting in Binary](#subnetting-in-binary)
+6. [Advantages of Subnetting](#advantages-of-subnetting)
+7. [Subnetting, CIDR, and VLSM](#subnetting-cidr-and-vlsm)
+8. [Further Reading](#further-reading)
+
+---
 
 ## What is Subnetting?
-Subnetting is the practice of dividing a network into smaller logical networks called subnets. It's a fundamental concept in IP networking that allows for better network management, improved security, and more efficient use of IP address space.
+
+- In IPv4, each address has two parts:  
+  - **Network ID** – identifies the overall network.  
+  - **Host ID** – identifies the specific device (host) in that network.  
+
+Subnetting allows us to break a single network into **smaller sub-networks** by borrowing bits from the **host portion** and using them as additional **network bits**.  
+
+---
 
 ## Why Do We Need Subnetting?
-1. **Network Management:** Easier to manage smaller, organized networks
-2. **Security:** Isolate network segments and control traffic flow
-3. **Efficient Resource Use:** Better allocation of IP addresses
-4. **Reduced Network Traffic:** Broadcast domains are smaller
-5. **Performance:** Better network performance through traffic isolation
 
-## Understanding Subnet Masks
-A subnet mask is a 32-bit number that masks an IP address and divides it into network and host portions. It determines which part of the IP address identifies the network and which part identifies the host.
+1. **Efficient IP Address Usage**  
+   - Without subnetting, large blocks of addresses are wasted.  
+   - Subnetting ensures we use IP space efficiently.  
 
-### Common Subnet Masks
-| Subnet Mask | CIDR | Binary | Usable Hosts |
-|------------|------|--------|--------------|
-| 255.0.0.0 | /8 | 11111111.00000000.00000000.00000000 | 16,777,214 |
-| 255.255.0.0 | /16 | 11111111.11111111.00000000.00000000 | 65,534 |
-| 255.255.255.0 | /24 | 11111111.11111111.11111111.00000000 | 254 |
-| 255.255.255.128 | /25 | 11111111.11111111.11111111.10000000 | 126 |
-| 255.255.255.192 | /26 | 11111111.11111111.11111111.11000000 | 62 |
-| 255.255.255.224 | /27 | 11111111.11111111.11111111.11100000 | 30 |
+2. **Reduced Network Congestion**  
+   - Smaller subnets mean fewer devices per broadcast domain.  
+   - This reduces unnecessary traffic.  
+
+3. **Improved Security**  
+   - Subnets can be used to isolate different departments or services.  
+
+4. **Simplified Management**  
+   - Easier to troubleshoot and manage smaller networks.  
+
+---
 
 ## How Subnetting Works
-When a host wants to communicate with another IP address, it uses the subnet mask to determine if the destination is on the same network:
 
-1. The host performs a bitwise AND operation between:
-   - Its own IP address and subnet mask
-   - The destination IP address and subnet mask
-2. If the results match, the destination is on the same network
-3. If they don't match, the packet must be sent to a gateway
+### Step 1: Determine the Network Address
+Start with the **IP address** and **default subnet mask**.  
+Example:  
+- IP: `192.168.1.0`  
+- Default mask: `255.255.255.0` (/24)  
 
-### Example:
-```
-Host IP:     192.168.1.100
-Subnet Mask: 255.255.255.0
-Target IP:   192.168.1.200
+This gives **1 network** with **254 hosts**.  
 
-Calculation:
-192.168.1.100 AND 255.255.255.0 = 192.168.1.0
-192.168.1.200 AND 255.255.255.0 = 192.168.1.0
+---
 
-Result: Same network (192.168.1.0)
-```
+### Step 2: Choose a Subnet Mask
+Decide how many subnets you need or how many hosts per subnet.  
 
-## Calculating Subnets
-To calculate subnets, follow these steps:
+- Borrow bits from the **host portion**.  
+- Each borrowed bit **doubles** the number of subnets.  
+- Each borrowed bit **halves** the number of hosts per subnet.  
 
-1. Determine how many subnets you need
-2. Determine how many hosts per subnet you need
-3. Choose an appropriate subnet mask
-4. Calculate the network, broadcast, and usable host ranges
+---
 
-### Formula:
-- Number of subnets = 2^n (where n is the number of borrowed bits)
-- Number of hosts per subnet = 2^m - 2 (where m is the number of host bits)
+### Step 3: Calculate Number of Subnets and Hosts
 
-## Real-Life Example: Corporate Network
-Consider a company with three departments:
-- Marketing (needs 50 hosts)
-- Development (needs 100 hosts)
-- Administration (needs 25 hosts)
+Formulas:  
+- **Number of subnets** = `2^n` (where `n` = number of borrowed bits)  
+- **Number of hosts per subnet** = `(2^h) - 2` (where `h` = number of host bits left)  
+  *We subtract 2 for the network and broadcast addresses.*  
 
-Solution:
-```
-Network: 192.168.0.0/24
-Subnet Division:
-- Marketing: 192.168.0.0/26 (62 hosts)
-- Development: 192.168.0.64/25 (126 hosts)
-- Administration: 192.168.0.192/27 (30 hosts)
-```
+---
 
-## Subnet Planning Steps
-1. **Inventory:** List all network requirements
-2. **Address Space:** Choose appropriate private IP range
-3. **Sizing:** Determine subnet sizes based on host counts
-4. **Assignment:** Allocate subnets to network segments
-5. **Documentation:** Document all subnet information
+### Step 4: Find Subnet Ranges
+Each subnet has:
+- A **network address** (first address).  
+- A **host range** (usable addresses).  
+- A **broadcast address** (last address).  
 
-## Benefits of Proper Subnetting
-- Reduced network congestion
-- Improved security through segmentation
-- Easier network management
-- Better resource utilization
-- Simplified troubleshooting
+---
 
-## Common Subnetting Mistakes to Avoid
-1. Not planning for future growth
-2. Incorrect subnet mask calculations
-3. Overlapping subnets
-4. Insufficient documentation
-5. Not considering broadcast domain size
+## Subnetting Example
 
-## Online Subnet Calculators
-- [Subnet Calculator by Calculator.net](https://www.calculator.net/ip-subnet-calculator.html)
-- [SubnetIPv4.com](https://subnetipv4.com/)
-- [IP Subnet Calculator by Site24x7](https://www.site24x7.com/tools/ipv4-subnet-calculator.html)
+Suppose we have:  
+- Network: `192.168.1.0/24`  
+- We want **4 subnets**.  
 
-## Practical Exercises
-1. **Basic Subnetting:**
-   ```
-   Network: 192.168.1.0/24
-   Requirement: Create 4 equal subnets
-   Solution:
-   - 192.168.1.0/26 (0-63)
-   - 192.168.1.64/26 (64-127)
-   - 192.168.1.128/26 (128-191)
-   - 192.168.1.192/26 (192-255)
-   ```
+1. `/24` means **8 host bits**.  
+2. To create 4 subnets, we borrow 2 bits:  
+   - New prefix = `/26`  
+   - New mask = `255.255.255.192`  
 
-2. **Variable Length Subnet Masking (VLSM):**
-   ```
-   Network: 172.16.0.0/16
-   Requirements:
-   - Subnet A: 1000 hosts
-   - Subnet B: 500 hosts
-   - Subnet C: 250 hosts
-   Solution:
-   - A: 172.16.0.0/22 (1022 hosts)
-   - B: 172.16.4.0/23 (510 hosts)
-   - C: 172.16.6.0/24 (254 hosts)
-   ```
+Calculation:  
+- Number of subnets = `2^2 = 4`  
+- Hosts per subnet = `(2^6) - 2 = 62`  
 
-## Best Practices
-1. Always document your subnetting scheme
-2. Plan for future growth
-3. Use VLSM when appropriate
-4. Keep broadcast domains reasonably sized
-5. Consider security boundaries
-6. Maintain consistent naming conventions
+Subnets:  
 
-## Troubleshooting Subnet Issues
-1. Verify subnet mask configuration
-2. Check for duplicate IP addresses
-3. Confirm router configurations
-4. Test connectivity between subnets
-5. Review routing tables
+| Subnet # | Network Address | Usable Hosts Range        | Broadcast Address |
+|----------|-----------------|---------------------------|-------------------|
+| 1        | 192.168.1.0     | 192.168.1.1 – 192.168.1.62  | 192.168.1.63      |
+| 2        | 192.168.1.64    | 192.168.1.65 – 192.168.1.126 | 192.168.1.127     |
+| 3        | 192.168.1.128   | 192.168.1.129 – 192.168.1.190 | 192.168.1.191     |
+| 4        | 192.168.1.192   | 192.168.1.193 – 192.168.1.254 | 192.168.1.255     |
+
+---
+
+## Subnetting in Binary
+
+Subnetting is essentially binary math.  
+
+Example:  
+- IP: `192.168.1.0`  
+- Default mask: `11111111.11111111.11111111.00000000` (/24)  
+
+If we borrow 2 bits:  
+- New mask: `11111111.11111111.11111111.11000000` (/26)  
+
+This creates 4 subnets. Each subnet’s **increment** is `64` in the last octet.  
+
+---
+
+## Advantages of Subnetting
+
+- Saves IP addresses by dividing large blocks.  
+- Improves network performance (smaller broadcast domains).  
+- Enhances security by isolating networks.  
+- Enables better control and management of traffic.  
+
+---
+
+## Subnetting, CIDR, and VLSM
+
+- **Subnetting** is the foundation: dividing a network into smaller parts.  
+- **CIDR (Classless Inter-Domain Routing)** introduced flexible prefix notation (e.g., `/26`) instead of rigid classes.  
+- **VLSM (Variable Length Subnet Masking)** allows using different masks for different subnets within the same network, making address allocation even more efficient.  
+
+---
 
 ## Further Reading
-- [Subnetting - Wikipedia](https://en.wikipedia.org/wiki/Subnetwork)
-- [Practical Subnetting - GeeksforGeeks](https://www.geeksforgeeks.org/subnetting-in-computer-network/)
-- [Cisco's Guide to Subnetting](https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13788-3.html)
+
+- [Subnet Mask](subnet_mask.md)  
+- [VLSM](vlsm.md)  
+- [CIDR](cidr.md)  
+- [IPv4](ipv4.md)  
+- [IPv6](ipv6.md)
