@@ -6,7 +6,7 @@ This repository covers the basics of computer networking. It is designed to intr
 
 ## Table of Contents
 
-1. **Introduction**
+1. [Introduction](#introduction)
    - [Definition of Computer Network](#definition-of-computer-network)
    - [Why Networks are Important](#why-networks-are-important)
    - [Basic Networking Terms](#basic-networking-terms)
