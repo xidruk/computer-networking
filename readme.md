@@ -99,7 +99,7 @@ Each network type is designed to **solve specific challenges** such as local con
 
 ## Network Devices
 
-Network devices are the **building blocks of any computer network**. They manage, direct, and control the flow of data between devices, ensuring communication is fast, secure, and efficient. Without these devices, networks would not function properly — data could get lost, collisions could occur, or communication might not even be possible.  
+Network devices are the **building blocks of any computer network**. They manage, direct, and control the flow of data between devices, ensuring communication is fast, secure, and efficient. Without these devices, networks would not function properly  data could get lost, collisions could occur, or communication might not even be possible.  
 
 Each network device serves a specific role. Some simply **extend the reach** of the network, like repeaters, while others **direct traffic intelligently**, like routers. Firewalls protect networks from unauthorized access, switches make communication more efficient by sending data only to the intended device, and virtual devices allow modern cloud and virtualized environments to operate smoothly.  
 
