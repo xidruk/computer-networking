@@ -75,19 +75,28 @@ To get started with networking, here are some foundational terms:
 
 ## Types of Computer Networks
 
-There are many types of computer networks, each designed for specific purposes and environments. Below is a table highlighting some of the most common network types, along with brief and expanded explanations.
+Computer networks come in different types because organizations, individuals, and devices have varying needs for **coverage, speed, cost, and connectivity**. Networks are grouped based on **geographic area, purpose, and technology**:
 
-| Network Type | Short Explanation | Expanded Explanation |
-|-------------|------------------|---------------------|
-| LAN (Local Area Network) | Connects computers within a limited area like a home, school, or office. | [Learn more about LANs](https://www.geeksforgeeks.org/local-area-network-lan/) - LANs are fast, secure, and ideal for small geographic areas. |
-| WAN (Wide Area Network) | Covers a large geographic area, often connecting multiple LANs. | [Learn more about WANs](https://www.geeksforgeeks.org/wide-area-network-wan/) - WANs use public or private transmission systems to link distant locations. |
-| MAN (Metropolitan Area Network) | Spans a city or large campus. | [Learn more about MANs](https://www.geeksforgeeks.org/metropolitan-area-network-man/) - MANs are larger than LANs but smaller than WANs, often used by organizations with multiple buildings. |
-| PAN (Personal Area Network) | Connects devices within a person's workspace, like Bluetooth. | [Learn more about PANs](https://www.geeksforgeeks.org/personal-area-network-pan/) - PANs are used for short-range communication between personal devices. |
-| WLAN (Wireless LAN) | LAN using wireless technology. | [Learn more about WLANs](https://www.geeksforgeeks.org/wireless-local-area-network-wlan/) - WLANs provide mobility and flexibility within a local area. |
-| CAN (Campus Area Network) | Connects networks within a campus, like a university. | [Learn more about CANs](https://www.geeksforgeeks.org/campus-area-network-can/) - CANs are designed for large institutions with multiple buildings. |
-| SAN (Storage Area Network) | Dedicated to data storage devices. | [Learn more about SANs](https://www.geeksforgeeks.org/storage-area-network-san/) - SANs provide high-speed connections for data storage and retrieval. |
-| VPN (Virtual Private Network) | Securely connects remote users to a private network over the internet. | [Learn more about VPNs](https://www.geeksforgeeks.org/virtual-private-network-vpn/) - VPNs use encryption to protect data and ensure privacy. |
-| GAN (Global Area Network) | Connects networks across the globe. | [Learn more about GANs](https://www.geeksforgeeks.org/global-area-network-gan/) - GANs are used for worldwide communication and data sharing. |
+- **Small-scale networks:** Serve a single user or a small area (e.g., PAN, LAN).  
+- **Medium-scale networks:** Connect multiple buildings or a city (e.g., CAN, MAN).  
+- **Large-scale networks:** Span countries or the globe (e.g., WAN, GAN, VPN).  
+
+Each network type is designed to **solve specific challenges** such as local connectivity, long-distance communication, secure remote access, or high-speed data sharing. Choosing the right type ensures **efficient communication, security, and resource sharing**.
+
+
+### Common Network Types
+
+| Network Type | Short Description | Solution Provided | Expanded Explanation |
+|-------------|------------------|-----------------|--------------------|
+| **LAN (Local Area Network)** | Connects devices in a small area like a home, office, or school. | High-speed connectivity for local users, resource sharing, and collaboration. | [LAN - GeeksforGeeks](https://www.geeksforgeeks.org/local-area-network-lan/) |
+| **WAN (Wide Area Network)** | Connects multiple LANs over large geographic areas. | Enables organizations to communicate across cities, countries, or continents. | [WAN - GeeksforGeeks](https://www.geeksforgeeks.org/wide-area-network-wan/) |
+| **MAN (Metropolitan Area Network)** | Spans a city or campus. | Connects multiple buildings for efficient city-wide communication. | [MAN - GeeksforGeeks](https://www.geeksforgeeks.org/metropolitan-area-network-man/) |
+| **PAN (Personal Area Network)** | Connects devices within a personal workspace, like Bluetooth. | Allows personal devices to communicate over short distances. | [PAN - GeeksforGeeks](https://www.geeksforgeeks.org/personal-area-network-pan/) |
+| **WLAN (Wireless LAN)** | Wireless version of a LAN. | Provides mobility and flexibility for local users without physical cables. | [WLAN - GeeksforGeeks](https://www.geeksforgeeks.org/wireless-local-area-network-wlan/) |
+| **CAN (Campus Area Network)** | Connects networks across a campus (e.g., university or business complex). | Centralized communication and resource sharing for multiple buildings. | [CAN - GeeksforGeeks](https://www.geeksforgeeks.org/campus-area-network-can/) |
+| **SAN (Storage Area Network)** | Network dedicated to connecting storage devices. | High-speed access and management of shared storage resources. | [SAN - GeeksforGeeks](https://www.geeksforgeeks.org/storage-area-network-san/) |
+| **VPN (Virtual Private Network)** | Securely connects remote users to a private network over the internet. | Encrypted communication for remote access to private networks. | [VPN - GeeksforGeeks](https://www.geeksforgeeks.org/virtual-private-network-vpn/) |
+| **GAN (Global Area Network)** | Connects networks around the world. | Enables worldwide data sharing and global communication. | [GAN - GeeksforGeeks](https://www.geeksforgeeks.org/global-area-network-gan/) |
 
 
 ---
