@@ -12,8 +12,7 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Basic Networking Terms](#basic-networking-terms)
 2. [Types of Computer Networks](#types-of-computer-networks)
 3. [Network Devices](#network-devices)
-4. **Network Communication Types**
-   - Unicast, Broadcast, Multicast, Anycast
+4. [Network Communication Types](#network-communication-types)
 5. **IP Addressing and Subnetting**
    - IPv4, IPv6, Subnetting, VLSM, CIDR, MAC Address
 6. **Protocols**
