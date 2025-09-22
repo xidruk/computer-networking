@@ -11,10 +11,7 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Why Networks are Important](#why-networks-are-important)
    - [Basic Networking Terms](#basic-networking-terms)
 2. [Types of Computer Networks](#types-of-computer-networks)
-3. **Network Devices**
-   - Repeater, Hub, Switch, Bridge, Router
-   - Access Point, Firewall, Load Balancer
-   - Virtual Switch, Virtual Router, Host / Computer
+3. [Network Devices](#network-devices)
 4. **Network Communication Types**
    - Unicast, Broadcast, Multicast, Anycast
 5. **IP Addressing and Subnetting**
@@ -102,23 +99,29 @@ Each network type is designed to **solve specific challenges** such as local con
 
 ## Network Devices
 
-Network devices are essential components that enable communication, data transfer, and security within computer networks. Below is a comprehensive table describing key network devices, their visual representation, definitions, roles, how they work, and links to further reading.
+Network devices are the **building blocks of any computer network**. They manage, direct, and control the flow of data between devices, ensuring communication is fast, secure, and efficient. Without these devices, networks would not function properly — data could get lost, collisions could occur, or communication might not even be possible.  
 
-| Device | Visual View | Definition | Role | How It Works | Expanded Explain |
-|--------|-------------|------------|------|--------------|------------------|
-| Repeater | ![Repeater](static/repeater.png) | A device that regenerates and amplifies signals to extend the range of a network. | Extends network coverage by boosting weak signals. | Receives weak signals and retransmits them at full strength. | [Repeater - GeeksforGeeks](https://www.geeksforgeeks.org/repeater-in-computer-network/) |
-| Bridge | ![Bridge](static/bridge.png) | Connects and filters traffic between two network segments. | Divides networks to reduce traffic and improve performance. | Examines incoming data and forwards it to the correct segment. | [Bridge - GeeksforGeeks](https://www.geeksforgeeks.org/bridge-in-computer-network/) |
-| Host (Computer) | ![Host](static/computer-3.png) | Any device (PC, server, etc.) that sends or receives data on a network. | Acts as a source or destination for network communication. | Uses network protocols to communicate with other devices. | [Host - GeeksforGeeks](https://www.geeksforgeeks.org/host-in-computer-network/) |
-| Hub | ![Hub](static/hub.png) | A basic device that connects multiple computers in a network. | Central connection point for devices in a LAN. | Broadcasts incoming data to all connected devices. | [Hub - GeeksforGeeks](https://www.geeksforgeeks.org/hub-in-computer-network/) |
-| Router | ![Router](static/router.png) | Directs data packets between networks and manages traffic. | Connects different networks and routes data efficiently. | Uses routing tables to determine the best path for data. | [Router - GeeksforGeeks](https://www.geeksforgeeks.org/router-in-computer-network/) |
-| Switch | ![Switch](static/workgroup-switch.png) | Connects devices in a network and forwards data only to the intended recipient. | Improves network efficiency and security. | Learns device addresses and sends data to the correct port. | [Switch - GeeksforGeeks](https://www.geeksforgeeks.org/switch-in-computer-network/) |
-| Access Point | ![Access Point](static/wireless-access-point.png) | Provides wireless connectivity to devices in a network. | Enables Wi-Fi access for mobile and wireless devices. | Transmits and receives wireless signals to/from devices. | [Access Point - GeeksforGeeks](https://www.geeksforgeeks.org/access-point-in-computer-network/) |
-| Firewall | ![Firewall](static/firewall.png) | Monitors and controls incoming and outgoing network traffic. | Protects networks from unauthorized access and threats. | Uses rules to allow or block traffic based on security policies. | [Firewall - GeeksforGeeks](https://www.geeksforgeeks.org/firewall-in-computer-network/) |
-| Load Balancer | ![Load Balancer](static/load-balancer.png) | Distributes network or application traffic across multiple servers. | Ensures high availability and reliability. | Monitors server health and directs traffic to optimal resources. | [Load Balancer - GeeksforGeeks](https://www.geeksforgeeks.org/load-balancer-in-computer-network/) |
-| Virtual Switch | ![Virtual Switch](static/virtual-switch-controller-vsc3.png) | Software-based switch for virtualized environments. | Connects virtual machines within a host or across hosts. | Uses software to manage traffic between VMs. | [Virtual Switch - GeeksforGeeks](https://www.geeksforgeeks.org/virtual-switch-in-computer-network/) |
-| Virtual Router | ![Virtual Router](static/vpc-router.png) | Software-based router for virtual networks. | Routes traffic between virtual networks and devices. | Uses software to perform routing functions in cloud or virtual environments. | [Virtual Router - GeeksforGeeks](https://www.geeksforgeeks.org/virtual-router-in-computer-network/) |
+Each network device serves a specific role. Some simply **extend the reach** of the network, like repeaters, while others **direct traffic intelligently**, like routers. Firewalls protect networks from unauthorized access, switches make communication more efficient by sending data only to the intended device, and virtual devices allow modern cloud and virtualized environments to operate smoothly.  
 
-> **Note:** This table highlights some of the most widely used network devices around the world. There are many other specialized devices not listed here, each serving unique roles in different networking environments.
+Understanding these devices is fundamental for anyone learning networking because they **form the infrastructure that enables connectivity, communication, and security**.
+
+### Common Network Devices
+
+| Network Device | Visual Look | Description | Role | How It Works | Expanded Explanation |
+|----------------|------------|------------|------|--------------|--------------------|
+| **Repeater** | ![Repeater](static/repeater.png) | A device that regenerates and amplifies signals to extend the range of a network. It ensures that weak or degraded signals do not get lost over long distances. | Extends the physical reach of a network. | Receives incoming signals, amplifies them, and retransmits at full strength. | [Repeater - GeeksforGeeks](https://www.geeksforgeeks.org/repeater-in-computer-network/) |
+| **Hub** | ![Hub](static/hub.png) | A basic device that connects multiple devices in a LAN. Hubs broadcast incoming data to all ports, making them simple but less efficient. | Central connection point for devices. | Receives data on one port and broadcasts it to all other ports. | [Hub - GeeksforGeeks](https://www.geeksforgeeks.org/hub-in-computer-network/) |
+| **Switch** | ![Switch](static/workgroup-switch.png) | Connects devices in a network and forwards data only to the intended recipient using MAC addresses. | Improves network efficiency and reduces unnecessary traffic. | Examines the destination address of data packets and sends them to the correct port. | [Switch - GeeksforGeeks](https://www.geeksforgeeks.org/switch-in-computer-network/) |
+| **Bridge** | ![Bridge](static/bridge.png) | Connects and filters traffic between two network segments, reducing collisions and improving performance. | Segments networks to enhance performance. | Examines incoming frames and forwards them only to the segment where the destination device resides. | [Bridge - GeeksforGeeks](https://www.geeksforgeeks.org/bridge-in-computer-network/) |
+| **Router** | ![Router](static/router.png) | Directs data packets between networks and manages traffic, often connecting different LANs or a LAN to the internet. | Routes data efficiently across networks. | Uses routing tables and protocols to determine the best path for data packets. | [Router - GeeksforGeeks](https://www.geeksforgeeks.org/router-in-computer-network/) |
+| **Access Point** | ![Access Point](static/wireless-access-point.png) | Provides wireless connectivity, allowing devices to connect to a wired network via Wi-Fi. | Enables wireless access for devices. | Transmits and receives wireless signals, bridging wireless clients to the wired network. | [Access Point - GeeksforGeeks](https://www.geeksforgeeks.org/access-point-in-computer-network/) |
+| **Firewall** | ![Firewall](static/firewall.png) | Monitors and controls incoming and outgoing network traffic based on security rules. | Protects the network from unauthorized access and cyber threats. | Filters traffic according to predefined rules and policies. | [Firewall - GeeksforGeeks](https://www.geeksforgeeks.org/firewall-in-computer-network/) |
+| **Load Balancer** | ![Load Balancer](static/load-balancer.png) | Distributes network or application traffic across multiple servers to ensure reliability and availability. | Enhances performance and prevents server overload. | Monitors server health and forwards requests to the optimal server. | [Load Balancer - GeeksforGeeks](https://www.geeksforgeeks.org/load-balancer-in-computer-network/) |
+| **Virtual Switch** | ![Virtual Switch](static/virtual-switch-controller-vsc3.png) | Software-based switch used in virtualized environments. | Connects virtual machines within a host or across hosts. | Uses software to manage traffic between virtual machines. | [Virtual Switch - GeeksforGeeks](https://www.geeksforgeeks.org/virtual-switch-in-computer-network/) |
+| **Virtual Router** | ![Virtual Router](static/vpc-router.png) | Software-based router used in virtual networks or cloud environments. | Routes traffic between virtual networks efficiently. | Performs routing functions in software, often in cloud or virtualized networks. | [Virtual Router - GeeksforGeeks](https://www.geeksforgeeks.org/virtual-router-in-computer-network/) |
+| **Host / Computer** | ![Host](static/computer-3.png) | Any device (PC, server, etc.) that sends or receives data on a network. | Acts as a source or destination for network communication. | Uses network protocols to communicate with other devices. | [Host - GeeksforGeeks](https://www.geeksforgeeks.org/host-in-computer-network/) |
+
+> **Note:** The table above highlights some of the most widely used network devices. There are many other specialized devices not mentioned here, each serving unique roles in different network environments.
 
 ---
 
