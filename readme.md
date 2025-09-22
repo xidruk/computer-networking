@@ -154,7 +154,7 @@ Before diving into IP addressing and subnetting, it’s important to understand 
 
 A **Network Interface Card (NIC)** is a hardware component that allows a device to connect to a network. It can be a physical card installed in a computer or built into a device's motherboard. NICs can connect via **wired (Ethernet)** or **wireless (Wi-Fi)** interfaces. Every NIC has a unique identifier called a **MAC address** that ensures devices can be recognized on the local network.
 
-> Related document: [NIC](docs/nic.md) *(create if it doesn’t exist)*
+> Related document: [NIC](docs/nic.md)
 
 
 ### MAC Address
