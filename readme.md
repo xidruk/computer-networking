@@ -40,7 +40,7 @@ This repository covers the basics of computer networking. It is designed to intr
 ## Introduction
 
 ### Definition of Computer Network
-A **computer network** is a collection of interconnected devices—such as computers, servers, and other hardware—that communicate with each other to share resources, exchange information, and enable collaboration. Networks can be small, like a home network connecting a few devices, or large, spanning cities or even countries.  
+A **computer network** is a collection of interconnected devices such as computers, servers, and other hardware that communicate with each other to share resources, exchange information, and enable collaboration. Networks can be small, like a home network connecting a few devices, or large, spanning cities or even countries.  
 
 By allowing devices to communicate, networks make it possible to share files, access the internet, run applications remotely, and coordinate complex systems efficiently.
 
