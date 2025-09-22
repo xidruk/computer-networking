@@ -55,7 +55,7 @@ Originally, IPv4 addresses were divided into **classes** for organization:
 - **Class D**: `224.0.0.0 – 239.255.255.255` (Multicast)  
 - **Class E**: `240.0.0.0 – 255.255.255.255` (Experimental)  
 
-Modern networking mostly uses **CIDR (Classless Inter-Domain Routing)** instead of rigid classes.
+Modern networking mostly uses **CIDR (Classless Inter-Domain Routing)** instead of rigid classes. [CIDR Notation](docs/cidr.md))
 
 ---
 
