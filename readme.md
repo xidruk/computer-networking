@@ -146,3 +146,61 @@ In computer networks, data can be transmitted in different ways depending on the
 
 ---
 
+## Core Networking Concepts
+
+Before diving into IP addressing and subnetting, it’s important to understand some fundamental networking concepts. These concepts will give you the necessary background to grasp how devices communicate in a network, how they are identified, and how addresses are assigned.
+
+### Network Interface Card (NIC)
+
+A **Network Interface Card (NIC)** is a hardware component that allows a device to connect to a network. It can be a physical card installed in a computer or built into a device's motherboard. NICs can connect via **wired (Ethernet)** or **wireless (Wi-Fi)** interfaces. Every NIC has a unique identifier called a **MAC address** that ensures devices can be recognized on the local network.
+
+> Related document: [NIC](docs/nic.md) *(create if it doesn’t exist)*
+
+
+### MAC Address
+
+A **MAC (Media Access Control) address** is a unique identifier assigned to each NIC by the manufacturer. It is a 48-bit address typically represented in hexadecimal format (e.g., `00:1A:2B:3C:4D:5E`). MAC addresses operate at the **data link layer (Layer 2)** of the OSI model and are used for local network communication. They allow devices to be uniquely identified on the same network segment, even if their IP addresses change.
+
+> Related document: [MAC Address](docs/macaddress.md)
+
+
+### IP Address Basics
+
+An **IP (Internet Protocol) address** is a numerical label assigned to a device for identification and communication on a network. Unlike MAC addresses, IP addresses work at the **network layer (Layer 3)** of the OSI model. They enable devices across different networks to locate and communicate with each other.
+
+There are two main versions of IP addresses:
+
+- **IPv4**: Uses a 32-bit format, usually written as four decimal numbers separated by dots (e.g., `192.168.1.1`).  
+- **IPv6**: Uses a 128-bit format, written in hexadecimal with colons (e.g., `2001:0db8:85a3:0000:0000:8a2e:0370:7334`). IPv6 provides a vastly larger address space than IPv4.
+
+IP addresses can be **public** (routable on the internet) or **private** (used within local networks). Understanding these basics is crucial before learning subnetting and routing.
+
+> Related documents: [IPv4](docs/ipv4.md), [IPv6](docs/ipv6.md), [IP Address](docs/ipaddress.md)
+
+
+### IP Address Allocation
+
+IP addresses can be assigned to devices in two main ways:
+
+1. **Static IP Address**: Manually configured on the device. It does not change unless manually updated. Useful for servers or devices that need consistent addresses.  
+2. **Dynamic IP Address**: Automatically assigned by a **DHCP (Dynamic Host Configuration Protocol)** server. This is common in home networks where devices connect and disconnect frequently.
+
+Understanding how IP addresses are allocated helps you see how devices gain access to networks and the internet.
+
+> Related documents: [DHCP](docs/dhcp.md)
+
+
+### Types of IP Addresses
+
+Within an IP network, addresses are categorized based on their purpose:
+
+- **Network Address**: Identifies the network segment itself.  
+- **Host Address**: Identifies an individual device on the network.  
+- **Broadcast Address**: Used to send messages to all devices on the same network.  
+
+Some additional classifications include **classful addressing** (Class A, B, C, etc.), but modern networks mostly use **CIDR (Classless Inter-Domain Routing)** for flexible addressing.
+
+> Related documents: [IP Address Classification](docs/ipaddress_classification.md)
+
+
+This section provides the foundation you need to understand how devices connect, identify themselves, and communicate in a network. With these concepts clear, you’re ready to explore **IP Addressing and Subnetting** in detail.
