@@ -13,22 +13,28 @@ This repository covers the basics of computer networking. It is designed to intr
 2. [Types of Computer Networks](#types-of-computer-networks)
 3. [Network Devices](#network-devices)
 4. [Network Communication Types](#network-communication-types)
-5. **IP Addressing and Subnetting**
+5. [Core Networking Concepts](#core-networking-concepts)
+   - [Network Interface Card (NIC)](#network-interface-card-nic)
+   - [MAC Address](#mac-address)
+   - [IP Address Basics](#ip-address-basics)
+   - [IP Address Allocation](#ip-address-allocation)
+   - [Types of IP Addresses](#types-of-ip-addresses)
+6. **IP Addressing and Subnetting**
    - IPv4, IPv6, Subnetting, VLSM, CIDR, MAC Address
-6. **Protocols**
+7. **Protocols**
    - TCP, UDP, TCP/IP, DHCP, DNS
-7. **Routing & Switching Concepts**
+8. **Routing & Switching Concepts**
    - Routers, Routing Table, Switches, VLAN
-8. **OSI Model**
+9. **OSI Model**
    - Overview, Layer 1-7
-9. **Network Services**
+10. **Network Services**
    - NAT, Gateways, QoS, Load Balancing
    - VPN, Cloud Networking, Wireless Networking
-10. **Network Security**
+11. **Network Security**
     - Firewall, Network Security Basics
-11. **Network Data Units**
+12. **Network Data Units**
     - Frames, Packets, Segments, Ports
-12. **Troubleshooting & Monitoring**
+13. **Troubleshooting & Monitoring**
     - Network Troubleshooting, Monitoring Tools
 ---
 
