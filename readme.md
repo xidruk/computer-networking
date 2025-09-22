@@ -183,11 +183,14 @@ IP addresses can be **public** (routable on the internet) or **private** (used w
 IP addresses can be assigned to devices in two main ways:
 
 1. **Static IP Address**: Manually configured on the device. It does not change unless manually updated. Useful for servers or devices that need consistent addresses.  
-2. **Dynamic IP Address**: Automatically assigned by a **DHCP (Dynamic Host Configuration Protocol)** server. This is common in home networks where devices connect and disconnect frequently.
+
+2. **Dynamic IP Address**: Automatically assigned by a configuration service.  
+   - **DHCP (Dynamic Host Configuration Protocol)**: Used in IPv4 networks to lease addresses dynamically.  
+   - **DHCPv6**: Used in IPv6 networks for dynamic address assignment, often combined with SLAAC.  
 
 Understanding how IP addresses are allocated helps you see how devices gain access to networks and the internet.
 
-> Related documents: [DHCP](docs/dhcp.md)
+> Related documents: [DHCP](docs/dhcp.md), [DHCPv6](docs/dhcpv6.md)
 
 
 ### Types of IP Addresses
