@@ -10,43 +10,31 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Definition of Computer Network](#definition-of-computer-network)
    - [Why Networks are Important](#why-networks-are-important)
    - [Basic Networking Terms](#basic-networking-terms)
-
 2. **Types of Computer Networks**
    - LAN, WAN, MAN, PAN, WLAN, CAN, SAN, VPN, GAN
-
 3. **Network Devices**
    - Repeater, Hub, Switch, Bridge, Router
    - Access Point, Firewall, Load Balancer
    - Virtual Switch, Virtual Router, Host / Computer
-
 4. **Network Communication Types**
    - Unicast, Broadcast, Multicast, Anycast
-
 5. **IP Addressing and Subnetting**
    - IPv4, IPv6, Subnetting, VLSM, CIDR, MAC Address
-
 6. **Protocols**
    - TCP, UDP, TCP/IP, DHCP, DNS
-
 7. **Routing & Switching Concepts**
    - Routers, Routing Table, Switches, VLAN
-
 8. **OSI Model**
    - Overview, Layer 1-7
-
 9. **Network Services**
    - NAT, Gateways, QoS, Load Balancing
    - VPN, Cloud Networking, Wireless Networking
-
 10. **Network Security**
     - Firewall, Network Security Basics
-
 11. **Network Data Units**
     - Frames, Packets, Segments, Ports
-
 12. **Troubleshooting & Monitoring**
     - Network Troubleshooting, Monitoring Tools
-
 ---
 
 ## Introduction
