@@ -8,11 +8,11 @@ This repository covers the basics of computer networking. It is designed to intr
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
+1. [Introduction](#1-introduction)
    - [Definition of Computer Network](#definition-of-computer-network)
    - [Why Networks are Important](#why-networks-are-important)
    - [Basic Networking Terms](#basic-networking-terms)
-2. [Types of Computer Networks](#types-of-computer-networks)
+2. [Types of Computer Networks](#2-types-of-computer-networks)
 3. [Network Devices](#network-devices)
 4. [Network Communication Types](#network-communication-types)
 5. [Core Networking Concepts](#core-networking-concepts)
@@ -21,7 +21,7 @@ This repository covers the basics of computer networking. It is designed to intr
    - [IP Address Basics](#ip-address-basics)
    - [IP Address Allocation](#ip-address-allocation)
    - [Types of IP Addresses](#types-of-ip-addresses)
-6. **Networking Models & Protocols**
+6. [Networking Models & Protocols](#6-networking-models--protocols)
    - [OSI Model](#osi-model)
    - [TCP/IP Model](#tcpip-model)
    - [Transport Protocols: TCP & UDP](#transport-protocols-tcp--udp)
@@ -50,7 +50,7 @@ This repository covers the basics of computer networking. It is designed to intr
     
 ---
 
-## Introduction
+## 1. Introduction
 
 ### Definition of Computer Network
 A **computer network** is a collection of interconnected devices such as computers, servers, and other hardware that communicate with each other to share resources, exchange information, and enable collaboration. Networks can be small, like a home network connecting a few devices, or large, spanning cities or even countries.  
@@ -86,7 +86,7 @@ To get started with networking, here are some foundational terms:
 
 ---
 
-## Types of Computer Networks
+## 2. Types of Computer Networks
 
 Computer networks come in different types because organizations, individuals, and devices have varying needs for **coverage, speed, cost, and connectivity**. Networks are grouped based on **geographic area, purpose, and technology**:
 
@@ -219,3 +219,147 @@ Some additional classifications include **classful addressing** (Class A, B, C, 
 
 
 This section provides the foundation you need to understand how devices connect, identify themselves, and communicate in a network. With these concepts clear, you’re ready to explore **IP Addressing and Subnetting** in detail.
+
+---
+
+## 6. Networking Models & Protocols
+
+When you first approach computer networking, it may seem like a collection of unrelated terms: TCP, DNS, IP addresses, routers, and so on.  
+In reality, these pieces fit together into an organized system. To make sense of how data travels across a network, we rely on **networking models** and **protocols**.  
+
+- **Models** provide a **layered framework** that shows how communication flows from one computer to another.  
+- **Protocols** are the **rules and methods** that define how each layer operates.  
+
+Together, they give us a map of how information is prepared, transmitted, routed, and delivered.
+
+
+### OSI Model
+
+The **OSI (Open Systems Interconnection) Model** is a seven-layer conceptual framework developed in the 1980s. While it is not used directly in modern networking, it is still the best way to learn how networks function because it breaks down communication into clear, logical steps.
+
+You can think of the OSI model like a mail delivery system:
+- You write a letter (Application Layer).  
+- You package it and address it (Presentation, Session, Transport).  
+- It passes through postal sorting and transport systems (Network, Data Link).  
+- Finally, it is delivered to the recipient’s mailbox (Physical Layer).  
+
+#### OSI Model Layers
+
+| Layer | Name        | Description                                                                 |
+|-------|-------------|-----------------------------------------------------------------------------|
+| 7     | Application | Interfaces with software applications (e.g., web browsers, email clients). |
+| 6     | Presentation| Translates, encrypts, and compresses data so applications can understand it.|
+| 5     | Session     | Manages sessions and controls dialogue between systems.                     |
+| 4     | Transport   | Ensures data delivery, error correction, and sequencing (TCP/UDP).          |
+| 3     | Network     | Handles logical addressing and routing (IP).                               |
+| 2     | Data Link   | Provides physical addressing (MAC), error detection, and framing.           |
+| 1     | Physical    | Transmits raw bits as electrical signals, light, or radio waves.            |
+
+Key idea: each layer only communicates with its immediate upper and lower layers. This modularity allows hardware and software from different vendors to work together.
+
+For an in-depth discussion of each layer: see [OSI Model](docs/osi_model.md).
+
+
+### TCP/IP Model
+
+The **TCP/IP model** is the practical standard that underlies the Internet today. It was developed by the U.S. Department of Defense in the 1970s and eventually replaced the OSI model in real-world use. While simpler than OSI, it captures the essential functions.
+
+#### TCP/IP Layers
+
+| Layer          | Examples                        | Description                                                  |
+|----------------|---------------------------------|--------------------------------------------------------------|
+| Application    | HTTP, FTP, DNS, SMTP            | Provides network services directly to applications.           |
+| Transport      | TCP, UDP                        | Ensures delivery of data between hosts.                      |
+| Internet       | IP, ICMP                        | Responsible for addressing, routing, and packet forwarding.   |
+| Network Access | Ethernet, Wi-Fi, ARP            | Defines how data is physically transmitted over the medium.   |
+
+The TCP/IP model maps closely to the OSI model but merges some layers. For example:
+- OSI’s Application, Presentation, and Session layers are combined into the **Application Layer**.  
+- OSI’s Physical and Data Link layers are grouped as the **Network Access Layer**.  
+
+For a more detailed study: see [TCP/IP Model](docs/tcp_ip.md).
+
+
+### Why Models Matter
+
+Models are not just academic diagrams. They provide:
+- A **reference language**: engineers worldwide can describe issues precisely (e.g., “this is a Layer 3 problem” means a routing issue).  
+- **Troubleshooting guidance**: problems can be isolated layer by layer.  
+- **Interoperability**: by following the models, devices and software from different vendors can communicate successfully.  
+
+
+### Transport Protocols: TCP & UDP
+
+The **Transport Layer** is where end-to-end communication between two hosts is managed. Two major protocols dominate this layer:
+
+#### TCP (Transmission Control Protocol)
+- **Connection-oriented**: requires a three-way handshake before data transfer.  
+- **Reliable**: guarantees delivery, ensures packets arrive in order, and retransmits lost data.  
+- **Flow and congestion control**: adapts to avoid overwhelming the network.  
+- **Use cases**: web browsing (HTTP/HTTPS), email (SMTP/IMAP/POP3), file transfers (FTP).  
+
+#### UDP (User Datagram Protocol)
+- **Connectionless**: no handshake, no guarantee of delivery.  
+- **Fast and lightweight**: useful for real-time communication where speed is more important than reliability.  
+- **No congestion or flow control**.  
+- **Use cases**: live video streaming, voice over IP (VoIP), online gaming.  
+
+| Feature        | TCP                              | UDP                              |
+|----------------|----------------------------------|----------------------------------|
+| Connection     | Yes (handshake)                  | No                               |
+| Reliability    | Guaranteed (error correction)    | None                             |
+| Speed          | Slower                           | Faster                           |
+| Overhead       | High (headers, acknowledgments)  | Low (minimal headers)            |
+| Best for       | Accuracy (web, email, files)     | Speed (streaming, gaming, calls) |
+
+For expanded discussions: see [TCP](docs/tcp.md) and [UDP](docs/udp.md).
+
+
+### Application Protocols: DNS, CDNS, DHCP
+
+At the **Application Layer**, protocols make networks usable for humans. Instead of working with IP addresses and raw connections, these protocols provide essential services.
+
+#### DNS (Domain Name System)
+- Converts human-readable names (like `example.com`) into machine-readable IP addresses.  
+- Operates in a distributed hierarchy of servers (root, TLD, authoritative).  
+- Without DNS, users would need to memorize numeric IP addresses.  
+- Security challenges include DNS spoofing and cache poisoning.  
+
+Expanded discussion: [DNS](docs/dns.md).
+
+
+#### CDNS (Content Delivery Networks & Secure DNS)
+
+1. **Content Delivery Networks (CDNs)**:  
+   - Distribute content (web pages, images, videos) across multiple servers around the globe.  
+   - Reduce latency by serving data from the nearest server.  
+   - Improve reliability and protect against traffic spikes.  
+
+2. **Secure DNS (sometimes referred to as CDNS in contexts)**:  
+   - Encrypts DNS queries (DNS over HTTPS, DNS over TLS).  
+   - Prevents eavesdropping and tampering by attackers.  
+   - Improves user privacy.  
+
+Expanded discussion: [CDNS](docs/cdns.md).
+
+
+#### DHCP (Dynamic Host Configuration Protocol)
+- Automatically assigns IP addresses, subnet masks, default gateways, and DNS servers to devices.  
+- Saves administrators from manually configuring every device.  
+- Works in a lease system: IPs are rented for a period of time.  
+- Common in home and enterprise networks.  
+- In IPv6, **DHCPv6** provides similar functionality with enhancements.  
+
+Expanded discussions: [DHCP](docs/dhcp.md) and [DHCPv6](docs/dhcpv6.md).
+
+
+### Summary
+
+By combining **networking models** (which provide structure) with **protocols** (which provide rules), we gain a complete picture of how data flows across networks.  
+
+- The **OSI model** teaches us the theory in seven clear layers.  
+- The **TCP/IP model** shows the four-layer framework that powers the real Internet.  
+- **Transport protocols (TCP, UDP)** determine whether communication prioritizes reliability or speed.  
+- **Application protocols (DNS, CDNS, DHCP)** make networking usable and manageable for humans.  
+
+Understanding this section gives you the roadmap for everything else in networking.
