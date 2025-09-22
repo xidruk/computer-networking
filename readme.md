@@ -6,6 +6,8 @@ This repository covers the basics of computer networking. It is designed to intr
 
 ## Table of Contents
 
+## Table of Contents
+
 1. [Introduction](#introduction)
    - [Definition of Computer Network](#definition-of-computer-network)
    - [Why Networks are Important](#why-networks-are-important)
@@ -19,23 +21,33 @@ This repository covers the basics of computer networking. It is designed to intr
    - [IP Address Basics](#ip-address-basics)
    - [IP Address Allocation](#ip-address-allocation)
    - [Types of IP Addresses](#types-of-ip-addresses)
-6. **IP Addressing and Subnetting**
-   - IPv4, IPv6, Subnetting, VLSM, CIDR, MAC Address
-7. **Protocols**
-   - TCP, UDP, TCP/IP, DHCP, DNS
+6. **Networking Models & Protocols**
+   - [OSI Model](#osi-model)
+   - [TCP/IP Model](#tcpip-model)
+   - [Transport Protocols: TCP & UDP](#transport-protocols-tcp--udp)
+   - [Application Protocols: DNS, CDNS, DHCP](#application-protocols-dns-cdns-dhcp)
+7. **IP Addressing and Subnetting**
+   - [IPv4](#ipv4)
+   - [IPv6](#ipv6)
+   - [Subnetting](#subnetting)
+   - [VLSM](#vlsm)
+   - [CIDR](#cidr)
+   - [IP Address Classification](#ip-address-classification)
 8. **Routing & Switching Concepts**
-   - Routers, Routing Table, Switches, VLAN
-9. **OSI Model**
-   - Overview, Layer 1-7
-10. **Network Services**
+   - [Routers](#routers)
+   - [Routing Tables](#routing-tables)
+   - [Switches](#switches)
+   - [VLAN](#vlan)
+9. **Network Services**
    - NAT, Gateways, QoS, Load Balancing
    - VPN, Cloud Networking, Wireless Networking
-11. **Network Security**
+10. **Network Security**
     - Firewall, Network Security Basics
-12. **Network Data Units**
+11. **Network Data Units**
     - Frames, Packets, Segments, Ports
-13. **Troubleshooting & Monitoring**
+12. **Troubleshooting & Monitoring**
     - Network Troubleshooting, Monitoring Tools
+    
 ---
 
 ## Introduction
