@@ -10,8 +10,7 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Definition of Computer Network](#definition-of-computer-network)
    - [Why Networks are Important](#why-networks-are-important)
    - [Basic Networking Terms](#basic-networking-terms)
-2. **Types of Computer Networks**
-   - LAN, WAN, MAN, PAN, WLAN, CAN, SAN, VPN, GAN
+2. [Types of Computer Networks](#types-of-computer-networks)
 3. **Network Devices**
    - Repeater, Hub, Switch, Bridge, Router
    - Access Point, Firewall, Load Balancer
