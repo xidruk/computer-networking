@@ -1,95 +1,139 @@
-# How Switches Work in a Network
+# Switches
 
-Switches are the backbone of local networks (LANs). They connect devices like computers, printers, and servers, allowing them to communicate efficiently. But how do switches know where to send data? This article explains the inner workings of switches, MAC address tables, VLANs, and more.
+A **switch** is a network device that connects multiple devices within the same local area network (LAN) and uses **MAC addresses** to forward data frames to the correct destination. Unlike a hub, which broadcasts data to all ports, a switch intelligently sends traffic only where it needs to go, improving network efficiency and security.
+
+---
+
+## Table of Contents
+1. [What is a Switch?](#what-is-a-switch)
+2. [Role of a Switch in a Network](#role-of-a-switch-in-a-network)
+3. [How Switches Work](#how-switches-work)
+   - [MAC Address Learning](#mac-address-learning)
+   - [Forwarding and Filtering](#forwarding-and-filtering)
+   - [Flooding and Broadcasts](#flooding-and-broadcasts)
+4. [Types of Switches](#types-of-switches)
+   - [Unmanaged Switches](#unmanaged-switches)
+   - [Managed Switches](#managed-switches)
+   - [Layer 2 vs Layer 3 Switches](#layer-2-vs-layer-3-switches)
+5. [Switching Process Explained](#switching-process-explained)
+6. [Switches vs Hubs](#switches-vs-hubs)
+7. [Switches and VLANs](#switches-and-vlans)
+8. [Importance of Switches](#importance-of-switches)
+9. [Further Reading](#further-reading)
 
 ---
 
 ## What is a Switch?
 
-A **network switch** is a device that connects multiple devices on the same network. Unlike a hub, which blindly forwards all traffic to every port, a switch intelligently sends data only to the device that needs it. This improves network efficiency and reduces unnecessary traffic.
+A network switch, also known as a switching hub, is a device that operates at **Layer 2** (the Data Link Layer) of the OSI model. Its primary function is to connect network segments and manage the flow of data traffic by using the **Media Access Control (MAC)** address to forward data to its intended recipient. 
+
+[Image of the OSI model]
+ This ensures that data is delivered efficiently, without causing network congestion.
 
 ---
 
-## MAC Address Table: The Switch's Memory
+## Role of a Switch in a Network
 
-Switches maintain a **MAC address table** (also called a forwarding table or CAM table) to know where to send data. Here's how it works:
+Switches are foundational components of modern wired networks. Their main role is to facilitate communication between devices on the same LAN. By creating a dedicated circuit between the source and destination devices for each data transmission, a switch prevents unnecessary traffic from being sent to all connected devices. This is crucial for:
 
-- **MAC Address:** Every network device has a unique identifier called a **MAC address**. It’s like a home address for devices on the network.  
-- **MAC Table Purpose:** The switch keeps track of which MAC addresses are connected to which ports. This allows the switch to forward frames only to the correct destination port.
-
----
-
-### How the MAC Table Starts
-
-When a switch is powered on, its MAC table is **empty**. It learns about devices dynamically as traffic passes through:
-
-1. A device sends a frame to another device on the network.  
-2. The switch looks at the **source MAC address** of the frame.  
-3. It records the source MAC address in the table and associates it with the port the frame came from.  
-4. If the destination MAC address is not in the table, the switch broadcasts the frame to all ports except the one it came from.  
-5. When the destination device responds, the switch learns its MAC address and port as well, updating the table.  
+* **Improving Performance:** Reduces collisions and frees up bandwidth.
+* **Enhancing Security:** Isolates traffic, making it harder for unauthorized devices to snoop on data.
+* **Enabling Scalability:** Allows for the easy addition of more devices to a network without a significant degradation in performance.
 
 ---
 
-### Switch Actions Summary
+## How Switches Work
 
-For each incoming frame:
+The intelligence of a switch comes from its ability to build and maintain a **MAC address table**, which maps a device's MAC address to the port it's connected to. This table is also known as a **Content-Addressable Memory (CAM)** table.
 
-1. **Learn:** Add the source MAC address to the MAC table (linked to the port it arrived on).  
-2. **Forward:** Check if the destination MAC is in the table:
-   - If yes, forward only to that port.  
-   - If no, broadcast to all ports except the source.  
-3. **Filter:** If the destination MAC is on the same port as the source, do nothing (prevents sending data back to the sender).  
+### MAC Address Learning
 
----
+When a device sends a frame, the switch examines the source **MAC address** and records it in its MAC address table along with the port number it was received on. This process is called **MAC address learning**.
 
-## Do Switches Have MAC and IP Addresses?
+### Forwarding and Filtering
 
-- **MAC Address:** Yes, most managed switches have their own MAC address for management purposes.  
-- **IP Address:** Managed switches can have an IP address, which is used to access the switch for configuration (via a web interface, SSH, or Telnet).  
-- **How They Get an IP:** The switch’s IP can be:
-  - **Static:** Set manually by an admin.  
-  - **Dynamic:** Obtained via DHCP from a network server.  
+Once the switch has learned the destination's MAC address and knows which port it's on, it can **forward** the frame directly to that specific port. If the destination MAC address is on the same port as the source, the switch **filters** the frame, preventing it from being forwarded unnecessarily.
 
-Unmanaged switches usually don’t have an IP address because they don’t need configuration access.
+### Flooding and Broadcasts
+
+If a switch receives a frame for which it doesn't have a destination MAC address in its table, it will **flood** the frame, sending it out of all ports except the one it came in on. This ensures that the frame reaches its intended recipient. Similarly, **broadcast frames** (frames sent to all devices) are always flooded to all ports.
 
 ---
 
-## What Happens if You Send Traffic to the Switch?
+## Types of Switches
 
-If a device sends traffic **directly to the switch's IP** (like pinging it):
+Switches come in various types, each designed for different network needs.
 
-- Only **managed switches** will respond (unmanaged switches ignore this).  
-- This is used for network monitoring, configuration, or troubleshooting.  
-- Traffic sent to the switch itself doesn’t go through the MAC forwarding table it’s handled by the switch’s management interface.
+### Unmanaged Switches
+
+These are basic, plug-and-play devices with no configuration options. They are ideal for small home or office networks that don't require complex network management.
+
+### Managed Switches
+
+Managed switches offer extensive configuration and control over the network. They allow network administrators to:
+
+* **Monitor traffic**
+* **Configure VLANs**
+* **Implement security features**
+* **Prioritize traffic (QoS)**
+
+They are essential for large, complex networks.
+
+### Layer 2 vs Layer 3 Switches
+
+* **Layer 2 Switches:** Operate at the data link layer and use MAC addresses to forward frames. They are the most common type of switch.
+* **Layer 3 Switches:** Combine the functions of a switch and a router. They can perform both Layer 2 switching based on MAC addresses and Layer 3 routing based on **IP addresses**. This allows them to route traffic between different VLANs or subnets, often with greater speed than a traditional router.
 
 ---
 
-## VLANs: Virtual LANs
+## Switching Process Explained
 
-Switches can segment a network into **VLANs (Virtual LANs)**:
+Let's illustrate the process with a simple example:
 
-- **Purpose:** VLANs divide a physical network into separate logical networks. Devices in one VLAN can’t communicate directly with devices in another VLAN unless a router or Layer 3 device connects them.  
-- **Benefit:** Improves security, limits broadcast traffic, and organizes the network efficiently.  
-- **MAC Table and VLANs:** Each VLAN has its own MAC address table. The switch keeps track of which devices belong to which VLANs.
+1.  A device (PC1) sends a data frame to another device (PC2). The frame's header contains the source MAC address of PC1 and the destination MAC address of PC2.
+2.  The frame arrives at the switch on port 1.
+3.  The switch checks its MAC address table.
+    * **Learning:** It learns that PC1's MAC address is on port 1 and adds this entry to its table.
+    * **Forwarding:** It looks for PC2's MAC address. If it finds it (e.g., on port 3), it forwards the frame only to port 3.
+    * **Flooding:** If it doesn't find PC2's MAC address, it floods the frame to all other ports. When PC2 responds, the switch will learn its MAC address and update its table.
 
 ---
 
-## Summary: How Switches Work
+## Switches vs Hubs
 
-Think of a switch as a **traffic director for a network**:
+The key difference between switches and hubs lies in their forwarding method.
 
-1. Learns where each device lives (MAC address table).  
-2. Forwards data efficiently to the correct port.  
-3. Uses VLANs to separate traffic logically.  
-4. Provides management via an IP if it’s a managed switch.  
+* **Hub:** A **dumb device** that operates at Layer 1 (Physical Layer). It simply broadcasts all incoming data to all connected ports. This creates a single collision domain, leading to network congestion and poor performance.
+* **Switch:** An **intelligent device** that operates at Layer 2. It learns MAC addresses and forwards data only to the correct destination port, creating a separate collision domain for each port. This drastically improves network efficiency and performance.
 
-Without switches, all devices would receive all network traffic, creating chaos. With MAC tables and VLANs, switches make networks scalable, organized, and secure.
+---
+
+## Switches and VLANs
+
+**Virtual LANs (VLANs)** are a method of creating logically separate networks within a single physical network. Switches play a critical role in implementing VLANs. A managed switch can be configured to assign specific ports to different VLANs. This means that devices on one VLAN cannot directly communicate with devices on another VLAN, even though they are connected to the same physical switch. This is used for:
+
+* **Security:** Isolating sensitive data.
+* **Performance:** Reducing broadcast traffic.
+* **Organization:** Grouping devices by department or function.
+
+---
+
+## Importance of Switches
+
+Switches are indispensable in modern networking because they:
+
+* **Optimize Network Performance:** Reduce collisions and improve bandwidth utilization.
+* **Enhance Network Security:** Isolate traffic and enable network segmentation.
+* **Increase Scalability:** Allow for the creation of large, efficient networks.
+* **Provide Advanced Functionality:** Managed switches offer features like QoS, port security, and VLAN support.
 
 ---
 
 ## Further Reading
 
-- [How Switches Work – Cisco](https://www.cisco.com/c/en/us/solutions/small-business/resource-center/networking/how-does-a-switch-work.html)  
-- [VLANs Explained – NetworkLessons](https://networklessons.com/switching/introduction-to-vlans/)  
-- [MAC Address Table – TechTarget](https://www.techtarget.com/searchnetworking/definition/MAC-address-table)
+- [Routers](routers.md)  
+- [Routing Tables](routing_table.md)  
+- [VLAN](vlan.md)  
+- [NAT](nat.md)  
+
+---
