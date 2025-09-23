@@ -1,6 +1,6 @@
 # Routing Tables
 
-A **routing table** is a data structure inside a router (or Layer 3 device) that stores information about possible routes a packet can take to reach its destination. Think of it as the router’s **map or GPS** — it tells the router where to forward packets based on their **destination IP addresses**.
+A **routing table** is a data structure inside a router (or Layer 3 device) that stores information about possible routes a packet can take to reach its destination. Think of it as the router’s **map or GPS**  it tells the router where to forward packets based on their **destination IP addresses**.
 
 ---
 
