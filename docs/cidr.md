@@ -1,70 +1,148 @@
-# CIDR Notation (Classless Inter-Domain Routing)
+# CIDR (Classless Inter-Domain Routing)
+
+**CIDR (Classless Inter-Domain Routing)** is a method for allocating and routing IP addresses more efficiently.  
+It replaces the old **classful addressing system**, which was too rigid and caused waste of IP address space.  
+
+CIDR introduces the **prefix length notation** (e.g., `/24`) to define how many bits belong to the network portion of an address.
+
+---
+
+## Table of Contents
+1. [What is CIDR?](#what-is-cidr)
+2. [Why Was CIDR Introduced?](#why-was-cidr-introduced)
+3. [CIDR Notation](#cidr-notation)
+4. [CIDR Prefix and Host Capacity](#cidr-prefix-and-host-capacity)
+5. [CIDR vs Classful Addressing](#cidr-vs-classful-addressing)
+6. [CIDR in Routing](#cidr-in-routing)
+7. [CIDR and Subnetting](#cidr-and-subnetting)
+8. [Examples of CIDR](#examples-of-cidr)
+9. [Advantages of CIDR](#advantages-of-cidr)
+10. [Further Reading](#further-reading)
+
+---
 
 ## What is CIDR?
-CIDR (Classless Inter-Domain Routing) is a method for allocating IP addresses and routing Internet Protocol packets. Introduced in 1993 to replace the old classful addressing system, CIDR allows for more efficient and flexible use of IP address space.
+
+CIDR allows networks to be defined with **any prefix length**, not just fixed class boundaries (Class A, B, C).  
+- Example: Instead of being forced to use a Class C (`255.255.255.0` or `/24`), you can use `/27` or `/29` depending on your needs.  
+
+This flexibility avoids wasting addresses and enables more efficient routing.
+
+---
 
 ## Why Was CIDR Introduced?
-The classful system led to inefficient address allocation and rapid exhaustion of available IP addresses. CIDR solves this by allowing variable-length subnet masking (VLSM), enabling networks to be divided into subnets of any size.
 
-## CIDR Notation Explained
-CIDR notation expresses an IP address and its associated routing prefix. It uses a format like:
+Before CIDR, IP addresses were divided into classes:
 
-    192.168.1.0/24
+- **Class A**: 16 million hosts (wasted for small networks).  
+- **Class B**: 65,534 hosts (still very large).  
+- **Class C**: 254 hosts (often too small).  
 
-- The IP address (192.168.1.0) identifies the network.
-- The slash (/) separates the address from the prefix length.
-- The prefix length (24) indicates how many bits are used for the network portion.
+This rigid system caused:  
+1. **IP address exhaustion** – huge blocks wasted.  
+2. **Routing table explosion** – too many entries in global routers.  
 
-## How CIDR Works
-CIDR allows network administrators to specify the exact number of bits for the network portion, rather than being limited to 8, 16, or 24 bits (as in classes A, B, C). This enables:
-- More granular subnetting
-- Efficient address allocation
-- Reduced routing table size
+CIDR solved both problems by:  
+- Allowing variable-length prefixes.  
+- Supporting **route aggregation** (summarizing multiple routes into one).  
 
-## CIDR Examples
-| CIDR Notation | Subnet Mask       | Number of Hosts | Network Range           |
-|--------------|-------------------|-----------------|------------------------|
-| 192.168.1.0/24 | 255.255.255.0     | 254             | 192.168.1.0 – 192.168.1.255 |
-| 10.0.0.0/8     | 255.0.0.0         | 16,777,214      | 10.0.0.0 – 10.255.255.255 |
-| 172.16.0.0/12  | 255.240.0.0       | 1,048,574       | 172.16.0.0 – 172.31.255.255 |
-| 192.168.1.0/30 | 255.255.255.252   | 2               | 192.168.1.0 – 192.168.1.3 |
+---
 
-## Calculating Subnets with CIDR
-To calculate the number of hosts:
-- Subtract the prefix length from 32 (for IPv4)
-- Calculate 2^(remaining bits) - 2 (for usable hosts)
+## CIDR Notation
 
-Example: /28 subnet
-- 32 - 28 = 4 bits for hosts
-- 2^4 = 16 addresses
-- 16 - 2 = 14 usable hosts
+CIDR uses **slash notation** to indicate the number of **network bits**.
 
-## CIDR and Routing
-CIDR enables route aggregation (supernetting), which reduces the size of routing tables and improves efficiency. Multiple networks can be represented by a single routing entry.
+Example:  
+- `192.168.1.0/24` → 24 bits network, 8 bits host.  
+- `192.168.1.0/26` → 26 bits network, 6 bits host.  
 
-## CIDR in IPv6
-CIDR is also used in IPv6, where the prefix length can range from /0 to /128. Example:
+---
 
-    2001:db8::/32
+## CIDR Prefix and Host Capacity
 
-## Benefits of CIDR
-- Efficient use of IP address space
-- Flexible subnetting
-- Simplified routing
-- Supports both IPv4 and IPv6
+| CIDR Prefix | Subnet Mask       | Network Bits | Host Bits | Usable Hosts |
+|-------------|-------------------|--------------|-----------|--------------|
+| /8          | 255.0.0.0         | 8            | 24        | 16,777,214   |
+| /16         | 255.255.0.0       | 16           | 16        | 65,534       |
+| /24         | 255.255.255.0     | 24           | 8         | 254          |
+| /26         | 255.255.255.192   | 26           | 6         | 62           |
+| /30         | 255.255.255.252   | 30           | 2         | 2            |
 
-## Common CIDR Prefixes
-| Prefix | Subnet Mask         | Hosts |
-|--------|---------------------|-------|
-| /8     | 255.0.0.0           | 16,777,214 |
-| /16    | 255.255.0.0         | 65,534 |
-| /24    | 255.255.255.0       | 254 |
-| /30    | 255.255.255.252     | 2 |
+*Formula:*  
+- Usable hosts = `(2^host bits) - 2`  
 
-## Real-Life Example
-A company needs 50 subnets with 10 hosts each. Using CIDR, they can create subnets with /28 prefixes, each supporting 14 hosts, rather than being limited to classful boundaries.
+---
+
+## CIDR vs Classful Addressing
+
+**Classful addressing**:  
+- Fixed blocks: Class A (/8), Class B (/16), Class C (/24).  
+- Wasteful: a small company could only get 65,000 addresses even if it needed 500.  
+
+**CIDR addressing**:  
+- Flexible prefix length (e.g., `/22`, `/28`).  
+- Networks sized according to need.  
+- Aggregation reduces routing complexity.  
+
+---
+
+## CIDR in Routing
+
+Routers use CIDR for **route summarization** (also called *supernetting*).  
+
+Example:  
+- Instead of listing:  
+  - `192.168.0.0/24`  
+  - `192.168.1.0/24`  
+  - `192.168.2.0/24`  
+  - `192.168.3.0/24`  
+
+We can aggregate them as:  
+- `192.168.0.0/22`  
+
+This shrinks routing tables, improving efficiency and speed.
+
+---
+
+## CIDR and Subnetting
+
+- **Subnetting** breaks a large block into smaller subnets.  
+- **CIDR** generalizes this by allowing any prefix length.  
+- CIDR is sometimes called **“supernetting”** when combining multiple networks.  
+
+So, subnetting and CIDR are two sides of the same coin:  
+- Subnetting = dividing networks.  
+- CIDR = combining or flexibly defining them.  
+
+---
+
+## Examples of CIDR
+
+1. **Small Office Network**  
+   - Need ~50 hosts.  
+   - `/26` gives 62 usable hosts → perfect.  
+
+2. **ISP Aggregation**  
+   - ISP owns `200.10.0.0 – 200.10.15.255`.  
+   - Instead of advertising 16 Class C routes, ISP announces:  
+     - `200.10.0.0/20`  
+
+---
+
+## Advantages of CIDR
+
+- Efficient use of IPv4 space.  
+- Delayed IPv4 exhaustion.  
+- Smaller routing tables.  
+- Flexibility: networks can be exactly as large as needed.  
+- Foundation for modern IP routing and internet backbone.  
+
+---
 
 ## Further Reading
-- [CIDR - GeeksforGeeks](https://www.geeksforgeeks.org/classless-inter-domain-routing-cidr/)
-- [CIDR Notation - Wikipedia](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-- [Subnet Calculator](https://www.subnet-calculator.com/)
+
+- [Subnet Mask](subnet_mask.md)  
+- [Subnetting](subnetting.md)  
+- [VLSM](vlsm.md)  
+- [IPv4](ipv4.md)  
+- [IPv6](ipv6.md)
