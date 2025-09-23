@@ -521,13 +521,13 @@ For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
 
 ### Where to go next (expanded content)
 
-- `docs/ipv4.md` — deep dive into IPv4, public vs private, NAT, special addresses.  
-- `docs/ipv6.md` — detailed IPv6 features, types, and allocation.  
-- `docs/subnet_mask.md` — binary masks, notation, and how masks separate network/host bits.  
-- `docs/subnetting.md` — full subnetting walkthroughs and exercises.  
-- `docs/vlsm.md` — variable length subnetting examples and best practices.  
-- `docs/cidr.md` — CIDR notation, aggregation, and routing implications.  
-- `docs/ipaddress_classificatin.md` — historical classful addressing overview.
+- [docs/ipv4.md](docs/ipv4.md) :: deep dive into IPv4, public vs private, NAT, special addresses.  
+- [docs/ipv6.md](docs/ipv6.md) :: detailed IPv6 features, types, and allocation.  
+- [docs/subnet_mask.md](docs/subnet_mask.md) :: binary masks, notation, and how masks separate network/host bits.  
+- [docs/subnetting.md](docs/subnetting.md) :: full subnetting walkthroughs and exercises.  
+- [docs/vlsm.md](docs/vlsm.md) :: variable length subnetting examples and best practices.  
+- [docs/cidr.md](docs/cidr.md) :: CIDR notation, aggregation, and routing implications.  
+- [docs/ipaddress_classificatin.md](docs/ipaddress_classificatin.md) :: historical classful addressing overview.
 
 
 This section is intended to give a solid conceptual basis so the expanded docs can be read with understanding. If you want, I can now (1) produce a small set of worked exercises to add to `docs/subnetting.md` for practice, or (2) prepare diagrams (ASCII or SVG suggestions) that visualize subnetting and CIDR aggregation to paste into the README. Which would you prefer next?
