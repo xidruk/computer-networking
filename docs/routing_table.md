@@ -1,157 +1,135 @@
-# The Routing Table Explained
+# Routing Tables
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [What is a Routing Table?](#what-is-a-routing-table)
-3. [Why the Routing Table is Important](#why-the-routing-table-is-important)
-4. [How a Routing Table Works](#how-a-routing-table-works)
-5. [Structure of a Routing Table](#structure-of-a-routing-table)
-6. [Types of Routes](#types-of-routes)
-    - [Directly Connected Routes](#directly-connected-routes)
-    - [Static Routes](#static-routes)
-    - [Dynamic Routes](#dynamic-routes)
-7. [Routing Protocols and Routing Tables](#routing-protocols-and-routing-tables)
-8. [Default Route and Longest Prefix Match](#default-route-and-longest-prefix-match)
-9. [Real-World Example of a Routing Table](#real-world-example-of-a-routing-table)
-10. [Advantages of Using Routing Tables](#advantages-of-using-routing-tables)
-11. [Limitations of Routing Tables](#limitations-of-routing-tables)
-12. [Routing Table vs NAT](#routing-table-vs-nat)
-13. [Conclusion](#conclusion)
-14. [References](#references)
+A **routing table** is a data structure inside a router (or Layer 3 device) that stores information about possible routes a packet can take to reach its destination. Think of it as the router’s **map or GPS** — it tells the router where to forward packets based on their **destination IP addresses**.
 
 ---
 
-## Introduction
-Every router in a network makes forwarding decisions based on one core component: the routing table. Without it, a router wouldn’t know where to send packets. In this guide, we’ll break down what a routing table is, how it works, and why it’s essential for network communication.
+## Table of Contents
+1. [What is a Routing Table?](#what-is-a-routing-table)
+2. [How Routing Tables Work](#how-routing-tables-work)
+3. [Structure of a Routing Table](#structure-of-a-routing-table)
+4. [Types of Routes](#types-of-routes)
+   - [Directly Connected Routes](#directly-connected-routes)
+   - [Static Routes](#static-routes)
+   - [Dynamic Routes](#dynamic-routes)
+   - [Default Routes](#default-routes)
+5. [Routing Decision Process](#routing-decision-process)
+6. [Examples of Routing Tables](#examples-of-routing-tables)
+7. [Why Routing Tables are Important](#why-routing-tables-are-important)
+8. [Further Reading](#further-reading)
 
 ---
 
 ## What is a Routing Table?
-A routing table is a data structure stored in a router (or host) that contains information about the paths available to reach different networks. It tells the router **“if a packet is destined for X network, send it via Y next-hop.”**
 
-Think of it like a **map**:  
-- Destination networks = destinations on the map.  
-- Next-hop = the “road” or direction to take.  
-- Metric = how good or short the path is.
+A routing table contains **entries (routes)** that tell the router:
+- Which network destinations exist.  
+- How to reach them (via which interface or next hop).  
+- What metrics or priorities apply to each route.  
 
----
-
-## Why the Routing Table is Important
-Without a routing table:
-- A router cannot decide where to forward packets.  
-- Data would get stuck or lost.  
-- The entire concept of internetworking would fail.  
-
-Routing tables are therefore the **foundation of IP communication** across multiple networks.
+Without a routing table, a router would not know where to send packets beyond its directly connected networks.
 
 ---
 
-## How a Routing Table Works
-When a router receives a packet:
-1. It looks at the **destination IP address** in the packet.  
-2. It searches the routing table for the **best match** for that address.  
-3. It forwards the packet to the **next-hop IP** or interface specified.  
+## How Routing Tables Work
 
-If no match is found, the router checks if a **default route** exists. If not, the packet is dropped.
+1. A packet arrives at the router.  
+2. The router checks the **destination IP address**.  
+3. The router looks for the **best matching entry** in its routing table.  
+4. The router forwards the packet to the corresponding **next hop** (another router) or **outgoing interface**.  
+5. If no match is found, the packet is dropped (unless a **default route** exists).  
 
 ---
 
 ## Structure of a Routing Table
-A typical routing table entry includes:
 
-| Field             | Description |
-|-------------------|-------------|
-| **Destination**   | The network address of the destination (e.g., 192.168.1.0/24). |
-| **Subnet Mask**   | Defines the network portion of the IP. |
-| **Next-Hop**      | The IP address of the next router to reach the destination. |
-| **Interface**     | The outgoing interface (e.g., GigabitEthernet0/1). |
-| **Metric**        | Cost of the route (lower = better). |
-| **Route Source**  | How the route was learned (connected, static, dynamic). |
+Typical fields in a routing table entry:
+
+| Field            | Description |
+|------------------|-------------|
+| **Destination**  | Network or host address (e.g., 192.168.1.0/24). |
+| **Subnet Mask / Prefix Length** | Defines the size of the destination network. |
+| **Next Hop**     | IP address of the next router along the path. |
+| **Interface**    | Outgoing router interface (e.g., GigabitEthernet0/1). |
+| **Metric**       | Cost/priority of the route (lower is better). |
+| **Route Source** | Where the route came from (connected, static, OSPF, BGP, etc.). |
 
 ---
 
 ## Types of Routes
 
 ### Directly Connected Routes
-- Added automatically when a router interface is configured with an IP.  
-- Example: If an interface is assigned 192.168.1.1/24, the router knows it can reach 192.168.1.0/24 directly.
+- Created automatically when you configure an interface with an IP address.  
+- Example: if a router’s interface is 192.168.1.1/24, then `192.168.1.0/24` will appear in the table.  
 
 ### Static Routes
-- Manually configured by an administrator.  
-- Example: `ip route 10.0.0.0 255.255.255.0 192.168.1.2`  
-- Useful for small or predictable networks.
+- Manually added by administrators.  
+- Example:  
+  ```
+  ip route 10.0.0.0 255.255.255.0 192.168.1.2
+  ```
+  This means “to reach 10.0.0.0/24, send packets to 192.168.1.2.”  
 
 ### Dynamic Routes
-- Learned automatically via **routing protocols** (e.g., OSPF, EIGRP, BGP).  
-- Adapt automatically to changes in the network.  
+- Learned automatically from **routing protocols** like RIP, OSPF, EIGRP, or BGP.  
+- Adapt to changes in the network.  
+
+### Default Routes
+- A special route used when no other route matches.  
+- Often points to the ISP gateway.  
+- Example:  
+  ```
+  ip route 0.0.0.0 0.0.0.0 192.168.1.1
+  ```
 
 ---
 
-## Routing Protocols and Routing Tables
-Routing protocols exchange information between routers and populate the routing table.  
-Examples:
-- **RIP**: Uses hop count.  
-- **OSPF**: Uses link-state advertisements.  
-- **EIGRP**: Uses a composite metric.  
-- **BGP**: Used for inter-domain routing (the internet).  
+## Routing Decision Process
+
+When multiple routes exist, the router uses:
+1. **Longest Prefix Match (LPM):** The most specific subnet wins.  
+   - Example: If both `10.0.0.0/8` and `10.1.2.0/24` exist, a packet for `10.1.2.5` uses the `/24` route.  
+2. **Administrative Distance (AD):** Trustworthiness of the route source.  
+   - Directly connected (AD = 0) is more trusted than static (1), which is more trusted than dynamic protocols.  
+3. **Metric:** Used if multiple routes from the same source exist. Lower metric = better path.  
 
 ---
 
-## Default Route and Longest Prefix Match
-- **Default Route (0.0.0.0/0):** A “catch-all” entry for any destination not explicitly listed. Often points to the ISP.  
-- **Longest Prefix Match:** If multiple entries could match, the router chooses the most specific (longest subnet mask).  
-  - Example: A packet to 192.168.1.45 matches both `192.168.0.0/16` and `192.168.1.0/24`. The router chooses `192.168.1.0/24`.
+## Examples of Routing Tables
+
+### Cisco IOS Example:
+```
+Router> show ip route
+C    192.168.1.0/24 is directly connected, FastEthernet0/0
+S    10.0.0.0/24 [1/0] via 192.168.1.2
+D    172.16.0.0/16 [90/2102400] via 192.168.1.3, 00:00:23, FastEthernet0/1
+```
+
+### Linux Example:
+```
+$ route -n
+Destination   Gateway      Genmask        Iface
+192.168.1.0   0.0.0.0      255.255.255.0  eth0
+10.0.0.0      192.168.1.2  255.255.255.0  eth0
+0.0.0.0       192.168.1.1  0.0.0.0        eth0
+```
 
 ---
 
-## Real-World Example of a Routing Table
-Example from a Cisco router:
-Gateway of last resort is 192.168.1.1 to network 0.0.0.0
- 10.0.0.0/24 is directly connected, FastEthernet0/0
- 172.16.0.0/16 [120/1] via 192.168.1.2, 00:00:12, FastEthernet0/1
- 192.168.1.0/24 is directly connected, FastEthernet0/1
- 0.0.0.0/0 via 192.168.1.1
-- The router knows about directly connected networks, a static or dynamic route, and a default route.
+## Why Routing Tables are Important
+
+- They ensure data is delivered to the right destination.  
+- Misconfigured routes can cause **network outages**.  
+- Key to troubleshooting connectivity issues.  
+- Provide insight into **how packets travel** across a network.  
 
 ---
 
-## Advantages of Using Routing Tables
-1. Provides a clear and structured way to forward packets.  
-2. Allows scalability in large networks.  
-3. Supports dynamic adaptation with routing protocols.  
+## Further Reading
+
+- [Routers](routers.md)  
+- [Switches](switches.md)  
+- [VLAN](vlan.md)  
+- [NAT](nat.md)  
 
 ---
-
-## Limitations of Routing Tables
-1. Must be updated when networks change.  
-2. Large routing tables (like on the internet backbone) can consume memory and processing.  
-3. Errors in static routes can cause unreachable networks.  
-
----
-
-## Routing Table vs NAT
-It’s common to confuse routing tables with NAT since both deal with packet forwarding. Here’s a comparison:
-
-| Aspect              | Routing Table | NAT |
-|---------------------|--------------|-----|
-| **Purpose**         | Determines the best path to forward packets. | Translates private IPs into public IPs (and vice versa). |
-| **Focus**           | *Where* the packet goes. | *How* the packet’s address is represented. |
-| **Location**        | Present in every router and host. | Usually implemented on routers/firewalls at network edges. |
-| **Main Function**   | Provides next-hop and interface for packet delivery. | Modifies IP header to allow private devices to access external networks. |
-| **Example**         | Route: `192.168.1.0/24 via 10.0.0.1` | Translate: `192.168.1.10 → 203.0.113.5` |
-
-👉 **In short**:  
-- **Routing Table = forwarding decision (pathfinding).**  
-- **NAT = address translation (identity).**
-
----
-
-## Conclusion
-Routing tables are at the heart of packet forwarding in computer networks. They define the “roads” that data travels. NAT, while often used alongside routing, serves a completely different purpose: translating addresses. Together, they enable communication across private and public networks.
-
----
-
-## References
-1. [RFC 1812 – Requirements for IP Routers](https://www.rfc-editor.org/rfc/rfc1812)  
-2. [Cisco – IP Routing Basics](https://www.cisco.com/c/en/us/td/docs/internetworking/technology/handbook/IPRouting.html)  
-3. [Juniper – Routing Table Fundamentals](https://www.juniper.net/documentation/en_US/junos/topics/concept/routing-table-overview.html)  
