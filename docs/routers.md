@@ -1,121 +1,154 @@
-# How Routers Work in a Network
+# Routers
 
-Routers are one of the most important devices in networking. If switches keep communication organized inside a **local network (LAN)**, routers make it possible to connect **different networks together** and ultimately link us to the internet.
+A **router** is a network device that connects multiple networks together and directs data packets between them. Unlike switches (which operate within a single local network), routers operate at **Layer 3 (Network Layer)** of the OSI model, using **IP addresses** to make forwarding decisions.  
+
+Routers are critical for communication between devices on **different subnets** or across the **internet**.
+
+---
+
+## Table of Contents
+1. [What is a Router?](#what-is-a-router)
+2. [Router Functions](#router-functions)
+3. [Router vs Switch](#router-vs-switch)
+4. [How Routers Work](#how-routers-work)
+5. [Types of Routers](#types-of-routers)
+6. [Routing Methods](#routing-methods)
+   - [Static Routing](#static-routing)
+   - [Dynamic Routing](#dynamic-routing)
+   - [Default Routing](#default-routing)
+7. [Routers in Home vs Enterprise Networks](#routers-in-home-vs-enterprise-networks)
+8. [Routers and NAT](#routers-and-nat)
+9. [Common Router Protocols](#common-router-protocols)
+10. [Further Reading](#further-reading)
 
 ---
 
 ## What is a Router?
 
-A **router** is a device that directs data between networks. While a switch forwards traffic based on **MAC addresses**, a router makes decisions based on **IP addresses**.
+- A router connects **two or more networks** (e.g., your home network and your ISP’s network).  
+- It examines packet headers and decides the **next hop** on the way to the destination.  
+- Each interface of a router belongs to a different network and has its **own IP address**.  
 
-Think of a router as a **border checkpoint**:
-- A switch controls movement *inside* a city (LAN).  
-- A router connects different cities (networks) together, deciding the best road for traffic to take.  
-
----
-
-## Why Do We Need Routers?
-
-- **Network-to-Network Communication:** Without routers, one LAN cannot talk to another.  
-- **Internet Access:** Routers link private networks to the global internet.  
-- **Efficient Path Selection:** Routers choose the best route for packets to travel.  
-- **Traffic Management:** Routers can prioritize, block, or reroute traffic.  
+Think of a router like a **traffic controller**: it decides which road (network path) a car (packet) should take to reach its destination.
 
 ---
 
-## How Do Routers Work?
+## Router Functions
 
-Routers forward **packets** (not frames) based on their **destination IP address**. The process looks like this:
-
-1. A device sends a packet destined for another network.  
-2. The packet arrives at the router.  
-3. The router checks the **destination IP address**.  
-4. The router looks up the best match in its **routing table**.  
-5. The packet is forwarded to the correct **next hop** (another router or the final destination).  
+1. **Path selection**: Choosing the best route for packets to travel.  
+2. **Forwarding**: Moving packets from one interface to the next hop toward their destination.  
+3. **Segmentation**: Separating different broadcast domains and networks.  
+4. **Security**: Many routers provide filtering, firewalls, and VPN support.  
+5. **Address translation**: Home/enterprise routers often perform **NAT** (Network Address Translation).  
 
 ---
 
-## The Routing Table
+## Router vs Switch
 
-The **routing table** is the router’s map of networks. It contains:
-
-- **Directly connected networks:** Networks linked to the router’s own interfaces.  
-- **Static routes:** Manually configured paths.  
-- **Dynamic routes:** Learned automatically from routing protocols (like OSPF, EIGRP, BGP).  
-- **Default route (0.0.0.0/0):** Used when no specific route is found — often points to the ISP.  
-
-Example (simplified):
-
-| Destination Network | Next Hop / Interface |
-|---------------------|----------------------|
-| 192.168.1.0/24      | Local interface (LAN) |
-| 10.0.0.0/8          | Router B             |
-| 0.0.0.0/0           | ISP gateway          |
+| Feature            | Router (Layer 3)                          | Switch (Layer 2)                      |
+|--------------------|--------------------------------------------|----------------------------------------|
+| Uses               | IP addresses                              | MAC addresses                          |
+| Scope              | Connects multiple networks (WAN/LAN)      | Connects devices in the same LAN       |
+| Broadcast domains  | Separates broadcast domains               | Extends one broadcast domain           |
+| Function           | Packet forwarding (network-to-network)    | Frame switching (device-to-device)     |
+| Example            | Connects home LAN to the Internet         | Connects PCs, printers, servers in LAN |
 
 ---
 
-## MAC and IP Addresses on Routers
+## How Routers Work
 
-- Each **router interface** has:  
-  - A **MAC address** (used inside the local network).  
-  - An **IP address** (used for identifying the interface at Layer 3).  
+1. **Packet arrives at router interface**  
+   - Router inspects the **destination IP address**.  
+2. **Check routing table**  
+   - Router consults its **routing table** to find the best match for the destination.  
+3. **Forward to next hop**  
+   - Router sends packet out the correct interface toward the next hop or final destination.  
 
-For example, a home router may have:
-- **LAN side (Ethernet):** IP = `192.168.1.1`, MAC = `00:1A:2B:3C:4D:5E`  
-- **WAN side (ISP):** IP = `100.25.x.x`, MAC = another unique address  
-
----
-
-## How Routers Get Their IP Address
-
-- **LAN Side:** Usually configured manually (static), like `192.168.1.1`.  
-- **WAN Side:** Typically assigned dynamically by the ISP using **DHCP**.  
+If no route exists, the packet is dropped (and often an ICMP "destination unreachable" is sent back).
 
 ---
 
-## NAT (Network Address Translation)
+## Types of Routers
 
-Most home and office routers use **NAT**:
-- Translates private IP addresses (like `192.168.x.x`) into the public IP provided by the ISP.  
-- Allows multiple devices to share a single public IP address.  
-- Adds security by hiding internal addresses.  
-
----
-
-## Home Routers vs Enterprise Routers
-
-- **Home Routers:**  
-  - Usually combine router + switch + wireless access point in one device.  
-  - Easy to configure via a web interface.  
-  - Use NAT by default to share the internet.  
-
-- **Enterprise Routers:**  
-  - More powerful, dedicated to large networks.  
-  - Support advanced routing protocols (OSPF, BGP, EIGRP).  
-  - Can handle thousands of routes and higher speeds.  
+- **Core Routers**: High-capacity routers forming the backbone of the Internet.  
+- **Edge Routers**: Connect enterprise or ISP networks to external networks.  
+- **Wireless Routers**: Home/office routers combining routing + Wi-Fi access point.  
+- **Virtual Routers**: Software-based routers (e.g., in cloud networking).  
 
 ---
 
-## What Happens if You Send Traffic to a Router?
+## Routing Methods
 
-- If you send traffic *through* a router, it forwards it based on its routing table.  
-- If you send traffic *to* a router’s IP (like pinging `192.168.1.1`), the router itself processes it.  
-- Routers can respond to pings, host management services (SSH, Telnet, WebUI), and run routing protocols.  
+Routers can determine paths in **three ways**:
+
+### Static Routing
+- Routes are **manually configured** by an administrator.  
+- Simple, predictable, but does not adapt to network changes.  
+- Useful for small or stable networks.  
+
+**Example (Cisco CLI):**  
+```text
+ip route 192.168.2.0 255.255.255.0 192.168.1.2
+```
 
 ---
 
-## In Summary
+### Dynamic Routing
+- Routers use **routing protocols** to exchange route information automatically.  
+- Adapts to topology changes and link failures.  
+- Examples: RIP, OSPF, EIGRP, BGP.  
 
-Routers are the **network connectors**:
-- Switches keep communication inside a LAN fast and efficient.  
-- Routers connect multiple networks together.  
-- Routers use **IP addresses** and routing tables to make forwarding decisions.  
-- NAT allows private devices to share a single public IP.  
-- Without routers, there would be no way for our home or office networks to reach the internet.  
+Dynamic routing requires more resources but is essential for large, complex networks.
+
+---
+
+### Default Routing
+- A **catch-all route** used when no specific path is found in the routing table.  
+- Typically used in **small networks** or **edge routers** to forward all unknown traffic to a single next hop (like your ISP’s gateway).  
+- Prevents the router from needing a full set of routes for every possible destination.  
+
+**Example (Cisco CLI):**  
+```text
+ip route 0.0.0.0 0.0.0.0 192.168.1.1
+```
+
+This means: “Send all traffic for unknown destinations to 192.168.1.1.”
+
+---
+
+## Routers in Home vs Enterprise Networks
+
+- **Home router**: Typically combines router, switch, wireless access point, firewall, and DHCP server in one device. Provides NAT to share a single ISP-provided IP address across many devices.  
+- **Enterprise router**: Dedicated, powerful devices focused on performance, redundancy, and support for multiple routing protocols. Often used with firewalls, load balancers, and dedicated switches.  
+
+---
+
+## Routers and NAT
+
+In IPv4, routers often perform **Network Address Translation (NAT)**:  
+- Maps private IP addresses (inside a LAN) to a public IP address (for the Internet).  
+- Conserves IPv4 address space.  
+- Hides internal network structure for security.  
+
+For a full explanation of NAT, see: [NAT](nat.md).
+
+---
+
+## Common Router Protocols
+
+- **RIP (Routing Information Protocol)** → simple distance-vector, suitable for small networks.  
+- **OSPF (Open Shortest Path First)** → link-state, used in medium/large enterprise networks.  
+- **EIGRP (Enhanced Interior Gateway Routing Protocol)** → Cisco proprietary hybrid protocol.  
+- **BGP (Border Gateway Protocol)** → protocol of the Internet; used between ISPs.  
 
 ---
 
 ## Further Reading
-- [How Routers Work – Cisco](https://www.cisco.com/c/en/us/products/routers/what-is-a-router.html)  
-- [Routing Basics – Juniper](https://www.juniper.net/documentation/en_US/release-independent/nce/topics/concept/routing-basics.html)  
-- [Difference Between Switch and Router – GeeksforGeeks](https://www.geeksforgeeks.org/difference-between-switch-and-router/)  
+
+- [Routing Tables](routing_table.md)  
+- [Switches](switches.md)  
+- [VLAN](vlan.md)  
+- [NAT](nat.md)  
+- [OSI Model](osi_model.md)  
+
+---
