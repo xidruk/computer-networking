@@ -26,7 +26,7 @@ This repository covers the basics of computer networking. It is designed to intr
    - [TCP/IP Model](#tcpip-model)
    - [Transport Protocols: TCP & UDP](#transport-protocols-tcp--udp)
    - [Application Protocols: DNS, CDNS, DHCP](#application-protocols-dns-cdns-dhcp)
-7. **IP Addressing and Subnetting**
+7. [IP Addressing and Subnetting](#7-ip-addressing-and-subnetting)
    - [IPv4](#ipv4)
    - [IPv6](#ipv6)
    - [Subnetting](#subnetting)
@@ -363,3 +363,171 @@ By combining **networking models** (which provide structure) with **protocols** 
 - **Application protocols (DNS, CDNS, DHCP)** make networking usable and manageable for humans.  
 
 Understanding this section gives you the roadmap for everything else in networking.
+
+---
+
+## 7. IP Addressing and Subnetting
+
+This section explains how devices are **identified** on a network and how networks are **divided and managed**. If you followed earlier sections (devices, NIC/MAC, networking models and protocols), this is where the logical addressing layer becomes practical: you will learn how addresses are formed, how they are assigned, and how to split address space into usable subnets.
+
+
+### IPv4
+
+**What it is**  
+IPv4 (Internet Protocol version 4) is a 32-bit addressing system. An IPv4 address is usually shown in dotted-decimal form, for example `192.168.1.10`. IPv4 provides logical addresses used for routing packets between networks.
+
+**Structure**  
+- 32 bits long, typically written as four decimal octets (`a.b.c.d`).  
+- Each address contains a **network** portion and a **host** portion (determined by the subnet mask).
+
+**Public vs Private addresses (and why it matters)**  
+- **Public addresses** are globally routable on the Internet and must be unique across the entire Internet. ISPs assign public addresses.  
+- **Private addresses** are reserved ranges used inside local networks (not routable on the Internet). They let many organizations reuse the same private ranges while conserving public IPv4 space.
+
+Common IPv4 private ranges:
+- `10.0.0.0/8` (10.0.0.0 – 10.255.255.255)  
+- `172.16.0.0/12` (172.16.0.0 – 172.31.255.255)  
+- `192.168.0.0/16` (192.168.0.0 – 192.168.255.255)
+
+Because IPv4 address space is limited, networks commonly use **NAT (Network Address Translation)** to let many private hosts share a single public IP for Internet access. NAT is a workaround for IPv4 scarcity and is part of why IPv4 networking has extra operational complexity.
+
+**Special IPv4 notes**  
+- Loopback: `127.0.0.0/8` (e.g., `127.0.0.1`)  
+- APIPA (fallback): `169.254.0.0/16`
+
+For a deeper dive into IPv4, examples, and the historical reasons behind private/public addressing and NAT, see: `docs/ipv4.md`.
+
+
+### IPv6
+
+**What it is**  
+IPv6 (Internet Protocol version 6) uses 128-bit addresses and was designed primarily to solve IPv4 address exhaustion and simplify certain aspects of addressing and routing.
+
+**Key differences from IPv4**
+- Much larger address space: 128 bits (practically unlimited for normal use).  
+- Notation: hexadecimal, colon-separated (e.g., `2001:0db8:85a3::8a2e:0370:7334`).  
+- Native support for address types such as **link-local** and **unique local** (ULAs).  
+- Stateless Address Autoconfiguration (SLAAC) allows devices to self-configure addresses in many networks; DHCPv6 is also available for centralized management.
+- Because IPv6 has a huge address space, the **private vs public** dichotomy is different: IPv6 uses link-local (`fe80::/10`) and unique local (`fc00::/7`) addresses for local scopes, but the IPv6 design removes the shortage that made NAT necessary for IPv4. NAT is therefore not required for address conservation with IPv6 (though operators may still use other forms of translation for policy).
+
+For full details on IPv6 addressing, allocation methods (SLAAC vs DHCPv6), and address types, see: `docs/ipv6.md` and `docs/dhcpv6.md`.
+
+
+### Subnetting
+
+**What subnetting is**  
+Subnetting is the process of breaking a larger network block into smaller subnetworks (subnets) by changing the subnet mask (i.e., changing how many bits are used for the network versus hosts).
+
+**Why subnet?**
+- To **limit broadcast domains** and reduce congestion.  
+- To **segregate and secure** parts of a network (departmental separation).  
+- To **use address space efficiently** (avoid wasting IPs).
+
+**How the process works (step by step)**  
+1. Start with the IP block and its prefix (for example, `192.168.1.0/24`).  
+2. Decide how many subnets you need, or how many hosts each subnet must support.  
+3. Borrow bits from the host portion to create additional network bits; each borrowed bit doubles the number of subnets and halves hosts per subnet.  
+4. Calculate network address, first usable host, last usable host, and broadcast address for each subnet.
+
+**Worked example (simple)**  
+- Given `192.168.1.0/24` and a need for 4 subnets: borrow 2 bits → new prefix `/26` (mask `255.255.255.192`).  
+- Each `/26` subnet has 64 addresses, 62 usable hosts. Subnets are:
+  - `192.168.1.0/26` (hosts `.1`–`.62`, broadcast `.63`)  
+  - `192.168.1.64/26` (hosts `.65`–`.126`, broadcast `.127`)  
+  - `192.168.1.128/26` (hosts `.129`–`.190`, broadcast `.191`)  
+  - `192.168.1.192/26` (hosts `.193`–`.254`, broadcast `.255`)
+
+For full explanation, binary walkthroughs, and practice examples, see: `docs/subnetting.md` and `docs/subnet_mask.md`.
+
+
+### VLSM (Variable Length Subnet Masking)
+
+**What VLSM is**  
+VLSM allows you to use **different subnet sizes** within the same original network block. Instead of forcing all subnets to be the same size, you can assign `/24` for one segment, `/26` for another, `/28` for small links, etc.
+
+**Why VLSM is useful**  
+- It prevents waste by matching subnet sizes to real needs (e.g., a point-to-point link needs 2 addresses, a server farm needs hundreds).  
+- It supports hierarchical and efficient IP planning in enterprises and service provider networks.
+
+**How to apply VLSM**  
+1. List required subnet sizes (by host count).  
+2. Sort from largest to smallest.  
+3. Allocate the largest subnet first, then fit smaller subnets into the remaining space without overlap.
+
+For step-by-step examples and design tips, see: `docs/vlsm.md`.
+
+
+### CIDR (Classless Inter-Domain Routing)
+
+**What CIDR is**  
+CIDR replaces the old classful system and allows networks to be specified with arbitrary prefix lengths (e.g., `/22`, `/27`) instead of fixed Class A/B/C boundaries.
+
+**Why CIDR matters**  
+- It reduces IP address waste by letting networks be the exact size needed.  
+- It enables route aggregation (summarization), which dramatically reduces the size of global routing tables.
+
+**Practical note**  
+- CIDR notation is: `network/prefix` (for example `203.0.113.0/24`).  
+- In routing, CIDR enables combining many contiguous networks into one advertisement (e.g., four `/24`s into a single `/22`).
+
+For concepts, routing examples, and aggregation illustrations, see: `docs/cidr.md`.
+
+
+### IP Address Classification (classful vs modern usage)
+
+**Classful overview (legacy)**  
+Historically, IPv4 addresses were split into classes:
+- Class A: `/8` (large networks)  
+- Class B: `/16`  
+- Class C: `/24`  
+This approach proved inefficient and led to address waste.
+
+**Modern approach**  
+Today, we use **CIDR** instead of classful addressing. Classful knowledge is useful for historical context and some legacy systems, but all modern IP planning should assume classless addressing.
+
+For the historical classes and why they were replaced, see: `docs/ipaddress_classificatin.md`.
+
+
+### Quick reference: common prefixes and usable hosts
+
+| Prefix | Host bits | Total addresses | Usable hosts (typical) |
+|--------|-----------|-----------------|------------------------|
+| /8     | 24        | 16,777,216      | 16,777,214            |
+| /16    | 16        | 65,536          | 65,534                |
+| /24    | 8         | 256             | 254                   |
+| /25    | 7         | 128             | 126                   |
+| /26    | 6         | 64              | 62                    |
+| /27    | 5         | 32              | 30                    |
+| /28    | 4         | 16              | 14                    |
+| /30    | 2         | 4               | 2                     |
+| /32    | 0         | 1               | 1 (single host)       |
+
+*(Usable hosts = `2^(host bits) − 2` in normal subnetting; note some modern usages treat `/31` specially for point-to-point links.)*
+
+
+### IPv4 vs IPv6 (short comparison)
+
+| Aspect            | IPv4                     | IPv6                              |
+|-------------------|--------------------------|------------------------------------|
+| Address length    | 32 bits                  | 128 bits                           |
+| Notation          | Dotted decimal (`a.b.c.d`)| Hex colon (`2001:db8::1`)         |
+| Address space      | ~4.3 billion addresses  | Vast (2^128)                       |
+| NAT necessity     | Common (due to scarcity) | Not required for address scarcity  |
+| Common allocation | Static / DHCP            | SLAAC / DHCPv6 / static            |
+| Typical scope types| Public / Private ranges | Global unicast, link-local, ULA    |
+
+For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
+
+
+### Where to go next (expanded content)
+
+- `docs/ipv4.md` — deep dive into IPv4, public vs private, NAT, special addresses.  
+- `docs/ipv6.md` — detailed IPv6 features, types, and allocation.  
+- `docs/subnet_mask.md` — binary masks, notation, and how masks separate network/host bits.  
+- `docs/subnetting.md` — full subnetting walkthroughs and exercises.  
+- `docs/vlsm.md` — variable length subnetting examples and best practices.  
+- `docs/cidr.md` — CIDR notation, aggregation, and routing implications.  
+- `docs/ipaddress_classificatin.md` — historical classful addressing overview.
+
+
+This section is intended to give a solid conceptual basis so the expanded docs can be read with understanding. If you want, I can now (1) produce a small set of worked exercises to add to `docs/subnetting.md` for practice, or (2) prepare diagrams (ASCII or SVG suggestions) that visualize subnetting and CIDR aggregation to paste into the README. Which would you prefer next?
