@@ -27,9 +27,6 @@ A **switch** is a network device that connects multiple devices within the same 
 
 A network switch, also known as a switching hub, is a device that operates at **Layer 2** (the Data Link Layer) of the OSI model. Its primary function is to connect network segments and manage the flow of data traffic by using the **Media Access Control (MAC)** address to forward data to its intended recipient. 
 
-[Image of the OSI model]
- This ensures that data is delivered efficiently, without causing network congestion.
-
 ---
 
 ## Role of a Switch in a Network
