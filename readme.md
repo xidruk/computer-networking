@@ -38,9 +38,14 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Routing Tables](#routing-tables--the-routers-map)
    - [Switches](#switches--how-frames-move-inside-a-lan)
    - [VLAN](#vlans--logical-segmentation-inside-switches)
-9. **Network Services** 
-   - NAT, Gateways, QoS, Load Balancing
-   - VPN, Cloud Networking, Wireless Networking
+9. [Network Services](#9-network-services)
+   - [NAT (Network Address Translation)](#nat--network-address-translation)
+   - [Gateways](#gateways)
+   - [QoS (Quality of Service)](#qos--quality-of-service)
+   - [Load Balancing](#load-balancing)
+   - [VPN (Virtual Private Network)](#vpn--virtual-private-network)
+   - [Cloud Networking](#cloud-networking)
+   - [Wireless Networking](#wireless-networking)
 10. **Network Security**
     - Firewall, Network Security Basics
 11. **Network Data Units**`
@@ -690,5 +695,207 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 - [docs/routing_table.md](docs/routing_table.md) :: route lookup, longest-prefix-match, examples.  
 - [docs/switches.md](docs/switches.md) :: MAC learning, flooding, switch types, security.  
 - [docs/vlan.md](docs/vlan.md) :: VLAN concepts, trunking (802.1Q), inter-VLAN routing.
+
+---
+
+## 9. Network Services
+
+Network services are the extra features that make networks usable, reliable, and secure for real applications. They sit on top of the basic forwarding behavior of switches and routers and provide functionality such as address translation, traffic prioritization, remote secure access, scalable application delivery, cloud connectivity, and wireless access. This section briefly explains **why** these services matter and then walks you through each service in beginner-friendly, step-by-step language. For deep, hands-on explanations and examples see the linked docs at the end of each subsection.
+
+---
+
+### Why this section matters
+Basic connectivity (a NIC, an IP, a switch, a router) gets devices to talk. Network services make sure:
+- traffic gets where it needs to go even when addresses aren’t unique (NAT),  
+- time-sensitive traffic (voice/video) gets priority (QoS),  
+- many users can share a service without overload (load balancing),  
+- remote offices and users can connect securely (VPN),  
+- infrastructure can scale and be managed in the cloud (cloud networking), and  
+- mobile/wireless devices can join the network reliably (wireless networking).  
+
+If you’re building or troubleshooting networks, these services are the tools you’ll use every day.
+
+---
+
+### NAT :: (Network Address Translation)
+
+**What NAT does (simple):**  
+NAT rewrites IP addresses and sometimes ports on packets as they pass through a device. Its most common use: let many private hosts share a single public IPv4 address for Internet access.
+
+**Common NAT types**
+- **Static NAT** (one-to-one): maps one private IP to one public IP.  
+- **Dynamic NAT** (pool): maps private addresses to a pool of public addresses.  
+- **PAT / Overloaded NAT (Port Address Translation)**: many private IPs share a single public IP using unique source ports (most common in home/office routers).  
+- **DNAT / SNAT**: Destination or Source NAT terminology used in firewall/iptables contexts.
+
+**How it works (step-by-step, outbound example)**
+1. Host `192.168.1.10:12345` wants to reach `8.8.8.8:53`.  
+2. Router with public IP `203.0.113.5` rewrites the packet’s source to `203.0.113.5:50001` and records the translation in a table.  
+3. The remote server replies to `203.0.113.5:50001`.  
+4. Router looks up the translation entry and forwards the packet back to `192.168.1.10:12345`.
+
+**Tradeoffs / gotchas**
+- NAT breaks end-to-end addressing  some protocols need special handling (ALGs).  
+- Makes peer-to-peer inbound connections more complex (requires port forwarding).  
+- IPv6 largely removes the need for NAT because of abundant address space.
+
+For full details and examples, see: `docs/nat.md`.
+
+---
+
+### Gateways
+
+**What is a gateway?**  
+A gateway is a node that serves as an entry/exit point for a network. In common usage, the **default gateway** on a host is the router that forwards traffic destined for other networks.
+
+**Common gateway roles**
+- **Default (IP) gateway:** where hosts send non-local packets.  
+- **Application gateway / proxy:** a proxy that forwards and inspects application traffic (HTTP proxy, SMTP proxy).  
+- **Cloud/Internet gateway:** cloud-specific gateway objects (Internet Gateway, NAT Gateway) that allow VPC resources to reach or be reached from the Internet.
+
+**Example (host viewpoint)**
+1. Host wants to reach an external IP.  
+2. Host checks local routing  destination is remote → forwards frame to default gateway MAC.  
+3. Gateway forwards the packet onward (router behavior).
+
+For deeper reading about gateway types and cloud gateway concepts, see: `docs/gateway.md`.
+
+---
+
+### QoS :: (Quality of Service)
+
+**Why QoS exists:**  
+Networks have finite bandwidth. QoS lets you prioritize important traffic (voice, video, interactive apps) and control less-critical traffic (bulk backups, large transfers).
+
+**Basic QoS workflow**
+1. **Classification:** Identify traffic (by IP, port, DSCP, VLAN).  
+2. **Marking:** Tag packets (e.g., DSCP) to indicate priority.  
+3. **Policing/Shaping:** Enforce rate limits (police drops, shape buffers).  
+4. **Queuing/Scheduling:** Serve higher-priority queues first (e.g., priority queue, WFQ).
+
+**Common concepts**
+- **DSCP/ToS** marks used across routers/switches.  
+- **Traffic shaping** smooths bursts.  
+- **Policing** drops or remarks packets that exceed a rate.  
+- **Scheduling algorithms:** Weighted Fair Queuing (WFQ), Priority Queuing (PQ), Low Latency Queuing (LLQ).
+
+**Simple example:** guarantee 100 kbps for voice traffic while letting bulk file sync use leftover capacity.
+
+For configuration patterns and practical QoS design, see: `docs/qos.md`.
+
+---
+
+### Load Balancing
+
+**What a load balancer does:**  
+A load balancer distributes incoming application requests across multiple backend servers to improve performance, availability, and scalability.
+
+**Types**
+- **Layer 4 (Transport) load balancing:** uses IP/port info (fast).  
+- **Layer 7 (Application) load balancing:** understands HTTP, can route by URL, cookies, headers.
+
+**Common algorithms**
+- Round Robin  
+- Least Connections  
+- Source IP Hash  
+- Weighted algorithms
+
+**Key features**
+- **Health checks**: only send traffic to healthy servers.  
+- **Session persistence (sticky sessions)**: route a client back to the same server when necessary.  
+- **SSL/TLS termination**: offload encryption/decryption at the LB.  
+- **Active/Passive vs Active/Active** failover modes.
+
+**Example flow**
+1. Client connects to `app.example.com` (LB IP).  
+2. Load balancer selects backend `app1.example.local` based on algorithm and health.  
+3. LB forwards the request and returns the backend response to the client.
+
+For product choices and advanced patterns, see: `docs/load_balancing.md`.
+
+---
+
+### VPN :: (Virtual Private Network)
+
+**What a VPN provides:**  
+A secure, encrypted tunnel over an insecure network (like the Internet) so remote offices or users appear to be on the same private network.
+
+**Common VPN types**
+- **Site-to-site VPN:** connects entire networks (office ↔ data center)  often IPSec.  
+- **Remote-access VPN:** individual users connect from home/coffee shop  often SSL/TLS or IPSec.  
+- **Clientless VPN / SSL VPN:** browser-based secure access for web apps.
+
+**High-level tunnel setup (IPSec simplified)**
+1. **IKE (Internet Key Exchange)** establishes authentication and keys (Phase 1).  
+2. IPsec establishes secure channels and negotiates encryption parameters (Phase 2).  
+3. Encrypted traffic flows through the tunnel with confidentiality and integrity.
+
+**Use cases**
+- Secure branch office connectivity  
+- Remote worker access to internal resources  
+- Secure connectivity between cloud and on-prem environments
+
+For encryption types, authentication methods, and configuration examples, see: `docs/vpn.md`.
+
+---
+
+### Cloud Networking
+
+**What cloud networking covers:**  
+Cloud networking is how networking constructs are realized in public cloud platforms: virtual networks (VPCs), subnets, route tables, security groups, NAT gateways, peering, VPN/Direct Connect, and managed load balancers.
+
+**Key concepts**
+- **VPC (Virtual Private Cloud):** an isolated virtual network.  
+- **Subnets:** segmented spaces inside a VPC (public/private).  
+- **Route tables:** control traffic between subnets and to the Internet.  
+- **Security groups / NACLs:** virtual firewall and network-level controls.  
+- **Managed services:** cloud load balancers, NAT Gateways, Transit Gateways.
+
+**Typical cloud flow**
+1. Web server in a public subnet receives traffic from a cloud LB.  
+2. App servers in private subnets connect to databases with controlled egress via a NAT Gateway.  
+3. Admins use security groups for fine-grained access control.
+
+Cloud networking emphasizes **infrastructure as code**, elasticity, and managed primitives that replace manual on-prem appliances.
+
+For cloud-specific patterns and diagrams, see: `docs/cloud_networking.md`.
+
+---
+
+### Wireless Networking
+
+**What wireless networking covers:**  
+Wireless (Wi-Fi) enables mobile devices to connect to the LAN without cables. It introduces RF behavior, channel planning, AP placement, and security concerns that wired networks don’t face.
+
+**Core elements**
+- **Access Point (AP):** radio device providing wireless connectivity.  
+- **SSID:** the wireless network name.  
+- **Channels and bands:** 2.4 GHz vs 5 GHz (and 6 GHz on Wi-Fi 6E)  choose channels to avoid interference.  
+- **Security:** WPA2/WPA3 (avoid WEP).  
+- **Controllers / cloud-managed APs:** centralized management and roaming optimization.
+
+**Join/connection sequence (simplified)**
+1. Client scans for SSIDs and selects one to join.  
+2. Client associates with AP (Layer 2 association).  
+3. Authentication and key exchange (WPA2/WPA3).  
+4. DHCP assigns IP and client begins normal IP communications through the AP and wired switch/router.
+
+**Wireless considerations**
+- RF interference (microwaves, neighboring networks)  plan channels.  
+- Capacity planning (AP density) for many users.  
+- Roaming / seamless handoff in enterprise deployments.
+
+For Wi-Fi standards, security best practices, and AP design guidance, see: `docs/wireless_networking.md`.
+
+---
+
+### Go Deeper
+- [docs/nat.md](docs/nat.md) :: NAT types, examples, port forwarding.  
+- [docs/gateway.md](docs/gateway.md) :: gateway roles and cloud gateway concepts.  
+- [docs/qos.md](docs/qos.md) :: classification, queuing, shaping, examples.  
+- [docs/load_balancing.md](docs/load_balancing.md) :: L4/L7, algorithms, health checks.  
+- [docs/vpn.md](docs/vpn.md) :: IPSec, SSL VPNs, and use cases.  
+- [docs/cloud_networking.md](docs/cloud_networking.md) :: VPCs, subnets, security groups, NAT gateways.  
+- [docs/wireless_networking.md](docs/wireless_networking.md) :: Wi-Fi standards, AP design, and security.
 
 ---
