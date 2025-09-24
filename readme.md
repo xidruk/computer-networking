@@ -739,7 +739,7 @@ NAT rewrites IP addresses and sometimes ports on packets as they pass through a 
 - Makes peer-to-peer inbound connections more complex (requires port forwarding).  
 - IPv6 largely removes the need for NAT because of abundant address space.
 
-For full details and examples, see: `docs/nat.md`.
+For full details and examples, see: [docs/nat.md](docs/nat.md).
 
 ---
 
@@ -758,7 +758,7 @@ A gateway is a node that serves as an entry/exit point for a network. In common 
 2. Host checks local routing  destination is remote → forwards frame to default gateway MAC.  
 3. Gateway forwards the packet onward (router behavior).
 
-For deeper reading about gateway types and cloud gateway concepts, see: `docs/gateway.md`.
+For deeper reading about gateway types and cloud gateway concepts, see: [docs/gateway.md](docs/gateway.md).
 
 ---
 
@@ -781,7 +781,7 @@ Networks have finite bandwidth. QoS lets you prioritize important traffic (voice
 
 **Simple example:** guarantee 100 kbps for voice traffic while letting bulk file sync use leftover capacity.
 
-For configuration patterns and practical QoS design, see: `docs/qos.md`.
+For configuration patterns and practical QoS design, see: [docs/qos.md](docs/qos.md).
 
 ---
 
@@ -811,7 +811,7 @@ A load balancer distributes incoming application requests across multiple backen
 2. Load balancer selects backend `app1.example.local` based on algorithm and health.  
 3. LB forwards the request and returns the backend response to the client.
 
-For product choices and advanced patterns, see: `docs/load_balancing.md`.
+For product choices and advanced patterns, see: [docs/load_balancing.md](docs/load_balancing.md).
 
 ---
 
@@ -835,7 +835,7 @@ A secure, encrypted tunnel over an insecure network (like the Internet) so remot
 - Remote worker access to internal resources  
 - Secure connectivity between cloud and on-prem environments
 
-For encryption types, authentication methods, and configuration examples, see: `docs/vpn.md`.
+For encryption types, authentication methods, and configuration examples, see: [docs/vpn.md](docs/vpn.md).
 
 ---
 
@@ -858,7 +858,7 @@ Cloud networking is how networking constructs are realized in public cloud platf
 
 Cloud networking emphasizes **infrastructure as code**, elasticity, and managed primitives that replace manual on-prem appliances.
 
-For cloud-specific patterns and diagrams, see: `docs/cloud_networking.md`.
+For cloud-specific patterns and diagrams, see: [docs/cloud_networking.md](docs/cloud_networking.md).
 
 ---
 
@@ -885,7 +885,7 @@ Wireless (Wi-Fi) enables mobile devices to connect to the LAN without cables. It
 - Capacity planning (AP density) for many users.  
 - Roaming / seamless handoff in enterprise deployments.
 
-For Wi-Fi standards, security best practices, and AP design guidance, see: `docs/wireless_networking.md`.
+For Wi-Fi standards, security best practices, and AP design guidance, see: [docs/wireless_networking.md](docs/wireless_networking.md).
 
 ---
 
