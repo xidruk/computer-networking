@@ -47,6 +47,7 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Cloud Networking](#cloud-networking)
    - [Wireless Networking](#wireless-networking)
 10. [Network Security](#10-network-security)
+<!-- 10. [Network Security](#10-network-security)
    - [Introduction to Network Security](#introduction-to-network-security)
    - [Common Threats in Networking](#common-threats-in-networking)
    - [Security Mechanisms](#security-mechanisms)
@@ -55,7 +56,7 @@ This repository covers the basics of computer networking. It is designed to intr
      - [Authentication & Authorization](#authentication--authorization)
    - [Best Practices for Securing Networks](#best-practices-for-securing-networks)
    - [Summary Table: Threats vs Protections](#summary-table-threats-vs-protections)
-   - [Further Reading](#further-reading)
+   - [Further Reading](#further-reading) -->
 11. **Network Data Units**
     - Frames, Packets, Segments, Ports
 12. **Troubleshooting & Monitoring**
