@@ -38,12 +38,12 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Routing Tables](#routing-tables)
    - [Switches](#switches)
    - [VLAN](#vlan)
-9. **Network Services**
+9. **Network Services** 
    - NAT, Gateways, QoS, Load Balancing
    - VPN, Cloud Networking, Wireless Networking
 10. **Network Security**
     - Firewall, Network Security Basics
-11. **Network Data Units**
+11. **Network Data Units**`
     - Frames, Packets, Segments, Ports
 12. **Troubleshooting & Monitoring**
     - Network Troubleshooting, Monitoring Tools
@@ -531,3 +531,136 @@ For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
 
 ---
 
+## 8. Routing & Switching Concepts
+
+This section explains how packets actually move inside and between networks. If you are a beginner, think of this as the moment when the abstract ideas (IP addresses, MACs, NICs) become concrete: switches move frames inside a LAN, routers move packets between LANs/WANs, and routing tables tell routers where to send those packets. Read each subsection carefully and then follow the links to the in-depth documents for practical examples and commands.
+
+
+### Routers — how networks are connected
+
+**What a router is (plain language)**  
+A router is a device that connects two or more separate networks and forwards packets between them using IP addresses. Each router interface is on a different network and has its own IP. Routers make decisions about *where* to send a packet next.
+
+**Step-by-step: what happens when a host sends a packet to a remote IP**
+1. The host checks whether the destination IP is on the same subnet.  
+2. If it is not, the host sends the packet to its **default gateway** (the router). The host encapsulates the IP packet into an Ethernet frame with:
+   - Source MAC = host MAC  
+   - Destination MAC = router’s MAC on the same LAN
+3. The local switch forwards that frame to the router port (using its MAC table).  
+4. The router receives the frame, strips the Ethernet header, inspects the destination IP, and consults its **routing table**.  
+5. The router chooses the best route (longest-prefix match, AD/metric tie-breakers) and forwards the packet to the next hop (could be another router or the final network).  
+6. Each intermediate router repeats the process until the packet reaches the destination network; then the final router forwards it to the target host using L2 for the last hop.
+
+**Key router concepts to remember**
+- Routers operate at **Layer 3** (IP).  
+- They rely on a **routing table** to decide next hops.  
+- Routing can be **static**, **dynamic** (routing protocols), or use a **default route** for unknown destinations.  
+
+For full details, examples, and protocol explanations, see: `docs/routers.md`.
+
+
+### Routing Tables — the router’s map
+
+**What a routing table is (simple)**  
+A routing table is a list of destination networks the router knows about and how to reach them (next hop and outgoing interface).
+
+**Important fields you’ll see**
+- Destination / Prefix (e.g., `10.1.2.0/24`)  
+- Next hop (IP of next router) or outgoing interface  
+- Administrative source (connected, static, OSPF, BGP…)  
+- Metric or cost (used to choose between multiple routes)
+
+**How a router chooses a route (short version)**
+1. **Longest Prefix Match (LPM)** — pick the most specific route that fits the destination IP.  
+2. If multiple entries with the same prefix length exist, use **administrative distance** (trust level).  
+3. If still tied, use **metric** (cost) from the routing protocol.
+
+**Example routing table fragment**
+```
+C  192.168.1.0/24 is directly connected, Gig0/0
+S  10.0.0.0/24 via 192.168.1.2
+D  172.16.0.0/16 [OSPF metric] via 192.168.1.3
+```
+
+**Default route**
+- Written as `0.0.0.0/0` (IPv4) or `::/0` (IPv6).  
+- Used when no specific route matches (common on edge routers and home routers).
+
+For examples of `show ip route` outputs, more on longest-prefix-match, and troubleshooting steps, see: `docs/routing_table.md`.
+
+
+### Switches — how frames move inside a LAN
+
+**What a switch is (plain language)**  
+A switch connects devices inside the same LAN and forwards Ethernet frames to the correct port using MAC addresses. Switches are the building blocks of LAN wiring closets and server racks.
+
+**Step-by-step: how a switch forwards a frame**
+1. A frame arrives on Port A with source MAC `AA:AA:AA:AA` and destination MAC `BB:BB:BB:BB`.  
+2. The switch **learns** source MAC `AA:AA...` → Port A (records in MAC table).  
+3. The switch looks up destination MAC `BB:BB...` in its MAC table:
+   - If present → forward frame only to the port recorded there (efficient).  
+   - If absent → **flood** the frame to all ports (except the source) so the destination can reply; the switch will then learn the destination MAC when it replies.
+
+**Flooding, broadcasts, and ARP**
+- Broadcast frames (e.g., ARP requests) go to every port in the VLAN.  
+- Unknown unicast frames are temporarily flooded until the MAC is learned.  
+
+**Types of switches**
+- **Unmanaged**: plug-and-play, no config.  
+- **Managed**: support VLANs, QoS, security, monitoring.  
+- **Layer-3 switches**: can perform routing between VLANs (inter-VLAN routing).
+
+**Practical note**
+- Switches reduce collisions and isolate MAC-based traffic per port; they do *not* route between IP subnets (unless they are Layer 3 devices).
+
+For full explanation, MAC-table examples, and security features, see: `docs/switches.md`.
+
+
+### VLANs — logical segmentation inside switches
+
+**What is a VLAN (intuitively)**  
+A Virtual LAN (VLAN) partitions one physical switch (or switch stack) into separate logical networks — each VLAN is a separate broadcast domain. Devices in VLAN 10 can’t communicate with VLAN 20 unless a router (or Layer-3 switch) routes between them.
+
+**Why use VLANs**
+- Security: isolate sensitive systems (finance, servers).  
+- Performance: reduce broadcast domain size.  
+- Organization: group users by function regardless of physical location.  
+
+**Basic VLAN concepts**
+- **Access port**: belongs to a single VLAN (used by end hosts).  
+- **Trunk port**: carries traffic for multiple VLANs between switches/routers using tagging (802.1Q).  
+- **Inter-VLAN routing**: required for communication between VLANs — done by a router or Layer-3 switch.
+
+**Simple example**
+- Port 1–10 → VLAN 10 (HR)  
+- Port 11–20 → VLAN 20 (Engineering)  
+- Trunk between Switch A and Switch B carries VLAN 10 and 20 tagged.
+
+For configuration patterns, trunking details, and VLAN design best practices, see: `docs/vlan.md`.
+
+
+### How these pieces fit together (practical mental model)
+
+- **Inside a LAN**: hosts ↔ switches (Layer 2). Switches forward frames using MAC addresses; VLANs partition the broadcast domain.  
+- **Between networks**: hosts ↔ router (default gateway) ↔ other routers (Layer 3). Routers forward packets using routing tables and IP addresses.  
+- **Edge/home networks**: a single device often acts as switch + router + Wi-Fi + NAT.
+
+**Troubleshooting checklist (beginner friendly)**  
+1. **Physical**: Cables, link LEDs, interface up/down.  
+2. **Layer 2**: Check MAC tables (`show mac address-table`), ARP entries (do hosts know gateway MAC?).  
+3. **Layer 3**: Check IP addressing, default gateway on hosts, and the router’s routing table (`show ip route`).  
+4. **Path test**: `ping` for reachability, `traceroute` to see hops.  
+5. **Configs**: VLAN membership, trunking, static routes, default routes.
+
+***
+
+### Where to read more (deep dives)
+- `docs/routers.md` — routers, route types, routing protocols.  
+- `docs/routing_table.md` — route lookup, longest-prefix-match, examples.  
+- `docs/switches.md` — MAC learning, flooding, switch types, security.  
+- `docs/vlan.md` — VLAN concepts, trunking (802.1Q), inter-VLAN routing.
+
+
+Understanding routing and switching gives you the map (routing tables) and movement rules (switching and routing processes) for how data travels in real networks. If you want, next I can add an ASCII flow diagram that demonstrates the full path of a packet from a PC through a switch to a router and out to the Internet, or produce a short set of hands-on exercises (ping/traceroute/build a small VLAN test) to include here.
+
+---
