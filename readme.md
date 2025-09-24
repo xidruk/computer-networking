@@ -288,17 +288,17 @@ Models are not just academic diagrams. They provide:
 - **Interoperability**: by following the models, devices and software from different vendors can communicate successfully.  
 
 
-### Transport Protocols: TCP & UDP
+### Transport Protocols :: TCP & UDP
 
 The **Transport Layer** is where end-to-end communication between two hosts is managed. Two major protocols dominate this layer:
 
-#### TCP (Transmission Control Protocol)
+#### TCP :: (Transmission Control Protocol)
 - **Connection-oriented**: requires a three-way handshake before data transfer.  
 - **Reliable**: guarantees delivery, ensures packets arrive in order, and retransmits lost data.  
 - **Flow and congestion control**: adapts to avoid overwhelming the network.  
 - **Use cases**: web browsing (HTTP/HTTPS), email (SMTP/IMAP/POP3), file transfers (FTP).  
 
-#### UDP (User Datagram Protocol)
+#### UDP :: (User Datagram Protocol)
 - **Connectionless**: no handshake, no guarantee of delivery.  
 - **Fast and lightweight**: useful for real-time communication where speed is more important than reliability.  
 - **No congestion or flow control**.  
@@ -315,11 +315,11 @@ The **Transport Layer** is where end-to-end communication between two hosts is m
 For expanded discussions: see [TCP](docs/tcp.md) and [UDP](docs/udp.md).
 
 
-### Application Protocols: DNS, CDNS, DHCP
+### Application Protocols :: DNS, CDNS, DHCP
 
 At the **Application Layer**, protocols make networks usable for humans. Instead of working with IP addresses and raw connections, these protocols provide essential services.
 
-#### DNS (Domain Name System)
+#### DNS :: (Domain Name System)
 - Converts human-readable names (like `example.com`) into machine-readable IP addresses.  
 - Operates in a distributed hierarchy of servers (root, TLD, authoritative).  
 - Without DNS, users would need to memorize numeric IP addresses.  
@@ -328,7 +328,7 @@ At the **Application Layer**, protocols make networks usable for humans. Instead
 Expanded discussion: [DNS](docs/dns.md).
 
 
-#### CDNS (Content Delivery Networks & Secure DNS)
+#### CDNS :: (Content Delivery Networks & Secure DNS)
 
 1. **Content Delivery Networks (CDNs)**:  
    - Distribute content (web pages, images, videos) across multiple servers around the globe.  
@@ -343,7 +343,7 @@ Expanded discussion: [DNS](docs/dns.md).
 Expanded discussion: [CDNS](docs/cdns.md).
 
 
-#### DHCP (Dynamic Host Configuration Protocol)
+#### DHCP :: (Dynamic Host Configuration Protocol)
 - Automatically assigns IP addresses, subnet masks, default gateways, and DNS servers to devices.  
 - Saves administrators from manually configuring every device.  
 - Works in a lease system: IPs are rented for a period of time.  
@@ -371,7 +371,7 @@ Understanding this section gives you the roadmap for everything else in networki
 This section explains how devices are **identified** on a network and how networks are **divided and managed**. If you followed earlier sections (devices, NIC/MAC, networking models and protocols), this is where the logical addressing layer becomes practical: you will learn how addresses are formed, how they are assigned, and how to split address space into usable subnets.
 
 
-### IPv4
+### IPv4 :: 
 
 **What it is**  
 IPv4 (Internet Protocol version 4) is a 32-bit addressing system. An IPv4 address is usually shown in dotted-decimal form, for example `192.168.1.10`. IPv4 provides logical addresses used for routing packets between networks.
@@ -398,7 +398,7 @@ Because IPv4 address space is limited, networks commonly use **NAT (Network Addr
 For a deeper dive into IPv4, examples, and the historical reasons behind private/public addressing and NAT, see: `docs/ipv4.md`.
 
 
-### IPv6
+### IPv6 :: 
 
 **What it is**  
 IPv6 (Internet Protocol version 6) uses 128-bit addresses and was designed primarily to solve IPv4 address exhaustion and simplify certain aspects of addressing and routing.
@@ -413,7 +413,7 @@ IPv6 (Internet Protocol version 6) uses 128-bit addresses and was designed prima
 For full details on IPv6 addressing, allocation methods (SLAAC vs DHCPv6), and address types, see: `docs/ipv6.md` and `docs/dhcpv6.md`.
 
 
-### Subnetting
+### Subnetting ::
 
 **What subnetting is**  
 Subnetting is the process of breaking a larger network block into smaller subnetworks (subnets) by changing the subnet mask (i.e., changing how many bits are used for the network versus hosts).
@@ -440,7 +440,7 @@ Subnetting is the process of breaking a larger network block into smaller subnet
 For full explanation, binary walkthroughs, and practice examples, see: `docs/subnetting.md` and `docs/subnet_mask.md`.
 
 
-### VLSM (Variable Length Subnet Masking)
+### VLSM :: (Variable Length Subnet Masking)
 
 **What VLSM is**  
 VLSM allows you to use **different subnet sizes** within the same original network block. Instead of forcing all subnets to be the same size, you can assign `/24` for one segment, `/26` for another, `/28` for small links, etc.
@@ -488,7 +488,7 @@ Today, we use **CIDR** instead of classful addressing. Classful knowledge is use
 For the historical classes and why they were replaced, see: `docs/ipaddress_classificatin.md`.
 
 
-### Quick reference: common prefixes and usable hosts
+### Quick reference :: common prefixes and usable hosts
 
 | Prefix | Host bits | Total addresses | Usable hosts (typical) |
 |--------|-----------|-----------------|------------------------|
@@ -536,7 +536,7 @@ For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
 This section explains how packets actually move inside and between networks. If you are a beginner, think of this as the moment when the abstract ideas (IP addresses, MACs, NICs) become concrete: switches move frames inside a LAN, routers move packets between LANs/WANs, and routing tables tell routers where to send those packets. Read each subsection carefully and then follow the links to the in-depth documents for practical examples and commands.
 
 
-### Routers — how networks are connected
+### Routers :: how networks are connected
 
 **What a router is (plain language)**  
 A router is a device that connects two or more separate networks and forwards packets between them using IP addresses. Each router interface is on a different network and has its own IP. Routers make decisions about *where* to send a packet next.
@@ -556,10 +556,10 @@ A router is a device that connects two or more separate networks and forwards pa
 - They rely on a **routing table** to decide next hops.  
 - Routing can be **static**, **dynamic** (routing protocols), or use a **default route** for unknown destinations.  
 
-For full details, examples, and protocol explanations, see: `docs/routers.md`.
+For full details, examples, and protocol explanations, see: [docs/routers.md](docs/routers.md).
 
 
-### Routing Tables — the router’s map
+### Routing Tables :: the router’s map
 
 **What a routing table is (simple)**  
 A routing table is a list of destination networks the router knows about and how to reach them (next hop and outgoing interface).
@@ -571,7 +571,7 @@ A routing table is a list of destination networks the router knows about and how
 - Metric or cost (used to choose between multiple routes)
 
 **How a router chooses a route (short version)**
-1. **Longest Prefix Match (LPM)** — pick the most specific route that fits the destination IP.  
+1. **Longest Prefix Match (LPM)**  pick the most specific route that fits the destination IP.  
 2. If multiple entries with the same prefix length exist, use **administrative distance** (trust level).  
 3. If still tied, use **metric** (cost) from the routing protocol.
 
@@ -586,10 +586,10 @@ D  172.16.0.0/16 [OSPF metric] via 192.168.1.3
 - Written as `0.0.0.0/0` (IPv4) or `::/0` (IPv6).  
 - Used when no specific route matches (common on edge routers and home routers).
 
-For examples of `show ip route` outputs, more on longest-prefix-match, and troubleshooting steps, see: `docs/routing_table.md`.
+For examples of `show ip route` outputs, more on longest-prefix-match, and troubleshooting steps, see: [docs/routing_table.md](docs/routing_table.md).
 
 
-### Switches — how frames move inside a LAN
+### Switches :: how frames move inside a LAN
 
 **What a switch is (plain language)**  
 A switch connects devices inside the same LAN and forwards Ethernet frames to the correct port using MAC addresses. Switches are the building blocks of LAN wiring closets and server racks.
@@ -613,13 +613,13 @@ A switch connects devices inside the same LAN and forwards Ethernet frames to th
 **Practical note**
 - Switches reduce collisions and isolate MAC-based traffic per port; they do *not* route between IP subnets (unless they are Layer 3 devices).
 
-For full explanation, MAC-table examples, and security features, see: `docs/switches.md`.
+For full explanation, MAC-table examples, and security features, see: [docs/switches.md](docs/switches.md).
 
 
-### VLANs — logical segmentation inside switches
+### VLANs :: logical segmentation inside switches
 
 **What is a VLAN (intuitively)**  
-A Virtual LAN (VLAN) partitions one physical switch (or switch stack) into separate logical networks — each VLAN is a separate broadcast domain. Devices in VLAN 10 can’t communicate with VLAN 20 unless a router (or Layer-3 switch) routes between them.
+A Virtual LAN (VLAN) partitions one physical switch (or switch stack) into separate logical networks  each VLAN is a separate broadcast domain. Devices in VLAN 10 can’t communicate with VLAN 20 unless a router (or Layer-3 switch) routes between them.
 
 **Why use VLANs**
 - Security: isolate sensitive systems (finance, servers).  
@@ -629,14 +629,14 @@ A Virtual LAN (VLAN) partitions one physical switch (or switch stack) into separ
 **Basic VLAN concepts**
 - **Access port**: belongs to a single VLAN (used by end hosts).  
 - **Trunk port**: carries traffic for multiple VLANs between switches/routers using tagging (802.1Q).  
-- **Inter-VLAN routing**: required for communication between VLANs — done by a router or Layer-3 switch.
+- **Inter-VLAN routing**: required for communication between VLANs  done by a router or Layer-3 switch.
 
 **Simple example**
 - Port 1–10 → VLAN 10 (HR)  
 - Port 11–20 → VLAN 20 (Engineering)  
 - Trunk between Switch A and Switch B carries VLAN 10 and 20 tagged.
 
-For configuration patterns, trunking details, and VLAN design best practices, see: `docs/vlan.md`.
+For configuration patterns, trunking details, and VLAN design best practices, see: [docs/vlan.md](docs/vlan.md).
 
 
 ### How these pieces fit together (practical mental model)
@@ -652,13 +652,12 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 4. **Path test**: `ping` for reachability, `traceroute` to see hops.  
 5. **Configs**: VLAN membership, trunking, static routes, default routes.
 
-<center>---<center>
 
-### Where to read more (deep dives)
-- `docs/routers.md` — routers, route types, routing protocols.  
-- `docs/routing_table.md` — route lookup, longest-prefix-match, examples.  
-- `docs/switches.md` — MAC learning, flooding, switch types, security.  
-- `docs/vlan.md` — VLAN concepts, trunking (802.1Q), inter-VLAN routing.
+### Go Deeper
+- [docs/routers.md](docs/routers.md) :: routers, route types, routing protocols.  
+- [docs/routing_table.md](docs/routing_table.md) :: route lookup, longest-prefix-match, examples.  
+- [docs/switches.md](docs/switches.md) :: MAC learning, flooding, switch types, security.  
+- [docs/vlan.md](docs/vlan.md) :: VLAN concepts, trunking (802.1Q), inter-VLAN routing.
 
 
 Understanding routing and switching gives you the map (routing tables) and movement rules (switching and routing processes) for how data travels in real networks. If you want, next I can add an ASCII flow diagram that demonstrates the full path of a packet from a PC through a switch to a router and out to the Internet, or produce a short set of hands-on exercises (ping/traceroute/build a small VLAN test) to include here.
