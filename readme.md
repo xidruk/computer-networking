@@ -60,7 +60,7 @@ This repository covers the basics of computer networking. It is designed to intr
     - Frames, Packets, Segments, Ports
 12. Troubleshooting & Monitoring
     - Network Troubleshooting, Monitoring Tools
-    
+     
 ---
 
 ## 1. Introduction
