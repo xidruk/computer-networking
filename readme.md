@@ -691,7 +691,4 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 - [docs/switches.md](docs/switches.md) :: MAC learning, flooding, switch types, security.  
 - [docs/vlan.md](docs/vlan.md) :: VLAN concepts, trunking (802.1Q), inter-VLAN routing.
 
-
-Understanding routing and switching gives you the map (routing tables) and movement rules (switching and routing processes) for how data travels in real networks. If you want, next I can add an ASCII flow diagram that demonstrates the full path of a packet from a PC through a switch to a router and out to the Internet, or produce a short set of hands-on exercises (ping/traceroute/build a small VLAN test) to include here.
-
 ---
