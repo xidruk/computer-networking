@@ -536,6 +536,7 @@ For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
 
 This section explains how packets actually move inside and between networks. If you are a beginner, think of this as the moment when the abstract ideas (IP addresses, MACs, NICs) become concrete: switches move frames inside a LAN, routers move packets between LANs/WANs, and routing tables tell routers where to send those packets. Read each subsection carefully and then follow the links to the in-depth documents for practical examples and commands.
 
+---
 
 ### Routers :: how networks are connected
 
@@ -559,6 +560,7 @@ A router is a device that connects two or more separate networks and forwards pa
 
 For full details, examples, and protocol explanations, see: [docs/routers.md](docs/routers.md).
 
+---
 
 ### Routing Tables :: the router’s map
 
@@ -589,6 +591,7 @@ D  172.16.0.0/16 [OSPF metric] via 192.168.1.3
 
 For examples of `show ip route` outputs, more on longest-prefix-match, and troubleshooting steps, see: [docs/routing_table.md](docs/routing_table.md).
 
+---
 
 ### Switches :: how frames move inside a LAN
 
@@ -616,6 +619,7 @@ A switch connects devices inside the same LAN and forwards Ethernet frames to th
 
 For full explanation, MAC-table examples, and security features, see: [docs/switches.md](docs/switches.md).
 
+---
 
 ### VLANs :: logical segmentation inside switches
 
@@ -639,6 +643,7 @@ A Virtual LAN (VLAN) partitions one physical switch (or switch stack) into separ
 
 For configuration patterns, trunking details, and VLAN design best practices, see: [docs/vlan.md](docs/vlan.md).
 
+---
 
 ### How these pieces fit together (practical mental model)
 
@@ -653,7 +658,7 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 4. **Path test**: `ping` for reachability, `traceroute` to see hops.  
 5. **Configs**: VLAN membership, trunking, static routes, default routes.
 
->
+---
 
 ### Go Deeper
 - [docs/routers.md](docs/routers.md) :: routers, route types, routing protocols.  
