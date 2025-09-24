@@ -27,17 +27,17 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Transport Protocols: TCP & UDP](#transport-protocols-tcp--udp)
    - [Application Protocols: DNS, CDNS, DHCP](#application-protocols-dns-cdns-dhcp)
 7. [IP Addressing and Subnetting](#7-ip-addressing-and-subnetting)
-   - [IPv4](#ipv4)
-   - [IPv6](#ipv6)
-   - [Subnetting](#subnetting)
-   - [VLSM](#vlsm)
-   - [CIDR](#cidr)
+   - [IPv4](#ipv4-)
+   - [IPv6](#ipv6-)
+   - [Subnetting](#subnetting-)
+   - [VLSM](#vlsm--variable-length-subnet-masking)
+   - [CIDR](#cidr-classless-inter-domain-routing)
    - [IP Address Classification](#ip-address-classification)
-8. **Routing & Switching Concepts**
-   - [Routers](#routers)
-   - [Routing Tables](#routing-tables)
-   - [Switches](#switches)
-   - [VLAN](#vlan)
+8. [Routing & Switching Concepts](#8-routing--switching-concepts)
+   - [Routers](#routers--how-networks-are-connected)
+   - [Routing Tables](#routing-tables--the-routers-map)
+   - [Switches](#switches--how-frames-move-inside-a-lan)
+   - [VLAN](#vlans--logical-segmentation-inside-switches)
 9. **Network Services** 
    - NAT, Gateways, QoS, Load Balancing
    - VPN, Cloud Networking, Wireless Networking
@@ -370,6 +370,7 @@ Understanding this section gives you the roadmap for everything else in networki
 
 This section explains how devices are **identified** on a network and how networks are **divided and managed**. If you followed earlier sections (devices, NIC/MAC, networking models and protocols), this is where the logical addressing layer becomes practical: you will learn how addresses are formed, how they are assigned, and how to split address space into usable subnets.
 
+>
 
 ### IPv4 :: 
 
