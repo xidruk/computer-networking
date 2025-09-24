@@ -57,6 +57,7 @@ A **computer network** is a collection of interconnected devices such as compute
 
 By allowing devices to communicate, networks make it possible to share files, access the internet, run applications remotely, and coordinate complex systems efficiently.
 
+---
 
 ### Why Networks are Important
 Computer networks are the backbone of modern digital life. They allow businesses, schools, governments, and individuals to:
@@ -69,6 +70,7 @@ Computer networks are the backbone of modern digital life. They allow businesses
 
 In short, networks make modern computing fast, flexible, and efficient.
 
+---
 
 ### Basic Networking Terms
 To get started with networking, here are some foundational terms:
@@ -96,6 +98,7 @@ Computer networks come in different types because organizations, individuals, an
 
 Each network type is designed to **solve specific challenges** such as local connectivity, long-distance communication, secure remote access, or high-speed data sharing. Choosing the right type ensures **efficient communication, security, and resource sharing**.
 
+---
 
 ### Common Network Types
 
@@ -121,6 +124,8 @@ Network devices are the **building blocks of any computer network**. They manage
 Each network device serves a specific role. Some simply **extend the reach** of the network, like repeaters, while others **direct traffic intelligently**, like routers. Firewalls protect networks from unauthorized access, switches make communication more efficient by sending data only to the intended device, and virtual devices allow modern cloud and virtualized environments to operate smoothly.  
 
 Understanding these devices is fundamental for anyone learning networking because they **form the infrastructure that enables connectivity, communication, and security**.
+
+---
 
 ### Common Network Devices
 
@@ -162,12 +167,15 @@ In computer networks, data can be transmitted in different ways depending on the
 
 Before diving into IP addressing and subnetting, it’s important to understand some fundamental networking concepts. These concepts will give you the necessary background to grasp how devices communicate in a network, how they are identified, and how addresses are assigned.
 
+---
+
 ### Network Interface Card (NIC)
 
 A **Network Interface Card (NIC)** is a hardware component that allows a device to connect to a network. It can be a physical card installed in a computer or built into a device's motherboard. NICs can connect via **wired (Ethernet)** or **wireless (Wi-Fi)** interfaces. Every NIC has a unique identifier called a **MAC address** that ensures devices can be recognized on the local network.
 
 > Related document: [NIC](docs/nic.md)
 
+---
 
 ### MAC Address
 
@@ -175,6 +183,7 @@ A **MAC (Media Access Control) address** is a unique identifier assigned to each
 
 > Related document: [MAC Address](docs/macaddress.md)
 
+---
 
 ### IP Address Basics
 
@@ -189,6 +198,7 @@ IP addresses can be **public** (routable on the internet) or **private** (used w
 
 > Related documents: [IPv4](docs/ipv4.md), [IPv6](docs/ipv6.md), [IP Address](docs/ipaddress.md)
 
+---
 
 ### IP Address Allocation
 
@@ -204,6 +214,7 @@ Understanding how IP addresses are allocated helps you see how devices gain acce
 
 > Related documents: [DHCP](docs/dhcp.md), [DHCPv6](docs/dhcpv6.md)
 
+---
 
 ### Types of IP Addresses
 
@@ -232,6 +243,7 @@ In reality, these pieces fit together into an organized system. To make sense of
 
 Together, they give us a map of how information is prepared, transmitted, routed, and delivered.
 
+---
 
 ### OSI Model
 
@@ -259,6 +271,7 @@ Key idea: each layer only communicates with its immediate upper and lower layers
 
 For an in-depth discussion of each layer: see [OSI Model](docs/osi_model.md).
 
+---
 
 ### TCP/IP Model
 
@@ -279,6 +292,7 @@ The TCP/IP model maps closely to the OSI model but merges some layers. For examp
 
 For a more detailed study: see [TCP/IP Model](docs/tcp_ip.md).
 
+---
 
 ### Why Models Matter
 
@@ -287,6 +301,7 @@ Models are not just academic diagrams. They provide:
 - **Troubleshooting guidance**: problems can be isolated layer by layer.  
 - **Interoperability**: by following the models, devices and software from different vendors can communicate successfully.  
 
+---
 
 ### Transport Protocols :: TCP & UDP
 
@@ -314,6 +329,7 @@ The **Transport Layer** is where end-to-end communication between two hosts is m
 
 For expanded discussions: see [TCP](docs/tcp.md) and [UDP](docs/udp.md).
 
+---
 
 ### Application Protocols :: DNS, CDNS, DHCP
 
@@ -352,6 +368,7 @@ Expanded discussion: [CDNS](docs/cdns.md).
 
 Expanded discussions: [DHCP](docs/dhcp.md) and [DHCPv6](docs/dhcpv6.md).
 
+---
 
 ### Summary
 
@@ -370,7 +387,7 @@ Understanding this section gives you the roadmap for everything else in networki
 
 This section explains how devices are **identified** on a network and how networks are **divided and managed**. If you followed earlier sections (devices, NIC/MAC, networking models and protocols), this is where the logical addressing layer becomes practical: you will learn how addresses are formed, how they are assigned, and how to split address space into usable subnets.
 
->
+---
 
 ### IPv4 :: 
 
@@ -398,6 +415,7 @@ Because IPv4 address space is limited, networks commonly use **NAT (Network Addr
 
 For a deeper dive into IPv4, examples, and the historical reasons behind private/public addressing and NAT, see: `docs/ipv4.md`.
 
+---
 
 ### IPv6 :: 
 
@@ -413,6 +431,7 @@ IPv6 (Internet Protocol version 6) uses 128-bit addresses and was designed prima
 
 For full details on IPv6 addressing, allocation methods (SLAAC vs DHCPv6), and address types, see: `docs/ipv6.md` and `docs/dhcpv6.md`.
 
+---
 
 ### Subnetting ::
 
@@ -440,6 +459,7 @@ Subnetting is the process of breaking a larger network block into smaller subnet
 
 For full explanation, binary walkthroughs, and practice examples, see: `docs/subnetting.md` and `docs/subnet_mask.md`.
 
+---
 
 ### VLSM :: (Variable Length Subnet Masking)
 
@@ -457,6 +477,7 @@ VLSM allows you to use **different subnet sizes** within the same original netwo
 
 For step-by-step examples and design tips, see: `docs/vlsm.md`.
 
+---
 
 ### CIDR (Classless Inter-Domain Routing)
 
@@ -473,6 +494,7 @@ CIDR replaces the old classful system and allows networks to be specified with a
 
 For concepts, routing examples, and aggregation illustrations, see: `docs/cidr.md`.
 
+---
 
 ### IP Address Classification (classful vs modern usage)
 
@@ -488,6 +510,7 @@ Today, we use **CIDR** instead of classful addressing. Classful knowledge is use
 
 For the historical classes and why they were replaced, see: `docs/ipaddress_classificatin.md`.
 
+---
 
 ### Quick reference :: common prefixes and usable hosts
 
@@ -505,6 +528,7 @@ For the historical classes and why they were replaced, see: `docs/ipaddress_clas
 
 *(Usable hosts = `2^(host bits) − 2` in normal subnetting; note some modern usages treat `/31` specially for point-to-point links.)*
 
+---
 
 ### IPv4 vs IPv6 (short comparison)
 
@@ -519,6 +543,7 @@ For the historical classes and why they were replaced, see: `docs/ipaddress_clas
 
 For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
 
+---
 
 ### Go Deeper
 
