@@ -46,8 +46,16 @@ This repository covers the basics of computer networking. It is designed to intr
    - [VPN (Virtual Private Network)](#vpn--virtual-private-network)
    - [Cloud Networking](#cloud-networking)
    - [Wireless Networking](#wireless-networking)
-10. **Network Security**
-    - Firewall, Network Security Basics
+10. [Network Security](#10-network-security)
+   - [Introduction to Network Security](#introduction-to-network-security)
+   - [Common Threats in Networking](#common-threats-in-networking)
+   - [Security Mechanisms](#security-mechanisms)
+     - [Firewalls](#firewalls)
+     - [Encryption](#encryption)
+     - [Authentication & Authorization](#authentication--authorization)
+   - [Best Practices for Securing Networks](#best-practices-for-securing-networks)
+   - [Summary Table: Threats vs Protections](#summary-table-threats-vs-protections)
+   - [Further Reading](#further-reading)
 11. **Network Data Units**`
     - Frames, Packets, Segments, Ports
 12. **Troubleshooting & Monitoring**
@@ -899,3 +907,84 @@ For Wi-Fi standards, security best practices, and AP design guidance, see: [docs
 - [docs/wireless_networking.md](docs/wireless_networking.md) :: Wi-Fi standards, AP design, and security.
 
 ---
+
+## 10. Network Security
+
+Network security is about **protecting data, devices, and communications** across computer networks.  
+As networks grow in size and complexity, they become more attractive targets for attackers.  
+The goal of network security is to ensure **confidentiality, integrity, and availability (CIA)** of data.
+
+---
+
+### Introduction to Network Security
+
+When you connect to the internet, you expose your system to risks. Without protection, attackers can:
+- Steal your data  
+- Interrupt your services  
+- Gain unauthorized access to your devices  
+
+This is why **network security** is one of the most important topics in computer networking.
+
+---
+
+### Common Threats in Networking
+
+| Threat                 | Description                                                                 | Example                        |
+|-------------------------|-----------------------------------------------------------------------------|--------------------------------|
+| Malware                 | Malicious software that damages or steals data                             | Viruses, worms, ransomware     |
+| Phishing                | Fake communication tricking users into giving personal info                | Fake "bank" emails             |
+| Denial of Service (DoS) | Overwhelms a network/service to make it unavailable                         | Flooding a website with traffic|
+| Man-in-the-Middle (MITM)| Intercepting communication between two parties                              | Eavesdropping on Wi-Fi traffic |
+| Unauthorized Access     | Breaking into systems without permission                                   | Hacking into admin accounts    |
+
+---
+
+### Security Mechanisms
+
+#### Firewalls
+A **firewall** is the first line of defense. It monitors and filters traffic based on rules.  
+For a full explanation, see: [Firewalls](docs/firewall.md).  
+
+#### Encryption
+Encryption transforms data into unreadable form unless decrypted with a key.  
+Examples:
+- HTTPS (SSL/TLS) for secure websites  
+- VPNs for encrypted tunnels  
+
+#### Authentication & Authorization
+- **Authentication**: Verifying identity (e.g., username + password, biometrics).  
+- **Authorization**: Deciding what resources a user can access once authenticated.  
+
+---
+
+### Best Practices for Securing Networks
+
+1. Use **strong passwords** and update them regularly.  
+2. Keep systems and firmware **up-to-date**.  
+3. Deploy **multi-factor authentication (MFA)**.  
+4. Segment networks (e.g., use VLANs to isolate traffic).  
+5. Regularly monitor and log network activity.  
+6. Educate users on **phishing and social engineering** risks.  
+
+---
+
+### Summary Table: Threats vs Protections
+
+| Threat                  | Protection                                   |
+|--------------------------|-----------------------------------------------|
+| Malware                  | Antivirus, firewalls, patching                |
+| Phishing                 | User awareness, email filters                 |
+| DoS/DDoS attacks         | Firewalls, load balancers, intrusion systems  |
+| MITM (eavesdropping)     | Encryption (SSL/TLS, VPNs)                    |
+| Unauthorized Access      | Strong authentication, access control lists   |
+
+---
+
+## Further Reading
+
+- [Firewall (docs/firewall.md)](docs/firewall.md)  
+- [OWASP Top 10 Security Risks](https://owasp.org/www-project-top-ten/)  
+- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)  
+
+---
+
