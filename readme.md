@@ -652,7 +652,7 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 4. **Path test**: `ping` for reachability, `traceroute` to see hops.  
 5. **Configs**: VLAN membership, trunking, static routes, default routes.
 
-<center><center>
+<center>---<center>
 
 ### Where to read more (deep dives)
 - `docs/routers.md` — routers, route types, routing protocols.  
