@@ -55,8 +55,11 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Best Practices for Securing Networks](#best-practices-for-securing-networks)  
    - [Summary Table: Threats vs Protections](#summary-table-threats-vs-protections)  
    - [Further Reading](#further-reading)  
-11. Network Data Units
-    - Frames, Packets, Segments, Ports
+11. [Network Data Units](#11-network-data-units)
+    - [Frames](#frames)
+    - [Packets](#packets)
+    - [Segments](#segments)
+    - [Ports](#ports)
 12. Troubleshooting & Monitoring
     - Network Troubleshooting, Monitoring Tools
      
@@ -987,3 +990,86 @@ Examples:
 
 ---
 
+## 11. Network Data Units
+
+When data travels through a computer network, it doesn’t move as one big block.  
+Instead, it is **broken down into smaller chunks** so devices can handle it more efficiently.  
+Each chunk has a special name depending on the layer of the networking model it belongs to.  
+
+Let’s walk through the most important ones step by step.
+
+---
+
+### Frames
+
+A **Frame** is the unit of data at the **Data Link Layer (Layer 2)**.  
+
+- Think of it as an **envelope** used inside your local network (LAN).  
+- It contains the sender’s and receiver’s **MAC addresses**, plus some control info.  
+- Frames are used when devices are talking on the same network segment (like PCs connected to the same switch).  
+
+📌 Example: When your laptop sends a file to a printer in the same office LAN, the data is wrapped in a frame.
+
+---
+
+### Packets
+
+A **Packet** is the unit of data at the **Network Layer (Layer 3)**.  
+
+- Think of it as a **package** that needs to travel across different networks.  
+- It contains **IP addresses** (source and destination) so routers know where to send it.  
+- Packets can travel across the world, not just inside one LAN.  
+
+📌 Example: When you open a website, the request your browser sends is wrapped inside packets carrying your IP and the server’s IP.
+
+---
+
+### Segments
+
+A **Segment** is the unit of data at the **Transport Layer (Layer 4)**.  
+
+- Segments make sure communication is **reliable** and **organized**.  
+- They include **port numbers** (to identify which application should receive the data).  
+- With TCP, segments ensure the data arrives **in order** and **without errors**.  
+
+📌 Example: If you stream a video, the video is broken into many small segments so they can be reassembled correctly on your device.
+
+---
+
+### Ports
+
+A **Port** is not a physical hole but a **virtual door** on your device that applications use to communicate.  
+
+- Every program that talks over the network uses a port number.  
+- This allows your computer to handle **multiple network connections at once**.  
+- Ports are like **apartment numbers in a building** — the building is your IP address, and the apartment (port) tells which application should get the message.  
+
+📌 Example:  
+- Port **80** → Used by websites with HTTP.  
+- Port **443** → Used by secure websites (HTTPS).  
+- Port **25** → Used by email (SMTP).  
+
+---
+
+### Summary Table: Data Units Across Layers
+
+| Layer (OSI)          | Data Unit | Example Purpose                          |
+|-----------------------|-----------|------------------------------------------|
+| Layer 2 – Data Link   | Frame     | Send data within a local network (MAC)    |
+| Layer 3 – Network     | Packet    | Deliver data across networks (IP)         |
+| Layer 4 – Transport   | Segment   | Ensure reliable delivery (TCP/UDP + Ports)|
+| Application Level Use | Port      | Identify the right application/service    |
+
+---
+
+### Go Deeper
+
+For a deeper dive into how these data units actually work in detail, check the following docs:
+
+- [routers.md](docs/routers.md)  
+- [routing_table.md](docs/routing_table.md)  
+- [switches.md](docs/switches.md)  
+
+These files explain how frames, packets, and segments move through routers and switches in real networks.
+
+---
