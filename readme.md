@@ -1008,7 +1008,7 @@ A **Frame** is the unit of data at the **Data Link Layer (Layer 2)**.
 - It contains the sender’s and receiver’s **MAC addresses**, plus some control info.  
 - Frames are used when devices are talking on the same network segment (like PCs connected to the same switch).  
 
-📌 Example: When your laptop sends a file to a printer in the same office LAN, the data is wrapped in a frame.
+Example: When your laptop sends a file to a printer in the same office LAN, the data is wrapped in a frame.
 
 ---
 
@@ -1020,7 +1020,7 @@ A **Packet** is the unit of data at the **Network Layer (Layer 3)**.
 - It contains **IP addresses** (source and destination) so routers know where to send it.  
 - Packets can travel across the world, not just inside one LAN.  
 
-📌 Example: When you open a website, the request your browser sends is wrapped inside packets carrying your IP and the server’s IP.
+Example: When you open a website, the request your browser sends is wrapped inside packets carrying your IP and the server’s IP.
 
 ---
 
@@ -1032,7 +1032,7 @@ A **Segment** is the unit of data at the **Transport Layer (Layer 4)**.
 - They include **port numbers** (to identify which application should receive the data).  
 - With TCP, segments ensure the data arrives **in order** and **without errors**.  
 
-📌 Example: If you stream a video, the video is broken into many small segments so they can be reassembled correctly on your device.
+Example: If you stream a video, the video is broken into many small segments so they can be reassembled correctly on your device.
 
 ---
 
@@ -1044,7 +1044,7 @@ A **Port** is not a physical hole but a **virtual door** on your device that app
 - This allows your computer to handle **multiple network connections at once**.  
 - Ports are like **apartment numbers in a building** — the building is your IP address, and the apartment (port) tells which application should get the message.  
 
-📌 Example:  
+Example:  
 - Port **80** → Used by websites with HTTP.  
 - Port **443** → Used by secure websites (HTTPS).  
 - Port **25** → Used by email (SMTP).  
