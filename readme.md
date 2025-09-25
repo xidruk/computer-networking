@@ -1042,7 +1042,7 @@ A **Port** is not a physical hole but a **virtual door** on your device that app
 
 - Every program that talks over the network uses a port number.  
 - This allows your computer to handle **multiple network connections at once**.  
-- Ports are like **apartment numbers in a building** — the building is your IP address, and the apartment (port) tells which application should get the message.  
+- Ports are like **apartment numbers in a building**  the building is your IP address, and the apartment (port) tells which application should get the message.  
 
 Example:  
 - Port **80** → Used by websites with HTTP.  
