@@ -1,5 +1,5 @@
 <h1 style="display: flex; align-items: center; gap: 15px;">
-  Computer Networking 🌐
+  Computer Networking  
   <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmp5am9rdzc4NjFtbzAxZnprMzVla2FkOHQ3aDRyc3VrY2tscmg5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FoVzfcqCDSb7zCynOp/giphy.gif" width="60" height="60" alt="Network Animation">
 </h1>
 
