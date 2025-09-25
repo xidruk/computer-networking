@@ -46,22 +46,31 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Cloud Networking](#cloud-networking)
    - [Wireless Networking](#wireless-networking)
 10. [Network Security](#10-network-security)  
-   - [Introduction to Network Security](#introduction-to-network-security)  
-   - [Common Threats in Networking](#common-threats-in-networking)  
-   - [Security Mechanisms](#security-mechanisms)  
+    - [Introduction to Network Security](#introduction-to-network-security)  
+    - [Common Threats in Networking](#common-threats-in-networking)  
+    - [Security Mechanisms](#security-mechanisms)  
      - [Firewalls](#firewalls)  
      - [Encryption](#encryption)  
      - [Authentication & Authorization](#authentication--authorization)  
-   - [Best Practices for Securing Networks](#best-practices-for-securing-networks)  
-   - [Summary Table: Threats vs Protections](#summary-table-threats-vs-protections)  
-   - [Further Reading](#further-reading)  
+    - [Best Practices for Securing Networks](#best-practices-for-securing-networks)  
+    - [Summary Table: Threats vs Protections](#summary-table-threats-vs-protections)  
+    - [Further Reading](#further-reading)  
 11. [Network Data Units](#11-network-data-units)
     - [Frames](#frames)
     - [Packets](#packets)
     - [Segments](#segments)
     - [Ports](#ports)
-12. Troubleshooting & Monitoring
-    - Network Troubleshooting, Monitoring Tools
+12. [Troubleshooting & Monitoring](#12-troubleshooting--monitoring)
+    - [Introduction to Troubleshooting & Monitoring](#introduction-to-troubleshooting--monitoring)
+    - [Network Troubleshooting Basics](#network-troubleshooting-basics)
+     - [Common Network Issues](#common-network-issues)
+     - [Troubleshooting Steps (The OSI Model Method)](#troubleshooting-steps-the-osi-model-method)
+     - [Useful Troubleshooting Commands](#useful-troubleshooting-commands)
+    - [Monitoring Tools](#monitoring-tools)
+     - [Ping & Traceroute](#ping--traceroute)
+     - [Packet Analyzers (Wireshark)](#packet-analyzers-wireshark)
+     - [SNMP (Simple Network Management Protocol)](#snmp-simple-network-management-protocol)
+     - [Network Performance Monitors](#network-performance-monitors)
      
 ---
 
@@ -1074,3 +1083,92 @@ For a deeper dive into how these data units actually work in detail, check the f
 These files explain how frames, packets, and segments move through routers and switches in real networks.
 
 ---
+
+## 12. Troubleshooting & Monitoring
+
+When working with networks, things won’t always go smoothly.  
+Connections can drop, websites may load slowly, or devices might not talk to each other.  
+That’s why **troubleshooting and monitoring** are essential skills for anyone learning networking.
+
+---
+
+### Introduction to Troubleshooting & Monitoring
+
+- **Troubleshooting**: The process of finding and fixing network problems.  
+- **Monitoring**: Continuously observing network performance to detect issues early.  
+
+Think of troubleshooting as **fixing a flat tire**, while monitoring is like having a **dashboard that shows tire pressure before it goes flat**.
+
+---
+
+### Network Troubleshooting Basics
+
+#### Common Network Issues
+Here are some frequent problems you’ll encounter in real networks:
+
+| Problem                         | Example                                      |
+|---------------------------------|----------------------------------------------|
+| No Connectivity                 | Can’t reach the internet or local devices    |
+| Slow Connection                 | Websites load slowly, video buffers          |
+| IP Address Conflicts            | Two devices using the same IP                |
+| DNS Issues                      | Can’t resolve domain names (e.g., google.com)|
+| Hardware Failures               | Bad cables, faulty NICs, or broken switches  |
+
+---
+
+#### Troubleshooting Steps (The OSI Model Method)
+
+One common approach is to troubleshoot **layer by layer** (OSI Model):
+
+1. **Physical Layer** → Check cables, Wi-Fi signal, power.  
+2. **Data Link Layer** → Check switch ports, MAC addresses.  
+3. **Network Layer** → Verify IP addressing, routing tables.  
+4. **Transport Layer** → Check ports, firewalls, connection rules.  
+5. **Application Layer** → Test applications (web, email, etc.).  
+
+This step-by-step approach helps avoid missing the simple issues first.
+
+---
+
+#### Useful Troubleshooting Commands
+
+| Command         | Purpose                                         | Example Use                          |
+|-----------------|-------------------------------------------------|--------------------------------------|
+| `ping`          | Test connectivity to another device             | `ping 8.8.8.8`                       |
+| `traceroute` / `tracert` | Show the path packets take across the network | `traceroute google.com`              |
+| `ipconfig` (Win) / `ifconfig` (Linux) | Show IP address settings              | `ipconfig /all`                      |
+| `netstat`       | View active connections and listening ports     | `netstat -an`                        |
+| `nslookup` / `dig` | Test DNS name resolution                     | `nslookup openai.com`                |
+
+---
+
+### Monitoring Tools
+
+#### Ping & Traceroute
+- **Ping** checks if a device is reachable.  
+- **Traceroute** shows the path packets take to reach the destination.  
+👉 Learn More: [Ping & Traceroute Basics](https://www.cloudflare.com/learning/network-layer/what-is-traceroute/)
+
+---
+
+#### Packet Analyzers (Wireshark)
+- **Wireshark** lets you see the actual packets moving across a network.  
+- Useful for debugging strange issues or analyzing protocols in detail.  
+👉 Learn More: [Wireshark Official Site](https://www.wireshark.org/)
+
+---
+
+#### SNMP (Simple Network Management Protocol)
+- SNMP allows monitoring of network devices like routers and switches.  
+- Provides stats on traffic, CPU usage, errors, and more.  
+👉 Learn More: [SNMP Tutorial](https://www.geeksforgeeks.org/simple-network-management-protocol-snmp-in-computer-network/)
+
+---
+
+#### Network Performance Monitors
+- Tools like **Nagios, Zabbix, SolarWinds, PRTG** watch your network 24/7.  
+- They generate alerts if something goes wrong (e.g., a server goes down).  
+👉 Learn More: [PRTG Network Monitor](https://www.paessler.com/prtg)
+
+---
+
