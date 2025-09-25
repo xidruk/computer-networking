@@ -1,10 +1,9 @@
-<h1 style="display: flex; align-items: center; gap: 15px;">
-  Computer Networking  
-</h1>
+This repository covers the basics of computer networking. It is designed to introduce you to the fundamentals and essential concepts, helping you take your first steps into the vast world of networking.
 
-<!-- This repository covers the basics of computer networking. It is designed to introduce you to the fundamentals and essential concepts, helping you take your first steps into the vast world of networking. -->
+![NET](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExazJlNnpkMm56MHY2MWVwd3h6cWV5NXJwZjJxb2d1MG5namg1dzh0eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YAnxDvOPDfNc2KuJ8D/giphy.gif)
 
 ## Table of Contents
+
 1. [Introduction](#1-introduction)
    - [Definition of Computer Network](#definition-of-computer-network)
    - [Why Networks are Important](#why-networks-are-important)
