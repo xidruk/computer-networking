@@ -2,7 +2,7 @@
 
 This repository covers the basics of computer networking. It is designed to introduce you to the fundamentals and essential concepts, helping you take your first steps into the vast world of networking.
 
-![LAN/WAN Animation](static/Lanwan.gif)
+![LAN/WAN Animation](static/netop.png)
 ---
 
 ## Table of Contents
