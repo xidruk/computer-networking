@@ -71,7 +71,7 @@ This repository covers the basics of computer networking. It is designed to intr
      - [Packet Analyzers (Wireshark)](#packet-analyzers-wireshark)
      - [SNMP (Simple Network Management Protocol)](#snmp-simple-network-management-protocol)
      - [Network Performance Monitors](#network-performance-monitors)
-     
+
 ---
 
 ## 1. Introduction
