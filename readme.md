@@ -63,15 +63,15 @@ This repository covers the basics of computer networking. It is designed to intr
 12. [Troubleshooting & Monitoring](#12-troubleshooting--monitoring)
     - [Introduction to Troubleshooting & Monitoring](#introduction-to-troubleshooting--monitoring)
     - [Network Troubleshooting Basics](#network-troubleshooting-basics)
-     - [Common Network Issues](#common-network-issues)
-     - [Troubleshooting Steps (The OSI Model Method)](#troubleshooting-steps-the-osi-model-method)
-     - [Useful Troubleshooting Commands](#useful-troubleshooting-commands)
+       - [Common Network Issues](#common-network-issues)
+       - [Troubleshooting Steps (The OSI Model Method)](#troubleshooting-steps-the-osi-model-method)
+       - [Useful Troubleshooting Commands](#useful-troubleshooting-commands)
     - [Monitoring Tools](#monitoring-tools)
-     - [Ping & Traceroute](#ping--traceroute)
-     - [Packet Analyzers (Wireshark)](#packet-analyzers-wireshark)
-     - [SNMP (Simple Network Management Protocol)](#snmp-simple-network-management-protocol)
-     - [Network Performance Monitors](#network-performance-monitors)
-
+       - [Ping & Traceroute](#ping--traceroute)
+       - [Packet Analyzers (Wireshark)](#packet-analyzers-wireshark)
+       - [SNMP (Simple Network Management Protocol)](#snmp-simple-network-management-protocol)
+       - [Network Performance Monitors](#network-performance-monitors)
+     
 ---
 
 ## 1. Introduction
