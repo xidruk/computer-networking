@@ -1,11 +1,8 @@
 <h1 style="display: flex; align-items: center; gap: 15px;">
   Computer Networking  
-  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmp5am9rdzc4NjFtbzAxZnprMzVla2FkOHQ3aDRyc3VrY2tscmg5YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FoVzfcqCDSb7zCynOp/giphy.gif" width="60" height="60" alt="Network Animation">
 </h1>
 
-This repository covers the basics of computer networking. It is designed to introduce you to the fundamentals and essential concepts, helping you take your first steps into the vast world of networking.
-
----
+<!-- This repository covers the basics of computer networking. It is designed to introduce you to the fundamentals and essential concepts, helping you take your first steps into the vast world of networking. -->
 
 ## Table of Contents
 
