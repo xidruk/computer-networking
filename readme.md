@@ -945,6 +945,8 @@ The main goals of network security include:
 - **Authentication**: Verifying the identity of users and devices
 - **Non-repudiation**: Preventing denial of actions taken by authenticated users
 
+---
+
 ### Common Network Threats
 
 Understanding potential threats is the first step in building effective network security. Let's explore the most common types of attacks that networks face today.
@@ -985,6 +987,8 @@ Common social engineering techniques include:
 - **Pretexting**: Creating false scenarios to gain trust and extract information
 - **Baiting**: Offering something enticing to trigger unsafe actions
 - **Tailgating**: Following authorized personnel into secure areas
+
+---
 
 ### Security Mechanisms & Technologies
 
@@ -1044,6 +1048,8 @@ Authentication verifies the identity of users or systems, while authorization de
 
 **Role-Based Access Control (RBAC)** assigns permissions based on user roles within an organization, ensuring people only have access to resources they need for their job functions.
 
+---
+
 ### Network Security Protocols
 
 Security protocols provide standardized methods for implementing security measures across different systems and networks.
@@ -1077,6 +1083,8 @@ Wi-Fi Protected Access protocols secure wireless networks:
 
 **WPA3** is the latest standard, offering enhanced security features including individualized data encryption and protection against brute-force attacks.
 
+---
+
 ### Security Best Practices
 
 Implementing security technologies is only part of the solution. Following established best practices is crucial for maintaining network security.
@@ -1095,6 +1103,8 @@ Implementing security technologies is only part of the solution. Following estab
 
 **Monitoring and Logging**: Implement comprehensive logging and monitoring to detect suspicious activities quickly. Automated alerting can help respond to threats in real-time.
 
+---
+
 ### Network Security Assessment Tools
 
 Various tools help security professionals assess and maintain network security:
@@ -1109,6 +1119,8 @@ Various tools help security professionals assess and maintain network security:
 
 **Security Information and Event Management (SIEM)** systems collect and analyze security logs from multiple sources to provide comprehensive security monitoring.
 
+---
+
 ### Quick Reference: Threats & Solutions
 
 | Security Topic | Description | Key Protection Methods | External Resource |
@@ -1121,6 +1133,8 @@ Various tools help security professionals assess and maintain network security:
 | Wireless Security | Securing Wi-Fi networks and mobile devices | WPA3 implementation, enterprise authentication | [Wi-Fi Alliance Security](https://www.wi-fi.org/discover-wi-fi/security) |
 | Network Monitoring | Detecting and responding to security incidents | IDS/IPS deployment, log analysis, SIEM | [Wireshark Documentation](https://www.wireshark.org/docs/) |
 | Vulnerability Management | Identifying and remediating security weaknesses | Regular scanning, patch management, risk assessment | [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/) |
+
+---
 
 ### External Resources & Further Reading
 
