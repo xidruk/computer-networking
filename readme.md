@@ -1066,9 +1066,10 @@ Example:
 
 For a deeper dive into how these data units actually work in detail, check the following docs:
 
-- [routers.md](docs/routers.md)  
-- [routing_table.md](docs/routing_table.md)  
-- [switches.md](docs/switches.md)  
+- Frame :: [docs/frame.md](docs/frame.md)
+- Packet :: [docs/packet.md](docs/packet.md)
+- Segment :: [docs/segment.md](docs/segment.md)
+- Port :: [docs/ports.md](docs/ports.md)
 
 These files explain how frames, packets, and segments move through routers and switches in real networks.
 
