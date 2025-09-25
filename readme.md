@@ -1145,30 +1145,28 @@ This step-by-step approach helps avoid missing the simple issues first.
 ### Monitoring Tools
 
 #### Ping & Traceroute
-- **Ping** checks if a device is reachable.  
-- **Traceroute** shows the path packets take to reach the destination.  
-👉 Learn More: [Ping & Traceroute Basics](https://www.cloudflare.com/learning/network-layer/what-is-traceroute/)
+- **Ping** checks if a device is reachable. to learn how to use it check this link : [man7.org/](#https://man7.org/linux/man-pages/man8/ping.8.html)
+- **Traceroute** shows the path packets take to reach the destination.  to learn how to use traceroute check this link : [docs.oracle.com/](#https://docs.oracle.com/en/industries/communications/session-border-controller/9.1.0/mtg/traceroute-command-m3.html#GUID-B4AE6D1C-A149-4783-9AF7-265FC88A008A)
 
 ---
 
 #### Packet Analyzers (Wireshark)
 - **Wireshark** lets you see the actual packets moving across a network.  
-- Useful for debugging strange issues or analyzing protocols in detail.  
-👉 Learn More: [Wireshark Official Site](https://www.wireshark.org/)
+- Useful for debugging strange issues or analyzing protocols in detail.
+- Learn what is and how to use `Wireshark` : [www.wireshark.org/](#https://www.wireshark.org/docs/wsug_html_chunked/ChapterIntroduction.html)
 
 ---
 
 #### SNMP (Simple Network Management Protocol)
 - SNMP allows monitoring of network devices like routers and switches.  
-- Provides stats on traffic, CPU usage, errors, and more.  
-👉 Learn More: [SNMP Tutorial](https://www.geeksforgeeks.org/simple-network-management-protocol-snmp-in-computer-network/)
-
+- Provides stats on traffic, CPU usage, errors, and more. 
+- learn more anout the `SNMP` : [www.ibm.com/docs/](#https://www.ibm.com/docs/en/itcam-transactions/7.4.x?topic=scripts-snmp-commands)
 ---
 
 #### Network Performance Monitors
 - Tools like **Nagios, Zabbix, SolarWinds, PRTG** watch your network 24/7.  
 - They generate alerts if something goes wrong (e.g., a server goes down).  
-👉 Learn More: [PRTG Network Monitor](https://www.paessler.com/prtg)
+- Learn More: [https://www.paessler.com/prtg/](https://www.paessler.com/prtg)
 
 ---
 
