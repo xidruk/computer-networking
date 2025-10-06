@@ -2,7 +2,7 @@
 
 This repository covers the basics of computer networking. It is designed to introduce you to the fundamentals and essential concepts, helping you take your first steps into the vast world of networking.
 
-## Table of Contents
+## Table of Contents ::
 
 1. [Introduction](#1-introduction)
    - [Definition of Computer Network](#definition-of-computer-network)
@@ -82,16 +82,16 @@ This repository covers the basics of computer networking. It is designed to intr
      
 ---
 
-## 1. Introduction
+## 1. Introduction ::
 
-### Definition of Computer Network
+### Definition of Computer Network ::
 A **computer network** is a collection of interconnected devices such as computers, servers, and other hardware that communicate with each other to share resources, exchange information, and enable collaboration. Networks can be small, like a home network connecting a few devices, or large, spanning cities or even countries.  
 
 By allowing devices to communicate, networks make it possible to share files, access the internet, run applications remotely, and coordinate complex systems efficiently.
 
 ---
 
-### Why Networks are Important
+### Why Networks are Important ::
 Computer networks are the backbone of modern digital life. They allow businesses, schools, governments, and individuals to:
 
 - **Share Resources:** Printers, storage devices, and internet connections can be shared among multiple users.  
@@ -104,7 +104,7 @@ In short, networks make modern computing fast, flexible, and efficient.
 
 ---
 
-### Basic Networking Terms
+### Basic Networking Terms ::
 To get started with networking, here are some foundational terms:
 
 - **Node / Host:** Any device connected to a network (computer, server, printer, etc.).  
@@ -120,7 +120,7 @@ To get started with networking, here are some foundational terms:
 
 ---
 
-## 2. Types of Computer Networks
+## 2. Types of Computer Networks ::
 
 Computer networks come in different types because organizations, individuals, and devices have varying needs for **coverage, speed, cost, and connectivity**. Networks are grouped based on **geographic area, purpose, and technology**:
 
@@ -132,7 +132,7 @@ Each network type is designed to **solve specific challenges** such as local con
 
 ---
 
-### Common Network Types
+### Common Network Types ::
 
 | Network Type | Short Description | Solution Provided | Expanded Explanation |
 |-------------|------------------|-----------------|--------------------|
@@ -149,7 +149,7 @@ Each network type is designed to **solve specific challenges** such as local con
 
 ---
 
-## 3. Network Devices
+## 3. Network Devices :: 
 
 Network devices are the **building blocks of any computer network**. They manage, direct, and control the flow of data between devices, ensuring communication is fast, secure, and efficient. Without these devices, networks would not function properly  data could get lost, collisions could occur, or communication might not even be possible.  
 
@@ -159,7 +159,7 @@ Understanding these devices is fundamental for anyone learning networking becaus
 
 ---
 
-### Common Network Devices
+### Common Network Devices ::
 
 | Network Device | Visual Look | Description | Role | How It Works | Expanded Explanation |
 |----------------|------------|------------|------|--------------|--------------------|
@@ -179,7 +179,7 @@ Understanding these devices is fundamental for anyone learning networking becaus
 
 ---
 
-## 4. Network Communication Types
+## 4. Network Communication Types :: 
 
 
 In computer networks, data can be transmitted in different ways depending on the number of senders and receivers. Understanding these communication types is crucial for grasping how networks operate efficiently.
@@ -195,13 +195,13 @@ In computer networks, data can be transmitted in different ways depending on the
 
 ---
 
-## 5. Core Networking Concepts
+## 5. Core Networking Concepts :: 
 
 Before diving into IP addressing and subnetting, it’s important to understand some fundamental networking concepts. These concepts will give you the necessary background to grasp how devices communicate in a network, how they are identified, and how addresses are assigned.
 
 ---
 
-### Network Interface Card (NIC)
+### Network Interface Card (NIC) ::
 
 A **Network Interface Card (NIC)** is a hardware component that allows a device to connect to a network. It can be a physical card installed in a computer or built into a device's motherboard. NICs can connect via **wired (Ethernet)** or **wireless (Wi-Fi)** interfaces. Every NIC has a unique identifier called a **MAC address** that ensures devices can be recognized on the local network.
 
@@ -209,7 +209,7 @@ A **Network Interface Card (NIC)** is a hardware component that allows a device 
 
 ---
 
-### MAC Address
+### MAC Address :: 
 
 A **MAC (Media Access Control) address** is a unique identifier assigned to each NIC by the manufacturer. It is a 48-bit address typically represented in hexadecimal format (e.g., `00:1A:2B:3C:4D:5E`). MAC addresses operate at the **data link layer (Layer 2)** of the OSI model and are used for local network communication. They allow devices to be uniquely identified on the same network segment, even if their IP addresses change.
 
@@ -217,7 +217,7 @@ A **MAC (Media Access Control) address** is a unique identifier assigned to each
 
 ---
 
-### IP Address Basics
+### IP Address Basics :: 
 
 An **IP (Internet Protocol) address** is a numerical label assigned to a device for identification and communication on a network. Unlike MAC addresses, IP addresses work at the **network layer (Layer 3)** of the OSI model. They enable devices across different networks to locate and communicate with each other.
 
@@ -232,7 +232,7 @@ IP addresses can be **public** (routable on the internet) or **private** (used w
 
 ---
 
-### IP Address Allocation
+### IP Address Allocation :: 
 
 IP addresses can be assigned to devices in two main ways:
 
@@ -248,7 +248,7 @@ Understanding how IP addresses are allocated helps you see how devices gain acce
 
 ---
 
-### Types of IP Addresses
+### Types of IP Addresses ::
 
 Within an IP network, addresses are categorized based on their purpose:
 
@@ -265,7 +265,7 @@ This section provides the foundation you need to understand how devices connect,
 
 ---
 
-## 6. Networking Models & Protocols
+## 6. Networking Models & Protocols :: 
 
 When you first approach computer networking, it may seem like a collection of unrelated terms: TCP, DNS, IP addresses, routers, and so on.  
 In reality, these pieces fit together into an organized system. To make sense of how data travels across a network, we rely on **networking models** and **protocols**.  
@@ -277,7 +277,7 @@ Together, they give us a map of how information is prepared, transmitted, routed
 
 ---
 
-### OSI Model
+### OSI Model :: 
 
 The **OSI (Open Systems Interconnection) Model** is a seven-layer conceptual framework developed in the 1980s. While it is not used directly in modern networking, it is still the best way to learn how networks function because it breaks down communication into clear, logical steps.
 
@@ -287,7 +287,7 @@ You can think of the OSI model like a mail delivery system:
 - It passes through postal sorting and transport systems (Network, Data Link).  
 - Finally, it is delivered to the recipient’s mailbox (Physical Layer).  
 
-#### OSI Model Layers
+#### OSI Model Layers :: 
 
 | Layer | Name        | Description                                                                 |
 |-------|-------------|-----------------------------------------------------------------------------|
@@ -305,11 +305,11 @@ For an in-depth discussion of each layer: see [OSI Model](docs/osi_model.md).
 
 ---
 
-### TCP/IP Model
+### TCP/IP Model :: 
 
 The **TCP/IP model** is the practical standard that underlies the Internet today. It was developed by the U.S. Department of Defense in the 1970s and eventually replaced the OSI model in real-world use. While simpler than OSI, it captures the essential functions.
 
-#### TCP/IP Layers
+#### TCP/IP Layers :: 
 
 | Layer          | Examples                        | Description                                                  |
 |----------------|---------------------------------|--------------------------------------------------------------|
@@ -326,7 +326,7 @@ For a more detailed study: see [TCP/IP Model](docs/tcp_ip.md).
 
 ---
 
-### Why Models Matter
+### Why Models Matter :: 
 
 Models are not just academic diagrams. They provide:
 - A **reference language**: engineers worldwide can describe issues precisely (e.g., “this is a Layer 3 problem” means a routing issue).  
@@ -335,7 +335,7 @@ Models are not just academic diagrams. They provide:
 
 ---
 
-### Transport Protocols :: TCP & UDP
+### Transport Protocols :: TCP & UDP 
 
 The **Transport Layer** is where end-to-end communication between two hosts is managed. Two major protocols dominate this layer:
 
@@ -402,7 +402,7 @@ Expanded discussions: [DHCP](docs/dhcp.md) and [DHCPv6](docs/dhcpv6.md).
 
 ---
 
-### Summary
+### Summary :: 
 
 By combining **networking models** (which provide structure) with **protocols** (which provide rules), we gain a complete picture of how data flows across networks.  
 
@@ -415,7 +415,7 @@ Understanding this section gives you the roadmap for everything else in networki
 
 ---
 
-## 7. IP Addressing and Subnetting
+## 7. IP Addressing and Subnetting ::
 
 This section explains how devices are **identified** on a network and how networks are **divided and managed**. If you followed earlier sections (devices, NIC/MAC, networking models and protocols), this is where the logical addressing layer becomes practical: you will learn how addresses are formed, how they are assigned, and how to split address space into usable subnets.
 
@@ -511,7 +511,7 @@ For step-by-step examples and design tips, see: `docs/vlsm.md`.
 
 ---
 
-### CIDR (Classless Inter-Domain Routing)
+### CIDR :: (Classless Inter-Domain Routing)
 
 **What CIDR is**  
 CIDR replaces the old classful system and allows networks to be specified with arbitrary prefix lengths (e.g., `/22`, `/27`) instead of fixed Class A/B/C boundaries.
@@ -528,7 +528,7 @@ For concepts, routing examples, and aggregation illustrations, see: `docs/cidr.m
 
 ---
 
-### IP Address Classification (classful vs modern usage)
+### IP Address Classification :: (classful vs modern usage)
 
 **Classful overview (legacy)**  
 Historically, IPv4 addresses were split into classes:
@@ -562,7 +562,7 @@ For the historical classes and why they were replaced, see: `docs/ipaddress_clas
 
 ---
 
-### IPv4 vs IPv6 (short comparison)
+### IPv4 vs IPv6 :: (short comparison)
 
 | Aspect            | IPv4                     | IPv6                              |
 |-------------------|--------------------------|------------------------------------|
@@ -577,7 +577,7 @@ For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
 
 ---
 
-### Go Deeper
+### Go Deeper ::
 
 - [docs/ipv4.md](docs/ipv4.md) :: deep dive into IPv4, public vs private, NAT, special addresses.  
 - [docs/ipv6.md](docs/ipv6.md) :: detailed IPv6 features, types, and allocation.  
@@ -589,7 +589,7 @@ For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
 
 ---
 
-## 8. Routing & Switching Concepts
+## 8. Routing & Switching Concepts ::
 
 This section explains how packets actually move inside and between networks. If you are a beginner, think of this as the moment when the abstract ideas (IP addresses, MACs, NICs) become concrete: switches move frames inside a LAN, routers move packets between LANs/WANs, and routing tables tell routers where to send those packets. Read each subsection carefully and then follow the links to the in-depth documents for practical examples and commands.
 
@@ -702,7 +702,7 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 
 ---
 
-### How these pieces fit together (practical mental model)
+### How these pieces fit together :: (practical mental model)
 
 - **Inside a LAN**: hosts ↔ switches (Layer 2). Switches forward frames using MAC addresses; VLANs partition the broadcast domain.  
 - **Between networks**: hosts ↔ router (default gateway) ↔ other routers (Layer 3). Routers forward packets using routing tables and IP addresses.  
@@ -717,7 +717,7 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 
 ---
 
-### Go Deeper
+### Go Deeper ::
 - [docs/routers.md](docs/routers.md) :: routers, route types, routing protocols.  
 - [docs/routing_table.md](docs/routing_table.md) :: route lookup, longest-prefix-match, examples.  
 - [docs/switches.md](docs/switches.md) :: MAC learning, flooding, switch types, security.  
@@ -725,13 +725,13 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 
 ---
 
-## 9. Network Services
+## 9. Network Services ::
 
 Network services are the extra features that make networks usable, reliable, and secure for real applications. They sit on top of the basic forwarding behavior of switches and routers and provide functionality such as address translation, traffic prioritization, remote secure access, scalable application delivery, cloud connectivity, and wireless access. This section briefly explains **why** these services matter and then walks you through each service in beginner-friendly, step-by-step language. For deep, hands-on explanations and examples see the linked docs at the end of each subsection.
 
 ---
 
-### Why this section matters
+### Why this section matters ::
 Basic connectivity (a NIC, an IP, a switch, a router) gets devices to talk. Network services make sure:
 - traffic gets where it needs to go even when addresses aren’t unique (NAT),  
 - time-sensitive traffic (voice/video) gets priority (QoS),  
@@ -770,7 +770,7 @@ For full details and examples, see: [docs/nat.md](docs/nat.md).
 
 ---
 
-### Gateways
+### Gateways ::
 
 **What is a gateway?**  
 A gateway is a node that serves as an entry/exit point for a network. In common usage, the **default gateway** on a host is the router that forwards traffic destined for other networks.
@@ -812,7 +812,7 @@ For configuration patterns and practical QoS design, see: [docs/qos.md](docs/qos
 
 ---
 
-### Load Balancing
+### Load Balancing ::
 
 **What a load balancer does:**  
 A load balancer distributes incoming application requests across multiple backend servers to improve performance, availability, and scalability.
@@ -866,7 +866,7 @@ For encryption types, authentication methods, and configuration examples, see: [
 
 ---
 
-### Cloud Networking
+### Cloud Networking ::
 
 **What cloud networking covers:**  
 Cloud networking is how networking constructs are realized in public cloud platforms: virtual networks (VPCs), subnets, route tables, security groups, NAT gateways, peering, VPN/Direct Connect, and managed load balancers.
@@ -889,7 +889,7 @@ For cloud-specific patterns and diagrams, see: [docs/cloud_networking.md](docs/c
 
 ---
 
-### Wireless Networking
+### Wireless Networking ::
 
 **What wireless networking covers:**  
 Wireless (Wi-Fi) enables mobile devices to connect to the LAN without cables. It introduces RF behavior, channel planning, AP placement, and security concerns that wired networks don’t face.
@@ -916,7 +916,7 @@ For Wi-Fi standards, security best practices, and AP design guidance, see: [docs
 
 ---
 
-### Go Deeper
+### Go Deeper ::
 - [docs/nat.md](docs/nat.md) :: NAT types, examples, port forwarding.  
 - [docs/gateway.md](docs/gateway.md) :: gateway roles and cloud gateway concepts.  
 - [docs/qos.md](docs/qos.md) :: classification, queuing, shaping, examples.  
@@ -927,9 +927,9 @@ For Wi-Fi standards, security best practices, and AP design guidance, see: [docs
 
 ---
 
-## 10. Network Security
+## 10. Network Security ::
 
-### Introduction to Network Security
+### Introduction to Network Security ::
 
 Network security is the practice of protecting computer networks and their data from unauthorized access, misuse, modification, or denial of service attacks. In today's interconnected world, where businesses and individuals rely heavily on digital communication and data sharing, network security has become a critical aspect of maintaining the integrity, confidentiality, and availability of information.
 
@@ -944,11 +944,11 @@ The main goals of network security include:
 
 ---
 
-### Common Network Threats
+### Common Network Threats ::
 
 Understanding potential threats is the first step in building effective network security. Let's explore the most common types of attacks that networks face today.
 
-#### Malware & Viruses
+#### Malware & Viruses ::
 
 Malware (malicious software) is any software designed to harm, exploit, or gain unauthorized access to computer systems. This broad category includes several types:
 
@@ -960,13 +960,13 @@ Malware (malicious software) is any software designed to harm, exploit, or gain 
 
 **Ransomware** encrypts a victim's files and demands payment for the decryption key. This type of malware has become increasingly common and can paralyze entire organizations.
 
-#### DDoS Attacks
+#### DDoS Attacks ::
 
 Distributed Denial of Service (DDoS) attacks overwhelm a target system with a flood of internet traffic, making it unavailable to legitimate users. Imagine trying to enter a popular store, but the entrance is blocked by thousands of people – that's essentially what happens during a DDoS attack.
 
 These attacks use networks of compromised computers (called botnets) to generate massive amounts of traffic directed at a single target. The goal isn't usually to steal data, but rather to disrupt services and cause downtime, which can be costly for businesses.
 
-#### Man-in-the-Middle Attacks
+#### Man-in-the-Middle Attacks ::
 
 In a Man-in-the-Middle (MitM) attack, an attacker secretly intercepts and potentially alters communications between two parties who believe they are communicating directly with each other. It's like someone secretly listening to and potentially modifying your phone conversations.
 
@@ -975,7 +975,7 @@ Common scenarios include:
 - DNS spoofing to redirect users to malicious websites
 - Session hijacking to steal authentication tokens
 
-#### Social Engineering
+#### Social Engineering ::
 
 Social engineering attacks target the human element of security, exploiting psychological manipulation rather than technical vulnerabilities. These attacks are often the most successful because they bypass technological defenses entirely.
 
@@ -987,11 +987,11 @@ Common social engineering techniques include:
 
 ---
 
-### Security Mechanisms & Technologies
+### Security Mechanisms & Technologies ::
 
 Now that we understand the threats, let's explore the primary technologies and mechanisms used to defend against them.
 
-#### Firewalls
+#### Firewalls ::
 
 A firewall acts as a barrier between trusted internal networks and untrusted external networks, such as the internet. Think of it as a security guard that checks everyone trying to enter or leave a building.
 
@@ -1003,7 +1003,7 @@ Firewalls examine network traffic based on predetermined security rules and deci
 
 **Next-Generation Firewalls** combine traditional firewall capabilities with additional features like intrusion prevention, application awareness, and advanced threat detection.
 
-#### Encryption Protocols
+#### Encryption Protocols ::
 
 Encryption transforms readable data (plaintext) into an unreadable format (ciphertext) using mathematical algorithms and keys. Even if attackers intercept encrypted data, they cannot understand it without the proper decryption key.
 
@@ -1013,7 +1013,7 @@ Encryption transforms readable data (plaintext) into an unreadable format (ciphe
 
 **Hash Functions** create unique digital fingerprints of data, allowing verification of data integrity without revealing the original content.
 
-#### VPNs (Virtual Private Networks)
+#### VPNs :: (Virtual Private Networks) 
 
 A VPN creates a secure, encrypted connection between a user's device and a remote server, effectively extending a private network across a public network like the internet. It's like having a private tunnel through a busy highway.
 
@@ -1025,7 +1025,7 @@ VPNs provide several benefits:
 
 Common VPN protocols include OpenVPN, L2TP/IPSec, and WireGuard, each offering different balances of security, speed, and compatibility.
 
-#### Intrusion Detection Systems (IDS)
+#### Intrusion Detection Systems (IDS) :: 
 
 An IDS monitors network traffic and system activities for suspicious behavior or policy violations. Like a security camera system, it watches for unusual activities and alerts administrators when potential threats are detected.
 
@@ -1035,7 +1035,7 @@ An IDS monitors network traffic and system activities for suspicious behavior or
 
 **Intrusion Prevention Systems (IPS)** go beyond detection by automatically taking action to block or prevent identified threats.
 
-#### Authentication & Authorization
+#### Authentication & Authorization ::
 
 Authentication verifies the identity of users or systems, while authorization determines what authenticated users are allowed to do.
 
@@ -1047,11 +1047,11 @@ Authentication verifies the identity of users or systems, while authorization de
 
 ---
 
-### Network Security Protocols
+### Network Security Protocols ::
 
 Security protocols provide standardized methods for implementing security measures across different systems and networks.
 
-#### SSL/TLS
+#### SSL/TLS ::
 
 Secure Sockets Layer (SSL) and its successor, Transport Layer Security (TLS), encrypt data transmitted between web browsers and servers. When you see "https://" in a web address, SSL/TLS is protecting your connection.
 
@@ -1062,7 +1062,7 @@ The protocol works through a process called a "handshake":
 4. Both parties establish encryption keys
 5. Secure communication begins
 
-#### IPSec
+#### IPSec ::
 
 Internet Protocol Security (IPSec) provides security at the network layer, encrypting and authenticating IP packets. It's commonly used in VPNs and can operate in two modes:
 
@@ -1070,7 +1070,7 @@ Internet Protocol Security (IPSec) provides security at the network layer, encry
 
 **Tunnel Mode** encrypts entire IP packets and adds new headers, providing complete packet protection.
 
-#### WPA/WPA2/WPA3
+#### WPA/WPA2/WPA3 ::
 
 Wi-Fi Protected Access protocols secure wireless networks:
 
@@ -1082,7 +1082,7 @@ Wi-Fi Protected Access protocols secure wireless networks:
 
 ---
 
-### Security Best Practices
+### Security Best Practices ::
 
 Implementing security technologies is only part of the solution. Following established best practices is crucial for maintaining network security.
 
@@ -1102,7 +1102,7 @@ Implementing security technologies is only part of the solution. Following estab
 
 ---
 
-### Network Security Assessment Tools
+### Network Security Assessment Tools ::
 
 Various tools help security professionals assess and maintain network security:
 
@@ -1118,7 +1118,7 @@ Various tools help security professionals assess and maintain network security:
 
 ---
 
-### Quick Reference: Threats & Solutions
+### Quick Reference: Threats & Solutions ::
 
 | Security Topic | Description | Key Protection Methods | External Resource |
 |----------------|-------------|----------------------|-------------------|
@@ -1133,7 +1133,7 @@ Various tools help security professionals assess and maintain network security:
 
 ---
 
-### External Resources & Further Reading
+### External Resources & Further Reading ::
 
 To deepen your understanding of network security, consider exploring these valuable resources:
 
@@ -1161,7 +1161,7 @@ Remember that network security is an ongoing process, not a one-time implementat
 
 ---
 
-## 11. Network Data Units
+## 11. Network Data Units ::
 
 When data travels through a computer network, it doesn’t move as one big block.  
 Instead, it is **broken down into smaller chunks** so devices can handle it more efficiently.  
@@ -1171,7 +1171,7 @@ Let’s walk through the most important ones step by step.
 
 ---
 
-### Frames
+### Frames ::
 
 A **Frame** is the unit of data at the **Data Link Layer (Layer 2)**.  
 
@@ -1183,7 +1183,7 @@ Example: When your laptop sends a file to a printer in the same office LAN, the 
 
 ---
 
-### Packets
+### Packets ::
 
 A **Packet** is the unit of data at the **Network Layer (Layer 3)**.  
 
@@ -1195,7 +1195,7 @@ Example: When you open a website, the request your browser sends is wrapped insi
 
 ---
 
-### Segments
+### Segments ::
 
 A **Segment** is the unit of data at the **Transport Layer (Layer 4)**.  
 
@@ -1207,7 +1207,7 @@ Example: If you stream a video, the video is broken into many small segments so 
 
 ---
 
-### Ports
+### Ports ::
 
 A **Port** is not a physical hole but a **virtual door** on your device that applications use to communicate.  
 
@@ -1222,7 +1222,7 @@ Example:
 
 ---
 
-### Summary Table: Data Units Across Layers
+### Summary Table: Data Units Across Layers :: 
 
 | Layer (OSI)          | Data Unit | Example Purpose                          |
 |-----------------------|-----------|------------------------------------------|
@@ -1233,7 +1233,7 @@ Example:
 
 ---
 
-### Go Deeper
+### Go Deeper ::
 
 For a deeper dive into how these data units actually work in detail, check the following docs:
 
@@ -1246,7 +1246,7 @@ These files explain how frames, packets, and segments move through routers and s
 
 ---
 
-## 12. Troubleshooting & Monitoring
+## 12. Troubleshooting & Monitoring ::
 
 When working with networks, things won’t always go smoothly.  
 Connections can drop, websites may load slowly, or devices might not talk to each other.  
@@ -1254,7 +1254,7 @@ That’s why **troubleshooting and monitoring** are essential skills for anyone 
 
 ---
 
-### Introduction to Troubleshooting & Monitoring
+### Introduction to Troubleshooting & Monitoring ::
 
 - **Troubleshooting**: The process of finding and fixing network problems.  
 - **Monitoring**: Continuously observing network performance to detect issues early.  
@@ -1263,9 +1263,9 @@ Think of troubleshooting as **fixing a flat tire**, while monitoring is like hav
 
 ---
 
-### Network Troubleshooting Basics
+### Network Troubleshooting Basics ::
 
-#### Common Network Issues
+#### Common Network Issues :: 
 Here are some frequent problems you’ll encounter in real networks:
 
 | Problem                         | Example                                      |
@@ -1278,7 +1278,7 @@ Here are some frequent problems you’ll encounter in real networks:
 
 ---
 
-#### Troubleshooting Steps (The OSI Model Method)
+#### Troubleshooting Steps (The OSI Model Method) ::
 
 One common approach is to troubleshoot **layer by layer** (OSI Model):
 
@@ -1292,7 +1292,7 @@ This step-by-step approach helps avoid missing the simple issues first.
 
 ---
 
-#### Useful Troubleshooting Commands
+#### Useful Troubleshooting Commands :: 
 
 | Command         | Purpose                                         | Example Use                          |
 |-----------------|-------------------------------------------------|--------------------------------------|
@@ -1304,28 +1304,28 @@ This step-by-step approach helps avoid missing the simple issues first.
 
 ---
 
-### Monitoring Tools
+### Monitoring Tools :: 
 
-#### Ping & Traceroute
+#### Ping & Traceroute ::
 - **Ping** checks if a device is reachable. to learn how to use it check this link : [man7.org/](https://man7.org/linux/man-pages/man8/ping.8.html)
 - **Traceroute** shows the path packets take to reach the destination.  to learn how to use traceroute check this link : [docs.oracle.com/](https://docs.oracle.com/en/industries/communications/session-border-controller/9.1.0/mtg/traceroute-command-m3.html#GUID-B4AE6D1C-A149-4783-9AF7-265FC88A008A)
 
 ---
 
-#### Packet Analyzers (Wireshark)
+#### Packet Analyzers (Wireshark) ::
 - **Wireshark** lets you see the actual packets moving across a network.  
 - Useful for debugging strange issues or analyzing protocols in detail.
 - Learn what is and how to use `Wireshark` : [www.wireshark.org/](https://www.wireshark.org/docs/wsug_html_chunked/ChapterIntroduction.html)
 
 ---
 
-#### SNMP (Simple Network Management Protocol)
+#### SNMP (Simple Network Management Protocol) :: 
 - SNMP allows monitoring of network devices like routers and switches.  
 - Provides stats on traffic, CPU usage, errors, and more. 
 - learn more anout the `SNMP` : [www.ibm.com/docs/](https://www.ibm.com/docs/en/itcam-transactions/7.4.x?topic=scripts-snmp-commands)
 ---
 
-#### Network Performance Monitors
+#### Network Performance Monitors :: 
 - Tools like **Nagios, Zabbix, SolarWinds, PRTG** watch your network 24/7.  
 - They generate alerts if something goes wrong (e.g., a server goes down).  
 - Learn More: [https://www.paessler.com/prtg/](https://www.paessler.com/prtg)
