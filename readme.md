@@ -13,33 +13,33 @@ This repository covers the basics of computer networking. It is designed to intr
    - [Purpose of RFCs in Networking](#purpose-of-rfcs-in-networking)
    - [Examples of Important RFCs](#examples-of-important-rfcs)
    - [How to Read an RFC](#how-to-read-an-rfc)
-3. [Types of Computer Networks](#2-types-of-computer-networks-)
-4. [Network Devices](#3-network-devices-)
-5. [Network Communication Types](#4-network-communication-types-)
-6. [Core Networking Concepts](#5-core-networking-concepts-)
+3. [Types of Computer Networks](#3-types-of-computer-networks-)
+4. [Network Devices](#4-network-devices-)
+5. [Network Communication Types](#5-network-communication-types-)
+6. [Core Networking Concepts](#6-core-networking-concepts-)
    - [Network Interface Card (NIC)](#network-interface-card-nic-)
    - [MAC Address](#mac-address-)
    - [IP Address Basics](#ip-address-basics-)
    - [IP Address Allocation](#ip-address-allocation-)
    - [Types of IP Addresses](#types-of-ip-addresses-)
-7. [Networking Models & Protocols](#6-networking-models--protocols-)
+7. [Networking Models & Protocols](#7-networking-models--protocols-)
    - [OSI Model](#osi-model-)
    - [TCP/IP Model](#tcpip-model-)
    - [Transport Protocols: TCP & UDP](#transport-protocols--tcp--udp)
    - [Application Protocols: DNS, CDNS, DHCP](#application-protocols-dns-cdns-dhcp-)
-8. [IP Addressing and Subnetting](#7-ip-addressing-and-subnetting-)
+8. [IP Addressing and Subnetting](#8-ip-addressing-and-subnetting-)
    - [IPv4](#ipv4-)
    - [IPv6](#ipv6-)
    - [Subnetting](#subnetting-)
    - [VLSM](#vlsm--variable-length-subnet-masking)
    - [CIDR](#cidr--classless-inter-domain-routing)
    - [IP Address Classification](#ip-address-classification-)
-9. [Routing & Switching Concepts](#8-routing--switching-concepts-)
+9. [Routing & Switching Concepts](#9-routing--switching-concepts-)
    - [Routers](#routers--how-networks-are-connected)
    - [Routing Tables](#routing-tables--the-routers-map)
    - [Switches](#switches--how-frames-move-inside-a-lan)
    - [VLAN](#vlans--logical-segmentation-inside-switches)
-10. [Network Services](#9-network-services-)
+10. [Network Services](#10-network-services-)
    - [NAT (Network Address Translation)](#nat--network-address-translation)
    - [Gateways](#gateways-)
    - [QoS (Quality of Service)](#qos--quality-of-service)
@@ -47,7 +47,7 @@ This repository covers the basics of computer networking. It is designed to intr
    - [VPN (Virtual Private Network)](#vpn--virtual-private-network)
    - [Cloud Networking](#cloud-networking-)
    - [Wireless Networking](#wireless-networking-)
-11. [Network Security](#10-network-security-)  
+11. [Network Security](#11-network-security-)  
     - [Introduction to Network Security](#introduction-to-network-security-)  
     - [Common Network Threats](#common-network-threats-)  
         - [Malware & Viruses](#malware--viruses-)
@@ -68,12 +68,12 @@ This repository covers the basics of computer networking. It is designed to intr
     - [Network Security Assessment Tools](#network-security-assessment-tools-)
     - [Quick Reference: Threats & Solutions](#quick-reference-threats--solutions-)
     - [External Resources & Further Reading](#external-resources--further-reading-)
-12. [Network Data Units](#11-network-data-units-)
+12. [Network Data Units](#12-network-data-units-)
     - [Frames](#frames-)
     - [Packets](#packets-)
     - [Segments](#segments-)
     - [Ports](#ports-)
-13. [Troubleshooting & Monitoring](#12-troubleshooting--monitoring-)
+13. [Troubleshooting & Monitoring](#13-troubleshooting--monitoring-)
     - [Introduction to Troubleshooting & Monitoring](#introduction-to-troubleshooting--monitoring-)
     - [Network Troubleshooting Basics](#network-troubleshooting-basics-)
        - [Common Network Issues](#common-network-issues-)
@@ -129,7 +129,7 @@ To get started with networking, here are some foundational terms:
 
 ---
 
-## 2. Types of Computer Networks ::
+## 3. Types of Computer Networks ::
 
 Computer networks come in different types because organizations, individuals, and devices have varying needs for **coverage, speed, cost, and connectivity**. Networks are grouped based on **geographic area, purpose, and technology**:
 
@@ -158,7 +158,7 @@ Each network type is designed to **solve specific challenges** such as local con
 
 ---
 
-## 3. Network Devices :: 
+## 4. Network Devices :: 
 
 Network devices are the **building blocks of any computer network**. They manage, direct, and control the flow of data between devices, ensuring communication is fast, secure, and efficient. Without these devices, networks would not function properly  data could get lost, collisions could occur, or communication might not even be possible.  
 
@@ -188,7 +188,7 @@ Understanding these devices is fundamental for anyone learning networking becaus
 
 ---
 
-## 4. Network Communication Types :: 
+## 5. Network Communication Types :: 
 
 
 In computer networks, data can be transmitted in different ways depending on the number of senders and receivers. Understanding these communication types is crucial for grasping how networks operate efficiently.
@@ -204,7 +204,7 @@ In computer networks, data can be transmitted in different ways depending on the
 
 ---
 
-## 5. Core Networking Concepts :: 
+## 6. Core Networking Concepts :: 
 
 Before diving into IP addressing and subnetting, it’s important to understand some fundamental networking concepts. These concepts will give you the necessary background to grasp how devices communicate in a network, how they are identified, and how addresses are assigned.
 
@@ -274,7 +274,7 @@ This section provides the foundation you need to understand how devices connect,
 
 ---
 
-## 6. Networking Models & Protocols :: 
+## 7. Networking Models & Protocols :: 
 
 When you first approach computer networking, it may seem like a collection of unrelated terms: TCP, DNS, IP addresses, routers, and so on.  
 In reality, these pieces fit together into an organized system. To make sense of how data travels across a network, we rely on **networking models** and **protocols**.  
@@ -424,7 +424,7 @@ Understanding this section gives you the roadmap for everything else in networki
 
 ---
 
-## 7. IP Addressing and Subnetting ::
+## 8. IP Addressing and Subnetting ::
 
 This section explains how devices are **identified** on a network and how networks are **divided and managed**. If you followed earlier sections (devices, NIC/MAC, networking models and protocols), this is where the logical addressing layer becomes practical: you will learn how addresses are formed, how they are assigned, and how to split address space into usable subnets.
 
@@ -598,7 +598,7 @@ For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
 
 ---
 
-## 8. Routing & Switching Concepts ::
+## 9. Routing & Switching Concepts ::
 
 This section explains how packets actually move inside and between networks. If you are a beginner, think of this as the moment when the abstract ideas (IP addresses, MACs, NICs) become concrete: switches move frames inside a LAN, routers move packets between LANs/WANs, and routing tables tell routers where to send those packets. Read each subsection carefully and then follow the links to the in-depth documents for practical examples and commands.
 
@@ -734,7 +734,7 @@ For configuration patterns, trunking details, and VLAN design best practices, se
 
 ---
 
-## 9. Network Services ::
+## 10. Network Services ::
 
 Network services are the extra features that make networks usable, reliable, and secure for real applications. They sit on top of the basic forwarding behavior of switches and routers and provide functionality such as address translation, traffic prioritization, remote secure access, scalable application delivery, cloud connectivity, and wireless access. This section briefly explains **why** these services matter and then walks you through each service in beginner-friendly, step-by-step language. For deep, hands-on explanations and examples see the linked docs at the end of each subsection.
 
@@ -936,7 +936,7 @@ For Wi-Fi standards, security best practices, and AP design guidance, see: [docs
 
 ---
 
-## 10. Network Security ::
+## 11. Network Security ::
 
 ### Introduction to Network Security ::
 
@@ -1255,7 +1255,7 @@ These files explain how frames, packets, and segments move through routers and s
 
 ---
 
-## 12. Troubleshooting & Monitoring ::
+## 13. Troubleshooting & Monitoring ::
 
 When working with networks, things won’t always go smoothly.  
 Connections can drop, websites may load slowly, or devices might not talk to each other.  
