@@ -31,7 +31,7 @@ This repository covers the basics of computer networking. It is designed to intr
    - [IPv4](#ipv4-)
    - [IPv6](#ipv6-)
    - [Subnetting](#subnetting-)
-   - [FLSM (Fixed Length Subnet Masking)](#flsm--fixed-length-subnet-masking)
+   - [FLSM (Fixed Length Subnet Masking)](#flsm-fixed-length-subnet-masking-)
    - [VLSM (Variable Length Subnet Masking)](#vlsm--variable-length-subnet-masking)
    - [FLSM vs VLSM (Key Differences & When to Use Each)](#flsm-vs-vlsm--key-differences--when-to-use-each)
    - [CIDR](#cidr--classless-inter-domain-routing)
@@ -584,7 +584,7 @@ For step-by-step examples and design tips, see: [docs/vlsm.md](docs/vlsm.md).
 
 ---
 
-### FLSM (Fixed Length Subnet Masking)
+### FLSM (Fixed Length Subnet Masking) ::
 
 **FLSM**, or **Fixed Length Subnet Masking**, is one of the simplest subnetting techniques used in computer networking. In this method, the entire network is divided into smaller, equal-sized subnets — each with the same subnet mask and the same number of available IP addresses. This uniformity makes FLSM easy to design, visualize, and manage, especially when all network segments require an identical number of hosts. For example, a training environment or a small business might assign one subnet per department, each with exactly the same number of devices.  
 
