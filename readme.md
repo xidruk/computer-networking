@@ -516,7 +516,7 @@ Because IPv4 address space is limited, networks commonly use **NAT (Network Addr
 - Loopback: `127.0.0.0/8` (e.g., `127.0.0.1`)  
 - APIPA (fallback): `169.254.0.0/16`
 
-For a deeper dive into IPv4, examples, and the historical reasons behind private/public addressing and NAT, see: `docs/ipv4.md`.
+For a deeper dive into IPv4, examples, and the historical reasons behind private/public addressing and NAT, see: [docs/ipv4.md](docs/ipv4.md).
 
 ---
 
@@ -532,7 +532,7 @@ IPv6 (Internet Protocol version 6) uses 128-bit addresses and was designed prima
 - Stateless Address Autoconfiguration (SLAAC) allows devices to self-configure addresses in many networks; DHCPv6 is also available for centralized management.
 - Because IPv6 has a huge address space, the **private vs public** dichotomy is different: IPv6 uses link-local (`fe80::/10`) and unique local (`fc00::/7`) addresses for local scopes, but the IPv6 design removes the shortage that made NAT necessary for IPv4. NAT is therefore not required for address conservation with IPv6 (though operators may still use other forms of translation for policy).
 
-For full details on IPv6 addressing, allocation methods (SLAAC vs DHCPv6), and address types, see: `docs/ipv6.md` and `docs/dhcpv6.md`.
+For full details on IPv6 addressing, allocation methods (SLAAC vs DHCPv6), and address types, see: [docs/ipv6.md](docs/ipv6.md) and [docs/dhcpv6.md](docs/dhcpv6.md).
 
 ---
 
@@ -560,7 +560,7 @@ Subnetting is the process of breaking a larger network block into smaller subnet
   - `192.168.1.128/26` (hosts `.129`–`.190`, broadcast `.191`)  
   - `192.168.1.192/26` (hosts `.193`–`.254`, broadcast `.255`)
 
-For full explanation, binary walkthroughs, and practice examples, see: [docs/subnetting.md](#docs/subnetting.md) and [docs/subnet_mask.md](#docs/subnet_mask.md).
+For full explanation, binary walkthroughs, and practice examples, see: [docs/subnetting.md](docs/subnetting.md) and [docs/subnet_mask.md](docs/subnet_mask.md).
 
 ---
 
@@ -578,7 +578,7 @@ VLSM allows you to use **different subnet sizes** within the same original netwo
 2. Sort from largest to smallest.  
 3. Allocate the largest subnet first, then fit smaller subnets into the remaining space without overlap.
 
-For step-by-step examples and design tips, see: `docs/vlsm.md`.
+For step-by-step examples and design tips, see: [docs/vlsm.md](docs/vlsm.md).
 
 ---
 
@@ -595,7 +595,7 @@ CIDR replaces the old classful system and allows networks to be specified with a
 - CIDR notation is: `network/prefix` (for example `203.0.113.0/24`).  
 - In routing, CIDR enables combining many contiguous networks into one advertisement (e.g., four `/24`s into a single `/22`).
 
-For concepts, routing examples, and aggregation illustrations, see: `docs/cidr.md`.
+For concepts, routing examples, and aggregation illustrations, see: [docs/cidr.md](docs/cidr.md).
 
 ---
 
@@ -611,7 +611,7 @@ This approach proved inefficient and led to address waste.
 **Modern approach**  
 Today, we use **CIDR** instead of classful addressing. Classful knowledge is useful for historical context and some legacy systems, but all modern IP planning should assume classless addressing.
 
-For the historical classes and why they were replaced, see: `docs/ipaddress_classificatin.md`.
+For the historical classes and why they were replaced, see: [docs/ipaddress_classificatin.md](docs/ipaddress_classificatin.md).
 
 ---
 
@@ -644,7 +644,7 @@ For the historical classes and why they were replaced, see: `docs/ipaddress_clas
 | Common allocation | Static / DHCP            | SLAAC / DHCPv6 / static            |
 | Typical scope types| Public / Private ranges | Global unicast, link-local, ULA    |
 
-For a complete IPv6 guide and allocation methods, see: `docs/ipv6.md`.
+For a complete IPv6 guide and allocation methods, see: [docs/ipv6.md](docs/ipv6.md).
 
 ---
 
