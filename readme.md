@@ -586,13 +586,13 @@ For step-by-step examples and design tips, see: [docs/vlsm.md](docs/vlsm.md).
 
 ### FLSM (Fixed Length Subnet Masking) ::
 
-**FLSM**, or **Fixed Length Subnet Masking**, is one of the simplest subnetting techniques used in computer networking. In this method, the entire network is divided into smaller, equal-sized subnets — each with the same subnet mask and the same number of available IP addresses. This uniformity makes FLSM easy to design, visualize, and manage, especially when all network segments require an identical number of hosts. For example, a training environment or a small business might assign one subnet per department, each with exactly the same number of devices.  
+**FLSM**, or **Fixed Length Subnet Masking**, is one of the simplest subnetting techniques used in computer networking. In this method, the entire network is divided into smaller, equal-sized subnets  each with the same subnet mask and the same number of available IP addresses. This uniformity makes FLSM easy to design, visualize, and manage, especially when all network segments require an identical number of hosts. For example, a training environment or a small business might assign one subnet per department, each with exactly the same number of devices.  
 
-However, while FLSM is straightforward, it isn’t the most efficient way to use IP addresses. Real networks rarely have subnets that all need the same number of hosts — one subnet might connect just two routers, while another might serve hundreds of workstations. In such cases, FLSM leads to **IP address wastage**, since each subnet reserves the same amount of address space regardless of its actual size. This limitation is what gave rise to more flexible methods like **VLSM (Variable Length Subnet Masking)** and **CIDR (Classless Inter-Domain Routing)**, which allow subnet sizes to vary based on real needs.  
+However, while FLSM is straightforward, it isn’t the most efficient way to use IP addresses. Real networks rarely have subnets that all need the same number of hosts  one subnet might connect just two routers, while another might serve hundreds of workstations. In such cases, FLSM leads to **IP address wastage**, since each subnet reserves the same amount of address space regardless of its actual size. This limitation is what gave rise to more flexible methods like **VLSM (Variable Length Subnet Masking)** and **CIDR (Classless Inter-Domain Routing)**, which allow subnet sizes to vary based on real needs.  
 
 FLSM still serves as a foundational concept in networking education because it’s ideal for learning how subnetting math works and for practicing IP address division without added complexity. Once you understand FLSM, transitioning to more advanced subnetting techniques becomes much easier.  
 
-For a deeper look at how FLSM works with clear examples, visit:  [Fixed Length Subnet Masking (FLSM) — GeeksforGeeks](https://www.geeksforgeeks.org/fixed-length-subnet-mask-flsm/)
+For a deeper look at how FLSM works with clear examples, visit:  [Fixed Length Subnet Masking (FLSM) - GeeksforGeeks](https://www.geeksforgeeks.org/fixed-length-subnet-mask-flsm/)
 
 ---
 
