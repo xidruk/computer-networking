@@ -560,7 +560,7 @@ Subnetting is the process of breaking a larger network block into smaller subnet
   - `192.168.1.128/26` (hosts `.129`–`.190`, broadcast `.191`)  
   - `192.168.1.192/26` (hosts `.193`–`.254`, broadcast `.255`)
 
-For full explanation, binary walkthroughs, and practice examples, see: `docs/subnetting.md` and `docs/subnet_mask.md`.
+For full explanation, binary walkthroughs, and practice examples, see: [docs/subnetting.md](#docs/subnetting.md) and [docs/subnet_mask.md](#docs/subnet_mask.md).
 
 ---
 
