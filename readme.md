@@ -1232,7 +1232,7 @@ Remember that network security is an ongoing process, not a one-time implementat
 
 ---
 
-## 11. Network Data Units ::
+## 12. Network Data Units ::
 
 When data travels through a computer network, it doesn’t move as one big block.  
 Instead, it is **broken down into smaller chunks** so devices can handle it more efficiently.  
