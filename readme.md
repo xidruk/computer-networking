@@ -2,7 +2,7 @@
 
 This repository covers the basics of computer networking. It is designed to introduce you to the fundamentals and essential concepts, helping you take your first steps into the vast world of networking.
 
-## TOC ?= Table of Contents ::
+## TOC ?= Table of Content ::
 
 1. [Introduction](#1-introduction)
    - [Definition of Computer Network](#definition-of-computer-network)
