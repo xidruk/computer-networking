@@ -127,6 +127,68 @@ To get started with networking, here are some foundational terms:
 
 ## 2. What Are RFCs? ::
 
+As you dive deeper into networking, you’ll start bumping into strange references like **RFC 791**, **RFC 1918**, or **RFC 2616**.  
+At first glance, these look like secret codes—but they’re actually the *manuals of the Internet*. Every major networking concept, protocol, or standard you learn about is described in one or more of these documents called **RFCs**, short for **Request for Comments**.
+
+---
+
+### Definition of RFC ::
+
+**RFC (Request for Comments)** is a type of publication from the **Internet Engineering Task Force (IETF)** and related organizations that defines standards, protocols, procedures, and best practices for how the Internet works.  
+
+The name “Request for Comments” comes from the early days of the ARPANET (the Internet’s ancestor), when engineers would circulate ideas as open documents for feedback. Even though many RFCs are now *official standards*, the name stuck — a reminder that the Internet is built on collaboration and open discussion.
+
+---
+
+### Purpose of RFCs in Networking ::
+
+RFCs are how people agree on *how computers talk to each other*.  
+Without them, every company would invent its own way to send data, and nothing would connect.  
+
+Here’s what RFCs actually do:
+- They define the behavior of Internet protocols like **IP**, **TCP**, **HTTP**, and **DNS**.  
+- They serve as the **reference point** for developers, engineers, and researchers building network software or hardware.  
+- They make sure different systems and vendors can **interoperate** — meaning your laptop can talk to a server on the other side of the planet without a hitch.  
+
+In short, RFCs are the blueprints that keep the global Internet consistent and functional.
+
+---
+
+### Examples of Important RFCs ::
+
+You don’t need to memorize them all (there are thousands), but here are a few classics you’ll see mentioned often:
+
+| RFC Number | Title | Description |
+|-------------|--------|-------------|
+| **RFC 791** | Internet Protocol (IP) | Defines how packets are sent across networks — the backbone of the Internet. |
+| **RFC 793** | Transmission Control Protocol (TCP) | Explains how reliable data delivery works over IP. |
+| **RFC 1918** | Address Allocation for Private Internets | Defines the famous private IP ranges (like 192.168.x.x). |
+| **RFC 2616** | Hypertext Transfer Protocol (HTTP/1.1) | The standard that makes web pages work. |
+| **RFC 1034/1035** | Domain Names - Concepts and Implementation | The foundation of DNS — how names (like `google.com`) map to IP addresses. |
+
+You can find every RFC freely available at the [RFC Editor website](https://www.rfc-editor.org/).
+
+---
+
+### How to Read an RFC ::
+
+RFCs might look intimidating at first — long pages of text with technical language — but here’s how to get value from them quickly:
+
+1. **Start with the abstract and introduction.**  
+   These sections summarize what the RFC covers and why it exists.
+2. **Look for the “Terminology” section.**  
+   It defines key terms that might appear later.
+3. **Skim the “Requirements” or “Specification” parts.**  
+   That’s where the rules of how a protocol works are described.
+4. **Use search.**  
+   Even experts rarely read RFCs front-to-back — they look up what they need.
+
+With time, you’ll start recognizing famous RFC numbers the way programmers recognize version numbers or code libraries. Reading them is like peeking behind the curtain to see *how the Internet itself is engineered*.
+
+---
+
+**In short:** RFCs are the Internet’s rulebooks — open, public, and written by the very people who keep the digital world running. Learning to read them, even casually, gives you a deeper understanding of how every packet, protocol, and connection truly works.
+
 ---
 
 ## 3. Types of Computer Networks ::
