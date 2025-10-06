@@ -580,17 +580,11 @@ For a deeper look at how FLSM works with clear examples, visit:  [Fixed Length S
 
 ### VLSM :: (Variable Length Subnet Masking)
 
-**What VLSM is**  
-VLSM allows you to use **different subnet sizes** within the same original network block. Instead of forcing all subnets to be the same size, you can assign `/24` for one segment, `/26` for another, `/28` for small links, etc.
+**VLSM**, short for **Variable Length Subnet Masking**, is a subnetting method that allows a network to use different subnet masks for different subnets. In simple terms, it lets you design subnets of various sizes within the same network  large subnets where many hosts are needed, and smaller ones where only a few devices connect. This flexibility makes VLSM much more efficient than FLSM, as it minimizes wasted IP addresses and lets network administrators make the most of limited address space, especially with IPv4.  
 
-**Why VLSM is useful**  
-- It prevents waste by matching subnet sizes to real needs (e.g., a point-to-point link needs 2 addresses, a server farm needs hundreds).  
-- It supports hierarchical and efficient IP planning in enterprises and service provider networks.
+For example, imagine you have a company network that needs one subnet for 100 users, another for 30, and several small point-to-point connections. With VLSM, you can assign subnet masks that fit each case perfectly  like tailoring each subnet to its purpose instead of forcing them all into the same size. This adaptability is crucial in large or complex networks, such as ISPs or enterprises, where every IP address counts.  
 
-**How to apply VLSM**  
-1. List required subnet sizes (by host count).  
-2. Sort from largest to smallest.  
-3. Allocate the largest subnet first, then fit smaller subnets into the remaining space without overlap.
+VLSM also plays a key role in **CIDR (Classless Inter-Domain Routing)**, which extends this same flexibility to routing on the global Internet. Understanding VLSM gives you the foundation to grasp how modern networks optimize IP allocation and how routing tables stay compact even as the Internet keeps growing.  
 
 For step-by-step examples and design tips, see: [docs/vlsm.md](docs/vlsm.md).
 
