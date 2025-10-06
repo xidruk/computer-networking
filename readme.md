@@ -31,9 +31,9 @@ This repository covers the basics of computer networking. It is designed to intr
    - [IPv4](#ipv4-)
    - [IPv6](#ipv6-)
    - [Subnetting](#subnetting-)
-   - [FLSM (Fixed Length Subnet Masking)](#flsm-fixed-length-subnet-masking-)
+   - [FLSM (Fixed Length Subnet Masking)](#flsm--fixed-length-subnet-masking)
    - [VLSM (Variable Length Subnet Masking)](#vlsm--variable-length-subnet-masking)
-   - [FLSM vs VLSM (Key Differences & When to Use Each)](#flsm-vs-vlsm--key-differences--when-to-use-each)
+   - [FLSM vs VLSM (Key Differences & When to Use Each)](#flsm-vs-vlsm-key-differences--when-to-use-each-)
    - [CIDR](#cidr--classless-inter-domain-routing)
    - [IP Address Classification](#ip-address-classification-)
 9. [Routing & Switching Concepts](#9-routing--switching-concepts-)
@@ -566,7 +566,7 @@ For full explanation, binary walkthroughs, and practice examples, see: [docs/sub
 
 ---
 
-### FLSM (Fixed Length Subnet Masking) ::
+### FLSM :: (Fixed Length Subnet Masking)
 
 **FLSM**, or **Fixed Length Subnet Masking**, is one of the simplest subnetting techniques used in computer networking. In this method, the entire network is divided into smaller, equal-sized subnets  each with the same subnet mask and the same number of available IP addresses. This uniformity makes FLSM easy to design, visualize, and manage, especially when all network segments require an identical number of hosts. For example, a training environment or a small business might assign one subnet per department, each with exactly the same number of devices.  
 
@@ -596,7 +596,15 @@ For step-by-step examples and design tips, see: [docs/vlsm.md](docs/vlsm.md).
 
 ---
 
+### FLSM vs VLSM (Key Differences & When to Use Each) ::
 
+When learning about subnetting, it’s easy to think of **FLSM** and **VLSM** as two competing methods  but really, they represent different stages in how networking evolved to use IP addresses more intelligently. **FLSM (Fixed Length Subnet Masking)** divides a network into equal parts, giving every subnet the same number of IP addresses. This approach keeps things simple and consistent, making it great for beginners or for environments where all subnets serve roughly the same number of devices. However, in real-world networks, this can quickly become inefficient because not all network segments are equal  for example, a branch office LAN might need hundreds of addresses, while a router-to-router link only needs two.  
+
+That’s where **VLSM (Variable Length Subnet Masking)** comes in. VLSM allows each subnet to have a different size and subnet mask, giving administrators the freedom to allocate IP addresses based on actual requirements. It’s like upgrading from a one-size-fits-all model to a custom-fit design  larger subnets where needed, smaller ones where they make sense, and no wasted address space. This flexibility is vital in modern IPv4 networks, where conserving address space is a top priority. It’s also the foundation of **CIDR (Classless Inter-Domain Routing)**, which extends the same principle to Internet-wide routing.  
+
+In short, **FLSM is simpler and more predictable**, while **VLSM is smarter and more efficient**. FLSM works well for teaching, testing, or static networks where uniformity is fine. VLSM, on the other hand, is the go-to choice for scalable, real-world designs that need to grow dynamically. Understanding both helps you appreciate how modern IP addressing balances structure with flexibility  a key skill for any network engineer.  
+
+For a detailed comparison with diagrams and worked examples, explore this guide: [Difference Between FLSM and VLSM - GeeksforGeeks](https://www.geeksforgeeks.org/difference-between-flsm-and-vlsm/)
 
 ---
 
