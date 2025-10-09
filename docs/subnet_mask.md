@@ -1,167 +1,88 @@
 # Subnet Mask
 
-A **subnet mask** is a number used in IP networking to divide an IP address into two parts:
-1. The **network portion** – identifies the network.  
-2. The **host portion** – identifies individual devices (hosts) within that network.  
-
-Without subnet masks, IP addresses would be ambiguous, and routers would not know how to separate networks from hosts.
-
----
-
 ## Table of Contents
-1. [What is a Subnet Mask?](#what-is-a-subnet-mask)
-2. [How Subnet Masks Work](#how-subnet-masks-work)
-3. [Subnet Mask Representation](#subnet-mask-representation)
-   - [Dotted Decimal Notation](#dotted-decimal-notation)
-   - [Binary Representation](#binary-representation)
-   - [CIDR Prefix Notation](#cidr-prefix-notation)
-4. [Common Subnet Masks](#common-subnet-masks)
-5. [Examples of Subnet Masks in Action](#examples-of-subnet-masks-in-action)
-6. [Why Subnet Masks are Important](#why-subnet-masks-are-important)
-7. [Relation to Subnetting and CIDR](#relation-to-subnetting-and-cidr)
-8. [Further Reading](#further-reading)
+1. [Introduction](#introduction)
+2. [Why Subnet Masks Exist](#why-subnet-masks-exist)
+3. [Binary Foundations: Bits and IP Addresses](#binary-foundations-bits-and-ip-addresses)
+4. [What a Subnet Mask Actually Does](#what-a-subnet-mask-actually-does)
+5. [How Network and Host Portions Work](#how-network-and-host-portions-work)
+6. [Classful vs. Classless Addressing (CIDR)](#classful-vs-classless-addressing-cidr)
+7. [Subnet Mask Notation: Dotted Decimal and /CIDR](#subnet-mask-notation-dotted-decimal-and-cidr)
+8. [Subnetting Step-by-Step Example](#subnetting-step-by-step-example)
+9. [Finding the Network, Broadcast, and Host Range](#finding-the-network-broadcast-and-host-range)
+10. [Common Subnet Masks and Their Meanings](#common-subnet-masks-and-their-meanings)
+11. [Subnetting Practice Scenarios](#subnetting-practice-scenarios)
+12. [VLSM (Variable Length Subnet Masking)](#vlsm-variable-length-subnet-masking)
+13. [Real-World Applications](#real-world-applications)
+14. [Subnet Masks in IPv6](#subnet-masks-in-ipv6)
+15. [Subnet Mask Quick Reference Table](#subnet-mask-quick-reference-table)
+16. [Tools and Further Reading](#tools-and-further-reading)
 
 ---
 
-## What is a Subnet Mask?
+## Introduction
+Start by explaining what an IP address is and how it represents a device in a network. Introduce the subnet mask as the “boundary marker” that separates the network portion of an IP address from the host portion.
 
-Every IP address has two parts:
-- The **network ID**: defines the overall network.  
-- The **host ID**: defines the specific device within that network.  
+## Why Subnet Masks Exist
+Explain the need for dividing large networks into smaller segments. Mention efficient IP usage, security, and broadcast control.
 
-A **subnet mask** is a 32-bit number (for IPv4) that tells us which part of the IP address is the network portion and which part is the host portion.
+## Binary Foundations: Bits and IP Addresses
+Show how IP addresses and subnet masks are composed of 32 bits. Briefly explain how binary numbers work and what 255.255.255.0 looks like in binary.
 
-Think of it like a mailing address:
-- The **network portion** is like the city or ZIP code.  
-- The **host portion** is like the specific house number.  
-- The subnet mask tells us where the "city" ends and the "house number" begins.  
+## What a Subnet Mask Actually Does
+Describe how the subnet mask determines which part of an IP belongs to the network and which part to the host. Include an example like `192.168.1.10` with mask `255.255.255.0`.
 
----
+## How Network and Host Portions Work
+Illustrate how changing the subnet mask changes the ratio between network bits and host bits. Visualize using binary diagrams or tables.
 
-## How Subnet Masks Work
+## Classful vs. Classless Addressing (CIDR)
+Explain older classful systems (A, B, C) and how CIDR replaced them with flexible prefix lengths.
 
-- Subnet masks are always written as a series of **1s followed by 0s in binary**.  
-- The **1s** represent the **network bits**.  
-- The **0s** represent the **host bits**.  
+## Subnet Mask Notation: Dotted Decimal and /CIDR
+Clarify the two ways to write masks (e.g., `255.255.255.0` and `/24`) and show how to convert between them.
 
-Example:  
-- IP address: `192.168.1.10`  
-- Subnet mask: `255.255.255.0`  
+## Subnetting Step-by-Step Example
+Walk through a real example — breaking a /24 network into smaller subnets, showing binary math and address ranges.
 
-In binary:  
-```
-IP Address:   11000000.10101000.00000001.00001010
-Subnet Mask:  11111111.11111111.11111111.00000000
-```
+## Finding the Network, Broadcast, and Host Range
+Teach how to identify:
+- Network address
+- Broadcast address
+- First and last usable host addresses
 
-- The first 24 bits (the `1`s in the mask) define the **network**: `192.168.1.0`.  
-- The last 8 bits (the `0`s in the mask) define the **host range**.  
+## Common Subnet Masks and Their Meanings
+Provide quick explanations of common masks:
+- `/24` (small LANs)
+- `/30` (point-to-point)
+- `/16` (large internal networks)
 
----
+## Subnetting Practice Scenarios
+Include small exercises for readers to test their understanding (e.g., find subnet for 10.0.5.18/20).
 
-## Subnet Mask Representation
+## VLSM (Variable Length Subnet Masking)
+For a detailed explanation, see [`docs/vlsm.md`](docs/vlsm.md).
 
-Subnet masks can be written in three common ways:
+## Real-World Applications
+Show how subnetting is applied in enterprises, ISPs, and home networks.
 
-### Dotted Decimal Notation
-- Example: `255.255.255.0`
-- Human-friendly, but hides the binary meaning.
+## Subnet Masks in IPv6
+Briefly explain how IPv6 uses prefix lengths (e.g., `/64`) instead of dotted decimal notation.
 
-### Binary Representation
-- Example: `11111111.11111111.11111111.00000000`
-- Shows exactly which bits are for the network and which are for the host.
+## Subnet Mask Quick Reference Table
 
-### CIDR Prefix Notation
-- Example: `/24`
-- Indicates the number of **network bits**.  
-- `/24` means 24 bits are reserved for the network, leaving 8 bits for hosts.  
+| CIDR | Subnet Mask        | # of Hosts | # of Subnets | Network Bits | Host Bits |
+|------|--------------------|------------|---------------|---------------|------------|
+| /8   | 255.0.0.0          | 16,777,214 | 1             | 8             | 24         |
+| /16  | 255.255.0.0        | 65,534     | 256           | 16            | 16         |
+| /24  | 255.255.255.0      | 254        | 65,536        | 24            | 8          |
+| /25  | 255.255.255.128    | 126        | 131,072       | 25            | 7          |
+| /26  | 255.255.255.192    | 62         | 262,144       | 26            | 6          |
+| /27  | 255.255.255.224    | 30         | 524,288       | 27            | 5          |
+| /28  | 255.255.255.240    | 14         | 1,048,576     | 28            | 4          |
+| /29  | 255.255.255.248    | 6          | 2,097,152     | 29            | 3          |
+| /30  | 255.255.255.252    | 2          | 4,194,304     | 30            | 2          |
 
-So:  
-- `255.0.0.0` = `/8`  
-- `255.255.0.0` = `/16`  
-- `255.255.255.0` = `/24`  
-
----
-
-## Common Subnet Masks
-
-| Subnet Mask | CIDR | Network Bits | Host Bits | Total Addresses (2^H) | Usable Hosts (2^H - 2) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 255.255.255.255 | /32 | 32 | 0 | 1 | 0 |
-| 255.255.255.254 | /31 | 31 | 1 | 2 | 0 |
-| 255.255.255.252 | /30 | 30 | 2 | 4 | 2 |
-| 255.255.255.248 | /29 | 29 | 3 | 8 | 6 |
-| 255.255.255.240 | /28 | 28 | 4 | 16 | 14 |
-| 255.255.255.224 | /27 | 27 | 5 | 32 | 30 |
-| 255.255.255.192 | /26 | 26 | 6 | 64 | 62 |
-| 255.255.255.128 | /25 | 25 | 7 | 128 | 126 |
-| 255.255.255.0 | /24 | 24 | 8 | 256 | 254 |
-| 255.255.254.0 | /23 | 23 | 9 | 512 | 510 |
-| 255.255.252.0 | /22 | 22 | 10 | 1,024 | 1,022 |
-| 255.255.248.0 | /21 | 21 | 11 | 2,048 | 2,046 |
-| 255.255.240.0 | /20 | 20 | 12 | 4,096 | 4,094 |
-| 255.255.224.0 | /19 | 19 | 13 | 8,192 | 8,190 |
-| 255.255.192.0 | /18 | 18 | 14 | 16,384 | 16,382 |
-| 255.255.128.0 | /17 | 17 | 15 | 32,768 | 32,766 |
-| 255.255.0.0 | /16 | 16 | 16 | 65,536 | 65,534 |
-| 255.254.0.0 | /15 | 15 | 17 | 131,072 | 131,070 |
-| 255.252.0.0 | /14 | 14 | 18 | 262,144 | 262,142 |
-| 255.248.0.0 | /13 | 13 | 19 | 524,288 | 524,286 |
-| 255.240.0.0 | /12 | 12 | 20 | 1,048,576 | 1,048,574 |
-| 255.224.0.0 | /11 | 11 | 21 | 2,097,152 | 2,097,150 |
-| 255.192.0.0 | /10 | 10 | 22 | 4,194,304 | 4,194,302 |
-| 255.128.0.0 | /9 | 9 | 23 | 8,388,608 | 8,388,606 |
-| 255.0.0.0 | /8 | 8 | 24 | 16,777,216 | 16,777,214 |
-| 254.0.0.0 | /7 | 7 | 25 | 33,554,432 | 33,554,430 |
-| 252.0.0.0 | /6 | 6 | 26 | 67,108,864 | 67,108,862 |
-| 248.0.0.0 | /5 | 5 | 27 | 134,217,728 | 134,217,726 |
-| 240.0.0.0 | /4 | 4 | 28 | 268,435,456 | 268,435,454 |
-| 224.0.0.0 | /3 | 3 | 29 | 536,870,912 | 536,870,910 |
-| 192.0.0.0 | /2 | 2 | 30 | 1,073,741,824 | 1,073,741,822 |
-| 128.0.0.0 | /1 | 1 | 31 | 2,147,483,648 | 2,147,483,646 |
-
-*Note: The total host number is `(2^host bits) - 2` because the first address is reserved for the network and the last for the broadcast.*
-
----
-
-## Examples of Subnet Masks in Action
-
-1. **Home Network Example**  
-   - IP: `192.168.0.1`  
-   - Mask: `255.255.255.0` (/24)  
-   - Network: `192.168.0.0`  
-   - Host range: `192.168.0.1` – `192.168.0.254`  
-   - Broadcast: `192.168.0.255`  
-
-2. **Splitting a Network**  
-   - Suppose you own `192.168.1.0/24` (254 hosts).  
-   - By changing the mask to `/25` (`255.255.255.128`), you split it into two subnets:  
-     - `192.168.1.0 – 192.168.1.127`  
-     - `192.168.1.128 – 192.168.1.255`  
-
----
-
-## Why Subnet Masks are Important
-
-- They determine how large a network is and how many devices it can support.  
-- They reduce network congestion by splitting large networks into smaller subnets.  
-- They are essential for routing: routers use subnet masks to decide where to forward packets.  
-- They provide flexibility: networks can be designed to fit organizational needs, from large enterprises to home setups.  
-
----
-
-## Relation to Subnetting and CIDR
-
-- **Subnetting** is the process of dividing a larger network into smaller networks. Subnet masks are the tool that makes this possible.  
-- **CIDR (Classless Inter-Domain Routing)** introduces prefix notation (like `/24`) and allows more efficient use of IP addresses by breaking away from rigid class boundaries.  
-- Without subnet masks, concepts like VLSM (Variable Length Subnet Masking) and CIDR would not exist.  
-
----
-
-## Further Reading
-
-- [Subnetting](subnetting.md)  
-- [VLSM](vlsm.md)  
-- [CIDR](cidr.md)  
-- [IPv4](ipv4.md)  
-- [IPv6](ipv6.md)
+## Tools and Further Reading
+- [Subnet Calculator (IPCalc)](https://jodies.de/ipcalc)
+- [Subnetting Practice Tool](https://subnettingpractice.com/)
+- [RFC 4632 – Classless Inter-domain Routing (CIDR)](https://datatracker.ietf.org/doc/html/rfc4632)
