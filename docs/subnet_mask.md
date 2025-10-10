@@ -142,3 +142,97 @@ In plain language:
 
 ---
 
+## How Network and Host Portions Work
+
+Now that we’ve met the subnet mask, let’s look closer at how it actually *divides* an IP address into two halves: the **network portion** and the **host portion**.
+
+When an IP address is combined with a subnet mask, the binary mask draws a line between these two regions.  
+Every bit covered by a **1** in the mask belongs to the **network portion**, and every **0** belongs to the **host portion**.
+
+For example, take this familiar pair:
+
+`IP Address: 192.168.1.10`
+`Subnet Mask: 255.255.255.0 (/24)`
+
+
+In binary form:
+
+`IP: 11000000.10101000.00000001.00001010`
+`Mask: 11111111.11111111.11111111.00000000`
+
+
+Here, the first 24 bits (the ones) are the **network bits**—they define the shared identity of this local network.  
+The remaining 8 bits (the zeros) are the **host bits**—they define the individual devices living inside that network.
+
+That means:
+- All devices on the `192.168.1.0/24` network will share the first 24 bits.
+- Only the last 8 bits will differ, giving each device a unique host address.
+
+So if we imagine this as a neighborhood:
+- **Network portion** → the neighborhood name (`192.168.1`)
+- **Host portion** → the house number (`.10`, `.42`, `.200`, etc.)
+
+This division determines how large the neighborhood can be.  
+More bits for the network = fewer bits for hosts (smaller neighborhoods).  
+Fewer bits for the network = more bits for hosts (bigger neighborhoods).
+
+For a `/24` network (8 host bits), there are `2^8 = 256` total combinations. Two are reserved:
+- One for the **network address** (all host bits = 0)
+- One for the **broadcast address** (all host bits = 1)
+
+That leaves `256 - 2 = 254` usable host addresses — enough for a small office LAN.
+
+> **Pro insight:** Network and host bits are like the sliding scales of a see-saw. The more precision you want in dividing networks, the fewer hosts each can hold. Subnetting is simply the art of balancing that trade-off.
+
+---
+
+## Classful vs. Classless Addressing (CIDR)
+
+Back in the 1980s, when the internet was young and engineers wore pocket protectors with pride, IP addresses were divided into fixed **classes**. It was simple but rigid — and quickly became a problem as the network grew.
+
+### Classful Addressing (the old way)
+
+Classful addressing defined networks by the *first few bits* of the IP address.  
+Here’s how it worked:
+
+| Class | First Octet Range | Default Mask | Networks | Hosts per Network |
+|--------|------------------|---------------|-----------|-------------------|
+| A | 1–126 | 255.0.0.0 (/8) | 128 | ~16 million |
+| B | 128–191 | 255.255.0.0 (/16) | 16,384 | ~65,000 |
+| C | 192–223 | 255.255.255.0 (/24) | 2 million+ | 254 |
+
+This was fine when the internet was small, but it wasted massive chunks of address space.  
+Imagine giving a company of 200 devices an entire Class B network — that’s like renting a stadium for a chess club meeting.
+
+Classful addressing couldn’t adapt to the real-world variety of network sizes. Something had to evolve.
+
+---
+
+### CIDR (Classless Inter-Domain Routing)
+
+Introduced in the 1990s, **CIDR** abandoned the idea of fixed classes and introduced a smarter, more flexible system.  
+Instead of saying “Class A” or “Class C,” we specify exactly how many bits belong to the network.
+
+That’s where **slash notation** comes from:  
+`/8`, `/16`, `/24`, `/29`, and so on.
+
+Each number after the slash shows how many bits of the address are network bits.  
+For example:
+- `192.168.1.10/24` → 24 bits for network, 8 bits for host.
+- `10.0.0.15/12` → 12 bits for network, 20 bits for host.
+
+CIDR allows us to slice networks into perfectly sized pieces. No more waste, no more rigid classes — just binary precision.
+
+**CIDR’s superpower** is aggregation.  
+A router can represent multiple consecutive networks with one summarized entry, reducing the size of global routing tables and keeping the internet’s brain from exploding under the weight of trillions of entries.
+
+Example:
+
+Instead of four /24 networks:
+`192.168.0.0/24`
+`192.168.1.0/24`
+`192.168.2.0/24`
+`192.168.3.0/24`
+
+CIDR can summarize them as:
+`192.168.0.0/22`
