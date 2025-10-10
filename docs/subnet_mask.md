@@ -58,9 +58,6 @@ their subnet masks (`/24` means 255.255.255.0) tell them they live in different 
 In short: the subnet mask exists to make IP addressing efficient, organized, and scalable.  
 Without it, the internet would either waste vast address space or drown in confusion.
 
-> **Tip for beginners:** If subnet masks seem abstract, remember this: they are *not* random numbers. They are precise blueprints that tell computers how to understand the map of the network.  
-> **Tip for pros:** Re-examining subnet masks often reveals hidden inefficiencies in address planning the foundation of clean network design.
-
 ---
 
 ## Binary Foundations: Bits and IP Addresses
@@ -93,8 +90,6 @@ That’s the language routers and network interfaces speak fluently.
 
 So why does this matter? Because subnet masks work *bit by bit*.  
 They decide which portion of those 32 bits belong to the **network** and which belong to the **host** and that decision is made through binary math, not magic.
-
-> **Pro insight:** Once you can visualize IPs in binary, subnetting stops being a memorization game. It becomes arithmetic simple, precise, and predictable.
 
 
 ---
@@ -145,7 +140,5 @@ In plain language:
 - **Network address = the neighborhood.**  
 - **Gateway = the road out of town.**
 
-> **Beginner’s takeaway:** The subnet mask is not a second IP it’s a pattern that divides the 32 bits of your address into “this part is the network” and “this part is me.”  
-> **Veteran’s reflection:** Every route table, ACL, and firewall rule rests on the humble AND operation. Behind every network design lies binary arithmetic in disguise.
-
 ---
+
