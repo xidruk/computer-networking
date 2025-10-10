@@ -161,8 +161,8 @@ In binary form:
 `Mask: 11111111.11111111.11111111.00000000`
 
 
-Here, the first 24 bits (the ones) are the **network bits**—they define the shared identity of this local network.  
-The remaining 8 bits (the zeros) are the **host bits**—they define the individual devices living inside that network.
+Here, the first 24 bits (the ones) are the **network bits** they define the shared identity of this local network.  
+The remaining 8 bits (the zeros) are the **host bits** they define the individual devices living inside that network.
 
 That means:
 - All devices on the `192.168.1.0/24` network will share the first 24 bits.
@@ -180,7 +180,7 @@ For a `/24` network (8 host bits), there are `2^8 = 256` total combinations. Two
 - One for the **network address** (all host bits = 0)
 - One for the **broadcast address** (all host bits = 1)
 
-That leaves `256 - 2 = 254` usable host addresses — enough for a small office LAN.
+That leaves `256 - 2 = 254` usable host addresses  enough for a small office LAN.
 
 > **Pro insight:** Network and host bits are like the sliding scales of a see-saw. The more precision you want in dividing networks, the fewer hosts each can hold. Subnetting is simply the art of balancing that trade-off.
 
@@ -188,7 +188,7 @@ That leaves `256 - 2 = 254` usable host addresses — enough for a small office 
 
 ## Classful vs. Classless Addressing (CIDR)
 
-Back in the 1980s, when the internet was young and engineers wore pocket protectors with pride, IP addresses were divided into fixed **classes**. It was simple but rigid — and quickly became a problem as the network grew.
+Back in the 1980s, when the internet was young and engineers wore pocket protectors with pride, IP addresses were divided into fixed **classes**. It was simple but rigid  and quickly became a problem as the network grew.
 
 ### Classful Addressing (the old way)
 
@@ -202,7 +202,7 @@ Here’s how it worked:
 | C | 192–223 | 255.255.255.0 (/24) | 2 million+ | 254 |
 
 This was fine when the internet was small, but it wasted massive chunks of address space.  
-Imagine giving a company of 200 devices an entire Class B network — that’s like renting a stadium for a chess club meeting.
+Imagine giving a company of 200 devices an entire Class B network  that’s like renting a stadium for a chess club meeting.
 
 Classful addressing couldn’t adapt to the real-world variety of network sizes. Something had to evolve.
 
@@ -221,7 +221,7 @@ For example:
 - `192.168.1.10/24` → 24 bits for network, 8 bits for host.
 - `10.0.0.15/12` → 12 bits for network, 20 bits for host.
 
-CIDR allows us to slice networks into perfectly sized pieces. No more waste, no more rigid classes — just binary precision.
+CIDR allows us to slice networks into perfectly sized pieces. No more waste, no more rigid classes just binary precision.
 
 **CIDR’s superpower** is aggregation.  
 A router can represent multiple consecutive networks with one summarized entry, reducing the size of global routing tables and keeping the internet’s brain from exploding under the weight of trillions of entries.
