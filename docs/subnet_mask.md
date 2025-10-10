@@ -491,14 +491,4 @@ Here are some tools and resources to experiment, calculate, and deepen understan
 - **IPv6 Subnet Calculator** – For exploring prefix allocations and /64 boundaries.  
   [https://www.ultratools.com/tools/ipv6CIDRCalculator](https://www.ultratools.com/tools/ipv6CIDRCalculator)
 
-### Recommended Reading
-- *TCP/IP Illustrated, Volume 1* by W. Richard Stevens a timeless deep dive into networking fundamentals.  
-- *Network Warrior* by Gary A. Donahue practical, clear explanations of subnetting and real-world configuration.  
-- *IPv6 Essentials* by Silvia Hagen a focused guide to understanding IPv6 address structure and subnetting.
-
-### Practice Makes Understanding
-
-Try building a few subnets on paper or in a virtual lab. Assign IPs, calculate ranges, test connectivity.  
-Theory becomes real the moment you see a packet take the right route.
-
 ---
