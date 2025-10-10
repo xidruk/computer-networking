@@ -500,4 +500,5 @@ Here are some tools and resources to experiment, calculate, and deepen understan
 
 Try building a few subnets on paper or in a virtual lab. Assign IPs, calculate ranges, test connectivity.  
 Theory becomes real the moment you see a packet take the right route.
+
 ---
