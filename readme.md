@@ -562,7 +562,7 @@ For expanded discussions: see [TCP](docs/tcp.md) and [UDP](docs/udp.md).
 
 ### Application Layer Protocols
 
-The **Application Layer** is the topmost layer in the network protocol stack, where protocols enable direct interaction between software applications and the network. This layer provides services that humans and applications use daily—from browsing websites to sending emails and streaming videos. Instead of dealing with raw IP addresses and low-level connections, Application Layer protocols abstract these complexities into user-friendly services.
+The **Application Layer** is the topmost layer in the network protocol stack, where protocols enable direct interaction between software applications and the network. This layer provides services that humans and applications use daily from browsing websites to sending emails and streaming videos. Instead of dealing with raw IP addresses and low-level connections, Application Layer protocols abstract these complexities into user-friendly services.
 
 Key characteristics of the Application Layer:
 - **User-Facing**: Provides interfaces and services directly accessible to end users and applications
