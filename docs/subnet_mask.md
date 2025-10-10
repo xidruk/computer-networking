@@ -450,3 +450,54 @@ So in IPv6, you’ll never see “255.255.255.0.” Instead, you’ll see clean 
 
 ---
 
+## Subnet Mask Quick Reference Table
+
+For quick lookups, here’s a compact table that maps common subnet masks, prefix lengths, and their key properties.  
+Keep this handy when configuring routers, firewalls, or IP plans—it’s the cheat sheet every network admin memorizes eventually.
+
+| CIDR | Subnet Mask | # of Host Bits | Usable Hosts | Network Size | Typical Use |
+|------|--------------|----------------|---------------|---------------|--------------|
+| /8  | 255.0.0.0 | 24 | 16,777,214 | Huge | Very large networks (rare today) |
+| /12 | 255.240.0.0 | 20 | 1,048,574 | Large | ISPs, large private blocks |
+| /16 | 255.255.0.0 | 16 | 65,534 | Medium | Campus or regional networks |
+| /20 | 255.255.240.0 | 12 | 4,094 | Mid-sized | Cloud subnets, data centers |
+| /24 | 255.255.255.0 | 8 | 254 | Small | LANs, home networks |
+| /25 | 255.255.255.128 | 7 | 126 | Small | Split /24 for load balancing |
+| /26 | 255.255.255.192 | 6 | 62 | Small | VLANs, small workgroups |
+| /27 | 255.255.255.224 | 5 | 30 | Tiny | Security zones, small clusters |
+| /30 | 255.255.255.252 | 2 | 2 | Point-to-point | Router links, tunnels |
+| /32 | 255.255.255.255 | 0 | 1 | Single host | Loopbacks, VPN peers |
+
+Remember the pattern:
+- Usable Hosts = `(2^host_bits) - 2`
+
+One address for the **network**, one for the **broadcast**, the rest for devices.  
+Once you see that formula everywhere, subnet masks stop being numbers—they become architecture.
+
+> **Tip:** If you can mentally map `/24` to “255.255.255.0 → 254 hosts,” you’re already fluent in network sizing.
+
+---
+
+## Tools and Further Reading
+
+The world of networking is vast, and subnet masks are just one of its elegant foundations.  
+Here are some tools and resources to experiment, calculate, and deepen understanding.
+
+### Online Tools
+- **IP Calculator** – Convert between subnet masks, CIDR notation, and host counts.  
+  [https://www.ipaddressguide.com/cidr](https://www.ipaddressguide.com/cidr)
+- **Subnet Cheat Sheet** – Printable quick reference for network engineers.  
+  [https://www.aelius.com/njh/subnet_sheet.html](https://www.aelius.com/njh/subnet_sheet.html)
+- **IPv6 Subnet Calculator** – For exploring prefix allocations and /64 boundaries.  
+  [https://www.ultratools.com/tools/ipv6CIDRCalculator](https://www.ultratools.com/tools/ipv6CIDRCalculator)
+
+### Recommended Reading
+- *TCP/IP Illustrated, Volume 1* by W. Richard Stevens a timeless deep dive into networking fundamentals.  
+- *Network Warrior* by Gary A. Donahue practical, clear explanations of subnetting and real-world configuration.  
+- *IPv6 Essentials* by Silvia Hagen a focused guide to understanding IPv6 address structure and subnetting.
+
+### Practice Makes Understanding
+
+Try building a few subnets on paper or in a virtual lab. Assign IPs, calculate ranges, test connectivity.  
+Theory becomes real the moment you see a packet take the right route.
+---
