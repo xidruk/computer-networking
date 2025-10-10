@@ -23,9 +23,9 @@ This repository covers the basics of computer networking. It is designed to intr
    - [IP Address Allocation](#ip-address-allocation-)
    - [Types of IP Addresses](#types-of-ip-addresses-)
 7. [Network Hardware & Transmission Media](#7-network-hardware--transmission-media-)
-   - [Transmission Media](#transmission-media-)
-   - [Network Devices](#network-devices-)
-   - [End Devices](#end-devices-)
+   - [Transmission Media](#transmission-media)
+   - [Network Devices](#network-devices)
+   - [End Devices](#end-devices)
 8. [Ports and Sockets](#8-ports-and-sockets-)
    - [Intro to Sockets](#intro-to-sockets-)
    - [Sockets Life Cycle](#sockets-life-cycle-)
@@ -346,7 +346,7 @@ This section provides the foundation you need to understand how devices connect,
 
 ---
 
-## 7. Network Hardware & Transmission Media
+## 7. Network Hardware & Transmission Media ::
 
 Networking is like sending a message in a bottle but instead of drifting in the ocean, your message is traveling through wires, waves, and devices, making sure it reaches **anyone, anywhere, anytime**. Think of it like the principle: *write once, speak to everyone*. You write your message once on your device, and the network hardware ensures it gets to the intended audience without you repeating yourself manually. Let's break down the machinery that makes this possible.
 
