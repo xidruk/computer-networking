@@ -453,7 +453,7 @@ So in IPv6, you’ll never see “255.255.255.0.” Instead, you’ll see clean 
 ## Subnet Mask Quick Reference Table
 
 For quick lookups, here’s a compact table that maps common subnet masks, prefix lengths, and their key properties.  
-Keep this handy when configuring routers, firewalls, or IP plans—it’s the cheat sheet every network admin memorizes eventually.
+Keep this handy when configuring routers, firewalls, or IP plans it’s the cheat sheet every network admin memorizes eventually.
 
 | CIDR | Subnet Mask | # of Host Bits | Usable Hosts | Network Size | Typical Use |
 |------|--------------|----------------|---------------|---------------|--------------|
@@ -472,7 +472,7 @@ Remember the pattern:
 - Usable Hosts = `(2^host_bits) - 2`
 
 One address for the **network**, one for the **broadcast**, the rest for devices.  
-Once you see that formula everywhere, subnet masks stop being numbers—they become architecture.
+Once you see that formula everywhere, subnet masks stop being numbers they become architecture.
 
 > **Tip:** If you can mentally map `/24` to “255.255.255.0 → 254 hosts,” you’re already fluent in network sizing.
 
