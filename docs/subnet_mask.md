@@ -235,3 +235,95 @@ CIDR can summarize them as:
 
 ---
 
+## Subnet Mask Notation and Representation
+
+Subnet masks can be written in two main forms: **dotted decimal** and **slash (CIDR) notation**.  
+Both describe the same concept—how many bits of an IP address belong to the network—but they do so in different ways.
+
+### Dotted Decimal Notation
+
+This is the classic format, where the mask looks like an IP address:
+
+255.0.0.0
+255.255.0.0
+255.255.255.0
+255.255.255.128
+
+
+Each “255” means that all 8 bits in that octet are network bits (11111111 in binary).  
+The smaller numbers (like 128, 192, 224) indicate that part of the octet is reserved for the network, and part for the hosts.
+
+| Subnet Mask | Binary Form | Network Bits | Host Bits |
+|--------------|--------------|---------------|-------------|
+| 255.0.0.0 | 11111111.00000000.00000000.00000000 | 8 | 24 |
+| 255.255.0.0 | 11111111.11111111.00000000.00000000 | 16 | 16 |
+| 255.255.255.0 | 11111111.11111111.11111111.00000000 | 24 | 8 |
+| 255.255.255.128 | 11111111.11111111.11111111.10000000 | 25 | 7 |
+
+This notation makes the division visible, but it can be awkward when subnetting gets more precise.  
+That’s why we often use **CIDR notation**.
+
+---
+
+### Slash (CIDR) Notation
+
+CIDR (Classless Inter-Domain Routing) introduced a simpler shorthand:  
+Instead of writing `255.255.255.0`, you just write `/24`.
+
+That “/24” literally means **24 bits for the network**, and the rest (32−24=8 bits) for the hosts.
+
+| CIDR | Equivalent Mask | Network Bits | Host Bits | Usable Hosts |
+|-------|------------------|---------------|-------------|---------------|
+| /8 | 255.0.0.0 | 8 | 24 | 16,777,214 |
+| /16 | 255.255.0.0 | 16 | 16 | 65,534 |
+| /24 | 255.255.255.0 | 24 | 8 | 254 |
+| /30 | 255.255.255.252 | 30 | 2 | 2 |
+
+The formula for usable hosts per network is:
+`2^host_bits - 2`
+
+One address is reserved for the **network**, and one for the **broadcast**, leaving the rest for actual devices.
+
+CIDR notation is universal in modern networking—you’ll see it in router configs, firewall rules, and IP planning tools. It’s the lingua franca of IP addressing.
+
+> **Beginner’s takeaway:** `/24` is just a quicker way of saying “255.255.255.0.”  
+> **Expert’s reflection:** CIDR isn’t just convenient—it’s the compression format that keeps routing tables sane.
+
+---
+
+## Common Subnet Masks and Their Meanings
+
+Subnet masks come in many sizes, but a few appear so often that they’ve become part of everyday network life.  
+Each one represents a balance between **network size** (how many separate subnets) and **host capacity** (how many devices per subnet).
+
+| CIDR | Subnet Mask | # of Subnets (from /8) | Hosts per Subnet | Typical Use |
+|------|--------------|------------------------|------------------|--------------|
+| /8 | 255.0.0.0 | 1 | 16,777,214 | Very large networks (historical Class A) |
+| /16 | 255.255.0.0 | 256 | 65,534 | Medium-sized organization or campus network |
+| /24 | 255.255.255.0 | 65,536 | 254 | Standard LAN segment or home network |
+| /25 | 255.255.255.128 | 131,072 | 126 | Splitting a /24 in half |
+| /26 | 255.255.255.192 | 262,144 | 62 | Small VLAN or subnet for limited hosts |
+| /30 | 255.255.255.252 | 4,194,304 | 2 | Point-to-point links (routers, tunnels) |
+| /32 | 255.255.255.255 | — | 1 | Single host route (loopback, VPN peer) |
+
+Notice how every step increases the **network bits** and decreases the **available hosts**.  
+That’s the binary balancing act we saw earlier in action.
+
+### Visualizing the Scale
+
+Think of it as zooming in and out on a map:
+- `/8` → one huge country  
+- `/16` → a region  
+- `/24` → a city block  
+- `/30` → two houses across the street  
+
+Every increase in prefix length (`/`) is like drawing finer borders on the same land.
+
+---
+
+> **In short:**  
+> - Dotted decimal masks show the raw binary boundaries.  
+> - CIDR notation shows how many bits are used for those boundaries.  
+> - Common masks like `/24` and `/30` are the everyday tools of networking, quietly shaping how every packet finds its way home.
+
+---
