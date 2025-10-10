@@ -27,9 +27,9 @@ This repository covers the basics of computer networking. It is designed to intr
     - [Network Devices](#network-devices)
     - [End Devices](#end-devices)
 8. [Ports and Sockets](#8-ports-and-sockets-)
-    - [Intro to Sockets](#intro-to-sockets-)
-    - [Sockets Life Cycle](#sockets-life-cycle-)
-    - [How Applications Communicate Through Sockets](#how-applications-communicate-through-sockets-)
+    - [Intro to Sockets](#intro-to-sockets)
+    - [Sockets Life Cycle](#sockets-life-cycle)
+    - [How Applications Communicate Through Sockets](#how-applications-communicate-through-sockets)
 9. [Networking Models & Protocols](#9-networking-models--protocols-)
     - [OSI Model](#osi-model-)
     - [TCP/IP Model](#tcpip-model-)
@@ -388,7 +388,7 @@ By understanding transmission media, network devices, and end devices together, 
 
 ---
 
-## 8. Ports and Sockets
+## 8. Ports and Sockets :: 
 
 Sockets are the gateways between applications and the network. They allow programs to send and receive data over the internet or local networks in a structured, reliable way. Understanding sockets is crucial because every networked application from web browsers to messaging apps depends on them. This section will cover everything about sockets, their life cycle, and how applications connect to each other over the network.
 
