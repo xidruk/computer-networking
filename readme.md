@@ -34,7 +34,7 @@ This repository covers the basics of computer networking. It is designed to intr
     - [OSI Model](#osi-model-)
     - [TCP/IP Model](#tcpip-model-)
     - [Transport Protocols: TCP & UDP](#transport-protocols--tcp--udp)
-    - [Application Protocols: DNS, CDNS, DHCP](#application-protocols-dns-cdns-dhcp-)
+    - [Application Layer Protocols](#application-layer-protocols)
 10. [IP Addressing and Subnetting](#10-ip-addressing-and-subnetting-)
     - [IPv4](#ipv4-)
     - [IPv6](#ipv6-)
@@ -560,55 +560,45 @@ For expanded discussions: see [TCP](docs/tcp.md) and [UDP](docs/udp.md).
 
 ---
 
-### Application Protocols :: DNS, CDNS, DHCP
+### Application Layer Protocols
 
-At the **Application Layer**, protocols make networks usable for humans. Instead of working with IP addresses and raw connections, these protocols provide essential services.
+The **Application Layer** is the topmost layer in the network protocol stack, where protocols enable direct interaction between software applications and the network. This layer provides services that humans and applications use daily—from browsing websites to sending emails and streaming videos. Instead of dealing with raw IP addresses and low-level connections, Application Layer protocols abstract these complexities into user-friendly services.
 
-#### DNS :: (Domain Name System)
-- Converts human-readable names (like `example.com`) into machine-readable IP addresses.  
-- Operates in a distributed hierarchy of servers (root, TLD, authoritative).  
-- Without DNS, users would need to memorize numeric IP addresses.  
-- Security challenges include DNS spoofing and cache poisoning.  
-
-Expanded discussion: [DNS](docs/dns.md).
+Key characteristics of the Application Layer:
+- **User-Facing**: Provides interfaces and services directly accessible to end users and applications
+- **Protocol Diversity**: Hosts a wide variety of protocols, each designed for specific use cases
+- **Built on Lower Layers**: Relies on Transport, Network, and other underlying layers for data delivery
+- **Standardization**: Most protocols follow standards defined by organizations like IETF, W3C, and IEEE
 
 
-#### CDNS :: (Content Delivery Networks & Secure DNS)
+### Application Layer Protocols Reference Table
 
-1. **Content Delivery Networks (CDNs)**:  
-   - Distribute content (web pages, images, videos) across multiple servers around the globe.  
-   - Reduce latency by serving data from the nearest server.  
-   - Improve reliability and protect against traffic spikes.  
+| Protocol | Full Name | Purpose | Key Features | Documentation |
+|----------|-----------|---------|--------------|---------------|
+| **DNS** | Domain Name System | Translates human-readable domain names into IP addresses | • Hierarchical distributed database<br>• Root, TLD, and authoritative servers<br>• Caching mechanisms<br>• Vulnerable to spoofing and cache poisoning | [DNS Documentation](docs/dns.md) |
+| **DHCP** | Dynamic Host Configuration Protocol | Automatically assigns IP addresses and network configuration to devices | • Automatic IP address allocation<br>• Lease-based system<br>• Provides subnet mask, gateway, DNS info<br>• Simplifies network administration | [DHCP Documentation](docs/dhcp.md) |
+| **DHCPv6** | Dynamic Host Configuration Protocol for IPv6 | IPv6 version of DHCP with enhanced features | • Stateful and stateless configuration<br>• Works alongside IPv6 autoconfiguration<br>• Enhanced security options | [DHCPv6 Documentation](docs/dhcpv6.md) |
+| **HTTP/HTTPS** | Hypertext Transfer Protocol (Secure) | Foundation of web communication for transferring web pages and resources | • Request-response model<br>• Stateless protocol<br>• HTTPS adds TLS/SSL encryption<br>• Methods: GET, POST, PUT, DELETE, etc. | [HTTP Documentation](docs/http.md) |
+| **SMTP** | Simple Mail Transfer Protocol | Sends outgoing email from clients to servers and between servers | • Push protocol for email transmission<br>• Works on port 25 (or 587 for submission)<br>• Text-based protocol<br>• Often combined with authentication | [SMTP Documentation](docs/smtp.md) |
+| **POP3** | Post Office Protocol version 3 | Downloads email from server to client (typically deletes from server) | • Simple download-and-delete model<br>• Port 110 (995 for secure)<br>• Single-device oriented<br>• No server-side folder management | [POP3 Documentation](docs/pop3.md) |
+| **IMAP** | Internet Message Access Protocol | Manages email on server with synchronization across multiple devices | • Email stays on server<br>• Folder management and synchronization<br>• Port 143 (993 for secure)<br>• Multi-device support | [IMAP Documentation](docs/imap.md) |
+| **FTP** | File Transfer Protocol | Transfers files between client and server | • Separate control and data connections<br>• Ports 20 and 21<br>• Active and passive modes<br>• Authentication required | [FTP Documentation](docs/ftp.md) |
+| **SFTP/FTPS** | SSH/SSL File Transfer Protocol | Secure versions of file transfer protocols | • SFTP uses SSH encryption (port 22)<br>• FTPS uses SSL/TLS<br>• Encrypted data transfer<br>• Better security than FTP | [Secure FTP Documentation](docs/secure-ftp.md) |
+| **SSH** | Secure Shell | Provides secure remote login and command execution | • Encrypted communication channel<br>• Port 22<br>• Authentication via passwords or keys<br>• Tunneling capabilities | [SSH Documentation](docs/ssh.md) |
+| **Telnet** | Telnet Protocol | Remote terminal access (unencrypted, legacy) | • Plain-text protocol<br>• Port 23<br>• No encryption (insecure)<br>• Largely replaced by SSH | [Telnet Documentation](docs/telnet.md) |
+| **SNMP** | Simple Network Management Protocol | Monitors and manages network devices | • Collect device statistics and status<br>• Ports 161/162<br>• SNMP traps for alerts<br>• Versions: v1, v2c, v3 (secure) | [SNMP Documentation](docs/snmp.md) |
+| **NTP** | Network Time Protocol | Synchronizes clocks across network devices | • Maintains accurate time<br>• Hierarchical stratum system<br>• Port 123<br>• Critical for logging and security | [NTP Documentation](docs/ntp.md) |
+| **RDP** | Remote Desktop Protocol | Provides graphical remote desktop access | • Full desktop environment access<br>• Port 3389<br>• Developed by Microsoft<br>• Supports audio, printing, file transfer | [RDP Documentation](docs/rdp.md) |
+| **SIP** | Session Initiation Protocol | Establishes, maintains, and terminates VoIP and video calls | • Signaling protocol for multimedia sessions<br>• Works with RTP for media transfer<br>• Port 5060/5061<br>• Used in VoIP systems | [SIP Documentation](docs/sip.md) |
+| **RTP/RTCP** | Real-time Transport Protocol / Control Protocol | Delivers audio and video over IP networks | • Real-time media streaming<br>• Used with SIP, WebRTC<br>• RTCP monitors quality<br>• Low-latency delivery | [RTP Documentation](docs/rtp.md) |
+| **LDAP** | Lightweight Directory Access Protocol | Accesses and manages directory information services | • Centralized authentication<br>• Port 389 (636 for secure)<br>• Used in Active Directory<br>• Hierarchical directory structure | [LDAP Documentation](docs/ldap.md) |
+| **CDN Protocols** | Content Delivery Network Protocols | Distribute and cache content across geographically dispersed servers | • Reduces latency<br>• Improves reliability<br>• Load balancing<br>• DDoS protection | [CDN Documentation](docs/cdn.md) |
+| **DoH/DoT** | DNS over HTTPS / DNS over TLS | Encrypts DNS queries for privacy and security | • Prevents DNS eavesdropping<br>• DoH uses port 443<br>• DoT uses port 853<br>• Improves user privacy | [Secure DNS Documentation](docs/secure-dns.md) |
+| **WebSocket** | WebSocket Protocol | Provides full-duplex communication channels over TCP | • Real-time bidirectional communication<br>• Persistent connection<br>• Lower overhead than HTTP polling<br>• Used in chat, gaming, live updates | [WebSocket Documentation](docs/websocket.md) |
+| **MQTT** | Message Queuing Telemetry Transport | Lightweight publish-subscribe messaging protocol for IoT | • Low bandwidth usage<br>• Port 1883 (8883 for secure)<br>• Quality of Service levels<br>• Ideal for IoT devices | [MQTT Documentation](docs/mqtt.md) |
 
-2. **Secure DNS (sometimes referred to as CDNS in contexts)**:  
-   - Encrypts DNS queries (DNS over HTTPS, DNS over TLS).  
-   - Prevents eavesdropping and tampering by attackers.  
-   - Improves user privacy.  
 
-Expanded discussion: [CDNS](docs/cdns.md).
-
-
-#### DHCP :: (Dynamic Host Configuration Protocol)
-- Automatically assigns IP addresses, subnet masks, default gateways, and DNS servers to devices.  
-- Saves administrators from manually configuring every device.  
-- Works in a lease system: IPs are rented for a period of time.  
-- Common in home and enterprise networks.  
-- In IPv6, **DHCPv6** provides similar functionality with enhancements.  
-
-Expanded discussions: [DHCP](docs/dhcp.md) and [DHCPv6](docs/dhcpv6.md).
-
----
-
-### Summary :: 
-
-By combining **networking models** (which provide structure) with **protocols** (which provide rules), we gain a complete picture of how data flows across networks.  
-
-- The **OSI model** teaches us the theory in seven clear layers.  
-- The **TCP/IP model** shows the four-layer framework that powers the real Internet.  
-- **Transport protocols (TCP, UDP)** determine whether communication prioritizes reliability or speed.  
-- **Application protocols (DNS, CDNS, DHCP)** make networking usable and manageable for humans.  
-
-Understanding this section gives you the roadmap for everything else in networking.
+**Note**: This table covers the most common Application Layer protocols. Each protocol serves specific use cases and has evolved to meet modern security, performance, and scalability requirements. Refer to the individual documentation links for in-depth explanations, implementation details, and security considerations.
 
 ---
 
