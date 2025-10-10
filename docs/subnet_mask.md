@@ -1,22 +1,22 @@
 # Subnet Mask
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Why Subnet Masks Exist](#why-subnet-masks-exist)
-3. [Binary Foundations: Bits and IP Addresses](#binary-foundations-bits-and-ip-addresses)
-4. [What a Subnet Mask Actually Does](#what-a-subnet-mask-actually-does)
-5. [How Network and Host Portions Work](#how-network-and-host-portions-work)
-6. [Classful vs. Classless Addressing (CIDR)](#classful-vs-classless-addressing-cidr)
-7. [Subnet Mask Notation and Representation](#subnet-mask-notation-and-representation)
-8. [Common Subnet Masks and Their Meanings](#common-subnet-masks-and-their-meanings)
-9. [Real-World Applications](#real-world-applications)
-10. [Subnet Masks in IPv6](#subnet-masks-in-ipv6)
-11. [Subnet Mask Quick Reference Table](#subnet-mask-quick-reference-table)
-12. [Tools and Further Reading](#tools-and-further-reading)
+1. [Introduction](#1-introduction)
+2. [Why Subnet Masks Exist](#2-why-subnet-masks-exist)
+3. [Binary Foundations: Bits and IP Addresses](#3-binary-foundations-bits-and-ip-addresses)
+4. [What a Subnet Mask Actually Does](#4-what-a-subnet-mask-actually-does)
+5. [How Network and Host Portions Work](#5-how-network-and-host-portions-work)
+6. [Classful vs. Classless Addressing (CIDR)](#6-classful-vs-classless-addressing-cidr)
+7. [Subnet Mask Notation and Representation](#7-subnet-mask-notation-and-representation)
+8. [Common Subnet Masks and Their Meanings](#8-common-subnet-masks-and-their-meanings)
+9. [Real-World Applications](#9-real-world-applications)
+10. [Subnet Masks in IPv6](#10-subnet-masks-in-ipv6)
+11. [Subnet Mask Quick Reference Table](#11-subnet-mask-quick-reference-table)
+12. [Tools and Further Reading](#12-tools-and-further-reading)
 
 ---
 
-## Introduction
+## 1. Introduction
 
 If you’ve ever looked at an IP address like `192.168.1.10` and wondered what decides *where* that address belongs, you’re standing at the gates of subnet masks.  
 
@@ -35,7 +35,7 @@ Even if you’ve configured hundreds of routers, it helps to revisit subnet mask
 
 ---
 
-## Why Subnet Masks Exist
+## 2. Why Subnet Masks Exist
 
 Back in the early days of the internet, networks were divided into fixed “classes” Class A, B, and C each with a preset size. It was simple but wasteful.  
 A company with only 100 computers might receive an address block big enough for 65,000. Another with 70,000 devices might need several networks stitched together awkwardly.
@@ -56,7 +56,7 @@ Without it, the internet would either waste vast address space or drown in confu
 
 ---
 
-## Binary Foundations: Bits and IP Addresses
+## 3. Binary Foundations: Bits and IP Addresses
 
 Before diving deeper into subnet masks, it helps to peel back the layers and see what an IP address really *is* not just the familiar dotted numbers, but the raw binary underneath.
 
@@ -90,7 +90,7 @@ They decide which portion of those 32 bits belong to the **network** and which b
 
 ---
 
-## What a Subnet Mask Actually Does
+## 4. What a Subnet Mask Actually Does
 
 A subnet mask looks deceptively similar to an IP address: four numbers separated by dots, like `255.255.255.0`.  
 But unlike an IP, it isn’t a location it’s a *filter*, a bitwise stencil that helps your device separate the **network ID** from the **host ID**.
@@ -138,7 +138,7 @@ In plain language:
 
 ---
 
-## How Network and Host Portions Work
+## 5. How Network and Host Portions Work
 
 Now that we’ve met the subnet mask, let’s look closer at how it actually *divides* an IP address into two halves: the **network portion** and the **host portion**.
 
@@ -182,7 +182,7 @@ That leaves `256 - 2 = 254` usable host addresses  enough for a small office LAN
 
 ---
 
-## Classful vs. Classless Addressing (CIDR)
+## 6. Classful vs. Classless Addressing (CIDR)
 
 Back in the 1980s, when the internet was young and engineers wore pocket protectors with pride, IP addresses were divided into fixed **classes**. It was simple but rigid  and quickly became a problem as the network grew.
 
@@ -235,7 +235,7 @@ CIDR can summarize them as:
 
 ---
 
-## Subnet Mask Notation and Representation
+## 7. Subnet Mask Notation and Representation
 
 Subnet masks can be written in two main forms: **dotted decimal** and **slash (CIDR) notation**.  
 Both describe the same concept how many bits of an IP address belong to the network but they do so in different ways.
@@ -291,7 +291,7 @@ CIDR notation is universal in modern networking you’ll see it in router config
 
 ---
 
-## Common Subnet Masks and Their Meanings
+## 9. Common Subnet Masks and Their Meanings
 
 Subnet masks come in many sizes, but a few appear so often that they’ve become part of everyday network life.  
 Each one represents a balance between **network size** (how many separate subnets) and **host capacity** (how many devices per subnet).
@@ -395,7 +395,7 @@ Subnet masks still act as the invisible scaffolding of connectivity, whether you
 
 ---
 
-## Subnet Masks in IPv6
+## 10. Subnet Masks in IPv6
 
 IPv6 rewrites the scale of networking, but not the concept.  
 It still divides addresses into **network** and **interface** (host) portions the philosophy of subnetting remains, even if the syntax evolved.
@@ -450,7 +450,7 @@ So in IPv6, you’ll never see “255.255.255.0.” Instead, you’ll see clean 
 
 ---
 
-## Subnet Mask Quick Reference Table
+## 11. Subnet Mask Quick Reference Table
 
 For quick lookups, here’s a compact table that maps common subnet masks, prefix lengths, and their key properties.  
 Keep this handy when configuring routers, firewalls, or IP plans it’s the cheat sheet every network admin memorizes eventually.
@@ -478,7 +478,7 @@ Once you see that formula everywhere, subnet masks stop being numbers they becom
 
 ---
 
-## Tools and Further Reading
+## 12. Tools and Further Reading
 
 The world of networking is vast, and subnet masks are just one of its elegant foundations.  
 Here are some tools and resources to experiment, calculate, and deepen understanding.
