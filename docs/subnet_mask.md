@@ -7,16 +7,12 @@
 4. [What a Subnet Mask Actually Does](#what-a-subnet-mask-actually-does)
 5. [How Network and Host Portions Work](#how-network-and-host-portions-work)
 6. [Classful vs. Classless Addressing (CIDR)](#classful-vs-classless-addressing-cidr)
-7. [Subnet Mask Notation: Dotted Decimal and /CIDR](#subnet-mask-notation-dotted-decimal-and-cidr)
-8. [Subnetting Step-by-Step Example](#subnetting-step-by-step-example)
-9. [Finding the Network, Broadcast, and Host Range](#finding-the-network-broadcast-and-host-range)
-10. [Common Subnet Masks and Their Meanings](#common-subnet-masks-and-their-meanings)
-11. [Subnetting Practice Scenarios](#subnetting-practice-scenarios)
-12. [VLSM (Variable Length Subnet Masking)](#vlsm-variable-length-subnet-masking)
-13. [Real-World Applications](#real-world-applications)
-14. [Subnet Masks in IPv6](#subnet-masks-in-ipv6)
-15. [Subnet Mask Quick Reference Table](#subnet-mask-quick-reference-table)
-16. [Tools and Further Reading](#tools-and-further-reading)
+7. [Subnet Mask Notation and Representation](#subnet-mask-notation-and-representation)
+8. [Common Subnet Masks and Their Meanings](#common-subnet-masks-and-their-meanings)
+9. [Real-World Applications](#real-world-applications)
+10. [Subnet Masks in IPv6](#subnet-masks-in-ipv6)
+11. [Subnet Mask Quick Reference Table](#subnet-mask-quick-reference-table)
+12. [Tools and Further Reading](#tools-and-further-reading)
 
 ---
 
@@ -236,3 +232,6 @@ Instead of four /24 networks:
 
 CIDR can summarize them as:
 `192.168.0.0/22`
+
+---
+
