@@ -1,6 +1,5 @@
 # Subnet Mask
 
-## Table of Contents
 1. [Introduction](#1-introduction)
 2. [Why Subnet Masks Exist](#2-why-subnet-masks-exist)
 3. [Binary Foundations: Bits and IP Addresses](#3-binary-foundations-bits-and-ip-addresses)
