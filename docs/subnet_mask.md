@@ -65,7 +65,7 @@ Without it, the internet would either waste vast address space or drown in confu
 
 ## Binary Foundations: Bits and IP Addresses
 
-Before diving deeper into subnet masks, it helps to peel back the layers and see what an IP address really *is*—not just the familiar dotted numbers, but the raw binary underneath.
+Before diving deeper into subnet masks, it helps to peel back the layers and see what an IP address really *is* not just the familiar dotted numbers, but the raw binary underneath.
 
 Computers don’t actually see `192.168.1.10`. They see a long string of **1s and 0s**, like this:
 
@@ -92,9 +92,9 @@ When we put them together:
 That’s the language routers and network interfaces speak fluently.
 
 So why does this matter? Because subnet masks work *bit by bit*.  
-They decide which portion of those 32 bits belong to the **network** and which belong to the **host**—and that decision is made through binary math, not magic.
+They decide which portion of those 32 bits belong to the **network** and which belong to the **host** and that decision is made through binary math, not magic.
 
-> **Pro insight:** Once you can visualize IPs in binary, subnetting stops being a memorization game. It becomes arithmetic—simple, precise, and predictable.
+> **Pro insight:** Once you can visualize IPs in binary, subnetting stops being a memorization game. It becomes arithmetic simple, precise, and predictable.
 
 
 ---
@@ -102,7 +102,7 @@ They decide which portion of those 32 bits belong to the **network** and which b
 ## What a Subnet Mask Actually Does
 
 A subnet mask looks deceptively similar to an IP address: four numbers separated by dots, like `255.255.255.0`.  
-But unlike an IP, it isn’t a location—it’s a *filter*, a bitwise stencil that helps your device separate the **network ID** from the **host ID**.
+But unlike an IP, it isn’t a location it’s a *filter*, a bitwise stencil that helps your device separate the **network ID** from the **host ID**.
 
 Imagine the subnet mask as a transparent overlay of 1s and 0s that sits on top of your IP address:
 
@@ -122,7 +122,7 @@ To find the network address, your device performs a simple binary operation: **A
 - 0 AND 1 = 0  
 - 0 AND 0 = 0
 
-When you AND the IP and the subnet mask, you get the **network address**—the shared part that identifies which network the device belongs to.
+When you AND the IP and the subnet mask, you get the **network address** the shared part that identifies which network the device belongs to.
 
 Example:
 
@@ -145,7 +145,7 @@ In plain language:
 - **Network address = the neighborhood.**  
 - **Gateway = the road out of town.**
 
-> **Beginner’s takeaway:** The subnet mask is not a second IP—it’s a pattern that divides the 32 bits of your address into “this part is the network” and “this part is me.”  
+> **Beginner’s takeaway:** The subnet mask is not a second IP it’s a pattern that divides the 32 bits of your address into “this part is the network” and “this part is me.”  
 > **Veteran’s reflection:** Every route table, ACL, and firewall rule rests on the humble AND operation. Behind every network design lies binary arithmetic in disguise.
 
 ---
