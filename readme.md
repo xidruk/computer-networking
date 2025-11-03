@@ -44,7 +44,7 @@ This repository covers the basics of computer networking. It is designed to intr
     - [FLSM vs VLSM (Key Differences & When to Use Each)](#flsm-vs-vlsm-key-differences--when-to-use-each-)
     - [CIDR](#cidr--classless-inter-domain-routing)
     - [IP Address Classification](#ip-address-classification--classful-vs-modern-usage)
-    - [Practicing Subnetting](practicing-subnetting-)
+    - [Practicing Subnetting](#practicing-subnetting-)
 11. [Routing & Switching Concepts](#11-routing--switching-concepts-)
     - [Routers](#routers--how-networks-are-connected)
     - [Routing Tables](#routing-tables--the-routers-map)
