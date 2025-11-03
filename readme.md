@@ -43,7 +43,8 @@ This repository covers the basics of computer networking. It is designed to intr
     - [VLSM (Variable Length Subnet Masking)](#vlsm--variable-length-subnet-masking)
     - [FLSM vs VLSM (Key Differences & When to Use Each)](#flsm-vs-vlsm-key-differences--when-to-use-each-)
     - [CIDR](#cidr--classless-inter-domain-routing)
-    - [IP Address Classification](#ip-address-classification-)
+    - [IP Address Classification](#ip-address-classification--classful-vs-modern-usage)
+    - [Practicing Subnetting]()
 11. [Routing & Switching Concepts](#11-routing--switching-concepts-)
     - [Routers](#routers--how-networks-are-connected)
     - [Routing Tables](#routing-tables--the-routers-map)
@@ -779,6 +780,18 @@ For the historical classes and why they were replaced, see: [docs/ipaddress_clas
 | Typical scope types| Public / Private ranges | Global unicast, link-local, ULA    |
 
 For a complete IPv6 guide and allocation methods, see: [docs/ipv6.md](docs/ipv6.md).
+
+---
+
+### Practicing Subnetting ::
+
+Theory is only half the journey  **real understanding comes from practice**. After exploring how subnet masks work, how to apply **FLSM**, **VLSM**, and **CIDR**, it’s time to put those concepts into action.  
+
+This section provides a **collection of carefully designed subnetting exercises** that range from basic address division to advanced multi-network design. Each exercise includes its **complexity range**, **type of subnetting** (FLSM or VLSM), and **clear requirements** describing what’s needed. The goal isn’t just to find the right numbers, but to **train your logical process** and build the reflex to design subnets efficiently and confidently.  
+
+No external tools are needed  just a pen, paper, and your brain. Start with easier exercises, then move toward the complex ones that simulate real-world network planning scenarios.  
+
+For the full set of exercises and challenges, visit: [Practicing Subnetting](docs/practicing_subnetting.md)
 
 ---
 
