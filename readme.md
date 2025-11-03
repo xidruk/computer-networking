@@ -1,6 +1,10 @@
 # ~C@mputer Networking
 
-This repository covers the basics of computer networking. It is designed to introduce you to the fundamentals and essential concepts, helping you take your first steps into the vast world of networking.
+<p align="center">
+A repository for mastering the <b>core principles of computer networking</b>.  
+From <b>data transmission</b> and <b>protocols</b> to <b>routing</b>, <b>security</b>, and <b>subnetting</b> —  
+this project provides a clear, structured, and practical guide for anyone exploring the world of networks.
+</p>
 
 ## TOC ?= Table of Content ::
 
