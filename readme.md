@@ -21,12 +21,9 @@
 </h1>
 
 
-<p align="center">
-A repository for mastering the <b>core principles of computer networking</b>.  
-From <b>data transmission</b> and <b>protocols</b> to <b>routing</b>, <b>security</b>, and <b>subnetting</b> —  
+A repository for mastering the **core principles of computer networking**.  
+From **data transmission** and **protocols** to **routing**, **security**, and **subnetting** 
 this project provides a clear, structured, and practical guide for anyone exploring the world of networks.
-</p>
-
 ## TOC ?= Table of Content ::
 
 1. [Introduction](#1-introduction-)
