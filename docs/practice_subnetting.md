@@ -106,10 +106,10 @@ Each exercise includes a specific network requirement and asks you to plan and c
 
 ## Further Practice
 
-- [What is a Subnet Mask?](subnet-mask.md)  
+- [What is a Subnet Mask?](subnet_mask.md)  
 - [Subnetting Explained](subnetting.md)  
-- [Routers](routers.md)  
-- [Routing Tables](routing_tables.md)
+- [Routers](routers.md) 
+- [Routing Tables](routing_table.md)
 
 ---
 
