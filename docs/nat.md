@@ -1,48 +1,27 @@
 # Network Address Translation (NAT) Explained
 
 ## Table of Contents
-1. [Introduction: The Office Receptionist Analogy](#introduction-the-office-receptionist-analogy)
-2. [What is NAT?](#what-is-nat)
-3. [Why Do We Need NAT? (The Problem)](#why-do-we-need-nat-the-problem)
-4. [How NAT Works: The Translation Process](#how-nat-works-the-translation-process)
+1. [What is NAT?](#what-is-nat)
+2. [Why Do We Need NAT? (The Problem)](#why-do-we-need-nat-the-problem)
+3. [How NAT Works: The Translation Process](#how-nat-works-the-translation-process)
     - [Key NAT Terminology](#key-nat-terminology)
     - [The NAT Table](#the-nat-table)
     - [Step-by-Step Example](#step-by-step-example)
-5. [The Main Types of NAT](#the-main-types-of-nat)
+4. [The Main Types of NAT](#the-main-types-of-nat)
     - [Static NAT (One-to-One)](#static-nat-one-to-one)
     - [Dynamic NAT (Many-to-Many)](#dynamic-nat-many-to-many)
     - [PAT (Port Address Translation / NAT Overload)](#pat-port-address-translation--nat-overload)
-6. [Related Concepts & Real-World Scenarios](#related-concepts--real-world-scenarios)
+5. [Related Concepts & Real-World Scenarios](#related-concepts--real-world-scenarios)
     - [Port Forwarding (Destination NAT)](#port-forwarding-destination-nat)
     - [Carrier-Grade NAT (CGNAT)](#carrier-grade-nat-cgnat)
     - [NAT Traversal (STUN, TURN, ICE)](#nat-traversal-stun-turn-ice)
-7. [NAT: Advantages and Limitations](#nat-advantages-and-limitations)
+6. [NAT: Advantages and Limitations](#nat-advantages-and-limitations)
     - [Advantages](#advantages)
     - [A Common Misconception: NAT as a Firewall](#a-common-misconception-nat-as-a-firewall)
     - [Limitations](#limitations)
-8. [The Future: NAT and IPv6](#the-future-nat-and-ipv6)
-9. [Conclusion](#conclusion)
-10. [References](#references)
-
----
-
-## Introduction: The Office Receptionist Analogy
-
-Imagine a large office building where every employee has their own internal phone extension (e.g., x101, x102). These extension numbers only work *inside* the building.
-
-Now, imagine this office has only **one** public-facing phone number.
-
-When an employee (x101) wants to call a client, they dial out. The receptionist (the NAT router) takes the call, connects it to the outside line, and makes a note: "This call from x101 is for Client A."
-
-When Client A calls back, they dial the main public number. The receptionist answers, checks their notes, and says, "Ah, this is a return call for x101." They then transfer the call to the correct extension.
-
-In this analogy:
-* **Employee Extension (x101):** Private IP Address (`192.168.1.10`)
-* **Main Public Phone Number:** Public IP Address
-* **Receptionist:** The NAT Router
-* **Receptionist's Note Pad:** The NAT Table
-
-NAT is the "receptionist" for your network, connecting many private devices to the public internet through a single public address.
+7. [The Future: NAT and IPv6](#the-future-nat-and-ipv6)
+8. [Conclusion](#conclusion)
+9. [References](#references)
 
 ---
 
