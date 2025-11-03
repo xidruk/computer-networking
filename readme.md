@@ -1,4 +1,4 @@
-<h1 align="center">
+<h1>
   <span style="color:#00BFFF;">~</span>
   <span style="color:#1E90FF;">C</span>
   <span style="color:#00CED1;">@</span>
