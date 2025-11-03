@@ -1,12 +1,12 @@
 # Practicing Subnetting
 
-Subnetting is a skill — and like all skills, it improves with practice. This section contains a collection of exercises designed to test your understanding of subnet masks, FLSM (Fixed Length Subnet Masking), and VLSM (Variable Length Subnet Masking).
+Subnetting is a skill and like all skills, it improves with practice. This section contains a collection of exercises designed to test your understanding of subnet masks, FLSM (Fixed Length Subnet Masking), and VLSM (Variable Length Subnet Masking).
 
-Each exercise includes a specific network requirement and asks you to plan and calculate the appropriate subnets. No solutions are provided — you’ll need to think them through and verify your answers.
+Each exercise includes a specific network requirement and asks you to plan and calculate the appropriate subnets. No solutions are provided you’ll need to think them through and verify your answers.
 
 ---
 
-## 🧭 Table of Exercises
+## Table of Exercises
 
 | ID | Complexity | Needed / Requirements | Type | Link |
 |----|-------------|-----------------------|------|------|
@@ -18,12 +18,12 @@ Each exercise includes a specific network requirement and asks you to plan and c
 | 6  | Hard | Given 192.168.100.0/24, plan subnets for 6 departments with 100, 50, 25, 10, 5, and 2 hosts | VLSM | [Exercise 6](#exercise-6) |
 | 7  | Hard | Subnet 10.1.0.0/16 to create 20 subnets with at least 2000 hosts each | FLSM | [Exercise 7](#exercise-7) |
 | 8  | Hard | From 192.168.0.0/22, create subnets for departments needing 100, 50, 30, and 10 hosts | VLSM | [Exercise 8](#exercise-8) |
-| 9  | Expert | You manage an ISP block 203.0.113.0/24 — allocate subnets for 4 clients with 80, 40, 20, and 10 hosts | VLSM | [Exercise 9](#exercise-9) |
+| 9  | Expert | You manage an ISP block 203.0.113.0/24 allocate subnets for 4 clients with 80, 40, 20, and 10 hosts | VLSM | [Exercise 9](#exercise-9) |
 | 10 | Expert | From 172.20.0.0/20, design a VLSM plan for a campus with varying host sizes (500, 300, 200, 100, 50) | VLSM | [Exercise 10](#exercise-10) |
 
 ---
 
-## 🧩 Exercises
+## Exercises
 
 ### Exercise 1
 **Network:** 192.168.10.0/24  
@@ -61,14 +61,14 @@ Each exercise includes a specific network requirement and asks you to plan and c
 **Scenario:** A branch office needs **3 subnets** supporting **60, 25, and 10 hosts**.  
 **Base Network:** 10.10.10.0/24  
 **Type:** VLSM  
-**Hint:** Optimize address usage — avoid wasting IPs on smaller networks.
+**Hint:** Optimize address usage avoid wasting IPs on smaller networks.
 
 ---
 
 ### Exercise 6
 **Scenario:** You’re given 192.168.100.0/24 and need to create subnets for **100, 50, 25, 10, 5, and 2 hosts**.  
 **Type:** VLSM  
-**Hint:** Remember — each subnet must have at least 2 addresses reserved for network and broadcast.
+**Hint:** Remember each subnet must have at least 2 addresses reserved for network and broadcast.
 
 ---
 
@@ -92,7 +92,7 @@ Each exercise includes a specific network requirement and asks you to plan and c
 **Scenario:** You manage an ISP block **203.0.113.0/24**.  
 **Goal:** Allocate subnets for **4 clients** needing **80, 40, 20, and 10 hosts**.  
 **Type:** VLSM  
-**Hint:** Work top-down — assign from the largest client to the smallest.
+**Hint:** Work top-down assign from the largest client to the smallest.
 
 ---
 
@@ -104,7 +104,7 @@ Each exercise includes a specific network requirement and asks you to plan and c
 
 ---
 
-## 📘 Further Practice
+## Further Practice
 
 - [What is a Subnet Mask?](subnet-mask.md)  
 - [Subnetting Explained](subnetting.md)  
@@ -113,4 +113,4 @@ Each exercise includes a specific network requirement and asks you to plan and c
 
 ---
 
-Happy subnetting — may your CIDR blocks be ever efficient!
+Happy subnetting may your CIDR blocks be ever efficient!
