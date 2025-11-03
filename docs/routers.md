@@ -150,7 +150,7 @@ Example: Home routers use **Port Address Translation (PAT)** — all devices sha
 
 ## Further Reading
 
-- Routing Tables – Learn how routers organize and lookup routes.  [ [ ROUTING TABLE] ](routing_table.md)
+- Routing Tables – Learn how routers organize and lookup routes.  [ [ ROUTING TABLE ] ](routing_table.md)
 - Switches – Details on Layer-2 switches and how they differ from routers.  
 - VLAN – Understanding Virtual LANs and inter-VLAN routing.  
 - NAT – Deep dive into Network Address Translation.  
