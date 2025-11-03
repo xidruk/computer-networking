@@ -25,7 +25,7 @@ A repository for mastering the **core principles of computer networking**.
 From **data transmission** and **protocols** to **routing**, **security**, and **subnetting** 
 this project provides a clear, structured, and practical guide for anyone exploring the world of networks.
 
-## Table of Content   : :
+## ~ Table of Content   : :
 
 1. [Introduction](#1-introduction-)
     - [Definition of Computer Network](#definition-of-computer-network-)
