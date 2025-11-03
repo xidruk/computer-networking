@@ -791,7 +791,7 @@ This section provides a **collection of carefully designed subnetting exercises*
 
 No external tools are needed  just a pen, paper, and your brain. Start with easier exercises, then move toward the complex ones that simulate real-world network planning scenarios.  
 
-For the full set of exercises and challenges, visit: [Practicing Subnetting](docs/practicing_subnetting.md)
+For the full set of exercises and challenges, visit: [Practicing Subnetting](docs/practice_subnetting.md)
 
 ---
 
