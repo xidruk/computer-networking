@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Networking - Complete Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-left">
+            <div class="clock" id="clock"></div>
+        </div>
+        
+        <div class="header-center">
+            <h1 class="site-title" id="siteTitle" style="cursor: pointer;" title="Back to home">
+                <i class="fas fa-network-wired"></i>
+                Computer Networking
+            </h1>
+        </div>
+        
+        <div class="header-right">
+            <button class="home-button" id="homeButton" aria-label="Back to Home" title="Back to Home">
+                <i class="fas fa-home"></i>
+            </button>
+            
+            <button class="search-toggle" id="searchToggle" aria-label="Search">
+                <i class="fas fa-search"></i>
+                <span class="search-hint">Ctrl+K</span>
+            </button>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <a href="https://github.com/xidruk/computer-networking" class="github-stars" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+                <span id="starCount">11</span>
+                <i class="fas fa-star"></i>
+            </a>
+            
+            <div class="social-links">
+                <a href="https://twitter.com/yourusername" target="_blank" rel="noopener" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://github.com/xidruk" target="_blank" rel="noopener" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="search-modal" id="searchModal">
+            <div class="search-modal-content">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+                    <button class="search-close" id="searchClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <p class="search-placeholder">Start typing to search...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-wrapper">
+            <div id="loading" class="loading">
+                <div class="loader"></div>
+                <p>Loading content...</p>
+            </div>
+            
+            <div id="error" class="error-message" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Failed to load content. Please try again.</p>
+            </div>
+            
+            <article id="content" class="markdown-body">
+            </article>
+        </div>
+        
+        <aside class="toc-wrapper" id="tocWrapper">
+            <button class="toc-toggle" id="tocToggle">
+                <i class="fas fa-list"></i>
+                <span>Contents</span>
+            </button>
+            <nav class="table-of-contents" id="toc">
+            </nav>
+        </aside>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>
+                <i class="fas fa-code"></i>
+                Made with passion for learning networking
+            </p>
+            <p>
+                <a href="https://github.com/xidruk/computer-networking" target="_blank" rel="noopener">
+                    View on GitHub
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
