@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Networking - Complete Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="clock" id="clock"></div>
+        </div>
+        
+        <div class="header-center">
+            <h1 class="site-title">
+                <i class="fas fa-network-wired"></i>
+                Computer Networking
+            </h1>
+        </div>
+        
+        <div class="header-right">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <a href="https://github.com/xidruk/computer-networking" class="github-stars" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+                <span id="starCount">11</span>
+                <i class="fas fa-star"></i>
+            </a>
+            
+            <div class="social-links">
+                <a href="https://twitter.com/yourusername" target="_blank" rel="noopener" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://github.com/xidruk" target="_blank" rel="noopener" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="content-wrapper">
+            <!-- Loading State -->
+            <div id="loading" class="loading">
+                <div class="loader"></div>
+                <p>Loading content...</p>
+            </div>
+            
+            <!-- Error State -->
+            <div id="error" class="error-message" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Failed to load content. Please try again.</p>
+            </div>
+            
+            <!-- Markdown Content -->
+            <article id="content" class="markdown-body">
+                <!-- Content will be loaded here -->
+            </article>
+        </div>
+        
+        <!-- Table of Contents (floating, collapsible) -->
+        <aside class="toc-wrapper" id="tocWrapper">
+            <button class="toc-toggle" id="tocToggle">
+                <i class="fas fa-list"></i>
+                <span>Contents</span>
+            </button>
+            <nav class="table-of-contents" id="toc">
+                <!-- TOC will be generated here -->
+            </nav>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>
+                <i class="fas fa-code"></i>
+                Made with passion for learning networking
+            </p>
+            <p>
+                <a href="https://github.com/xidruk/computer-networking" target="_blank" rel="noopener">
+                    View on GitHub
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
