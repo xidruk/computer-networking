@@ -6,27 +6,33 @@
     <title>Computer Networking - Complete Guide</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Marked.js for markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- Highlight.js for syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </head>
 <body>
-    <!-- Header -->
     <header class="main-header">
         <div class="header-left">
             <div class="clock" id="clock"></div>
         </div>
         
         <div class="header-center">
-            <h1 class="site-title">
+            <h1 class="site-title" id="siteTitle" style="cursor: pointer;" title="Back to home">
                 <i class="fas fa-network-wired"></i>
                 Computer Networking
             </h1>
         </div>
         
         <div class="header-right">
+            <button class="home-button" id="homeButton" aria-label="Back to Home" title="Back to Home">
+                <i class="fas fa-home"></i>
+            </button>
+            
+            <button class="search-toggle" id="searchToggle" aria-label="Search">
+                <i class="fas fa-search"></i>
+                <span class="search-hint">Ctrl+K</span>
+            </button>
+            
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                 <i class="fas fa-moon"></i>
             </button>
@@ -51,40 +57,47 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container">
+        <div class="search-modal" id="searchModal">
+            <div class="search-modal-content">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+                    <button class="search-close" id="searchClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <p class="search-placeholder">Start typing to search...</p>
+                </div>
+            </div>
+        </div>
+        
         <div class="content-wrapper">
-            <!-- Loading State -->
             <div id="loading" class="loading">
                 <div class="loader"></div>
                 <p>Loading content...</p>
             </div>
             
-            <!-- Error State -->
             <div id="error" class="error-message" style="display: none;">
                 <i class="fas fa-exclamation-triangle"></i>
                 <p>Failed to load content. Please try again.</p>
             </div>
             
-            <!-- Markdown Content -->
             <article id="content" class="markdown-body">
-                <!-- Content will be loaded here -->
             </article>
         </div>
         
-        <!-- Table of Contents (floating, collapsible) -->
         <aside class="toc-wrapper" id="tocWrapper">
             <button class="toc-toggle" id="tocToggle">
                 <i class="fas fa-list"></i>
                 <span>Contents</span>
             </button>
             <nav class="table-of-contents" id="toc">
-                <!-- TOC will be generated here -->
             </nav>
         </aside>
     </main>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-content">
             <p>

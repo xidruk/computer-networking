@@ -5,12 +5,156 @@ const CONFIG = {
     githubRepo: 'xidruk/computer-networking',
     githubBranch: 'main',
     defaultFile: 'readme.md',
+    localMode: window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1',
     socialLinks: {
         twitter: 'https://twitter.com/yourusername',
         github: 'https://github.com/xidruk',
         linkedin: 'https://linkedin.com/in/yourusername'
     }
 };
+
+// ============================================
+// Search Functionality
+// ============================================
+class SearchManager {
+    constructor(markdownLoader) {
+        this.markdownLoader = markdownLoader;
+        this.modal = document.getElementById('searchModal');
+        this.input = document.getElementById('searchInput');
+        this.results = document.getElementById('searchResults');
+        this.searchToggle = document.getElementById('searchToggle');
+        this.searchClose = document.getElementById('searchClose');
+        this.searchIndex = [];
+        this.init();
+    }
+
+    init() {
+        // Open search modal
+        this.searchToggle.addEventListener('click', () => this.open());
+        
+        // Close search modal
+        this.searchClose.addEventListener('click', () => this.close());
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) this.close();
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+K or Cmd+K to open
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                this.open();
+            }
+            // Escape to close
+            if (e.key === 'Escape') {
+                this.close();
+            }
+        });
+        
+        // Search input handler
+        this.input.addEventListener('input', (e) => this.handleSearch(e.target.value));
+        
+        // Build search index
+        this.buildSearchIndex();
+    }
+
+    open() {
+        this.modal.classList.add('active');
+        this.input.focus();
+    }
+
+    close() {
+        this.modal.classList.remove('active');
+        this.input.value = '';
+        this.results.innerHTML = '<p class="search-placeholder">Start typing to search...</p>';
+    }
+
+    async buildSearchIndex() {
+        // This builds an index from the main README
+        // In a full implementation, you'd index all markdown files
+        try {
+            const response = await fetch(this.getFileURL('readme.md'));
+            const text = await response.text();
+            this.indexContent('readme.md', 'Main Documentation', text);
+        } catch (error) {
+            console.error('Failed to build search index:', error);
+        }
+    }
+
+    getFileURL(file) {
+        if (CONFIG.localMode) {
+            return `../${file}`;
+        }
+        return `https://raw.githubusercontent.com/${CONFIG.githubRepo}/${CONFIG.githubBranch}/${file}`;
+    }
+
+    indexContent(file, title, content) {
+        const lines = content.split('\n');
+        lines.forEach((line, index) => {
+            if (line.trim().length > 20) {
+                this.searchIndex.push({
+                    file,
+                    title,
+                    line: index + 1,
+                    content: line.trim()
+                });
+            }
+        });
+    }
+
+    handleSearch(query) {
+        if (!query || query.length < 2) {
+            this.results.innerHTML = '<p class="search-placeholder">Start typing to search...</p>';
+            return;
+        }
+
+        const results = this.searchIndex.filter(item => 
+            item.content.toLowerCase().includes(query.toLowerCase())
+        ).slice(0, 10);
+
+        if (results.length === 0) {
+            this.results.innerHTML = '<p class="search-placeholder">No results found</p>';
+            return;
+        }
+
+        const html = results.map(result => {
+            const highlighted = this.highlightMatch(result.content, query);
+            return `
+                <div class="search-result-item" data-file="${result.file}">
+                    <div class="search-result-title">${result.title}</div>
+                    <div class="search-result-path">${result.file} : Line ${result.line}</div>
+                    <div class="search-result-content">${highlighted}</div>
+                </div>
+            `;
+        }).join('');
+
+        this.results.innerHTML = html;
+
+        // Add click handlers
+        this.results.querySelectorAll('.search-result-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const file = item.getAttribute('data-file');
+                this.close();
+                this.markdownLoader.loadMarkdown(file);
+            });
+        });
+    }
+
+    highlightMatch(text, query) {
+        const index = text.toLowerCase().indexOf(query.toLowerCase());
+        if (index === -1) return text;
+
+        const start = Math.max(0, index - 50);
+        const end = Math.min(text.length, index + query.length + 50);
+        let snippet = text.substring(start, end);
+        
+        if (start > 0) snippet = '...' + snippet;
+        if (end < text.length) snippet = snippet + '...';
+
+        const regex = new RegExp(`(${query})`, 'gi');
+        return snippet.replace(regex, '<span class="search-highlight">$1</span>');
+    }
+}
 
 // ============================================
 // Theme Management
@@ -36,6 +180,37 @@ class ThemeManager {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
         localStorage.setItem('theme', this.theme);
         this.applyTheme();
+    }
+}
+
+// ============================================
+// Home/Refresh Button
+// ============================================
+class HomeButton {
+    constructor(markdownLoader) {
+        this.markdownLoader = markdownLoader;
+        this.init();
+    }
+
+    init() {
+        // Home button functionality
+        const homeButton = document.getElementById('homeButton');
+        if (homeButton) {
+            homeButton.addEventListener('click', () => this.goHome());
+        }
+
+        // Make site title clickable
+        const siteTitle = document.getElementById('siteTitle');
+        if (siteTitle) {
+            siteTitle.addEventListener('click', () => this.goHome());
+        }
+    }
+
+    goHome() {
+        // Load the main README
+        this.markdownLoader.loadMarkdown(CONFIG.defaultFile);
+        // Update URL
+        window.history.pushState({ file: CONFIG.defaultFile }, '', window.location.pathname);
     }
 }
 
@@ -112,14 +287,22 @@ class MarkdownLoader {
         this.showLoading();
         
         try {
-            // Construct the raw GitHub URL
-            const url = `https://raw.githubusercontent.com/${CONFIG.githubRepo}/${CONFIG.githubBranch}/${file}`;
+            let url;
+            
+            // Handle different path scenarios
+            if (CONFIG.localMode) {
+                // Local development mode
+                url = `../${file}`;
+            } else {
+                // GitHub hosted mode
+                url = `https://raw.githubusercontent.com/${CONFIG.githubRepo}/${CONFIG.githubBranch}/${file}`;
+            }
             
             const response = await fetch(url);
             if (!response.ok) throw new Error('Failed to fetch markdown');
             
             const markdown = await response.text();
-            this.renderMarkdown(markdown);
+            this.renderMarkdown(markdown, file);
             
         } catch (error) {
             console.error('Error loading markdown:', error);
@@ -127,15 +310,21 @@ class MarkdownLoader {
         }
     }
 
-    renderMarkdown(markdown) {
+    renderMarkdown(markdown, currentFile) {
+        // Fix image paths before parsing
+        markdown = this.fixImagePaths(markdown);
+        
         // Convert markdown to HTML
         const html = marked.parse(markdown);
         
         // Update content
         this.contentElement.innerHTML = html;
         
+        // Add IDs to all headings FIRST (so anchor links work)
+        this.addHeadingIds();
+        
         // Process links to work with the viewer
-        this.processLinks();
+        this.processLinks(currentFile);
         
         // Generate table of contents
         this.generateTOC();
@@ -147,10 +336,73 @@ class MarkdownLoader {
         window.scrollTo(0, 0);
     }
 
-    processLinks() {
+    addHeadingIds() {
+        // Add IDs to ALL headings (h1-h6) so anchor links work
+        const allHeadings = this.contentElement.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        allHeadings.forEach((heading, index) => {
+            if (!heading.id) {
+                // Create ID from heading text
+                const text = heading.textContent.trim();
+                const id = text
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+                heading.id = id || `heading-${index}`;
+            }
+        });
+    }
+
+    fixImagePaths(markdown) {
+        // Fix relative image paths
+        if (CONFIG.localMode) {
+            // In local mode, fix paths to go up one directory
+            markdown = markdown.replace(/!\[([^\]]*)\]\((?!http)([^)]+)\)/g, (match, alt, path) => {
+                if (path.startsWith('/')) {
+                    return `![${alt}](..${path})`;
+                } else if (path.startsWith('./')) {
+                    return `![${alt}](../${path.substring(2)})`;
+                } else {
+                    return `![${alt}](../${path})`;
+                }
+            });
+        } else {
+            // In GitHub mode, use raw.githubusercontent.com URLs
+            markdown = markdown.replace(/!\[([^\]]*)\]\((?!http)([^)]+)\)/g, (match, alt, path) => {
+                if (path.startsWith('/')) {
+                    path = path.substring(1);
+                } else if (path.startsWith('./')) {
+                    path = path.substring(2);
+                }
+                return `![${alt}](https://raw.githubusercontent.com/${CONFIG.githubRepo}/${CONFIG.githubBranch}/${path})`;
+            });
+        }
+        return markdown;
+    }
+
+    processLinks(currentFile) {
         const links = this.contentElement.querySelectorAll('a');
         links.forEach(link => {
             const href = link.getAttribute('href');
+            
+            // Handle anchor links (same page) - these should scroll
+            if (href && href.startsWith('#')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const headerOffset = 90;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+                return;
+            }
             
             // Handle relative markdown links
             if (href && href.endsWith('.md')) {
@@ -160,16 +412,25 @@ class MarkdownLoader {
                     // Extract file path
                     let filePath = href;
                     
-                    // Handle relative paths
+                    // Handle different path formats
                     if (href.startsWith('/')) {
                         filePath = href.substring(1);
                     } else if (href.startsWith('./')) {
-                        filePath = 'docs/' + href.substring(2);
-                    } else if (!href.startsWith('http')) {
-                        filePath = 'docs/' + href;
+                        filePath = href.substring(2);
+                    } else if (href.startsWith('../')) {
+                        filePath = href.substring(3);
+                    }
+                    
+                    // If the link starts with 'docs/', keep it
+                    // Otherwise, assume it's in docs/
+                    if (!filePath.startsWith('docs/') && !filePath.startsWith('readme')) {
+                        filePath = 'docs/' + filePath;
                     }
                     
                     this.loadMarkdown(filePath);
+                    
+                    // Update URL
+                    window.history.pushState({ file: filePath }, '', `?file=${filePath}`);
                 });
             } else if (href && !href.startsWith('#')) {
                 // External links open in new tab
@@ -189,22 +450,40 @@ class MarkdownLoader {
         }
         
         let tocHTML = '<ul>';
-        headings.forEach((heading, index) => {
-            const id = `heading-${index}`;
-            heading.id = id;
-            
+        headings.forEach((heading) => {
+            // Use the ID that was already set by addHeadingIds()
+            const id = heading.id;
             const level = heading.tagName === 'H2' ? 0 : 1;
             const indent = level * 1;
             
             tocHTML += `
                 <li style="margin-left: ${indent}rem;">
-                    <a href="#${id}">${heading.textContent}</a>
+                    <a href="#${id}" class="toc-link">${heading.textContent}</a>
                 </li>
             `;
         });
         tocHTML += '</ul>';
         
         toc.innerHTML = tocHTML;
+        
+        // Add smooth scroll behavior to TOC links
+        toc.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const headerOffset = 90;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     }
 
     showLoading() {
@@ -281,29 +560,6 @@ class URLHandler {
 }
 
 // ============================================
-// Smooth Scroll for Anchor Links
-// ============================================
-function initSmoothScroll() {
-    document.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
-            e.preventDefault();
-            const id = e.target.getAttribute('href').substring(1);
-            const element = document.getElementById(id);
-            if (element) {
-                const headerOffset = 90;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    });
-}
-
-// ============================================
 // Initialize Everything
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -312,11 +568,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const clock = new Clock();
     const githubIntegration = new GitHubIntegration();
     const markdownLoader = new MarkdownLoader();
+    const homeButton = new HomeButton(markdownLoader);
+    const searchManager = new SearchManager(markdownLoader);
     const tocManager = new TOCManager();
     const urlHandler = new URLHandler(markdownLoader);
-    
-    // Initialize smooth scrolling
-    initSmoothScroll();
     
     // Console message
     console.log('%c📚 Computer Networking Documentation', 'color: #0969da; font-size: 20px; font-weight: bold;');
