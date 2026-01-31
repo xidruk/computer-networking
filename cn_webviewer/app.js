@@ -14,147 +14,9 @@ const CONFIG = {
 };
 
 // ============================================
-// Search Functionality
+// Search Functionality - REMOVED
 // ============================================
-class SearchManager {
-    constructor(markdownLoader) {
-        this.markdownLoader = markdownLoader;
-        this.modal = document.getElementById('searchModal');
-        this.input = document.getElementById('searchInput');
-        this.results = document.getElementById('searchResults');
-        this.searchToggle = document.getElementById('searchToggle');
-        this.searchClose = document.getElementById('searchClose');
-        this.searchIndex = [];
-        this.init();
-    }
-
-    init() {
-        // Open search modal
-        this.searchToggle.addEventListener('click', () => this.open());
-        
-        // Close search modal
-        this.searchClose.addEventListener('click', () => this.close());
-        this.modal.addEventListener('click', (e) => {
-            if (e.target === this.modal) this.close();
-        });
-        
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            // Ctrl+K or Cmd+K to open
-            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                e.preventDefault();
-                this.open();
-            }
-            // Escape to close
-            if (e.key === 'Escape') {
-                this.close();
-            }
-        });
-        
-        // Search input handler
-        this.input.addEventListener('input', (e) => this.handleSearch(e.target.value));
-        
-        // Build search index
-        this.buildSearchIndex();
-    }
-
-    open() {
-        this.modal.classList.add('active');
-        this.input.focus();
-    }
-
-    close() {
-        this.modal.classList.remove('active');
-        this.input.value = '';
-        this.results.innerHTML = '<p class="search-placeholder">Start typing to search...</p>';
-    }
-
-    async buildSearchIndex() {
-        // This builds an index from the main README
-        // In a full implementation, you'd index all markdown files
-        try {
-            const response = await fetch(this.getFileURL('readme.md'));
-            const text = await response.text();
-            this.indexContent('readme.md', 'Main Documentation', text);
-        } catch (error) {
-            console.error('Failed to build search index:', error);
-        }
-    }
-
-    getFileURL(file) {
-        if (CONFIG.localMode) {
-            return `../${file}`;
-        }
-        return `https://raw.githubusercontent.com/${CONFIG.githubRepo}/${CONFIG.githubBranch}/${file}`;
-    }
-
-    indexContent(file, title, content) {
-        const lines = content.split('\n');
-        lines.forEach((line, index) => {
-            if (line.trim().length > 20) {
-                this.searchIndex.push({
-                    file,
-                    title,
-                    line: index + 1,
-                    content: line.trim()
-                });
-            }
-        });
-    }
-
-    handleSearch(query) {
-        if (!query || query.length < 2) {
-            this.results.innerHTML = '<p class="search-placeholder">Start typing to search...</p>';
-            return;
-        }
-
-        const results = this.searchIndex.filter(item => 
-            item.content.toLowerCase().includes(query.toLowerCase())
-        ).slice(0, 10);
-
-        if (results.length === 0) {
-            this.results.innerHTML = '<p class="search-placeholder">No results found</p>';
-            return;
-        }
-
-        const html = results.map(result => {
-            const highlighted = this.highlightMatch(result.content, query);
-            return `
-                <div class="search-result-item" data-file="${result.file}">
-                    <div class="search-result-title">${result.title}</div>
-                    <div class="search-result-path">${result.file} : Line ${result.line}</div>
-                    <div class="search-result-content">${highlighted}</div>
-                </div>
-            `;
-        }).join('');
-
-        this.results.innerHTML = html;
-
-        // Add click handlers
-        this.results.querySelectorAll('.search-result-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const file = item.getAttribute('data-file');
-                this.close();
-                this.markdownLoader.loadMarkdown(file);
-            });
-        });
-    }
-
-    highlightMatch(text, query) {
-        const index = text.toLowerCase().indexOf(query.toLowerCase());
-        if (index === -1) return text;
-
-        const start = Math.max(0, index - 50);
-        const end = Math.min(text.length, index + query.length + 50);
-        let snippet = text.substring(start, end);
-        
-        if (start > 0) snippet = '...' + snippet;
-        if (end < text.length) snippet = snippet + '...';
-
-        const regex = new RegExp(`(${query})`, 'gi');
-        return snippet.replace(regex, '<span class="search-highlight">$1</span>');
-    }
-}
+// Search has been removed from the interface
 
 // ============================================
 // Theme Management
@@ -180,6 +42,63 @@ class ThemeManager {
         this.theme = this.theme === 'light' ? 'dark' : 'light';
         localStorage.setItem('theme', this.theme);
         this.applyTheme();
+    }
+}
+
+// ============================================
+// Menu Manager (Left Sidebar Toggle)
+// ============================================
+class MenuManager {
+    constructor() {
+        this.leftSidebar = document.getElementById('leftSidebar');
+        this.menuToggle = document.getElementById('menuToggle');
+        this.container = document.querySelector('main.container');
+        this.isVisible = true; // Start visible on desktop
+        this.init();
+    }
+
+    init() {
+        // Toggle menu on button click
+        this.menuToggle.addEventListener('click', () => this.toggle());
+        
+        // On mobile, start hidden
+        if (window.innerWidth <= 1024) {
+            this.hide();
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 1024 && this.isVisible) {
+                // Don't auto-hide on mobile, let user control
+            }
+        });
+    }
+
+    toggle() {
+        if (this.isVisible) {
+            this.hide();
+        } else {
+            this.show();
+        }
+    }
+
+    hide() {
+        this.leftSidebar.classList.add('hidden');
+        this.container.classList.add('sidebar-hidden');
+        this.isVisible = false;
+    }
+
+    show() {
+        this.leftSidebar.classList.remove('hidden');
+        this.container.classList.remove('sidebar-hidden');
+        this.isVisible = true;
+    }
+
+    populateNavigation(tocData) {
+        const nav = document.getElementById('mainNav');
+        if (!nav || !tocData) return;
+        
+        nav.innerHTML = tocData;
     }
 }
 
@@ -215,27 +134,9 @@ class HomeButton {
 }
 
 // ============================================
-// Clock
+// Clock - REMOVED
 // ============================================
-class Clock {
-    constructor() {
-        this.element = document.getElementById('clock');
-        this.start();
-    }
-
-    start() {
-        this.update();
-        setInterval(() => this.update(), 1000);
-    }
-
-    update() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        this.element.textContent = `${hours}:${minutes}:${seconds}`;
-    }
-}
+// Clock functionality has been removed
 
 // ============================================
 // GitHub Integration
@@ -326,14 +227,37 @@ class MarkdownLoader {
         // Process links to work with the viewer
         this.processLinks(currentFile);
         
-        // Generate table of contents
+        // Generate table of contents for right sidebar
         this.generateTOC();
+        
+        // Extract and populate left navigation (only from main readme)
+        if (currentFile === 'readme.md' || !currentFile) {
+            this.extractAndPopulateNavigation();
+        }
         
         // Hide loading, show content
         this.hideLoading();
         
         // Scroll to top
         window.scrollTo(0, 0);
+    }
+
+    extractAndPopulateNavigation() {
+        // Find the table of contents in the main content
+        const mainTOC = this.contentElement.querySelector('h2[id*="table-of-content"], h2:has(+ ol), h2:has(+ ul)');
+        if (!mainTOC) return;
+        
+        // Get the list after the TOC heading
+        let tocList = mainTOC.nextElementSibling;
+        while (tocList && tocList.tagName !== 'OL' && tocList.tagName !== 'UL') {
+            tocList = tocList.nextElementSibling;
+        }
+        
+        if (tocList && window.menuManager) {
+            // Clone and populate the left sidebar
+            const clonedList = tocList.cloneNode(true);
+            window.menuManager.populateNavigation(clonedList.outerHTML);
+        }
     }
 
     addHeadingIds() {
@@ -381,15 +305,28 @@ class MarkdownLoader {
 
     processLinks(currentFile) {
         const links = this.contentElement.querySelectorAll('a');
+        console.log(`Processing ${links.length} links in content`);
+        
         links.forEach(link => {
             const href = link.getAttribute('href');
             
+            // Skip if no href
+            if (!href) return;
+            
             // Handle anchor links (same page) - these should scroll
-            if (href && href.startsWith('#')) {
-                link.addEventListener('click', (e) => {
+            if (href.startsWith('#')) {
+                // Remove any existing click handlers
+                const newLink = link.cloneNode(true);
+                link.parentNode.replaceChild(newLink, link);
+                
+                newLink.addEventListener('click', (e) => {
                     e.preventDefault();
+                    e.stopPropagation();
+                    
                     const targetId = href.substring(1);
+                    console.log('Clicking anchor link:', targetId);
                     const targetElement = document.getElementById(targetId);
+                    
                     if (targetElement) {
                         const headerOffset = 90;
                         const elementPosition = targetElement.getBoundingClientRect().top;
@@ -399,13 +336,31 @@ class MarkdownLoader {
                             top: offsetPosition,
                             behavior: 'smooth'
                         });
+                        
+                        // Highlight the target briefly
+                        targetElement.style.backgroundColor = 'var(--accent-color)';
+                        targetElement.style.color = 'white';
+                        targetElement.style.padding = '0.5rem';
+                        targetElement.style.borderRadius = '4px';
+                        targetElement.style.transition = 'all 0.3s ease';
+                        
+                        setTimeout(() => {
+                            targetElement.style.backgroundColor = '';
+                            targetElement.style.color = '';
+                            targetElement.style.padding = '';
+                        }, 1000);
+                    } else {
+                        console.warn('Target element not found:', targetId);
                     }
-                });
+                }, { passive: false });
+                
+                // Also make it look clickable
+                newLink.style.cursor = 'pointer';
                 return;
             }
             
             // Handle relative markdown links
-            if (href && href.endsWith('.md')) {
+            if (href.endsWith('.md')) {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     
@@ -432,10 +387,15 @@ class MarkdownLoader {
                     // Update URL
                     window.history.pushState({ file: filePath }, '', `?file=${filePath}`);
                 });
-            } else if (href && !href.startsWith('#')) {
-                // External links open in new tab
+                return;
+            }
+            
+            // All other links (external, http, https, etc.) open in new tab
+            // This ensures external links work properly
+            if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('www.')) {
                 link.setAttribute('target', '_blank');
                 link.setAttribute('rel', 'noopener noreferrer');
+                // Don't add any click handlers - let the browser handle these naturally
             }
         });
     }
@@ -565,11 +525,10 @@ class URLHandler {
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize components
     const themeManager = new ThemeManager();
-    const clock = new Clock();
+    window.menuManager = new MenuManager(); // Make it global so MarkdownLoader can access it
     const githubIntegration = new GitHubIntegration();
     const markdownLoader = new MarkdownLoader();
     const homeButton = new HomeButton(markdownLoader);
-    const searchManager = new SearchManager(markdownLoader);
     const tocManager = new TOCManager();
     const urlHandler = new URLHandler(markdownLoader);
     
