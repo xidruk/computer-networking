@@ -336,13 +336,14 @@ body {
 /* ============================================
    Main Content Area
    ============================================ */
+/* Simplified Main Content Area */
 main.container {
     margin-top: var(--header-height);
     margin-left: 280px; /* Space for left sidebar */
     min-height: calc(100vh - var(--header-height));
     padding: 3rem 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Align content to the left of the wrapper */
     position: relative;
     transition: margin-left 0.3s ease;
 }
@@ -354,6 +355,7 @@ main.container.sidebar-hidden {
 .content-wrapper {
     max-width: var(--max-width);
     width: 100%;
+    margin: 0 auto; /* Keep content centered in the available space */
 }
 
 /* Loading State */
