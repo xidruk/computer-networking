@@ -826,7 +826,7 @@ For the full set of exercises and challenges, visit: [Practicing Subnetting](doc
 - [docs/subnetting.md](docs/subnetting.md) :: full subnetting walkthroughs and exercises.  
 - [docs/vlsm.md](docs/vlsm.md) :: variable length subnetting examples and best practices.  
 - [docs/cidr.md](docs/cidr.md) :: CIDR notation, aggregation, and routing implications.  
-- [docs/ipaddress_classificatin.md](docs/ipaddress_classificatin.md) :: historical classful addressing overview.
+- [docs/ipaddress_classification.md](docs/ipaddress_classification.md) :: historical classful addressing overview.
 
 ---
 
