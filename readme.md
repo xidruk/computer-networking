@@ -769,7 +769,7 @@ This approach proved inefficient and led to address waste.
 **Modern approach**  
 Today, we use **CIDR** instead of classful addressing. Classful knowledge is useful for historical context and some legacy systems, but all modern IP planning should assume classless addressing.
 
-For the historical classes and why they were replaced, see: [docs/ipaddress_classificatin.md](docs/ipaddress_classificatin.md).
+For the historical classes and why they were replaced, see: [docs/ipaddress_classification.md](docs/ipaddress_classification.md).
 
 ---
 
