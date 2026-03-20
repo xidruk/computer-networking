@@ -25,8 +25,8 @@ A repository for mastering the **core principles of computer networking**.
 From **data transmission** and **protocols** to **routing**, **security**, and **subnetting** 
 this project provides a clear, structured, and practical guide for anyone exploring the world of networks.
 
-<p align="center">
-    <strong>If you want a better reading experience, there is a interactive web version you can check it from this direct link : </strong> —
+<p>
+    If you want a better reading experience, there is a interactive web version you can check it from this direct link : —
     <a href="https://xidruk.github.io/computer-networking/">https://xidruk.github.io/computer-networking/</a>
 </p>
 
