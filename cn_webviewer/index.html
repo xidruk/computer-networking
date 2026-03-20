@@ -1,60 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Networking - Complete Guide</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Networking</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-left">
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <h1 class="site-title" id="siteTitle" style="cursor: pointer;">
-                <i class="fas fa-network-wired"></i> Computer Networking
-            </h1>
-        </div>
-        
-        <div class="header-right">
-            <button class="home-button" id="homeButton" aria-label="Back to Home"><i class="fas fa-home"></i></button>
-            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
-            
-            <a href="https://github.com/xidruk/computer-networking" class="github-stars" target="_blank">
-                <i class="fab fa-github"></i> <span id="starCount">11</span> <i class="fas fa-star"></i>
-            </a>
 
-            <div class="social-links">
-                <a href="https://twitter.com/xidruk" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://linkedin.com/in/xidruk" target="_blank"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-    </header>
+<!-- PHONE BLOCK -->
+<div id="phone">
+  <div id="phone-inner">
+    <p>!! ERROR : DISPLAY_SIZE !!</p>
+    <h2>[ SCREEN TOO SMALL ]</h2>
+    <p>this guide needs space.<br>open on a <b>laptop or desktop.</b></p>
+  </div>
+</div>
 
-    <main class="container">
-        <aside class="left-sidebar" id="leftSidebar">
-            <nav class="main-navigation" id="mainNav"></nav>
-        </aside>
-        
-        <div class="content-wrapper">
-            <div id="loading" class="loading"><div class="loader"></div></div>
-            <div id="error" class="error-message" style="display: none;">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Failed to load content.</p>
-            </div>
-            <article id="content" class="markdown-body"></article>
-        </div>
-    </main>
+<!-- TOP BAR -->
+<div id="bar">
+  <!-- LEFT: icon + title -->
+  <div id="bar-left">
+    <span id="bar-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+        <circle cx="12" cy="10" r="2" fill="currentColor" stroke="none" opacity=".4"/>
+        <path d="M8 10h1M15 10h1M12 7v1M12 12v1" stroke-width="1.2"/>
+      </svg>
+    </span>
+    <span id="bar-title">C@mputer Networking</span>
+  </div>
 
-    <footer class="main-footer">
-        <p><i class="fas fa-code"></i> Made with passion for networking</p>
-    </footer>
+  <div id="bar-spacer"></div>
 
-    <script src="app.js"></script>
+  <!-- RIGHT: stats, links, search, theme -->
+  <div id="bar-right">
+    <span class="bar-stat">&#9733; Stars <b id="gh-stars">—</b></span>
+    <span class="bar-stat">&#10231; Forks <b id="gh-forks">—</b></span>
+
+    <a class="bar-social" href="https://github.com/xidruk/" target="_blank">GitHub</a>
+    <a class="bar-social" href="https://x.com/xidruk" target="_blank">X</a>
+    <a class="bar-social" href="https://www.linkedin.com/in/khalid-barkan-36a628365/" target="_blank">LinkedIn</a>
+    <a class="bar-social" href="https://xidruk.substack.com/" target="_blank">Substack</a>
+
+    <button id="btn-search">
+      &#9906; SEARCH <kbd>Ctrl+K</kbd>
+    </button>
+    <button id="btn-theme">[ &#9788; ]</button>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div id="layout">
+
+  <!-- SIDEBAR -->
+  <div id="sidebar"></div>
+
+  <!-- CONTENT -->
+  <div id="main">
+    <div id="doc"><p class="spin">&gt;&gt; loading...</p></div>
+  </div>
+
+</div>
+
+<!-- marked.js cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="lookup_bar.js"></script>
+<script src="app.js"></script>
+
+<!-- Live GitHub stats -->
+<script>
+(function() {
+  fetch('https://api.github.com/repos/xidruk/computer-networking')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var s = document.getElementById('gh-stars');
+      var f = document.getElementById('gh-forks');
+      if (s) s.textContent = d.stargazers_count;
+      if (f) f.textContent = d.forks_count;
+    })
+    .catch(function() {});
+})();
+</script>
 </body>
 </html>
