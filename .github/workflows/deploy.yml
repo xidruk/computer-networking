@@ -23,15 +23,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
+      - name: Copy content files into webviewer
+        run: |
+          cp readme.md   cn_webviewer/readme.md
+          cp -r docs     cn_webviewer/docs
+          cp -r static   cn_webviewer/static
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './cn_webviewer'  # ← This tells it to deploy the /website folder!
-      
+          path: './cn_webviewer'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
