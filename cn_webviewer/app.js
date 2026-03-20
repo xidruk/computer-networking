@@ -124,16 +124,43 @@ var searchIndex = [];
   });
 })();
 
+// ── BASE PATH DETECTION ──
+// Locally:      index.html is in cn_webviewer/ → assets are at ../
+// GitHub Pages: cn_webviewer/ is deployed as site root → assets are at ./
+// We probe once with a HEAD request; all fetches go through resolveAsset().
+var _base = null;
+var _baseQueue = [];
+
+function detectBase(cb) {
+  if (_base !== null) { cb(); return; }
+  _baseQueue.push(cb);
+  if (_baseQueue.length > 1) return;
+  fetch('readme.md', { method: 'HEAD' })
+    .then(function(r) { _base = r.ok ? '' : '../'; flush(); })
+    .catch(function()  { _base = '../';             flush(); });
+  function flush() {
+    _baseQueue.forEach(function(fn) { fn(); });
+    _baseQueue = [];
+  }
+}
+
+// Strips any leading '../' from a stored path, then prepends resolved base.
+function resolveAsset(path) {
+  return _base + path.replace(/^\.\.\//, '');
+}
+
 // ── CACHE ──
 var readmeRaw = null;
 var currentFile = null;  // null = readme, else path string
 
 function fetchReadme(cb) {
   if (readmeRaw) { cb(null, readmeRaw); return; }
-  fetch('../readme.md')
-    .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-    .then(function(t) { readmeRaw = t; cb(null, t); })
-    .catch(cb);
+  detectBase(function() {
+    fetch(resolveAsset('../readme.md'))
+      .then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function(t) { readmeRaw = t; cb(null, t); })
+      .catch(cb);
+  });
 }
 
 // ── THEME ──
@@ -283,16 +310,19 @@ function loadReadme(cb) {
 // ── LOAD DOC FILE ──
 function loadFile(path, label) {
   loading();
-  fetch(path)
-    .then(function(r) { if (!r.ok) throw new Error(r.status + ' ' + r.statusText); return r.text(); })
-    .then(function(md) {
-      currentFile = path;
-      var html = marked.parse(md);
-      html = fixLinks(html, path);
-      doc().innerHTML = html;
-      addHeadingIds();
-    })
-    .catch(function(err) { error('Cannot load ' + path + '<br>' + err.message); });
+  detectBase(function() {
+    var url = resolveAsset(path);
+    fetch(url)
+      .then(function(r) { if (!r.ok) throw new Error(r.status + ' ' + r.statusText); return r.text(); })
+      .then(function(md) {
+        currentFile = path;
+        var html = marked.parse(md);
+        html = fixLinks(html, path);
+        doc().innerHTML = html;
+        addHeadingIds();
+      })
+      .catch(function(err) { error('Cannot load ' + path + '<br>' + err.message); });
+  });
 }
 
 // ── FIX LINKS ──
