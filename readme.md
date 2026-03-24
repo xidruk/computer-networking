@@ -26,7 +26,7 @@ This repository started as a personal attempt to actually understand **computer 
 Note : If you want a better reading experience, there is a interactive web version you can check it from this direct link : <a href="https://xidruk.github.io/computer-networking/">https://xidruk.github.io/computer-networking/</a>
 ***
 <blockquote>
-<p>⚠️ <strong>CTC (Call to Contribute)</strong> - If you are reading the content via the interactive web version, please keep in mind that I am not a front-end developer and have limited experience in front-end dev and UI design. This website was built with an AI agent, so you may encounter some errors or weird behaviors. You can reach me directly through the available channels, or contribute to the project by opening a pull request with a fix - both are welcome!</p>
+<p>💡 <strong>CTC (Call to Contribute)</strong> - If you are reading the content via the interactive web version, please keep in mind that I am not a front-end developer and have limited experience in front-end dev and UI design. This website was built with an AI agent, so you may encounter some errors or weird behaviors. You can reach me directly through the available channels, or contribute to the project by opening a pull request with a fix - both are welcome!</p>
 </blockquote>
 
 ## ~ Table of Content : :
