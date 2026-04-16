@@ -250,6 +250,7 @@ function setActive(id) {
 function go(id) {
   setActive(id);
   window.scrollTo(0, 0);
+  closeSidebar(); // close drawer on mobile after navigation
   if (id === 'readme') { loadReadme(); return; }
   var entry = FLAT[id];
   if (!entry) return;
@@ -375,6 +376,17 @@ function loading() { doc().innerHTML = '<p class="spin">&gt;&gt; loading...</p>'
 function error(msg) { doc().innerHTML = '<div class="err">' + msg + '</div>'; }
 function e(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
+// ── MOBILE SIDEBAR TOGGLE ──
+function openSidebar() {
+  document.body.classList.add('sidebar-open');
+}
+function closeSidebar() {
+  document.body.classList.remove('sidebar-open');
+}
+function toggleSidebar() {
+  document.body.classList.toggle('sidebar-open');
+}
+
 // ── EXPOSE ──
 window.go = go;
 
@@ -382,4 +394,17 @@ window.go = go;
 document.addEventListener('DOMContentLoaded', function() {
   buildSidebar();
   loadReadme();
+
+  // hamburger button
+  var btnMenu = document.getElementById('btn-menu');
+  if (btnMenu) btnMenu.addEventListener('click', toggleSidebar);
+
+  // backdrop closes sidebar
+  var backdrop = document.getElementById('sidebar-backdrop');
+  if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+  // close sidebar on Escape key (mobile)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSidebar();
+  });
 });

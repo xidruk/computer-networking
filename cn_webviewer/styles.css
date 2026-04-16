@@ -1,4 +1,3 @@
-
 :root {
   --bg:       #0a0a0a;
   --bg2:      #111111;
@@ -103,6 +102,25 @@ body {
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+}
+
+/* hamburger — hidden on desktop */
+#btn-menu {
+  display: none;
+  background: none;
+  border: 1px solid var(--b1);
+  color: var(--tx3);
+  font-family: inherit;
+  font-size: 16px;
+  padding: 3px 9px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color .15s, border-color .15s;
+  flex-shrink: 0;
+}
+#btn-menu:hover {
+  color: var(--g);
+  border-color: var(--g);
 }
 
 /* stats badges (stars / forks) */
@@ -448,6 +466,7 @@ body.light #doc table td:first-child {
   margin: 8px 0;
 }
 
+/* ── SEARCH OVERLAY ── */
 #search-overlay {
   display: none;
   position: fixed;
@@ -606,50 +625,81 @@ body.light #doc table td:first-child {
   padding: 1px 4px;
 }
 
-#phone {
+/* ── SIDEBAR BACKDROP (mobile) ── */
+#sidebar-backdrop {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 9999;
-  background: var(--bg);
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 24px;
-}
-#phone-inner {
-  border: 2px solid #550000;
-  border-left: 6px solid #cc3333;
-  background: #0c0000;
-  padding: 28px;
-  max-width: 300px;
-}
-#phone-inner p:first-child {
-  color: #cc3333;
-  font-size: 9px;
-  letter-spacing: 4px;
-  margin: 0 0 10px;
-}
-#phone-inner h2 {
-  color: #cc3333;
-  font-size: 16px;
-  letter-spacing: 2px;
-  margin: 0 0 12px;
-}
-#phone-inner p {
-  color: var(--tx3);
-  font-size: 12px;
-  line-height: 1.9;
-  margin: 0;
-}
-#phone-inner b {
-  color: #cc3333;
-  display: block;
-  margin-top: 8px;
+  top: 48px;
+  background: rgba(0, 0, 0, .65);
+  z-index: 499;
+  cursor: pointer;
 }
 
+/* ── MOBILE RESPONSIVE ── */
 @media (max-width: 860px) {
-  #phone            { display: flex; }
-  #bar, #layout     { display: none; }
+
+  /* show hamburger */
+  #btn-menu { display: flex; }
+
+  /* hide heavy bar items */
+  .bar-stat   { display: none; }
+  .bar-social { display: none; }
+
+  /* hide Ctrl+K hint from search button — just show icon */
+  #btn-search kbd { display: none; }
+
+  /* sidebar becomes a fixed drawer */
+  #sidebar {
+    position: fixed;
+    top: 48px;
+    left: -270px;
+    height: calc(100vh - 48px);
+    z-index: 500;
+    transition: left .22s ease;
+    /* keep same look — bg3, border — already set above */
+  }
+
+  /* open state */
+  body.sidebar-open #sidebar {
+    left: 0;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, .6);
+  }
+  body.sidebar-open #sidebar-backdrop {
+    display: block;
+  }
+
+  /* main takes full width */
+  #main {
+    padding: 20px 16px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* tables scroll horizontally on small screens */
+  #doc table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* slightly smaller h1 */
+  #doc h1 {
+    font-size: 17px;
+    letter-spacing: 1px;
+  }
+
+  /* code blocks don't overflow */
+  #doc pre {
+    font-size: 11.5px;
+  }
+}
+
+/* ── VERY SMALL (< 380px) ── */
+@media (max-width: 380px) {
+  #bar-title {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  #bar-icon { display: none; }
 }
